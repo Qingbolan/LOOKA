@@ -99,7 +99,6 @@ export function ExplorePage() {
         <CardMasonry
           columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
           gap={12}
-          animate
         >
           {dreams.map((dream) => (
             <div

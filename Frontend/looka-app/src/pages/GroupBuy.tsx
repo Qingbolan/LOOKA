@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, Button, Card } from '@/components'
+import { Layout, Icon, Card } from '@/components'
 
 // 也想要这件的人
 const dreamers = [
@@ -31,28 +31,45 @@ export function GroupBuyPage() {
         </div>
       </div>
 
-      <div className="pb-40">
-        {/* 主图 - 大图展示设计 */}
-        <div className="aspect-[3/4] bg-gray-100 relative">
-          <img
-            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800"
-            alt="星空渐变连衣裙"
-            className="w-full h-full object-cover"
-          />
-          {/* 设计者信息 */}
-          <div className="absolute bottom-4 left-4 right-4">
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 flex items-center gap-3">
+      <div className="pb-36">
+        {/* 主图 - 模特试穿效果 + 左下角衣服缩略图 */}
+        <div className="px-4 pt-2">
+          <div className="aspect-[4/5] bg-gray-100 relative rounded-2xl overflow-hidden">
+            {/* 主图：模特穿着效果 */}
+            <img
+              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800"
+              alt="星空渐变连衣裙"
+              className="w-full h-full object-cover"
+            />
+
+            {/* 左下角：衣服平铺图 */}
+            <div className="absolute bottom-3 left-3 w-16 h-20 rounded-lg overflow-hidden border-2 border-white shadow-lg bg-white">
               <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"
-                alt=""
-                className="w-10 h-10 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200"
+                alt="衣服图"
+                className="w-full h-full object-cover"
               />
-              <div className="flex-1">
-                <p className="text-sm font-bold">小美 的愿望</p>
-                <p className="text-xs text-gray-500">"想要一条像银河一样的裙子"</p>
-              </div>
-              <Icon name="auto_awesome" size={20} className="text-primary" />
             </div>
+
+            {/* 右下角：想要人数 */}
+            <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center gap-1.5">
+              <Icon name="favorite" size={14} className="text-primary" filled />
+              <span className="text-white text-xs font-medium">23</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 设计信息 */}
+        <div className="px-4 pt-3">
+          <h2 className="text-xl font-bold">星空渐变连衣裙</h2>
+          <p className="text-sm text-gray-500 mt-1">"想要一条像银河一样的裙子"</p>
+          <div className="flex items-center gap-2 mt-2">
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"
+              alt=""
+              className="w-6 h-6 rounded-full object-cover"
+            />
+            <span className="text-sm text-gray-600">小美 的愿望</span>
           </div>
         </div>
 
@@ -210,22 +227,27 @@ export function GroupBuyPage() {
         </div>
       </div>
 
-      {/* 底部 - 去掉价格强调 */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-2xl border-t border-gray-100 max-w-md mx-auto z-50">
+      {/* 底部 - 试穿 + 许愿按钮 */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50">
         <div style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <span className="text-gray-500 text-sm">预计 </span>
-              <span className="font-bold text-lg">¥299</span>
-            </div>
-            <button className="text-sm text-primary flex items-center gap-1">
-              <Icon name="info" size={16} />
-              价格说明
+          <div className="flex items-center gap-3">
+            {/* 试穿按钮 */}
+            <button
+              onClick={() => navigate('/try-on')}
+              className="h-12 px-4 bg-gray-100 text-gray-700 font-medium rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+            >
+              <Icon name="person" size={20} />
+              试穿
+            </button>
+            {/* 我也想要按钮 */}
+            <button className="flex-1 h-12 bg-primary text-white text-[15px] font-bold rounded-xl shadow-md shadow-primary/25 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+              <Icon name="favorite" size={18} filled />
+              我也想要
             </button>
           </div>
-          <Button variant="primary" size="lg" fullWidth>
-            我也想要
-          </Button>
+          <p className="text-center text-xs text-gray-400 mt-2">
+            人齐了才开始，放心许愿
+          </p>
         </div>
       </div>
     </Layout>

@@ -9,47 +9,47 @@ const styles = ['全部', '梦幻', '简约', '复古', '街头', '优雅', '甜
 const dreams = [
   {
     id: '1',
-    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400',
+    modelImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200',
     name: '星空渐变长裙',
     description: '像银河一样的颜色',
     dreamer: { name: '小美', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100' },
     wantCount: 23,
     isWanted: false,
     status: 'collecting',
-    aspectRatio: '3/4',
   },
   {
     id: '2',
-    image: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400',
+    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200',
     name: '真丝和服外套',
     description: '日式复古，轻薄透气',
     dreamer: { name: 'Luna', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100' },
     wantCount: 156,
     isWanted: true,
     status: 'making',
-    aspectRatio: '3/5',
   },
   {
     id: '3',
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400',
+    modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=200',
     name: '极简白衬衫',
     description: '完美版型，高级面料',
     dreamer: { name: '设计师阿白', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100' },
     wantCount: 89,
     isWanted: false,
     status: 'collecting',
-    aspectRatio: '4/5',
   },
   {
     id: '4',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
+    modelImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200',
     name: 'oversized 西装',
     description: '英伦复古格纹',
     dreamer: { name: '职场穿搭', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100' },
     wantCount: 67,
     isWanted: false,
     status: 'done',
-    aspectRatio: '1/1',
   },
 ]
 
@@ -107,12 +107,27 @@ export function ExplorePage() {
               onClick={() => navigate(`/group-buy/${dream.id}`)}
               className="bg-white rounded-2xl overflow-hidden shadow-soft border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform"
             >
-              <div className="relative bg-gray-100" style={{ aspectRatio: dream.aspectRatio }}>
+              {/* 图片区域 */}
+              <div className="relative aspect-[3/4] bg-gray-100">
+                {/* 主图：模特穿着效果 */}
                 <img
-                  src={dream.image}
+                  src={dream.modelImage}
                   alt={dream.name}
                   className="w-full h-full object-cover"
                 />
+                {/* 左下角：衣服缩略图 */}
+                <div className="absolute bottom-2 left-2 w-10 h-12 rounded-md overflow-hidden border-2 border-white shadow-md bg-white">
+                  <img
+                    src={dream.clothImage}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* 右下角：想要人数 */}
+                <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+                  <Icon name="favorite" size={12} className="text-primary" filled={dream.isWanted} />
+                  <span className="text-white text-[10px] font-medium">{dream.wantCount}</span>
+                </div>
                 {/* 状态标签 */}
                 <div className="absolute top-2 right-2">
                   <Badge variant={statusConfig[dream.status].variant} size="sm">
@@ -120,32 +135,17 @@ export function ExplorePage() {
                   </Badge>
                 </div>
               </div>
+              {/* 信息区域 */}
               <div className="p-3">
-                <h3 className="text-[15px] font-bold leading-snug">{dream.name}</h3>
-                <p className="text-[12px] text-gray-500 mt-0.5 line-clamp-1">{dream.description}</p>
-
-                <div className="flex items-center justify-between mt-3">
-                  {/* 许愿者 */}
-                  <div className="flex items-center gap-1.5">
-                    <img
-                      src={dream.dreamer.avatar}
-                      alt={dream.dreamer.name}
-                      className="w-5 h-5 rounded-full object-cover"
-                    />
-                    <span className="text-[11px] text-gray-500">{dream.dreamer.name}</span>
-                  </div>
-                  {/* 想要的人数 */}
-                  <div className="flex items-center gap-1">
-                    <Icon
-                      name="favorite"
-                      size={14}
-                      filled={dream.isWanted}
-                      className={dream.isWanted ? 'text-primary' : 'text-gray-300'}
-                    />
-                    <span className={`text-[11px] ${dream.isWanted ? 'text-primary font-medium' : 'text-gray-400'}`}>
-                      {dream.wantCount}
-                    </span>
-                  </div>
+                <h3 className="text-[14px] font-bold leading-snug">{dream.name}</h3>
+                <p className="text-[11px] text-gray-500 mt-0.5 line-clamp-1">{dream.description}</p>
+                <div className="flex items-center gap-1.5 mt-2">
+                  <img
+                    src={dream.dreamer.avatar}
+                    alt={dream.dreamer.name}
+                    className="w-5 h-5 rounded-full object-cover"
+                  />
+                  <span className="text-[11px] text-gray-500">{dream.dreamer.name}</span>
                 </div>
               </div>
             </div>

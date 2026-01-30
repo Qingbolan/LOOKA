@@ -15,6 +15,7 @@ export { ProductCard } from './ProductCard'
 export { LukaAvatar } from './LukaAvatar'
 export { StatusBadge } from './StatusBadge'
 export { ImageWithStatus } from './ImageWithStatus'
+export { ImageSwap } from './ImageSwap'
 
 // Utilities
 export { CardMasonry } from './reactbits/Masonry'

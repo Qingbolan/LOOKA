@@ -17,6 +17,7 @@ import {
   DesignSchemePage,
   ParameterEditPage,
   BodyProfilePage,
+  SearchPage,
 } from '@/pages'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         {/* Main Tabs */}
         <Route path="/" element={<ExplorePage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/together" element={<TogetherPage />} />
         <Route path="/luka" element={<LukaPage />} />
         <Route path="/luka/chat" element={<LukaChatPage />} />

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon } from '@/components'
+import { Layout, Icon, ImageSwap } from '@/components'
 
 const profileTabs = ['我发起的', '想要的', '分享']
 
@@ -39,9 +39,9 @@ const statusText: Record<string, string> = {
 }
 
 const statusColor: Record<string, string> = {
-  collecting: 'bg-primary/10 text-primary',
-  making: 'bg-amber-50 text-amber-600',
-  done: 'bg-emerald-50 text-emerald-600',
+  collecting: 'bg-primary text-white',
+  making: 'bg-amber-500 text-white',
+  done: 'bg-emerald-500 text-white',
 }
 
 export function ProfilePage() {
@@ -152,31 +152,25 @@ export function ProfilePage() {
             <div
               key={wish.id}
               onClick={() => navigate(`/group-buy/${wish.id}`)}
-              className="bg-white rounded-2xl overflow-hidden shadow-soft border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform"
+              className="bg-white rounded-lg overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
             >
               {/* 图片区域 */}
-              <div className="relative aspect-[3/4] bg-gray-100">
-                <img
-                  src={wish.modelImage}
+              <div className="relative aspect-[3/4]">
+                <ImageSwap
+                  mainImage={wish.modelImage}
+                  thumbImage={wish.clothImage}
                   alt={wish.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full"
+                  thumbSize="md"
                 />
-                {/* 左下角衣服缩略图 */}
-                <div className="absolute bottom-2 left-2 w-10 h-12 rounded-md overflow-hidden border-2 border-white shadow-md bg-white">
-                  <img
-                    src={wish.clothImage}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </div>
                 {/* 右下角想要人数 */}
-                <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+                <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1 z-10">
                   <Icon name="favorite" size={12} className="text-primary" filled />
                   <span className="text-white text-[10px] font-medium">{wish.wantCount}</span>
                 </div>
                 {/* 状态标签 */}
-                <div className="absolute top-2 right-2">
-                  <span className={`text-[10px] font-medium px-2 py-1 rounded-full ${statusColor[wish.status]}`}>
+                <div className="absolute top-1.5 left-1.5 z-10">
+                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${statusColor[wish.status]}`}>
                     {statusText[wish.status]}
                   </span>
                 </div>

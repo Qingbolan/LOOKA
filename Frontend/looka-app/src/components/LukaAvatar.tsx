@@ -1,5 +1,3 @@
-import { Icon } from './Icon'
-
 interface LukaAvatarProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
@@ -14,14 +12,6 @@ const sizeClasses = {
   xl: 'w-16 h-16',
 }
 
-const iconSizes = {
-  xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 20,
-  xl: 26,
-}
-
 export function LukaAvatar({
   size = 'md',
   className = '',
@@ -31,16 +21,15 @@ export function LukaAvatar({
     <div
       className={`
         ${sizeClasses[size]}
-        rounded-full flex items-center justify-center flex-shrink-0
-        bg-primary
+        rounded-full flex-shrink-0 overflow-hidden
         ${animated ? 'animate-pulse-slow' : ''}
         ${className}
       `}
     >
-      <Icon
-        name="auto_awesome"
-        size={iconSizes[size]}
-        className="text-white"
+      <img
+        src="/Luka.png"
+        alt="Luka"
+        className="w-full h-full object-cover"
       />
     </div>
   )

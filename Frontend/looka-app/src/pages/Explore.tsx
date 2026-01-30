@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, CardMasonry, Badge } from '@/components'
+import { Layout, Icon, CardMasonry, Badge, ImageSwap } from '@/components'
 
 // 主导航
 const mainTabs = ['关注', '最近', '热门']
@@ -90,7 +90,10 @@ export function ExplorePage() {
                 </button>
               ))}
             </div>
-            <button className="size-8 flex items-center justify-center">
+            <button
+              onClick={() => navigate('/search')}
+              className="size-8 flex items-center justify-center"
+            >
               <Icon name="search" size={22} className="text-gray-600" />
             </button>
           </div>
@@ -127,23 +130,16 @@ export function ExplorePage() {
               className="bg-white rounded-lg overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
             >
               {/* 图片区域 */}
-              <div className="relative aspect-[3/4] bg-gray-100">
-                {/* 主图：模特穿着效果 */}
-                <img
-                  src={dream.modelImage}
+              <div className="relative aspect-[3/4]">
+                <ImageSwap
+                  mainImage={dream.modelImage}
+                  thumbImage={dream.clothImage}
                   alt={dream.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full rounded-t-lg overflow-hidden"
+                  thumbSize="md"
                 />
-                {/* 左下角：衣服缩略图 */}
-                <div className="absolute bottom-2 left-2 w-9 h-11 rounded overflow-hidden border-2 border-white shadow-md bg-white">
-                  <img
-                    src={dream.clothImage}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </div>
                 {/* 状态标签 */}
-                <div className="absolute top-1.5 left-1.5">
+                <div className="absolute top-1.5 left-1.5 z-10">
                   <Badge variant={statusConfig[dream.status].variant} size="sm">
                     {statusConfig[dream.status].text}
                   </Badge>

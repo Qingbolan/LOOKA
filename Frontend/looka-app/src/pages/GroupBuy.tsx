@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, Card } from '@/components'
+import { Layout, Icon, Card, ImageSwap } from '@/components'
 
 // 也想要这件的人
 const dreamers = [
@@ -34,25 +34,16 @@ export function GroupBuyPage() {
       <div className="pb-36">
         {/* 主图 - 模特试穿效果 + 左下角衣服缩略图 */}
         <div className="px-4 pt-2">
-          <div className="aspect-[4/5] bg-gray-100 relative rounded-2xl overflow-hidden">
-            {/* 主图：模特穿着效果 */}
-            <img
-              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800"
+          <div className="aspect-[4/5] relative rounded-lg overflow-hidden">
+            <ImageSwap
+              mainImage="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800"
+              thumbImage="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200"
               alt="星空渐变连衣裙"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              thumbSize="lg"
             />
-
-            {/* 左下角：衣服平铺图 */}
-            <div className="absolute bottom-3 left-3 w-16 h-20 rounded-lg overflow-hidden border-2 border-white shadow-lg bg-white">
-              <img
-                src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200"
-                alt="衣服图"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
             {/* 右下角：想要人数 */}
-            <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center gap-1.5">
+            <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center gap-1.5 z-10">
               <Icon name="favorite" size={14} className="text-primary" filled />
               <span className="text-white text-xs font-medium">23</span>
             </div>

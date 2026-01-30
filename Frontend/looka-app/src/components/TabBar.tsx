@@ -36,13 +36,13 @@ export function TabBar() {
                   className="relative -mt-5 flex flex-col items-center"
                 >
                   <div className={`
-                    w-12 h-12 rounded-full flex items-center justify-center
-                    bg-primary
-                    shadow-lg shadow-primary/30
+                    w-14 h-14 rounded-full overflow-hidden
+                    bg-primary/10
+                    shadow-lg shadow-primary/20
                     transition-transform active:scale-95
                     ${isActive ? 'ring-4 ring-primary/20' : ''}
                   `}>
-                    <Icon name="auto_awesome" size={22} className="text-white" />
+                    <img src="/Luka.png" alt="Luka" className="w-full h-full object-cover" />
                   </div>
                   <span className={`text-[10px] mt-1 ${isActive ? 'text-primary font-bold' : 'text-text-muted dark:text-text-dark-muted font-medium'}`}>
                     {tab.label}

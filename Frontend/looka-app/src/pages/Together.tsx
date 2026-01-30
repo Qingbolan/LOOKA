@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, Badge, LukaAvatar } from '@/components'
+import { Layout, Icon, Badge, LukaAvatar, ImageSwap } from '@/components'
 
 const tabs = ['进行中', '即将成真', '已实现']
 
@@ -174,21 +174,13 @@ export function TogetherPage() {
             >
               <div className="flex">
                 {/* 图片 */}
-                <div className="relative w-24 h-24 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                  <img
-                    src={wish.image}
-                    alt={wish.title}
-                    className="w-full h-full object-cover"
-                  />
-                  {/* 左下角：衣服缩略图 */}
-                  <div className="absolute bottom-1 left-1 w-6 h-7 rounded-sm overflow-hidden border border-white shadow bg-white">
-                    <img
-                      src={wish.clothImage}
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
+                <ImageSwap
+                  mainImage={wish.image}
+                  thumbImage={wish.clothImage}
+                  alt={wish.title}
+                  className="w-24 h-24 flex-shrink-0 rounded overflow-hidden"
+                  thumbSize="sm"
+                />
 
                 {/* 内容 */}
                 <div className="flex-1 p-2.5 flex flex-col justify-between">

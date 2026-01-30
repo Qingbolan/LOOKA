@@ -55,7 +55,7 @@ export function BodySetupPage() {
       <main className="max-w-md mx-auto px-6 pb-32">
         {/* Luka 打招呼 */}
         <div className="text-center py-6">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
             <Icon name="auto_awesome" size={28} className="text-white" />
           </div>
           <h1 className="text-2xl font-bold mb-2">让 Luka 认识你</h1>

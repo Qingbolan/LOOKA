@@ -152,7 +152,7 @@ export function LukaChatPage() {
                 <div
                   className={`px-4 py-3 rounded-2xl ${
                     message.from === 'user'
-                      ? 'bg-gradient-to-r from-primary to-pink-500 text-white rounded-br-sm'
+                      ? 'bg-primary text-white rounded-br-sm'
                       : 'bg-white text-gray-800 rounded-bl-sm shadow-sm border border-gray-100'
                   }`}
                 >
@@ -246,7 +246,7 @@ export function LukaChatPage() {
               disabled={!input.trim()}
               className={`size-10 flex items-center justify-center rounded-full flex-shrink-0 transition-all ${
                 input.trim()
-                  ? 'bg-gradient-to-r from-primary to-pink-500 text-white'
+                  ? 'bg-primary text-white'
                   : 'bg-gray-100 text-gray-400'
               }`}
             >

@@ -37,7 +37,7 @@ export function TabBar() {
                 >
                   <div className={`
                     w-12 h-12 rounded-full flex items-center justify-center
-                    bg-gradient-to-br from-primary via-primary to-pink-400
+                    bg-primary
                     shadow-lg shadow-primary/30
                     transition-transform active:scale-95
                     ${isActive ? 'ring-4 ring-primary/20' : ''}

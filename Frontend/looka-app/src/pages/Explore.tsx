@@ -51,28 +51,6 @@ const dreams = [
     status: 'done',
     aspectRatio: '1/1',
   },
-  {
-    id: '5',
-    image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-    name: '法式碎花裙',
-    description: '春日氛围感',
-    dreamer: { name: 'Mina', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100' },
-    wantCount: 234,
-    isWanted: false,
-    status: 'collecting',
-    aspectRatio: '3/4',
-  },
-  {
-    id: '6',
-    image: 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=400',
-    name: '针织开衫',
-    description: '奶油色，慵懒感',
-    dreamer: { name: '穿搭日记', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100' },
-    wantCount: 45,
-    isWanted: false,
-    status: 'collecting',
-    aspectRatio: '4/5',
-  },
 ]
 
 const statusConfig: Record<string, { text: string; variant: 'wishing' | 'making' | 'owned' }> = {
@@ -105,7 +83,7 @@ export function ExplorePage() {
                 onClick={() => setActiveStyle(index)}
                 className={`whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] transition-all ${
                   index === activeStyle
-                    ? 'bg-gradient-to-r from-primary to-pink-500 text-white font-bold'
+                    ? 'bg-primary text-white font-bold'
                     : 'bg-gray-100 text-gray-600'
                 }`}
               >
@@ -117,7 +95,7 @@ export function ExplorePage() {
       </div>
 
       {/* 设计卡片 */}
-      <main className="max-w-md mx-auto p-3 pb-32">
+      <main className="max-w-md mx-auto p-4 pb-32">
         <CardMasonry
           columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
           gap={12}

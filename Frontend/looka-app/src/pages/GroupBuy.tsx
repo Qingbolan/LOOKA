@@ -58,7 +58,7 @@ export function GroupBuyPage() {
 
         {/* 愿望状态 - 核心信息，但不是促销感 */}
         <div className="p-4">
-          <Card className="bg-gradient-to-br from-primary/5 via-white to-pink-50 border-primary/10">
+          <Card className="bg-primary/5 border-primary/10">
             <div className="text-center mb-4">
               <p className="text-gray-500 text-sm">这个愿望</p>
               <p className="text-2xl font-bold mt-1">
@@ -75,7 +75,7 @@ export function GroupBuyPage() {
                     key={i}
                     className={`w-6 h-6 rounded-full flex items-center justify-center text-xs
                       ${i < currentDreamers
-                        ? 'bg-gradient-to-br from-primary to-pink-400 text-white'
+                        ? 'bg-primary text-white'
                         : 'bg-gray-100 text-gray-300'
                       }`}
                   >

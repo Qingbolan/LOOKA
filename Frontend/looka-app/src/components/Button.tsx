@@ -16,10 +16,10 @@ interface ButtonProps {
 }
 
 const variantClasses = {
-  primary: 'bg-gradient-to-r from-primary to-pink-500 text-white shadow-button',
-  secondary: 'bg-primary/10 text-primary border border-primary/20 dark:bg-primary/15 dark:border-primary/30',
-  ghost: 'bg-transparent text-text-primary dark:text-text-dark-primary hover:bg-primary/10',
-  dream: 'bg-gradient-to-r from-primary via-pink-500 to-primary text-white shadow-button animate-shimmer bg-[length:200%_100%]',
+  primary: 'bg-primary text-white shadow-button',
+  secondary: 'bg-primary/10 text-primary border border-primary/20',
+  ghost: 'bg-transparent text-text-primary hover:bg-primary/10',
+  dream: 'bg-primary text-white shadow-button',
 }
 
 const sizeClasses = {

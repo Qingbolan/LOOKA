@@ -13,7 +13,7 @@ const featureCards = [
       'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100',
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=100',
     ],
-    gradient: 'from-primary/10 to-pink-100',
+    bgColor: 'bg-primary/10',
   },
   {
     id: 'inspiration',
@@ -24,7 +24,7 @@ const featureCards = [
       'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=100',
       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=100',
     ],
-    gradient: 'from-amber-50 to-orange-100',
+    bgColor: 'bg-amber-50',
   },
   {
     id: 'remix',
@@ -35,7 +35,7 @@ const featureCards = [
       'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=100',
       'https://images.unsplash.com/photo-1445205170230-053b83016050?w=100',
     ],
-    gradient: 'from-emerald-50 to-teal-100',
+    bgColor: 'bg-emerald-50',
   },
 ]
 
@@ -72,7 +72,7 @@ export function LukaPage() {
       <div className="max-w-md mx-auto px-4 pb-32">
         {/* Luka 自我介绍 */}
         <div className="py-8">
-          <div className="bg-gradient-to-r from-primary/5 via-pink-50 to-primary/5 rounded-2xl p-5 mb-6 border border-primary/10">
+          <div className="bg-primary/5 rounded-2xl p-5 mb-6 border border-primary/10">
             <p className="text-[15px] leading-relaxed text-gray-700">
               Hi，我是 <span className="text-primary font-medium">Luka</span>，帮你把脑海里的衣服变成真的。
               <br /><br />
@@ -86,7 +86,7 @@ export function LukaPage() {
               <button
                 key={card.id}
                 onClick={() => handleCardClick(card.id)}
-                className={`flex-shrink-0 w-40 bg-gradient-to-br ${card.gradient} rounded-2xl p-4 text-left transition-transform active:scale-95 border border-gray-100`}
+                className={`flex-shrink-0 w-40 ${card.bgColor} rounded-2xl p-4 text-left transition-transform active:scale-95 border border-gray-100`}
               >
                 <h3 className="font-bold text-[15px] mb-1 text-gray-800">{card.title}</h3>
                 <p className="text-[12px] text-gray-500 mb-3 line-clamp-2">{card.example}</p>
@@ -161,7 +161,7 @@ export function LukaPage() {
               onMouseLeave={() => setIsHolding(false)}
               className={`flex-1 h-11 rounded-full flex items-center justify-center transition-all ${
                 isHolding
-                  ? 'bg-gradient-to-r from-primary to-pink-500 text-white scale-105'
+                  ? 'bg-primary text-white scale-105'
                   : 'bg-gray-100 text-gray-500'
               }`}
             >

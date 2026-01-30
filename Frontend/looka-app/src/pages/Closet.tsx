@@ -32,14 +32,6 @@ const myClothes = [
     status: 'owned',
   },
   {
-    id: '4',
-    image: 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=400',
-    name: '法式碎花裙',
-    category: '裙装',
-    season: ['春', '夏'],
-    status: 'owned',
-  },
-  {
     id: '5',
     image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
     name: '复古格纹西装',
@@ -95,7 +87,7 @@ export function ClosetPage() {
       <div className="max-w-md mx-auto pb-32">
         {/* Luka 今日推荐 */}
         <div className="px-4 mb-4">
-          <div className="bg-gradient-to-r from-primary/5 via-pink-50 to-primary/5 rounded-2xl p-4 border border-primary/10">
+          <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
             <div className="flex items-center gap-2 mb-3">
               <LukaAvatar size="sm" />
               <div>
@@ -135,7 +127,7 @@ export function ClosetPage() {
                 onClick={() => setActiveCategory(index)}
                 className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap transition-all ${
                   index === activeCategory
-                    ? 'bg-gradient-to-r from-primary to-pink-500 text-white font-medium'
+                    ? 'bg-primary text-white font-medium'
                     : 'bg-gray-100 text-gray-600'
                 }`}
               >
@@ -146,12 +138,12 @@ export function ClosetPage() {
         </div>
 
         {/* 衣服网格 */}
-        <div className="grid grid-cols-3 gap-0.5">
+        <div className="px-4 grid grid-cols-3 gap-3">
           {filteredClothes.map((cloth) => (
             <div
               key={cloth.id}
               onClick={() => navigate(`/closet/${cloth.id}`)}
-              className="relative aspect-[3/4] cursor-pointer group bg-gray-100"
+              className="relative aspect-[3/4] cursor-pointer group bg-gray-100 rounded-xl overflow-hidden"
             >
               <img
                 src={cloth.image}
@@ -169,7 +161,7 @@ export function ClosetPage() {
               {/* 季节标签 */}
               <div className="absolute bottom-2 right-2 flex gap-0.5">
                 {cloth.season.slice(0, 2).map((s) => (
-                  <span key={s} className="text-[8px] bg-white/80 backdrop-blur-sm px-1 rounded text-gray-600">
+                  <span key={s} className="text-[8px] bg-white/80 backdrop-blur-sm px-1.5 py-0.5 rounded-md text-gray-600">
                     {s}
                   </span>
                 ))}
@@ -179,10 +171,10 @@ export function ClosetPage() {
 
           {/* 添加新衣服 */}
           <div
-            onClick={() => navigate('/create')}
-            className="aspect-[3/4] bg-gray-50 flex flex-col items-center justify-center cursor-pointer"
+            onClick={() => navigate('/luka')}
+            className="aspect-[3/4] bg-gray-50 rounded-xl flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200"
           >
-            <Icon name="add" size={32} className="text-gray-300 mb-1" />
+            <Icon name="add" size={28} className="text-gray-300 mb-1" />
             <p className="text-[10px] text-gray-400">添加</p>
           </div>
         </div>

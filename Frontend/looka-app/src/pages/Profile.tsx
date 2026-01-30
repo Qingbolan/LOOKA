@@ -45,7 +45,7 @@ export function ProfilePage() {
 
       <div className="max-w-md mx-auto pb-32">
         {/* Profile Section */}
-        <div className="px-6 pt-6 pb-4">
+        <div className="px-4 pt-4 pb-4">
           <div className="flex items-start justify-between">
             {/* Avatar */}
             <div className="relative">
@@ -56,7 +56,7 @@ export function ProfilePage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <button className="absolute bottom-0 right-0 bg-gradient-to-r from-primary to-pink-500 text-white p-1.5 rounded-full border-2 border-white">
+              <button className="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-2 border-white">
                 <Icon name="add" size={12} />
               </button>
             </div>
@@ -96,10 +96,10 @@ export function ProfilePage() {
         <div className="px-4 mb-6">
           <div
             onClick={() => navigate('/body-profile')}
-            className="bg-gradient-to-r from-primary/5 via-pink-50 to-primary/5 rounded-2xl p-4 flex items-center justify-between border border-primary/10 cursor-pointer active:scale-[0.99] transition-transform"
+            className="bg-primary/5 rounded-2xl p-4 flex items-center justify-between border border-primary/10 cursor-pointer active:scale-[0.99] transition-transform"
           >
             <div className="flex items-center gap-3">
-              <div className="size-10 rounded-full bg-gradient-to-r from-primary to-pink-500 flex items-center justify-center text-white">
+              <div className="size-10 rounded-full bg-primary flex items-center justify-center text-white">
                 <Icon name="accessibility_new" size={20} />
               </div>
               <div>

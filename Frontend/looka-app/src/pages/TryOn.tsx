@@ -142,9 +142,9 @@ export function TryOnPage() {
           </div>
 
           {/* Luka 的话 */}
-          <div className="mt-4 p-4 bg-gradient-to-r from-primary/5 to-pink-50 rounded-2xl">
+          <div className="mt-4 p-4 bg-primary/5 rounded-2xl">
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                 <Icon name="auto_awesome" size={14} className="text-white" />
               </div>
               <div>

@@ -131,7 +131,7 @@ export function ClothDetailPage() {
         {/* 我的想法 */}
         <div className="p-4 border-b border-gray-100">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
               <Icon name="format_quote" size={16} className="text-white" />
             </div>
             <div>
@@ -210,7 +210,7 @@ export function ClothDetailPage() {
         {/* Luka 搭配建议 */}
         <div className="p-4 border-b border-gray-100">
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
               <Icon name="auto_awesome" size={12} className="text-white" />
             </div>
             <h3 className="font-bold">Luka 的搭配建议</h3>
@@ -293,7 +293,7 @@ export function ClothDetailPage() {
             variant="primary"
             size="md"
             fullWidth
-            onClick={() => navigate('/create')}
+            onClick={() => navigate('/luka')}
           >
             做一件类似的
           </Button>

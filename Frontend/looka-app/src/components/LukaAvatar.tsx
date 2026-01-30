@@ -32,7 +32,7 @@ export function LukaAvatar({
       className={`
         ${sizeClasses[size]}
         rounded-full flex items-center justify-center flex-shrink-0
-        bg-gradient-to-br from-primary via-primary to-pink-400
+        bg-primary
         ${animated ? 'animate-pulse-slow' : ''}
         ${className}
       `}

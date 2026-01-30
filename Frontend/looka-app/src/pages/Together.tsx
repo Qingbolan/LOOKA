@@ -114,7 +114,7 @@ export function TogetherPage() {
       <main className="max-w-md mx-auto p-4 pb-32 space-y-6">
         {/* 动态提醒 */}
         {activities.length > 0 && (
-          <div className="bg-gradient-to-r from-primary/5 via-pink-50 to-primary/5 rounded-2xl p-4 border border-primary/10">
+          <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
             <div className="flex items-center gap-2 mb-3">
               <Icon name="notifications_active" size={18} className="text-primary" />
               <span className="text-sm font-bold">最新动态</span>
@@ -206,7 +206,7 @@ export function TogetherPage() {
                     </div>
                     <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-primary to-pink-400 rounded-full transition-all"
+                        className="h-full bg-primary rounded-full transition-all"
                         style={{ width: `${(wish.currentPeople / wish.targetPeople) * 100}%` }}
                       />
                     </div>

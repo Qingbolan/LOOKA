@@ -12,7 +12,7 @@
     --safe-area-inset-right: env(safe-area-inset-right, 0px);
 
     /* Light mode colors */
-    --color-bg: #FFFBFE;
+    --color-bg: #FFFAF8;
     --color-surface: #FFFFFF;
     --color-surface-elevated: #FFFFFF;
     --color-text-primary: #1A1A1A;
@@ -21,11 +21,11 @@
     --color-border: rgba(0, 0, 0, 0.06);
     --color-border-light: rgba(0, 0, 0, 0.03);
 
-    /* Primary gradient */
-    --color-primary: #A855F7;
-    --color-primary-soft: rgba(168, 85, 247, 0.1);
-    --color-pink: #EC4899;
-    --color-gradient: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+    /* Primary gradient - warm coral */
+    --color-primary: #FF6B6B;
+    --color-primary-soft: rgba(255, 107, 107, 0.1);
+    --color-peach: #FFAB91;
+    --color-gradient: #FF6B6B;
   }
 
   /* Dark mode colors */
@@ -56,7 +56,7 @@
 
   /* Selection highlight */
   ::selection {
-    background-color: rgba(168, 85, 247, 0.3);
+    background-color: rgba(255, 107, 107, 0.3);
     color: inherit;
   }
 }
@@ -100,17 +100,17 @@
 
   /* Soft gradient background */
   .bg-dream-soft {
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.08) 0%, rgba(255, 171, 145, 0.08) 100%);
   }
 
   .dark .bg-dream-soft {
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 171, 145, 0.15) 100%);
   }
 
   /* Primary button */
   .btn-primary {
-    @apply bg-gradient-to-r from-primary to-pink-500 text-white rounded-full font-bold;
-    box-shadow: 0 4px 14px rgba(168, 85, 247, 0.3);
+    @apply bg-primary text-white rounded-full font-bold;
+    box-shadow: 0 4px 14px rgba(255, 107, 107, 0.3);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
 
@@ -119,15 +119,15 @@
   }
 
   .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
   }
 
   /* Secondary button - light mode */
   .btn-secondary {
     @apply rounded-full font-bold transition-all;
-    background: rgba(168, 85, 247, 0.08);
-    color: #A855F7;
-    border: 1px solid rgba(168, 85, 247, 0.15);
+    background: rgba(255, 107, 107, 0.08);
+    color: #FF6B6B;
+    border: 1px solid rgba(255, 107, 107, 0.15);
   }
 
   .btn-secondary:active {
@@ -136,8 +136,8 @@
 
   /* Secondary button - dark mode */
   .dark .btn-secondary {
-    background: rgba(168, 85, 247, 0.15);
-    border-color: rgba(168, 85, 247, 0.25);
+    background: rgba(255, 107, 107, 0.15);
+    border-color: rgba(255, 107, 107, 0.25);
   }
 
   /* Ghost button */
@@ -253,7 +253,7 @@
 
   .input-field:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
   }
 
   .input-field::placeholder {
@@ -265,7 +265,7 @@
   }
 
   .dark .input-field:focus {
-    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
   }
 }
 
@@ -285,7 +285,7 @@
 
   /* Ring glow effect */
   .ring-glow {
-    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.2);
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2);
   }
 
   /* Transition utilities */

@@ -8,35 +8,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        // 主色调：梦幻紫粉渐变 - 象征梦想、魔法、温暖
+        // 主色调：温暖珊瑚色 - 象征梦想、温暖、活力
         primary: {
-          DEFAULT: "#A855F7", // purple-500 - 主色
-          50: "#FAF5FF",
-          100: "#F3E8FF",
-          200: "#E9D5FF",
-          300: "#D8B4FE",
-          400: "#C084FC",
-          500: "#A855F7",
-          600: "#9333EA",
-          700: "#7E22CE",
-          800: "#6B21A8",
-          900: "#581C87",
+          DEFAULT: "#FF6B6B", // coral - 主色
+          50: "#FFF5F5",
+          100: "#FFE3E3",
+          200: "#FFC9C9",
+          300: "#FFA8A8",
+          400: "#FF8787",
+          500: "#FF6B6B",
+          600: "#FA5252",
+          700: "#F03E3E",
+          800: "#E03131",
+          900: "#C92A2A",
         },
-        // 粉色辅助色 - 温暖、浪漫
-        pink: {
-          DEFAULT: "#EC4899",
-          50: "#FDF2F8",
-          100: "#FCE7F3",
-          200: "#FBCFE8",
-          300: "#F9A8D4",
-          400: "#F472B6",
-          500: "#EC4899",
-          600: "#DB2777",
+        // 桃色辅助色 - 温暖、柔和
+        peach: {
+          DEFAULT: "#FFAB91",
+          50: "#FFF8F5",
+          100: "#FFEDE5",
+          200: "#FFDDD0",
+          300: "#FFC4AD",
+          400: "#FFB59E",
+          500: "#FFAB91",
+          600: "#FF8A65",
         },
         // 背景色
         background: {
-          light: "#FFFBFE", // 淡粉白 - 温暖感
-          DEFAULT: "#FFFBFE",
+          light: "#FFFAF8", // 淡暖白 - 温暖感
+          DEFAULT: "#FFFAF8",
           dark: "#1A1A1A", // 深色模式
         },
         // 表面色
@@ -56,8 +56,8 @@ export default {
         },
         // 功能色
         accent: {
-          violet: "#8B5CF6",
-          rose: "#F43F5E",
+          coral: "#FF6B6B",
+          peach: "#FFAB91",
           amber: "#F59E0B",
           emerald: "#10B981",
           sky: "#0EA5E9",
@@ -77,15 +77,15 @@ export default {
       boxShadow: {
         'soft': '0 8px 30px rgba(0,0,0,0.04)',
         'card': '0 4px 16px rgba(0,0,0,0.06)',
-        'button': '0 4px 14px rgba(168, 85, 247, 0.3)',
-        'button-pink': '0 4px 14px rgba(236, 72, 153, 0.3)',
-        'glow': '0 0 20px rgba(168, 85, 247, 0.4)',
-        'glow-pink': '0 0 20px rgba(236, 72, 153, 0.4)',
+        'button': '0 4px 14px rgba(255, 107, 107, 0.3)',
+        'button-peach': '0 4px 14px rgba(255, 171, 145, 0.3)',
+        'glow': '0 0 20px rgba(255, 107, 107, 0.4)',
+        'glow-peach': '0 0 20px rgba(255, 171, 145, 0.4)',
       },
       backgroundImage: {
-        'gradient-dream': 'linear-gradient(135deg, #A855F7 0%, #EC4899 100%)',
-        'gradient-dream-soft': 'linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(236,72,153,0.1) 100%)',
-        'gradient-dream-dark': 'linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(236,72,153,0.2) 100%)',
+        'gradient-dream': 'linear-gradient(135deg, #FF6B6B 0%, #FFAB91 100%)',
+        'gradient-dream-soft': 'linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(255,171,145,0.1) 100%)',
+        'gradient-dream-dark': 'linear-gradient(135deg, rgba(255,107,107,0.2) 0%, rgba(255,171,145,0.2) 100%)',
       },
       backdropBlur: {
         xs: '2px',

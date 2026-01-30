@@ -9,6 +9,7 @@ const wishes = [
   {
     id: '1',
     image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200',
     title: '星空渐变连衣裙',
     description: '深蓝到紫色的渐变，像银河一样',
     currentPeople: 18,
@@ -23,6 +24,7 @@ const wishes = [
   {
     id: '2',
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200',
     title: '复古格纹西装外套',
     description: '英伦风，微微oversized',
     currentPeople: 24,
@@ -37,6 +39,7 @@ const wishes = [
   {
     id: '3',
     image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=200',
     title: '极简主义白衬衫',
     description: '高级面料，完美版型',
     currentPeople: 45,
@@ -84,37 +87,33 @@ export function TogetherPage() {
     <Layout>
       {/* Header */}
       <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
-        <div className="flex flex-col max-w-md mx-auto">
-          <div className="flex items-center p-4 h-14 justify-between">
-            <h1 className="text-xl font-bold">一起</h1>
-            <button className="size-10 flex items-center justify-center">
-              <Icon name="notifications" size={24} className="text-gray-600" />
-            </button>
-          </div>
-
-          {/* Tabs */}
-          <div className="flex px-4 pb-3 gap-6">
+        <div className="flex items-center px-4 h-12 justify-between max-w-md mx-auto">
+          <h1 className="text-lg font-bold">一起</h1>
+          <div className="flex items-center gap-4">
             {tabs.map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(index)}
-                className={`text-[15px] transition-colors pb-1 ${
+                className={`text-[15px] ${
                   index === activeTab
-                    ? 'font-bold text-gray-900 border-b-2 border-primary'
-                    : 'font-medium text-gray-400'
+                    ? 'font-bold text-gray-900'
+                    : 'text-gray-400'
                 }`}
               >
                 {tab}
               </button>
             ))}
           </div>
+          <button className="size-8 flex items-center justify-center">
+            <Icon name="notifications" size={22} className="text-gray-600" />
+          </button>
         </div>
       </div>
 
-      <main className="max-w-md mx-auto p-4 pb-32 space-y-6">
+      <main className="max-w-md mx-auto px-3 py-3 pb-32 space-y-4">
         {/* 动态提醒 */}
         {activities.length > 0 && (
-          <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
+          <div className="bg-primary/5 rounded-lg p-3 border border-primary/10">
             <div className="flex items-center gap-2 mb-3">
               <Icon name="notifications_active" size={18} className="text-primary" />
               <span className="text-sm font-bold">最新动态</span>
@@ -160,51 +159,59 @@ export function TogetherPage() {
         )}
 
         {/* 愿望卡片列表 */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {wishes.map((wish) => (
             <div
               key={wish.id}
               onClick={() => navigate(`/group-buy/${wish.id}`)}
               className={`
-                bg-white rounded-2xl overflow-hidden shadow-soft border
+                bg-white rounded-lg overflow-hidden
                 cursor-pointer active:scale-[0.99] transition-transform
                 ${wish.isAlmostThere
-                  ? 'border-primary/30 ring-2 ring-primary/10'
-                  : 'border-gray-100'}
+                  ? 'ring-1 ring-primary/30'
+                  : ''}
               `}
             >
               <div className="flex">
                 {/* 图片 */}
-                <div className="w-28 h-28 flex-shrink-0 bg-gray-100">
+                <div className="relative w-24 h-24 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
                   <img
                     src={wish.image}
                     alt={wish.title}
                     className="w-full h-full object-cover"
                   />
+                  {/* 左下角：衣服缩略图 */}
+                  <div className="absolute bottom-1 left-1 w-6 h-7 rounded-sm overflow-hidden border border-white shadow bg-white">
+                    <img
+                      src={wish.clothImage}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
 
                 {/* 内容 */}
-                <div className="flex-1 p-3 flex flex-col justify-between">
+                <div className="flex-1 p-2.5 flex flex-col justify-between">
                   <div>
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-bold text-[15px] line-clamp-1">{wish.title}</h3>
+                      <h3 className="font-semibold text-[13px] line-clamp-1">{wish.title}</h3>
                       {wish.isAlmostThere && (
-                        <Badge variant="wishing" size="sm">即将成真</Badge>
+                        <Badge variant="wishing" size="sm">快了</Badge>
                       )}
                     </div>
-                    <p className="text-xs text-gray-500 mt-1 line-clamp-1">{wish.description}</p>
+                    <p className="text-[11px] text-gray-500 mt-0.5 line-clamp-1">{wish.description}</p>
                   </div>
 
                   {/* 进度 */}
-                  <div className="mt-2">
-                    <div className="flex items-center justify-between text-xs mb-1.5">
+                  <div className="mt-1.5">
+                    <div className="flex items-center justify-between text-[10px] mb-1">
                       <span className="text-gray-500">
                         <span className="text-primary font-bold">{wish.currentPeople}</span>
-                        /{wish.targetPeople} 人想要
+                        /{wish.targetPeople} 人
                       </span>
-                      <span className="text-gray-400">还剩 {wish.daysLeft} 天</span>
+                      <span className="text-gray-400">{wish.daysLeft}天</span>
                     </div>
-                    <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-primary rounded-full transition-all"
                         style={{ width: `${(wish.currentPeople / wish.targetPeople) * 100}%` }}
@@ -213,14 +220,14 @@ export function TogetherPage() {
                   </div>
 
                   {/* 底部 */}
-                  <div className="flex items-center justify-between mt-2">
-                    <div className="flex items-center gap-1.5">
+                  <div className="flex items-center justify-between mt-1.5">
+                    <div className="flex items-center gap-1">
                       <img
                         src={wish.creator.avatar}
                         alt=""
-                        className="w-5 h-5 rounded-full object-cover"
+                        className="w-4 h-4 rounded-full object-cover"
                       />
-                      <span className="text-[11px] text-gray-500">{wish.creator.name}</span>
+                      <span className="text-[10px] text-gray-500">{wish.creator.name}</span>
                     </div>
                     {wish.isJoined && (
                       <Badge variant="owned" size="sm">已加入</Badge>

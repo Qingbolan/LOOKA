@@ -9,31 +9,31 @@ interface BadgeProps {
 }
 
 const variantClasses = {
-  primary: 'bg-primary/10 text-primary dark:bg-primary/20',
-  success: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400',
-  warning: 'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-amber-400',
-  info: 'bg-sky-50 text-sky-600 dark:bg-sky-500/15 dark:text-sky-400',
-  // 状态徽章 - 符合产品语义
-  wishing: 'bg-primary/10 text-primary dark:bg-primary/20',
-  making: 'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-amber-400',
-  shipping: 'bg-sky-50 text-sky-600 dark:bg-sky-500/15 dark:text-sky-400',
-  owned: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400',
+  primary: 'bg-primary text-white',
+  success: 'bg-emerald-500 text-white',
+  warning: 'bg-amber-500 text-white',
+  info: 'bg-sky-500 text-white',
+  // 状态徽章 - 不同状态不同颜色
+  wishing: 'bg-primary text-white',
+  making: 'bg-amber-500 text-white',
+  shipping: 'bg-sky-500 text-white',
+  owned: 'bg-emerald-500 text-white',
 }
 
 const sizeClasses = {
-  sm: 'text-[10px] px-2 py-0.5',
-  md: 'text-[11px] px-2.5 py-1',
+  sm: 'text-[10px] px-1.5 py-0.5',
+  md: 'text-[11px] px-2 py-0.5',
 }
 
 const dotColors = {
-  primary: 'bg-primary',
-  success: 'bg-emerald-500',
-  warning: 'bg-amber-500',
-  info: 'bg-sky-500',
-  wishing: 'bg-primary',
-  making: 'bg-amber-500',
-  shipping: 'bg-sky-500',
-  owned: 'bg-emerald-500',
+  primary: 'bg-white',
+  success: 'bg-white',
+  warning: 'bg-white',
+  info: 'bg-white',
+  wishing: 'bg-white',
+  making: 'bg-white',
+  shipping: 'bg-white',
+  owned: 'bg-white',
 }
 
 export function Badge({
@@ -45,7 +45,7 @@ export function Badge({
 }: BadgeProps) {
   return (
     <span className={`
-      inline-flex items-center gap-1.5 font-bold tracking-wide rounded-full
+      inline-flex items-center gap-1 font-medium rounded
       ${variantClasses[variant]}
       ${sizeClasses[size]}
       ${className}

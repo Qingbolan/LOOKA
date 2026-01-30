@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Layout, Icon, CardMasonry, Badge } from '@/components'
 
+// 主导航
+const mainTabs = ['关注', '最近', '热门']
+
 // 风格标签
 const styles = ['全部', '梦幻', '简约', '复古', '街头', '优雅', '甜酷']
 
@@ -61,6 +64,7 @@ const statusConfig: Record<string, { text: string; variant: 'wishing' | 'making'
 
 export function ExplorePage() {
   const navigate = useNavigate()
+  const [activeTab, setActiveTab] = useState(1) // 默认选中"最近"
   const [activeStyle, setActiveStyle] = useState(0)
 
   return (
@@ -68,22 +72,38 @@ export function ExplorePage() {
       {/* Header */}
       <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
         <div className="flex flex-col max-w-md mx-auto">
-          <div className="flex items-center p-4 h-14 justify-between">
-            <h1 className="text-xl font-bold">灵感</h1>
-            <button className="size-10 flex items-center justify-center">
-              <Icon name="search" size={24} className="text-gray-600" />
+          {/* 标题行 + 主导航 */}
+          <div className="flex items-center px-4 h-12 justify-between">
+            <h1 className="text-lg font-bold">灵感</h1>
+            <div className="flex items-center gap-4">
+              {mainTabs.map((tab, index) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(index)}
+                  className={`text-[15px] ${
+                    index === activeTab
+                      ? 'font-bold text-gray-900'
+                      : 'text-gray-400'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+            <button className="size-8 flex items-center justify-center">
+              <Icon name="search" size={22} className="text-gray-600" />
             </button>
           </div>
 
           {/* 风格标签 */}
-          <div className="flex overflow-x-auto px-4 pb-3 gap-2 hide-scrollbar">
+          <div className="flex overflow-x-auto px-4 pb-2.5 gap-2 hide-scrollbar">
             {styles.map((style, index) => (
               <button
                 key={style}
                 onClick={() => setActiveStyle(index)}
-                className={`whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] transition-all ${
+                className={`whitespace-nowrap px-3 py-1 rounded-full text-[12px] transition-all ${
                   index === activeStyle
-                    ? 'bg-primary text-white font-bold'
+                    ? 'bg-primary text-white font-medium'
                     : 'bg-gray-100 text-gray-600'
                 }`}
               >
@@ -95,16 +115,16 @@ export function ExplorePage() {
       </div>
 
       {/* 设计卡片 */}
-      <main className="max-w-md mx-auto p-4 pb-32">
+      <main className="max-w-md mx-auto px-2 pb-32">
         <CardMasonry
           columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
-          gap={12}
+          gap={6}
         >
           {dreams.map((dream) => (
             <div
               key={dream.id}
               onClick={() => navigate(`/group-buy/${dream.id}`)}
-              className="bg-white rounded-2xl overflow-hidden shadow-soft border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform"
+              className="bg-white rounded-lg overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
             >
               {/* 图片区域 */}
               <div className="relative aspect-[3/4] bg-gray-100">
@@ -115,36 +135,36 @@ export function ExplorePage() {
                   className="w-full h-full object-cover"
                 />
                 {/* 左下角：衣服缩略图 */}
-                <div className="absolute bottom-2 left-2 w-10 h-12 rounded-md overflow-hidden border-2 border-white shadow-md bg-white">
+                <div className="absolute bottom-2 left-2 w-9 h-11 rounded overflow-hidden border-2 border-white shadow-md bg-white">
                   <img
                     src={dream.clothImage}
                     alt=""
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* 右下角：想要人数 */}
-                <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
-                  <Icon name="favorite" size={12} className="text-primary" filled={dream.isWanted} />
-                  <span className="text-white text-[10px] font-medium">{dream.wantCount}</span>
-                </div>
                 {/* 状态标签 */}
-                <div className="absolute top-2 right-2">
+                <div className="absolute top-1.5 left-1.5">
                   <Badge variant={statusConfig[dream.status].variant} size="sm">
                     {statusConfig[dream.status].text}
                   </Badge>
                 </div>
               </div>
               {/* 信息区域 */}
-              <div className="p-3">
-                <h3 className="text-[14px] font-bold leading-snug">{dream.name}</h3>
-                <p className="text-[11px] text-gray-500 mt-0.5 line-clamp-1">{dream.description}</p>
-                <div className="flex items-center gap-1.5 mt-2">
-                  <img
-                    src={dream.dreamer.avatar}
-                    alt={dream.dreamer.name}
-                    className="w-5 h-5 rounded-full object-cover"
-                  />
-                  <span className="text-[11px] text-gray-500">{dream.dreamer.name}</span>
+              <div className="px-1.5 py-2">
+                <h3 className="text-[13px] font-semibold leading-tight line-clamp-2">{dream.name}</h3>
+                <div className="flex items-center justify-between mt-1.5">
+                  <div className="flex items-center gap-1 min-w-0">
+                    <img
+                      src={dream.dreamer.avatar}
+                      alt={dream.dreamer.name}
+                      className="w-4 h-4 rounded-full object-cover flex-shrink-0"
+                    />
+                    <span className="text-[11px] text-gray-500 truncate">{dream.dreamer.name}</span>
+                  </div>
+                  <div className="flex items-center gap-0.5 flex-shrink-0">
+                    <Icon name="favorite" size={12} className="text-gray-400" filled={dream.isWanted} />
+                    <span className="text-[11px] text-gray-400">{dream.wantCount}</span>
+                  </div>
                 </div>
               </div>
             </div>

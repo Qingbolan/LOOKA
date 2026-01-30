@@ -18,6 +18,14 @@ const clothData = {
   tryOnImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800',
   realImage: 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=800',
 
+  // 制作进度（温暖版）
+  productionSteps: [
+    { step: '找到了最好的面料', detail: '顶级桑蚕丝，触感超棒', done: true, icon: 'eco' },
+    { step: 'Luka 帮你调整了版型', detail: '根据你的身材优化了细节', done: true, icon: 'auto_awesome' },
+    { step: '裁缝师傅正在缝制', detail: '资深师傅手工制作中', done: false, current: true, icon: 'content_cut' },
+    { step: '很快就要出发啦', detail: '完成后立即寄给你', done: false, icon: 'local_shipping' },
+  ],
+
   // 时间线
   timeline: [
     { date: '1月15日', event: '告诉 Luka 我的想法', type: 'create' },
@@ -133,31 +141,71 @@ export function ClothDetailPage() {
           </div>
         </div>
 
-        {/* 时间线 */}
-        <div className="p-4 border-b border-gray-100">
-          <h3 className="font-bold mb-4 flex items-center gap-2">
-            <Icon name="timeline" size={18} className="text-primary" />
-            这件衣服的故事
-          </h3>
-          <div className="space-y-4 ml-2">
-            {clothData.timeline.map((item, index) => (
-              <div key={index} className="flex gap-3">
-                <div className="flex flex-col items-center">
-                  <div className={`w-3 h-3 rounded-full ${
-                    index === clothData.timeline.length - 1 ? 'bg-green-500' : 'bg-primary'
-                  }`} />
-                  {index < clothData.timeline.length - 1 && (
-                    <div className="w-0.5 h-8 bg-gray-200" />
-                  )}
+        {/* 制作进度 - 仅在制作中状态显示 */}
+        {clothData.status === 'making' && (
+          <div className="p-4 border-b border-gray-100">
+            <h3 className="font-bold mb-2 flex items-center gap-2">
+              <Icon name="precision_manufacturing" size={18} className="text-amber-500" />
+              它是这样变成真的
+            </h3>
+            <p className="text-xs text-gray-400 mb-4">预计还有 3 天完成</p>
+
+            <div className="space-y-4">
+              {clothData.productionSteps.map((step, index) => (
+                <div key={index} className="flex gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                    step.done
+                      ? 'bg-green-100'
+                      : step.current
+                        ? 'bg-amber-100'
+                        : 'bg-gray-100'
+                  }`}>
+                    {step.done ? (
+                      <Icon name="check" size={16} className="text-green-600" />
+                    ) : (
+                      <Icon name={step.icon} size={16} className={step.current ? 'text-amber-600' : 'text-gray-400'} />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <p className={`text-sm font-medium ${step.current ? 'text-amber-600' : ''}`}>
+                      {step.step}
+                      {step.current && <span className="ml-2 text-xs">进行中...</span>}
+                    </p>
+                    <p className="text-xs text-gray-400">{step.detail}</p>
+                  </div>
                 </div>
-                <div className="flex-1 -mt-1">
-                  <p className="text-sm font-medium">{item.event}</p>
-                  <p className="text-xs text-gray-400">{item.date}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* 时间线 - 仅在已拥有状态显示 */}
+        {clothData.status === 'owned' && (
+          <div className="p-4 border-b border-gray-100">
+            <h3 className="font-bold mb-4 flex items-center gap-2">
+              <Icon name="timeline" size={18} className="text-primary" />
+              这件衣服的故事
+            </h3>
+            <div className="space-y-4 ml-2">
+              {clothData.timeline.map((item, index) => (
+                <div key={index} className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <div className={`w-3 h-3 rounded-full ${
+                      index === clothData.timeline.length - 1 ? 'bg-green-500' : 'bg-primary'
+                    }`} />
+                    {index < clothData.timeline.length - 1 && (
+                      <div className="w-0.5 h-8 bg-gray-200" />
+                    )}
+                  </div>
+                  <div className="flex-1 -mt-1">
+                    <p className="text-sm font-medium">{item.event}</p>
+                    <p className="text-xs text-gray-400">{item.date}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Luka 搭配建议 */}
         <div className="p-4 border-b border-gray-100">

@@ -3,8 +3,10 @@ import {
   ExplorePage,
   TogetherPage,
   CreatePage,
+  ChatPage,
   ClosetPage,
   ClothDetailPage,
+  BodySetupPage,
   OrdersPage,
   ProfilePage,
   ProductDetailPage,
@@ -25,6 +27,7 @@ function App() {
         <Route path="/" element={<ExplorePage />} />
         <Route path="/together" element={<TogetherPage />} />
         <Route path="/create" element={<CreatePage />} />
+        <Route path="/chat" element={<ChatPage />} />
         <Route path="/closet" element={<ClosetPage />} />
         <Route path="/closet/:id" element={<ClothDetailPage />} />
         <Route path="/orders" element={<OrdersPage />} />
@@ -34,6 +37,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/order/:id" element={<OrderDetailPage />} />
         <Route path="/try-on" element={<TryOnPage />} />
+        <Route path="/body-setup" element={<BodySetupPage />} />
         <Route path="/design-result" element={<DesignResultPage />} />
         <Route path="/group-buy/:id" element={<GroupBuyPage />} />
         <Route path="/design-scheme" element={<DesignSchemePage />} />

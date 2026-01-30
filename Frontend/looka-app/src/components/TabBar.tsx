@@ -9,11 +9,11 @@ interface TabItem {
 }
 
 const tabs: TabItem[] = [
-  { path: '/', icon: 'auto_awesome', label: '灵感' },
+  { path: '/', icon: 'explore', label: '逛逛' },
   { path: '/together', icon: 'favorite', label: '一起' },
-  { path: '/create', icon: 'add', label: '', isCenter: true },
+  { path: '/create', icon: 'auto_awesome', label: 'Luka', isCenter: true },
   { path: '/closet', icon: 'checkroom', label: '衣柜' },
-  { path: '/profile', icon: 'person', label: '我的' },
+  { path: '/profile', icon: 'person', label: '我' },
 ]
 
 export function TabBar() {
@@ -27,23 +27,26 @@ export function TabBar() {
           {tabs.map((tab) => {
             const isActive = location.pathname === tab.path
 
-            // 中心按钮（生成/许愿）- 特殊样式
+            // 中心按钮 - Luka
             if (tab.isCenter) {
               return (
                 <button
                   key={tab.path}
                   onClick={() => navigate(tab.path)}
-                  className="relative -mt-6 flex items-center justify-center"
+                  className="relative -mt-5 flex flex-col items-center"
                 >
                   <div className={`
-                    w-14 h-14 rounded-full flex items-center justify-center
+                    w-12 h-12 rounded-full flex items-center justify-center
                     bg-gradient-to-br from-primary via-primary to-pink-400
                     shadow-lg shadow-primary/30
                     transition-transform active:scale-95
                     ${isActive ? 'ring-4 ring-primary/20' : ''}
                   `}>
-                    <Icon name="auto_awesome" size={26} className="text-white" />
+                    <Icon name="auto_awesome" size={22} className="text-white" />
                   </div>
+                  <span className={`text-[10px] mt-1 ${isActive ? 'text-primary font-bold' : 'text-gray-400 font-medium'}`}>
+                    {tab.label}
+                  </span>
                 </button>
               )
             }

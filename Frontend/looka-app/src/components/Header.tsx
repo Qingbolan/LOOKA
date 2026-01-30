@@ -2,36 +2,72 @@ import { useNavigate } from 'react-router-dom'
 import { Icon } from './Icon'
 
 interface HeaderProps {
-  title: string
+  title?: string
   showBack?: boolean
+  onBack?: () => void
+  leftAction?: React.ReactNode
   rightAction?: React.ReactNode
   transparent?: boolean
+  dark?: boolean
+  className?: string
 }
 
-export function Header({ title, showBack = false, rightAction, transparent = false }: HeaderProps) {
+export function Header({
+  title,
+  showBack = false,
+  onBack,
+  leftAction,
+  rightAction,
+  transparent = false,
+  dark = false,
+  className = '',
+}: HeaderProps) {
   const navigate = useNavigate()
+
+  const handleBack = () => {
+    if (onBack) {
+      onBack()
+    } else {
+      navigate(-1)
+    }
+  }
+
+  const textColor = dark ? 'text-white' : 'text-text-primary'
+  const iconColor = dark ? 'text-white/70' : 'text-text-secondary'
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b ${
-        transparent
+      className={`
+        sticky top-0 z-50 transition-all
+        ${transparent
           ? 'bg-transparent border-transparent'
-          : 'bg-white/90 backdrop-blur-xl border-gray-100'
-      }`}
+          : dark
+            ? 'bg-background-dark/90 backdrop-blur-xl border-b border-white/10'
+            : 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/10'
+        }
+        ${className}
+      `}
       style={{ paddingTop: 'var(--safe-area-inset-top)' }}
     >
-      <div className="flex items-center p-4 h-16 justify-between max-w-md mx-auto">
-        <div className="flex size-10 items-center justify-start">
-          {showBack && (
-            <button onClick={() => navigate(-1)}>
-              <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
+      <div className="flex items-center h-14 px-4 justify-between max-w-md mx-auto">
+        <div className="flex w-10 items-center justify-start">
+          {leftAction || (showBack && (
+            <button
+              onClick={handleBack}
+              className="size-10 flex items-center justify-center -ml-2"
+            >
+              <Icon name="arrow_back_ios" size={20} className={iconColor} />
             </button>
-          )}
+          ))}
         </div>
-        <h1 className="text-luxury-black text-[17px] font-bold tracking-tight flex-1 text-center font-display">
-          {title}
-        </h1>
-        <div className="flex size-10 items-center justify-end">
+
+        {title && (
+          <h1 className={`text-[17px] font-bold tracking-tight flex-1 text-center ${textColor}`}>
+            {title}
+          </h1>
+        )}
+
+        <div className="flex w-10 items-center justify-end">
           {rightAction}
         </div>
       </div>

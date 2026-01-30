@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Icon } from '@/components'
+import { Icon, LukaAvatar } from '@/components'
 
 interface Message {
   id: string
@@ -60,11 +60,9 @@ export function ChatPage() {
     setTimeout(() => {
       setIsTyping(false)
 
-      // 简化的对话逻辑
       const hasStyle = ['简约', '复古', '甜美', '酷', '优雅', '仙', '日常'].some(s => content.includes(s))
 
       if (hasStyle || image) {
-        // 开始生成
         setMessages(prev => [...prev, {
           id: (Date.now() + 1).toString(),
           from: 'luka',
@@ -123,9 +121,7 @@ export function ChatPage() {
             <Icon name="arrow_back_ios" size={20} className="text-white/70" />
           </button>
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center">
-              <Icon name="auto_awesome" size={14} className="text-white" />
-            </div>
+            <LukaAvatar size="xs" />
             <span className="font-medium">Luka</span>
           </div>
           <button className="size-10 flex items-center justify-center">
@@ -143,9 +139,7 @@ export function ChatPage() {
               className={`flex ${message.from === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {message.from === 'luka' && (
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
-                  <Icon name="auto_awesome" size={14} className="text-white" />
-                </div>
+                <LukaAvatar size="sm" className="mr-2 mt-1" />
               )}
 
               <div className="max-w-[80%]">
@@ -158,8 +152,8 @@ export function ChatPage() {
                 <div
                   className={`px-4 py-3 rounded-2xl ${
                     message.from === 'user'
-                      ? 'bg-primary text-white rounded-br-sm'
-                      : 'bg-white/10 text-white rounded-bl-sm'
+                      ? 'bg-gradient-to-r from-primary to-pink-500 text-white rounded-br-sm'
+                      : 'bg-white/10 text-white rounded-bl-sm border border-white/5'
                   }`}
                 >
                   {message.isGenerating ? (
@@ -205,10 +199,8 @@ export function ChatPage() {
 
           {isTyping && (
             <div className="flex items-start">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center mr-2">
-                <Icon name="auto_awesome" size={14} className="text-white" />
-              </div>
-              <div className="bg-white/10 px-4 py-3 rounded-2xl rounded-bl-sm">
+              <LukaAvatar size="sm" className="mr-2" />
+              <div className="bg-white/10 px-4 py-3 rounded-2xl rounded-bl-sm border border-white/5">
                 <div className="flex gap-1">
                   <span className="w-2 h-2 bg-white/50 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="w-2 h-2 bg-white/50 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -228,12 +220,12 @@ export function ChatPage() {
           <div className="flex items-end gap-3">
             <button
               onClick={handleImageUpload}
-              className="size-10 flex items-center justify-center rounded-full bg-white/10 flex-shrink-0"
+              className="size-10 flex items-center justify-center rounded-full bg-white/10 flex-shrink-0 border border-white/5"
             >
               <Icon name="add_photo_alternate" size={20} className="text-white/60" />
             </button>
 
-            <div className="flex-1 bg-white/10 rounded-2xl px-4 py-2">
+            <div className="flex-1 bg-white/10 rounded-2xl px-4 py-2 border border-white/5">
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -254,8 +246,8 @@ export function ChatPage() {
               disabled={!input.trim()}
               className={`size-10 flex items-center justify-center rounded-full flex-shrink-0 transition-all ${
                 input.trim()
-                  ? 'bg-primary text-white'
-                  : 'bg-white/10 text-white/40'
+                  ? 'bg-gradient-to-r from-primary to-pink-500 text-white'
+                  : 'bg-white/10 text-white/40 border border-white/5'
               }`}
             >
               <Icon name="send" size={20} />

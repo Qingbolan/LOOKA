@@ -1,50 +1,66 @@
 import { Icon } from './Icon'
+import { Badge } from './Badge'
 
 interface ProductCardProps {
   image: string
   title: string
-  price: number
-  originalPrice?: number
-  badge?: string
+  status?: 'wishing' | 'making' | 'shipping' | 'owned'
+  statusText?: string
+  people?: number
   isAI?: boolean
   onClick?: () => void
+}
+
+const statusLabels = {
+  wishing: '等人一起',
+  making: '制作中',
+  shipping: '快递中',
+  owned: '已拥有',
 }
 
 export function ProductCard({
   image,
   title,
-  price,
-  originalPrice,
-  badge,
+  status,
+  statusText,
+  people,
   isAI,
   onClick,
 }: ProductCardProps) {
   return (
     <div
       onClick={onClick}
-      className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform"
+      className="bg-white dark:bg-surface-dark rounded-2xl overflow-hidden shadow-soft dark:shadow-none border border-black/[0.03] dark:border-white/[0.06] cursor-pointer active:scale-[0.98] transition-all"
     >
-      <div className="relative aspect-[3/4] bg-gray-100">
+      <div className="relative aspect-[3/4] bg-gray-100 dark:bg-white/5">
         <img src={image} alt={title} className="w-full h-full object-cover" />
+
         {isAI && (
-          <div className="absolute top-2 right-2 bg-black/20 backdrop-blur-md rounded-full p-1.5">
-            <Icon name="smart_toy" size={16} className="text-white" />
+          <div className="absolute top-2 right-2 bg-black/20 dark:bg-white/20 backdrop-blur-md rounded-full p-1.5">
+            <Icon name="auto_awesome" size={14} className="text-white" />
           </div>
         )}
-        {badge && (
-          <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-primary rounded-full">
-            <span className="text-[10px] text-white font-bold">{badge}</span>
+
+        {status && (
+          <div className="absolute bottom-2 left-2">
+            <Badge variant={status} size="sm">
+              {statusText || statusLabels[status]}
+            </Badge>
+          </div>
+        )}
+
+        {people && people > 0 && (
+          <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-black/30 backdrop-blur-md rounded-full px-2 py-1">
+            <Icon name="group" size={12} className="text-white" />
+            <span className="text-[10px] text-white font-medium">{people}</span>
           </div>
         )}
       </div>
+
       <div className="p-3">
-        <h3 className="text-[14px] font-bold leading-snug line-clamp-2 mb-2">{title}</h3>
-        <div className="flex items-center gap-2">
-          <span className="text-primary font-bold">¥{price}</span>
-          {originalPrice && (
-            <span className="text-gray-400 text-xs line-through">¥{originalPrice}</span>
-          )}
-        </div>
+        <h3 className="text-[14px] font-bold leading-snug line-clamp-2 text-text-primary dark:text-text-dark-primary">
+          {title}
+        </h3>
       </div>
     </div>
   )

@@ -21,7 +21,7 @@ export function TabBar() {
   const navigate = useNavigate()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 z-50">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-black/[0.06] dark:border-white/10 z-50">
       <div className="max-w-md mx-auto px-6 pt-3 pb-[calc(0.5rem+var(--safe-area-inset-bottom))]">
         <div className="flex justify-between items-center">
           {tabs.map((tab) => {
@@ -44,7 +44,7 @@ export function TabBar() {
                   `}>
                     <Icon name="auto_awesome" size={22} className="text-white" />
                   </div>
-                  <span className={`text-[10px] mt-1 ${isActive ? 'text-primary font-bold' : 'text-gray-400 font-medium'}`}>
+                  <span className={`text-[10px] mt-1 ${isActive ? 'text-primary font-bold' : 'text-text-muted dark:text-text-dark-muted font-medium'}`}>
                     {tab.label}
                   </span>
                 </button>
@@ -57,7 +57,7 @@ export function TabBar() {
                 key={tab.path}
                 onClick={() => navigate(tab.path)}
                 className={`flex flex-col items-center gap-1.5 transition-colors min-w-[48px] ${
-                  isActive ? 'text-primary' : 'text-gray-400'
+                  isActive ? 'text-primary' : 'text-text-muted dark:text-text-dark-muted'
                 }`}
               >
                 <Icon

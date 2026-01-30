@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Icon } from '@/components'
+import { Icon, LukaAvatar } from '@/components'
 
 // 功能场景卡片
 const featureCards = [
@@ -13,7 +13,7 @@ const featureCards = [
       'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100',
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=100',
     ],
-    gradient: 'from-violet-500/20 to-purple-600/20',
+    gradient: 'from-primary/20 to-pink-500/20',
   },
   {
     id: 'inspiration',
@@ -44,12 +44,10 @@ export function CreatePage() {
   const [isHolding, setIsHolding] = useState(false)
 
   const handleCardClick = (cardId: string) => {
-    // 跳转到对话页面，带上场景参数
     navigate(`/chat?mode=${cardId}`)
   }
 
   const handleCameraClick = () => {
-    // 打开相机/相册
     navigate('/chat?mode=inspiration')
   }
 
@@ -62,9 +60,7 @@ export function CreatePage() {
             <Icon name="close" size={24} className="text-white/70" />
           </button>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-pink-400 flex items-center justify-center">
-              <Icon name="auto_awesome" size={12} className="text-white" />
-            </div>
+            <LukaAvatar size="xs" />
             <span className="font-bold">Luka</span>
           </div>
           <button className="size-10 flex items-center justify-center">
@@ -76,7 +72,7 @@ export function CreatePage() {
       <div className="max-w-md mx-auto px-4 pb-32">
         {/* Luka 自我介绍 */}
         <div className="py-8">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 mb-6">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 mb-6 border border-white/5">
             <p className="text-[15px] leading-relaxed">
               Hi，我是 <span className="text-primary font-medium">Luka</span>，帮你把脑海里的衣服变成真的。
               <br /><br />
@@ -90,7 +86,7 @@ export function CreatePage() {
               <button
                 key={card.id}
                 onClick={() => handleCardClick(card.id)}
-                className={`flex-shrink-0 w-40 bg-gradient-to-br ${card.gradient} backdrop-blur-sm rounded-2xl p-4 text-left transition-transform active:scale-95`}
+                className={`flex-shrink-0 w-40 bg-gradient-to-br ${card.gradient} backdrop-blur-sm rounded-2xl p-4 text-left transition-transform active:scale-95 border border-white/5`}
               >
                 <h3 className="font-bold text-[15px] mb-1">{card.title}</h3>
                 <p className="text-[12px] text-white/60 mb-3 line-clamp-2">{card.example}</p>
@@ -117,7 +113,7 @@ export function CreatePage() {
           <div className="space-y-2">
             <button
               onClick={() => navigate('/chat?history=1')}
-              className="w-full flex items-center gap-3 p-3 bg-white/5 rounded-xl text-left hover:bg-white/10 transition-colors"
+              className="w-full flex items-center gap-3 p-3 bg-white/5 rounded-xl text-left hover:bg-white/10 transition-colors border border-white/5"
             >
               <div
                 className="w-12 h-12 rounded-xl bg-cover bg-center flex-shrink-0"
@@ -131,7 +127,7 @@ export function CreatePage() {
             </button>
             <button
               onClick={() => navigate('/chat?history=2')}
-              className="w-full flex items-center gap-3 p-3 bg-white/5 rounded-xl text-left hover:bg-white/10 transition-colors"
+              className="w-full flex items-center gap-3 p-3 bg-white/5 rounded-xl text-left hover:bg-white/10 transition-colors border border-white/5"
             >
               <div
                 className="w-12 h-12 rounded-xl bg-cover bg-center flex-shrink-0"
@@ -152,7 +148,7 @@ export function CreatePage() {
         <div className="max-w-md mx-auto px-4 pb-24">
           <div className="flex items-center gap-3">
             {/* 表情/更多 */}
-            <button className="size-11 flex items-center justify-center rounded-full bg-white/10">
+            <button className="size-11 flex items-center justify-center rounded-full bg-white/10 border border-white/5">
               <Icon name="emoji_emotions" size={22} className="text-white/60" />
             </button>
 
@@ -165,8 +161,8 @@ export function CreatePage() {
               onMouseLeave={() => setIsHolding(false)}
               className={`flex-1 h-11 rounded-full flex items-center justify-center transition-all ${
                 isHolding
-                  ? 'bg-primary text-white scale-105'
-                  : 'bg-white/10 text-white/60'
+                  ? 'bg-gradient-to-r from-primary to-pink-500 text-white scale-105'
+                  : 'bg-white/10 text-white/60 border border-white/5'
               }`}
             >
               <span className="text-sm">
@@ -177,7 +173,7 @@ export function CreatePage() {
             {/* 相机 */}
             <button
               onClick={handleCameraClick}
-              className="size-11 flex items-center justify-center rounded-full bg-white/10"
+              className="size-11 flex items-center justify-center rounded-full bg-white/10 border border-white/5"
             >
               <Icon name="photo_camera" size={22} className="text-white/60" />
             </button>

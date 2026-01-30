@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon } from '@/components'
+import { Layout, Icon, Badge, LukaAvatar } from '@/components'
 
 const tabs = ['进行中', '即将成真', '已实现']
 
-// 模拟数据：正在一起实现的愿望
+// 正在一起实现的愿望
 const wishes = [
   {
     id: '1',
@@ -54,7 +54,7 @@ const wishes = [
   },
 ]
 
-// 我参与的愿望的动态
+// 动态
 const activities = [
   {
     id: '1',
@@ -86,12 +86,12 @@ export function TogetherPage() {
   return (
     <Layout>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
+      <div className="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/10">
         <div className="flex flex-col max-w-md mx-auto">
-          <div className="flex items-center p-4 h-16 justify-between">
-            <h1 className="text-xl font-bold">一起</h1>
+          <div className="flex items-center p-4 h-14 justify-between">
+            <h1 className="text-xl font-bold text-text-primary dark:text-text-dark-primary">一起</h1>
             <button className="size-10 flex items-center justify-center">
-              <Icon name="notifications" size={24} />
+              <Icon name="notifications" size={24} className="text-text-secondary dark:text-text-dark-secondary" />
             </button>
           </div>
 
@@ -101,10 +101,10 @@ export function TogetherPage() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(index)}
-                className={`text-[15px] transition-colors ${
+                className={`text-[15px] transition-colors pb-1 ${
                   index === activeTab
-                    ? 'font-bold text-luxury-black border-b-2 border-primary pb-1'
-                    : 'font-medium text-gray-400'
+                    ? 'font-bold text-text-primary dark:text-text-dark-primary border-b-2 border-primary'
+                    : 'font-medium text-text-muted dark:text-text-dark-muted'
                 }`}
               >
                 {tab}
@@ -117,25 +117,23 @@ export function TogetherPage() {
       <main className="max-w-md mx-auto p-4 pb-32 space-y-6">
         {/* 动态提醒 */}
         {activities.length > 0 && (
-          <div className="bg-gradient-to-r from-primary/5 to-pink-50 rounded-2xl p-4">
+          <div className="bg-gradient-dream-soft dark:bg-gradient-dream-dark rounded-2xl p-4 border border-primary/10 dark:border-primary/20">
             <div className="flex items-center gap-2 mb-3">
               <Icon name="notifications_active" size={18} className="text-primary" />
-              <span className="text-sm font-bold">最新动态</span>
+              <span className="text-sm font-bold text-text-primary dark:text-text-dark-primary">最新动态</span>
             </div>
             <div className="space-y-3">
               {activities.slice(0, 2).map((activity) => (
                 <div key={activity.id} className="flex items-center gap-3">
                   {activity.type === 'almost' ? (
                     <>
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                        <Icon name="celebration" size={16} className="text-primary" />
-                      </div>
+                      <LukaAvatar size="sm" />
                       <div className="flex-1">
-                        <p className="text-sm">
+                        <p className="text-sm text-text-primary dark:text-text-dark-primary">
                           <span className="font-bold">{activity.wishTitle}</span>
-                          <span className="text-gray-500"> 还差 </span>
+                          <span className="text-text-secondary dark:text-text-dark-secondary"> 还差 </span>
                           <span className="text-primary font-bold">{activity.remaining}</span>
-                          <span className="text-gray-500"> 人就能成真啦！</span>
+                          <span className="text-text-secondary dark:text-text-dark-secondary"> 人就能成真啦！</span>
                         </p>
                       </div>
                     </>
@@ -147,9 +145,9 @@ export function TogetherPage() {
                         className="w-8 h-8 rounded-full object-cover"
                       />
                       <div className="flex-1">
-                        <p className="text-sm">
+                        <p className="text-sm text-text-primary dark:text-text-dark-primary">
                           <span className="font-bold">{activity.user?.name}</span>
-                          <span className="text-gray-500">
+                          <span className="text-text-secondary dark:text-text-dark-secondary">
                             {activity.type === 'join' ? ' 也想要 ' : ' remix 了你的 '}
                           </span>
                           <span className="font-bold">{activity.wishTitle}</span>
@@ -157,7 +155,7 @@ export function TogetherPage() {
                       </div>
                     </>
                   )}
-                  <span className="text-xs text-gray-400">{activity.time}</span>
+                  <span className="text-xs text-text-muted dark:text-text-dark-muted">{activity.time}</span>
                 </div>
               ))}
             </div>
@@ -171,14 +169,16 @@ export function TogetherPage() {
               key={wish.id}
               onClick={() => navigate(`/group-buy/${wish.id}`)}
               className={`
-                bg-white rounded-2xl overflow-hidden shadow-sm border
+                bg-white dark:bg-surface-dark rounded-2xl overflow-hidden shadow-soft dark:shadow-none border
                 cursor-pointer active:scale-[0.99] transition-transform
-                ${wish.isAlmostThere ? 'border-primary/30 ring-2 ring-primary/10' : 'border-gray-100'}
+                ${wish.isAlmostThere
+                  ? 'border-primary/30 ring-2 ring-primary/10'
+                  : 'border-black/[0.03] dark:border-white/[0.06]'}
               `}
             >
               <div className="flex">
                 {/* 图片 */}
-                <div className="w-28 h-28 flex-shrink-0 bg-gray-100">
+                <div className="w-28 h-28 flex-shrink-0 bg-gray-100 dark:bg-white/5">
                   <img
                     src={wish.image}
                     alt={wish.title}
@@ -190,26 +190,24 @@ export function TogetherPage() {
                 <div className="flex-1 p-3 flex flex-col justify-between">
                   <div>
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-bold text-[15px] line-clamp-1">{wish.title}</h3>
+                      <h3 className="font-bold text-[15px] line-clamp-1 text-text-primary dark:text-text-dark-primary">{wish.title}</h3>
                       {wish.isAlmostThere && (
-                        <span className="flex-shrink-0 px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded-full">
-                          即将成真
-                        </span>
+                        <Badge variant="wishing" size="sm">即将成真</Badge>
                       )}
                     </div>
-                    <p className="text-xs text-gray-500 mt-1 line-clamp-1">{wish.description}</p>
+                    <p className="text-xs text-text-muted dark:text-text-dark-muted mt-1 line-clamp-1">{wish.description}</p>
                   </div>
 
                   {/* 进度 */}
                   <div className="mt-2">
                     <div className="flex items-center justify-between text-xs mb-1.5">
-                      <span className="text-gray-500">
+                      <span className="text-text-secondary dark:text-text-dark-secondary">
                         <span className="text-primary font-bold">{wish.currentPeople}</span>
                         /{wish.targetPeople} 人
                       </span>
-                      <span className="text-gray-400">还剩 {wish.daysLeft} 天</span>
+                      <span className="text-text-muted dark:text-text-dark-muted">还剩 {wish.daysLeft} 天</span>
                     </div>
-                    <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-1.5 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-gradient-to-r from-primary to-pink-400 rounded-full transition-all"
                         style={{ width: `${(wish.currentPeople / wish.targetPeople) * 100}%` }}
@@ -225,14 +223,12 @@ export function TogetherPage() {
                         alt=""
                         className="w-5 h-5 rounded-full object-cover"
                       />
-                      <span className="text-[11px] text-gray-500">{wish.creator.name}</span>
+                      <span className="text-[11px] text-text-muted dark:text-text-dark-muted">{wish.creator.name}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-primary font-bold">¥{wish.price}</span>
                       {wish.isJoined && (
-                        <span className="text-[10px] text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
-                          已加入
-                        </span>
+                        <Badge variant="owned" size="sm">已加入</Badge>
                       )}
                     </div>
                   </div>
@@ -244,7 +240,7 @@ export function TogetherPage() {
 
         {/* 空状态提示 */}
         <div className="text-center py-8">
-          <p className="text-gray-400 text-sm">发现更多人的愿望，一起让它成真 ✨</p>
+          <p className="text-text-muted dark:text-text-dark-muted text-sm">发现更多人的愿望，一起让它成真</p>
         </div>
       </main>
     </Layout>

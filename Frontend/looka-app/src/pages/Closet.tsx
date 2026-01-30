@@ -83,11 +83,11 @@ export function ClosetPage() {
   return (
     <Layout>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl">
+      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <h1 className="text-xl font-bold text-text-primary dark:text-text-dark-primary">我的衣柜</h1>
+          <h1 className="text-xl font-bold">我的衣柜</h1>
           <button className="size-10 flex items-center justify-center">
-            <Icon name="search" size={24} className="text-text-secondary dark:text-text-dark-secondary" />
+            <Icon name="search" size={24} className="text-gray-600" />
           </button>
         </div>
       </div>
@@ -95,12 +95,12 @@ export function ClosetPage() {
       <div className="max-w-md mx-auto pb-32">
         {/* Luka 今日推荐 */}
         <div className="px-4 mb-4">
-          <div className="bg-gradient-dream-soft dark:bg-gradient-dream-dark rounded-2xl p-4 border border-primary/10 dark:border-primary/20">
+          <div className="bg-gradient-to-r from-primary/5 via-pink-50 to-primary/5 rounded-2xl p-4 border border-primary/10">
             <div className="flex items-center gap-2 mb-3">
               <LukaAvatar size="sm" />
               <div>
-                <p className="text-xs text-text-muted dark:text-text-dark-muted">Luka 说</p>
-                <p className="text-sm font-medium text-text-primary dark:text-text-dark-primary">{todayOutfit.greeting}</p>
+                <p className="text-xs text-gray-500">Luka 说</p>
+                <p className="text-sm font-medium">{todayOutfit.greeting}</p>
               </div>
             </div>
             <div className="flex gap-3">
@@ -110,16 +110,16 @@ export function ClosetPage() {
                   onClick={() => navigate(`/closet/${item.id}`)}
                   className="flex-1 cursor-pointer"
                 >
-                  <div className="aspect-square rounded-xl overflow-hidden bg-white dark:bg-surface-dark mb-1">
+                  <div className="aspect-square rounded-xl overflow-hidden bg-white mb-1">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                   </div>
-                  <p className="text-xs text-text-secondary dark:text-text-dark-secondary truncate">{item.name}</p>
+                  <p className="text-xs text-gray-600 truncate">{item.name}</p>
                 </div>
               ))}
-              <div className="flex-1 aspect-square rounded-xl border-2 border-dashed border-gray-200 dark:border-white/20 flex items-center justify-center bg-white/50 dark:bg-white/5">
+              <div className="flex-1 aspect-square rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center bg-white/50">
                 <div className="text-center">
-                  <Icon name="add" size={20} className="text-text-muted dark:text-text-dark-muted mx-auto" />
-                  <p className="text-[10px] text-text-muted dark:text-text-dark-muted mt-1">添加</p>
+                  <Icon name="add" size={20} className="text-gray-300 mx-auto" />
+                  <p className="text-[10px] text-gray-400 mt-1">添加</p>
                 </div>
               </div>
             </div>
@@ -136,7 +136,7 @@ export function ClosetPage() {
                 className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap transition-all ${
                   index === activeCategory
                     ? 'bg-gradient-to-r from-primary to-pink-500 text-white font-medium'
-                    : 'bg-gray-100 dark:bg-white/10 text-text-secondary dark:text-text-dark-secondary'
+                    : 'bg-gray-100 text-gray-600'
                 }`}
               >
                 {cat}
@@ -151,7 +151,7 @@ export function ClosetPage() {
             <div
               key={cloth.id}
               onClick={() => navigate(`/closet/${cloth.id}`)}
-              className="relative aspect-[3/4] cursor-pointer group bg-gray-100 dark:bg-white/5"
+              className="relative aspect-[3/4] cursor-pointer group bg-gray-100"
             >
               <img
                 src={cloth.image}
@@ -169,7 +169,7 @@ export function ClosetPage() {
               {/* 季节标签 */}
               <div className="absolute bottom-2 right-2 flex gap-0.5">
                 {cloth.season.slice(0, 2).map((s) => (
-                  <span key={s} className="text-[8px] bg-white/80 dark:bg-black/50 backdrop-blur-sm px-1 rounded text-text-secondary dark:text-text-dark-secondary">
+                  <span key={s} className="text-[8px] bg-white/80 backdrop-blur-sm px-1 rounded text-gray-600">
                     {s}
                   </span>
                 ))}
@@ -180,10 +180,10 @@ export function ClosetPage() {
           {/* 添加新衣服 */}
           <div
             onClick={() => navigate('/create')}
-            className="aspect-[3/4] bg-gray-50 dark:bg-white/5 flex flex-col items-center justify-center cursor-pointer"
+            className="aspect-[3/4] bg-gray-50 flex flex-col items-center justify-center cursor-pointer"
           >
-            <Icon name="add" size={32} className="text-text-muted dark:text-text-dark-muted mb-1" />
-            <p className="text-[10px] text-text-muted dark:text-text-dark-muted">添加</p>
+            <Icon name="add" size={32} className="text-gray-300 mb-1" />
+            <p className="text-[10px] text-gray-400">添加</p>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ interface TabItem {
 const tabs: TabItem[] = [
   { path: '/', icon: 'explore', label: '逛逛' },
   { path: '/together', icon: 'favorite', label: '一起' },
-  { path: '/create', icon: 'auto_awesome', label: 'Luka', isCenter: true },
+  { path: '/luka', icon: 'auto_awesome', label: 'Luka', isCenter: true },
   { path: '/closet', icon: 'checkroom', label: '衣柜' },
   { path: '/profile', icon: 'person', label: '我' },
 ]

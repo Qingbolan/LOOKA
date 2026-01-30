@@ -18,7 +18,7 @@ const modeGreetings: Record<string, string> = {
   remix: '选一件衣柜里的衣服，告诉我你想怎么改~',
 }
 
-export function ChatPage() {
+export function LukaChatPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const mode = searchParams.get('mode') || 'describe'
@@ -113,25 +113,25 @@ export function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] text-white flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-[#1a1a1a]/90 backdrop-blur-xl border-b border-white/10">
+      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <button onClick={() => navigate('/create')} className="size-10 flex items-center justify-center">
-            <Icon name="arrow_back_ios" size={20} className="text-white/70" />
+          <button onClick={() => navigate('/luka')} className="size-10 flex items-center justify-center">
+            <Icon name="arrow_back_ios" size={20} className="text-gray-600" />
           </button>
           <div className="flex items-center gap-2">
             <LukaAvatar size="xs" />
             <span className="font-medium">Luka</span>
           </div>
           <button className="size-10 flex items-center justify-center">
-            <Icon name="more_horiz" size={24} className="text-white/70" />
+            <Icon name="more_horiz" size={24} className="text-gray-600" />
           </button>
         </div>
       </div>
 
       {/* 对话区域 */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto bg-gray-50">
         <div className="max-w-md mx-auto px-4 py-4 space-y-4">
           {messages.map((message) => (
             <div
@@ -153,13 +153,13 @@ export function ChatPage() {
                   className={`px-4 py-3 rounded-2xl ${
                     message.from === 'user'
                       ? 'bg-gradient-to-r from-primary to-pink-500 text-white rounded-br-sm'
-                      : 'bg-white/10 text-white rounded-bl-sm border border-white/5'
+                      : 'bg-white text-gray-800 rounded-bl-sm shadow-sm border border-gray-100'
                   }`}
                 >
                   {message.isGenerating ? (
                     <div className="flex items-center gap-2">
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span className="text-sm">生成中...</span>
+                      <span className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+                      <span className="text-sm text-gray-600">生成中...</span>
                     </div>
                   ) : (
                     <p className="text-sm leading-relaxed">{message.content}</p>
@@ -172,7 +172,7 @@ export function ChatPage() {
                       <button
                         key={option}
                         onClick={() => sendMessage(option)}
-                        className="px-4 py-2 bg-white/10 border border-white/20 text-white text-sm rounded-full hover:bg-white/20 transition-colors"
+                        className="px-4 py-2 bg-white border border-gray-200 text-gray-700 text-sm rounded-full hover:bg-gray-50 hover:border-primary/30 transition-colors"
                       >
                         {option}
                       </button>
@@ -186,7 +186,7 @@ export function ChatPage() {
                       <button
                         key={design.id}
                         onClick={() => handleDesignClick(design.id)}
-                        className="w-24 aspect-[3/4] rounded-xl overflow-hidden ring-2 ring-transparent hover:ring-primary transition-all"
+                        className="w-24 aspect-[3/4] rounded-xl overflow-hidden ring-2 ring-transparent hover:ring-primary transition-all shadow-sm"
                       >
                         <img src={design.image} alt="" className="w-full h-full object-cover" />
                       </button>
@@ -200,11 +200,11 @@ export function ChatPage() {
           {isTyping && (
             <div className="flex items-start">
               <LukaAvatar size="sm" className="mr-2" />
-              <div className="bg-white/10 px-4 py-3 rounded-2xl rounded-bl-sm border border-white/5">
+              <div className="bg-white px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm border border-gray-100">
                 <div className="flex gap-1">
-                  <span className="w-2 h-2 bg-white/50 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <span className="w-2 h-2 bg-white/50 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <span className="w-2 h-2 bg-white/50 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                 </div>
               </div>
             </div>
@@ -215,17 +215,17 @@ export function ChatPage() {
       </div>
 
       {/* 底部输入 */}
-      <div className="sticky bottom-0 bg-[#1a1a1a] border-t border-white/10">
+      <div className="sticky bottom-0 bg-white border-t border-gray-100">
         <div className="max-w-md mx-auto p-4">
           <div className="flex items-end gap-3">
             <button
               onClick={handleImageUpload}
-              className="size-10 flex items-center justify-center rounded-full bg-white/10 flex-shrink-0 border border-white/5"
+              className="size-10 flex items-center justify-center rounded-full bg-gray-100 flex-shrink-0"
             >
-              <Icon name="add_photo_alternate" size={20} className="text-white/60" />
+              <Icon name="add_photo_alternate" size={20} className="text-gray-500" />
             </button>
 
-            <div className="flex-1 bg-white/10 rounded-2xl px-4 py-2 border border-white/5">
+            <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2">
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -237,7 +237,7 @@ export function ChatPage() {
                 }}
                 placeholder="描述你想要的..."
                 rows={1}
-                className="w-full bg-transparent text-sm text-white placeholder-white/40 resize-none outline-none"
+                className="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 resize-none outline-none"
               />
             </div>
 
@@ -247,7 +247,7 @@ export function ChatPage() {
               className={`size-10 flex items-center justify-center rounded-full flex-shrink-0 transition-all ${
                 input.trim()
                   ? 'bg-gradient-to-r from-primary to-pink-500 text-white'
-                  : 'bg-white/10 text-white/40 border border-white/5'
+                  : 'bg-gray-100 text-gray-400'
               }`}
             >
               <Icon name="send" size={20} />

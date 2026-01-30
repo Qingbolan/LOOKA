@@ -88,12 +88,12 @@ export function ExplorePage() {
   return (
     <Layout>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/10">
+      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
         <div className="flex flex-col max-w-md mx-auto">
           <div className="flex items-center p-4 h-14 justify-between">
-            <h1 className="text-xl font-bold text-text-primary dark:text-text-dark-primary">灵感</h1>
+            <h1 className="text-xl font-bold">灵感</h1>
             <button className="size-10 flex items-center justify-center">
-              <Icon name="search" size={24} className="text-text-secondary dark:text-text-dark-secondary" />
+              <Icon name="search" size={24} className="text-gray-600" />
             </button>
           </div>
 
@@ -106,7 +106,7 @@ export function ExplorePage() {
                 className={`whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] transition-all ${
                   index === activeStyle
                     ? 'bg-gradient-to-r from-primary to-pink-500 text-white font-bold'
-                    : 'bg-gray-100 dark:bg-white/10 text-text-secondary dark:text-text-dark-secondary'
+                    : 'bg-gray-100 text-gray-600'
                 }`}
               >
                 {style}
@@ -127,9 +127,9 @@ export function ExplorePage() {
             <div
               key={dream.id}
               onClick={() => navigate(`/group-buy/${dream.id}`)}
-              className="bg-white dark:bg-surface-dark rounded-2xl overflow-hidden shadow-soft dark:shadow-none border border-black/[0.03] dark:border-white/[0.06] cursor-pointer active:scale-[0.98] transition-transform"
+              className="bg-white rounded-2xl overflow-hidden shadow-soft border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform"
             >
-              <div className="relative bg-gray-100 dark:bg-white/5" style={{ aspectRatio: dream.aspectRatio }}>
+              <div className="relative bg-gray-100" style={{ aspectRatio: dream.aspectRatio }}>
                 <img
                   src={dream.image}
                   alt={dream.name}
@@ -143,8 +143,8 @@ export function ExplorePage() {
                 </div>
               </div>
               <div className="p-3">
-                <h3 className="text-[15px] font-bold leading-snug text-text-primary dark:text-text-dark-primary">{dream.name}</h3>
-                <p className="text-[12px] text-text-muted dark:text-text-dark-muted mt-0.5 line-clamp-1">{dream.description}</p>
+                <h3 className="text-[15px] font-bold leading-snug">{dream.name}</h3>
+                <p className="text-[12px] text-gray-500 mt-0.5 line-clamp-1">{dream.description}</p>
 
                 <div className="flex items-center justify-between mt-3">
                   {/* 许愿者 */}
@@ -154,7 +154,7 @@ export function ExplorePage() {
                       alt={dream.dreamer.name}
                       className="w-5 h-5 rounded-full object-cover"
                     />
-                    <span className="text-[11px] text-text-muted dark:text-text-dark-muted">{dream.dreamer.name}</span>
+                    <span className="text-[11px] text-gray-500">{dream.dreamer.name}</span>
                   </div>
                   {/* 想要的人数 */}
                   <div className="flex items-center gap-1">
@@ -162,9 +162,9 @@ export function ExplorePage() {
                       name="favorite"
                       size={14}
                       filled={dream.isWanted}
-                      className={dream.isWanted ? 'text-primary' : 'text-gray-300 dark:text-white/20'}
+                      className={dream.isWanted ? 'text-primary' : 'text-gray-300'}
                     />
-                    <span className={`text-[11px] ${dream.isWanted ? 'text-primary font-medium' : 'text-text-muted dark:text-text-dark-muted'}`}>
+                    <span className={`text-[11px] ${dream.isWanted ? 'text-primary font-medium' : 'text-gray-400'}`}>
                       {dream.wantCount}
                     </span>
                   </div>
@@ -176,8 +176,8 @@ export function ExplorePage() {
 
         {/* 底部提示 */}
         <div className="text-center py-8">
-          <p className="text-text-muted dark:text-text-dark-muted text-sm">看到喜欢的？点击"我也想要"</p>
-          <p className="text-text-muted dark:text-text-dark-muted text-sm">或者告诉 Luka 你的想法</p>
+          <p className="text-gray-400 text-sm">看到喜欢的？点击"我也想要"</p>
+          <p className="text-gray-400 text-sm">或者告诉 Luka 你的想法</p>
         </div>
       </main>
     </Layout>

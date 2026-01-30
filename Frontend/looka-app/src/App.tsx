@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import {
   ExplorePage,
   TogetherPage,
-  CreatePage,
-  ChatPage,
+  LukaPage,
+  LukaChatPage,
   ClosetPage,
   ClothDetailPage,
   BodySetupPage,
@@ -26,8 +26,8 @@ function App() {
         {/* Main Tabs */}
         <Route path="/" element={<ExplorePage />} />
         <Route path="/together" element={<TogetherPage />} />
-        <Route path="/create" element={<CreatePage />} />
-        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/luka" element={<LukaPage />} />
+        <Route path="/luka/chat" element={<LukaChatPage />} />
         <Route path="/closet" element={<ClosetPage />} />
         <Route path="/closet/:id" element={<ClothDetailPage />} />
         <Route path="/orders" element={<OrdersPage />} />

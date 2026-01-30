@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>设计方案与试穿</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E63946",
+                        "background-light": "#FAFAFA",
+                        "accent-gray": "#F8F9FA",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "PingFang SC", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif;
+                @apply bg-background-light text-[#1A1A1A] antialiased;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'wght' 200, 'opsz' 24;
+            font-size: 24px;
+        }
+        .dual-preview-mask {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<div class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
+<div class="flex items-center p-4 h-16 justify-between max-w-md mx-auto">
+<div class="flex size-10 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer text-gray-900">arrow_back_ios</span>
+</div>
+<h1 class="text-[#1A1A1A] text-[17px] font-bold tracking-tight flex-1 text-center font-display">设计方案与试穿</h1>
+<div class="flex size-10 items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full text-gray-900">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-md mx-auto p-4 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white rounded-[24px] overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+<div class="relative aspect-[3/4] group">
+<img alt="Render" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYcV7gDKgK6uAglOFX5dnIb93iEuZbqFfBK2CvksJU7iSKKgZXDEVKXT4RzzmhpSDlOVcJE7fT_wLUpfstxAZyD2YrR4f96QLIxG-_Zi7NKQpXo-Xj7eDSxpCylTso02mcWjeznByLWJG-y4SpBSt0Dl6585jBLk1B9z8v6o8tKUY3XWbtRebaNs8vJuwPhyXb2M_Md29XGaTp2UZesdQRuOEJR6vqzY2icVS5tng_UdPbe0eKV8APTQKcg9AU_L0Pex-wlikCEhg"/>
+<div class="absolute bottom-2 right-2 w-16 h-16 rounded-full border-2 border-white overflow-hidden shadow-lg">
+<img alt="User Photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUpLJesAFQB9irAatSwDNv54iZnQ28m_UsEda50bDKntPUPIDEXPkFGHY7A9kaj_Maar-M6ozZDUoXLX9723yvhHecbarUr3Py12hwSBfb5asCcWQbAsn_tAgXRaxES1ptl_PN2UhyVFHud7JMbaQuBI_jpU_xZaTIFTY4_synRw-f3reNG8BeYgSXesrLRqnNos1eKqTa_-WLtvR3yU7DPWHJBtEnbsDdJ8CrVmSj1FvwXvcaf7kAMr3sOAV9Ci06zpocR8txhsU"/>
+</div>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">建议试穿</span>
+<span class="bg-black/50 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-full">可投产</span>
+</div>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-[14px] font-bold text-gray-900">极简和风设计</span>
+<span class="text-primary text-[12px] font-bold">¥599</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-[11px] font-bold rounded-lg">编辑参数</button>
+<button class="flex-1 py-1.5 bg-primary text-white text-[11px] font-bold rounded-lg">保存衣柜</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[24px] overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+<div class="relative aspect-[3/4]">
+<img alt="Render" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe8lYkIjaSPHUrMbL2CiX5p2gQ9fPPAz68MAyB81_ZYgzRdGRJu-ORgLjJ3bC1FMYCXp7fGt_dMcYFlvbkQewVmeFsU5gtYfbcvKn-eY5dei949W_hwdGloNBlalRHcCgOlJYAOFy01L7Plv4S355ib-AAZfjlhpvM1gGeZ9qT-tgVXr9KSbif2tITxAqD8Xw64voCd1-8U5-koaRaXITLeR0DqpZ0TcKqcRvSwbi6mqZiOnuQr00iW7suT3NuWZgN5zLUHvdrZpk"/>
+<div class="absolute bottom-2 right-2 w-16 h-16 rounded-full border-2 border-white overflow-hidden shadow-lg">
+<img alt="User Photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUpLJesAFQB9irAatSwDNv54iZnQ28m_UsEda50bDKntPUPIDEXPkFGHY7A9kaj_Maar-M6ozZDUoXLX9723yvhHecbarUr3Py12hwSBfb5asCcWQbAsn_tAgXRaxES1ptl_PN2UhyVFHud7JMbaQuBI_jpU_xZaTIFTY4_synRw-f3reNG8BeYgSXesrLRqnNos1eKqTa_-WLtvR3yU7DPWHJBtEnbsDdJ8CrVmSj1FvwXvcaf7kAMr3sOAV9Ci06zpocR8txhsU"/>
+</div>
+<div class="absolute top-2 left-2">
+<span class="bg-black/50 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-full">可投产</span>
+</div>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-[14px] font-bold text-gray-900">赛博丝绸长衫</span>
+<span class="text-primary text-[12px] font-bold">¥780</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-[11px] font-bold rounded-lg">编辑参数</button>
+<button class="flex-1 py-1.5 bg-primary text-white text-[11px] font-bold rounded-lg">保存衣柜</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[24px] overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+<div class="relative aspect-[3/4]">
+<img alt="Render" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYcV7gDKgK6uAglOFX5dnIb93iEuZbqFfBK2CvksJU7iSKKgZXDEVKXT4RzzmhpSDlOVcJE7fT_wLUpfstxAZyD2YrR4f96QLIxG-_Zi7NKQpXo-Xj7eDSxpCylTso02mcWjeznByLWJG-y4SpBSt0Dl6585jBLk1B9z8v6o8tKUY3XWbtRebaNs8vJuwPhyXb2M_Md29XGaTp2UZesdQRuOEJR6vqzY2icVS5tng_UdPbe0eKV8APTQKcg9AU_L0Pex-wlikCEhg"/>
+<div class="absolute bottom-2 right-2 w-16 h-16 rounded-full border-2 border-white overflow-hidden shadow-lg">
+<img alt="User Photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUpLJesAFQB9irAatSwDNv54iZnQ28m_UsEda50bDKntPUPIDEXPkFGHY7A9kaj_Maar-M6ozZDUoXLX9723yvhHecbarUr3Py12hwSBfb5asCcWQbAsn_tAgXRaxES1ptl_PN2UhyVFHud7JMbaQuBI_jpU_xZaTIFTY4_synRw-f3reNG8BeYgSXesrLRqnNos1eKqTa_-WLtvR3yU7DPWHJBtEnbsDdJ8CrVmSj1FvwXvcaf7kAMr3sOAV9Ci06zpocR8txhsU"/>
+</div>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">建议试穿</span>
+</div>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-[14px] font-bold text-gray-900">未来主义纹样</span>
+<span class="text-primary text-[12px] font-bold">¥420</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-[11px] font-bold rounded-lg">编辑参数</button>
+<button class="flex-1 py-1.5 bg-primary text-white text-[11px] font-bold rounded-lg">保存衣柜</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[24px] overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+<div class="relative aspect-[3/4]">
+<img alt="Render" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe8lYkIjaSPHUrMbL2CiX5p2gQ9fPPAz68MAyB81_ZYgzRdGRJu-ORgLjJ3bC1FMYCXp7fGt_dMcYFlvbkQewVmeFsU5gtYfbcvKn-eY5dei949W_hwdGloNBlalRHcCgOlJYAOFy01L7Plv4S355ib-AAZfjlhpvM1gGeZ9qT-tgVXr9KSbif2tITxAqD8Xw64voCd1-8U5-koaRaXITLeR0DqpZ0TcKqcRvSwbi6mqZiOnuQr00iW7suT3NuWZgN5zLUHvdrZpk"/>
+<div class="absolute bottom-2 right-2 w-16 h-16 rounded-full border-2 border-white overflow-hidden shadow-lg">
+<img alt="User Photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUpLJesAFQB9irAatSwDNv54iZnQ28m_UsEda50bDKntPUPIDEXPkFGHY7A9kaj_Maar-M6ozZDUoXLX9723yvhHecbarUr3Py12hwSBfb5asCcWQbAsn_tAgXRaxES1ptl_PN2UhyVFHud7JMbaQuBI_jpU_xZaTIFTY4_synRw-f3reNG8BeYgSXesrLRqnNos1eKqTa_-WLtvR3yU7DPWHJBtEnbsDdJ8CrVmSj1FvwXvcaf7kAMr3sOAV9Ci06zpocR8txhsU"/>
+</div>
+<div class="absolute top-2 left-2">
+<span class="bg-black/50 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-full">可投产</span>
+</div>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-[14px] font-bold text-gray-900">解构风羽织</span>
+<span class="text-primary text-[12px] font-bold">¥660</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-[11px] font-bold rounded-lg">编辑参数</button>
+<button class="flex-1 py-1.5 bg-primary text-white text-[11px] font-bold rounded-lg">保存衣柜</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[24px] p-4 border border-gray-100 shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary !text-[20px]">shopping_bag</span>
+</div>
+<div>
+<h4 class="text-[14px] font-bold">统一订单管理</h4>
+<p class="text-gray-400 text-[12px]">查看您正在生产和待发货的单品</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-300">chevron_right</span>
+</div>
+<div class="rounded-[28px] bg-[#1A1A1A] p-6 text-white overflow-hidden relative mt-2">
+<div class="relative z-10">
+<h4 class="text-lg font-bold font-display mb-1">发布到社区</h4>
+<p class="text-white/60 text-[13px] mb-5 leading-relaxed">分享您的虚拟试穿效果，赢取积分与定制礼券。</p>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-white rounded-full h-11 font-bold text-[14px] shadow-lg shadow-primary/20">立即发布</button>
+<button class="flex items-center justify-center w-11 h-11 rounded-full bg-white/10 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[20px]">ios_share</span>
+</button>
+</div>
+</div>
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/20 rounded-full blur-[40px]"></div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-2xl border-t border-gray-100 max-w-md mx-auto z-50">
+<div class="flex items-center justify-around h-20 px-4">
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-medium">探索</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined !fill-1">brush</span>
+<span class="text-[10px] font-bold">创作</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">checkroom</span>
+<span class="text-[10px] font-medium">衣柜</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">订单</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">我的</span>
+</div>
+</div>
+<div class="h-6"></div>
+</div>
+
+</body></html>

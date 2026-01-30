@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-luxury-black;
+    min-height: 100dvh;
+    overscroll-behavior: none;
+  }
+
+  /* Safe area for notch devices */
+  :root {
+    --safe-area-inset-top: env(safe-area-inset-top, 0px);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-inset-left: env(safe-area-inset-left, 0px);
+    --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  }
+}
+
+@layer components {
+  /* Material Icons */
+  .material-symbols-outlined {
+    font-variation-settings: 'wght' 200, 'opsz' 24, 'FILL' 0;
+    font-size: 24px;
+  }
+
+  .material-symbols-outlined.filled {
+    font-variation-settings: 'wght' 400, 'opsz' 24, 'FILL' 1;
+  }
+
+  /* Hide scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply bg-primary text-white rounded-full font-bold shadow-button
+           active:scale-[0.98] transition-transform;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply bg-primary/5 text-primary rounded-full font-bold border border-primary/10
+           active:scale-[0.98] transition-transform;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-3xl p-5 shadow-soft border border-gray-50;
+  }
+
+  /* Tab bar safe area */
+  .tab-bar-padding {
+    padding-bottom: calc(74px + var(--safe-area-inset-bottom));
+  }
+}
+
+@layer utilities {
+  /* iOS-like bounce scroll */
+  .scroll-bounce {
+    -webkit-overflow-scrolling: touch;
+  }
+}

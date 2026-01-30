@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>订单生产详情</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E63946",
+                        "background-light": "#FAFAFA",
+                        "luxury-white": "#FFFFFF",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans SC", "sans-serif"],
+                        "body": ["Noto Sans SC", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1.5rem",
+                        "xl": "2.25rem",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Noto Sans SC', sans-serif;
+                @apply bg-background-light text-[#1A1A1A] antialiased;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'wght' 100, 'opsz' 24;font-size: 24px;
+        }
+        .step-line {
+            width: 1px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<div class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-50">
+<div class="flex items-center p-4 h-16 justify-between max-w-md mx-auto">
+<div class="flex size-10 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer text-gray-900 !text-[20px]">arrow_back_ios</span>
+</div>
+<h1 class="text-[#1A1A1A] text-[17px] font-bold tracking-tight flex-1 text-center font-display">订单生产详情</h1>
+<div class="flex size-10 items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full text-gray-900">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-md mx-auto pb-40">
+<div class="p-5">
+<div class="bg-white rounded-[24px] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-gray-50">
+<div class="flex gap-4">
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-2xl border border-gray-50 flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYcV7gDKgK6uAglOFX5dnIb93iEuZbqFfBK2CvksJU7iSKKgZXDEVKXT4RzzmhpSDlOVcJE7fT_wLUpfstxAZyD2YrR4f96QLIxG-_Zi7NKQpXo-Xj7eDSxpCylTso02mcWjeznByLWJG-y4SpBSt0Dl6585jBLk1B9z8v6o8tKUY3XWbtRebaNs8vJuwPhyXb2M_Md29XGaTp2UZesdQRuOEJR6vqzY2icVS5tng_UdPbe0eKV8APTQKcg9AU_L0Pex-wlikCEhg");'>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="text-primary text-[11px] font-bold tracking-wider px-2.5 py-0.5 bg-primary/5 rounded-full">正在生产</span>
+</div>
+<h2 class="text-[#1A1A1A] text-lg font-bold leading-tight font-display tracking-tight">赛博朋克丝绸和服</h2>
+<p class="text-gray-400 text-[11px] font-medium mt-1">订单编号: #AI-882-9421</p>
+</div>
+<div class="flex gap-2 items-center mt-3">
+<span class="text-[14px] font-bold text-[#1A1A1A]">¥4,280.00</span>
+<span class="text-[11px] text-gray-400">数量: 1</span>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-gray-50 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">history</span>
+<span class="text-[12px] font-medium text-gray-500">预计 3 天后完成</span>
+</div>
+<button class="px-5 py-2 bg-primary/5 text-primary text-[12px] font-bold rounded-full border border-primary/10">
+                        查看实时进度
+                    </button>
+</div>
+</div>
+</div>
+<div class="px-7 py-4">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-[#1A1A1A] text-[16px] font-bold font-display tracking-tight">生产进度</h3>
+</div>
+<div class="relative">
+<div class="flex gap-5">
+<div class="flex flex-col items-center">
+<div class="flex size-9 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined !text-[18px]">check</span>
+</div>
+<div class="step-line w-[1px] grow bg-primary/20 h-10"></div>
+</div>
+<div class="pt-1 pb-10">
+<h4 class="text-[#1A1A1A] font-bold text-[15px] font-display">物料采集</h4>
+<p class="text-gray-400 text-[12px] mt-1">顶级桑蚕丝及复合面料已到库</p>
+</div>
+</div>
+<div class="flex gap-5">
+<div class="flex flex-col items-center">
+<div class="flex size-9 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined !text-[18px]">check</span>
+</div>
+<div class="step-line w-[1px] grow bg-primary/20 h-14"></div>
+</div>
+<div class="pt-1 pb-10">
+<h4 class="text-[#1A1A1A] font-bold text-[15px] font-display">AI 优化</h4>
+<p class="text-gray-400 text-[12px] mt-1">AI 剪裁模型已完成细节优化</p>
+<div class="mt-4 flex gap-2">
+<div class="w-14 h-14 rounded-xl bg-cover bg-center border border-gray-100" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUpLJesAFQB9irAatSwDNv54iZnQ28m_UsEda50bDKntPUPIDEXPkFGHY7A9kaj_Maar-M6ozZDUoXLX9723yvhHecbarUr3Py12hwSBfb5asCcWQbAsn_tAgXRaxES1ptl_PN2UhyVFHud7JMbaQuBI_jpU_xZaTIFTY4_synRw-f3reNG8BeYgSXesrLRqnNos1eKqTa_-WLtvR3yU7DPWHJBtEnbsDdJ8CrVmSj1FvwXvcaf7kAMr3sOAV9Ci06zpocR8txhsU');"></div>
+<div class="w-14 h-14 rounded-xl bg-cover bg-center border border-gray-100" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDe8lYkIjaSPHUrMbL2CiX5p2gQ9fPPAz68MAyB81_ZYgzRdGRJu-ORgLjJ3bC1FMYCXp7fGt_dMcYFlvbkQewVmeFsU5gtYfbcvKn-eY5dei949W_hwdGloNBlalRHcCgOlJYAOFy01L7Plv4S355ib-AAZfjlhpvM1gGeZ9qT-tgVXr9KSbif2tITxAqD8Xw64voCd1-8U5-koaRaXITLeR0DqpZ0TcKqcRvSwbi6mqZiOnuQr00iW7suT3NuWZgN5zLUHvdrZpk');"></div>
+</div>
+</div>
+</div>
+<div class="flex gap-5">
+<div class="flex flex-col items-center">
+<div class="flex size-9 items-center justify-center rounded-full border border-primary bg-white text-primary">
+<span class="material-symbols-outlined !text-[18px]">content_cut</span>
+</div>
+<div class="step-line w-[1px] grow bg-gray-100 h-10"></div>
+</div>
+<div class="pt-1 pb-10">
+<h4 class="text-primary font-bold text-[15px] font-display">手工缝制</h4>
+<p class="text-[#1A1A1A] text-[12px] font-medium mt-1">资深裁缝正在进行最后的拼装</p>
+<div class="mt-3 h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[65%]"></div>
+</div>
+</div>
+</div>
+<div class="flex gap-5">
+<div class="flex flex-col items-center">
+<div class="flex size-9 items-center justify-center rounded-full bg-gray-50 text-gray-300 border border-gray-100">
+<span class="material-symbols-outlined !text-[18px]">local_shipping</span>
+</div>
+</div>
+<div class="pt-1">
+<h4 class="text-gray-400 font-bold text-[15px] font-display">物流配送</h4>
+<p class="text-gray-300 text-[12px] mt-1">完成质检后将立即发货</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-5">
+<div class="rounded-[28px] bg-[#1A1A1A] p-6 text-white overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="text-[17px] font-bold font-display mb-1.5">晒出你的定制</h4>
+<p class="text-white/50 text-[12px] mb-6 leading-relaxed">分享你的 AI 设计到社区，可获得 200 积分奖励</p>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-white rounded-full h-11 font-bold text-[14px] shadow-lg shadow-primary/20">发布到社区</button>
+<button class="flex items-center justify-center w-11 h-11 rounded-full bg-white/10 text-white backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[18px]">share</span>
+</button>
+</div>
+</div>
+<div class="absolute -right-10 -bottom-10 w-32 h-32 bg-primary/10 rounded-full blur-[40px]"></div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 p-5 bg-white/90 backdrop-blur-2xl border-t border-gray-50 max-w-md mx-auto z-50">
+<div class="flex gap-3 pb-6">
+<button class="flex-[1] flex items-center justify-center gap-2 h-12 rounded-full border border-gray-100 bg-white text-[#1A1A1A] font-bold text-[14px]">
+<span class="material-symbols-outlined !text-[18px]">headset_mic</span>
+                帮助
+            </button>
+<button class="flex-[2] flex items-center justify-center bg-primary text-white rounded-full h-12 font-bold text-[14px] shadow-xl shadow-primary/30">
+                购买同款
+            </button>
+</div>
+</div>
+
+</body></html>

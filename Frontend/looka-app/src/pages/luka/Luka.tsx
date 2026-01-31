@@ -54,22 +54,22 @@ export function LukaPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
-        <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-center">
+      <div className="header-detail">
+        <div className="header-detail-inner">
+          <button onClick={() => navigate(-1)} className="header-btn">
             <Icon name="close" size={24} className="text-gray-600" />
           </button>
           <div className="flex items-center gap-2">
             <LukaAvatar size="xs" />
             <span className="font-bold">Luka</span>
           </div>
-          <button className="size-10 flex items-center justify-center">
+          <button className="header-btn">
             <Icon name="more_horiz" size={24} className="text-gray-600" />
           </button>
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 pb-32">
+      <div className="content-page">
         {/* Luka 自我介绍 */}
         <div className="py-8">
           <div className="bg-primary/5 rounded p-5 mb-6 border border-primary/10">
@@ -144,8 +144,8 @@ export function LukaPage() {
       </div>
 
       {/* 底部输入区 */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white to-transparent pt-8">
-        <div className="max-w-md mx-auto px-4 pb-8">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white to-transparent pt-6 max-w-md mx-auto">
+        <div className="px-4 pb-6">
           <div className="flex items-center gap-3">
             {/* 表情/更多 */}
             <button className="size-11 flex items-center justify-center rounded-full bg-gray-100">

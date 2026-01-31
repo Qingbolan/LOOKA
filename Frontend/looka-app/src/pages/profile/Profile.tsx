@@ -53,20 +53,20 @@ export function ProfilePage() {
   return (
     <Layout>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-50">
-        <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <button className="size-10 flex items-center justify-start">
+      <div className="header-main">
+        <div className="header-main-inner">
+          <button className="header-btn-start">
             <Icon name="settings" size={24} className="text-gray-600" />
           </button>
-          <div className="size-10 flex items-center justify-end">
+          <div className="header-btn-end">
             <Icon name="share" size={24} className="text-gray-600" />
           </div>
         </div>
       </div>
 
-      <div className="max-w-md mx-auto pb-32">
+      <div className="content-masonry">
         {/* Profile Section */}
-        <div className="px-4 pt-4 pb-4">
+        <div className="pt-4 pb-4">
           <div className="flex items-start gap-4">
             {/* Avatar */}
             <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-100 flex-shrink-0 ring-2 ring-white shadow-lg">
@@ -109,7 +109,7 @@ export function ProfilePage() {
         </div>
 
         {/* Body Profile Card */}
-        <div className="px-4 mb-4">
+        <div className="mb-4">
           <div
             onClick={() => navigate('/body-profile')}
             className="bg-primary/5 rounded p-4 flex items-center justify-between border border-primary/10 cursor-pointer active:scale-[0.99] transition-transform"
@@ -128,29 +128,25 @@ export function ProfilePage() {
         </div>
 
         {/* Content Tabs */}
-        <div className="sticky top-14 z-40 bg-white border-b border-gray-100">
-          <div className="flex justify-center gap-6 max-w-md mx-auto">
+        <div className="tabs-content" style={{ top: 'var(--header-height)' }}>
+          <div className="tabs-content-inner">
             {profileTabs.map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(index)}
-                className={`py-2.5 text-[14px] relative ${
-                  index === activeTab
-                    ? 'font-bold text-gray-900'
-                    : 'font-medium text-gray-400'
+                className={`tab-content ${
+                  index === activeTab ? 'tab-content-active' : 'tab-content-inactive'
                 }`}
               >
                 {tab}
-                {index === activeTab && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full" />
-                )}
+                {index === activeTab && <span className="tab-indicator" />}
               </button>
             ))}
           </div>
         </div>
 
         {/* Wishes Grid */}
-        <div className="px-2 py-4">
+        <div className="py-4">
           <CardMasonry columns={{ default: 2 }} gap={6}>
             {myWishes.map((wish, index) => {
               const aspectRatios = ['aspect-card-1', 'aspect-card-2', 'aspect-card-3', 'aspect-card-4']

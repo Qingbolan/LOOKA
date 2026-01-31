@@ -31,21 +31,21 @@ export function GroupBuyPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
-        <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
+      <div className="header-detail">
+        <div className="header-detail-inner">
+          <button onClick={() => navigate(-1)} className="header-btn-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
           </button>
-          <h1 className="text-[17px] font-bold tracking-tight flex-1 text-center">愿望详情</h1>
-          <button className="size-10 flex items-center justify-end">
+          <h1 className="header-title-center">愿望详情</h1>
+          <button className="header-btn-end">
             <Icon name="share" size={24} />
           </button>
         </div>
       </div>
 
-      <div className="pb-36">
+      <div className="content-detail">
         {/* 主图 */}
-        <div className="px-4 pt-2">
+        <div className="pt-2">
           <div className="aspect-[4/5] relative rounded overflow-hidden">
             <ImageSwap
               mainImage="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800"
@@ -63,7 +63,7 @@ export function GroupBuyPage() {
         </div>
 
         {/* 设计信息 + 发起者 */}
-        <div className="px-4 pt-3">
+        <div className="pt-3">
           <h2 className="text-xl font-bold">星空渐变连衣裙</h2>
           <p className="text-sm text-gray-500 mt-1">"想要一条像银河一样的裙子"</p>
 
@@ -94,7 +94,7 @@ export function GroupBuyPage() {
         </div>
 
         {/* 设计详情 */}
-        <div className="px-4 mt-2">
+        <div className="mt-2">
           <Card>
             <h3 className="font-bold mb-3 flex items-center gap-2">
               <Icon name="auto_awesome" size={20} className="text-primary" />
@@ -126,7 +126,7 @@ export function GroupBuyPage() {
         </div>
 
         {/* 评论区 */}
-        <div className="px-4 mt-4">
+        <div className="mt-4">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-bold flex items-center gap-2">
               <Icon name="chat_bubble" size={20} className="text-primary" />
@@ -169,12 +169,12 @@ export function GroupBuyPage() {
         </div>
       </div>
 
-      {/* 底部 - 试穿 + 评论 */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50">
-        <div style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
+      {/* 底部操作栏 */}
+      <div className="bottom-action">
+        <div className="bottom-action-inner">
           <div className="flex items-center gap-3">
             {/* 评论输入 */}
-            <div className="flex-1 h-11 bg-gray-100 rounded-full px-4 flex items-center">
+            <div className="input-comment">
               <input
                 type="text"
                 value={commentText}

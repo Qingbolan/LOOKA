@@ -86,31 +86,29 @@ export function TogetherPage() {
   return (
     <Layout>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
-        <div className="flex items-center px-4 h-12 justify-between max-w-md mx-auto">
-          <h1 className="text-lg font-bold">一起</h1>
-          <div className="flex items-center gap-4">
+      <div className="header-main">
+        <div className="header-main-inner">
+          <h1 className="header-title">一起</h1>
+          <div className="tabs-header">
             {tabs.map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(index)}
-                className={`text-[15px] ${
-                  index === activeTab
-                    ? 'font-bold text-gray-900'
-                    : 'text-gray-400'
+                className={`tab-header ${
+                  index === activeTab ? 'tab-header-active' : 'tab-header-inactive'
                 }`}
               >
                 {tab}
               </button>
             ))}
           </div>
-          <button className="size-8 flex items-center justify-center">
+          <button className="header-btn">
             <Icon name="notifications" size={22} className="text-gray-600" />
           </button>
         </div>
       </div>
 
-      <main className="max-w-md mx-auto px-3 py-3 pb-32 space-y-4">
+      <main className="content-page py-3 space-y-4">
         {/* 动态提醒 */}
         {activities.length > 0 && (
           <div className="bg-primary/5 rounded p-3 border border-primary/10">

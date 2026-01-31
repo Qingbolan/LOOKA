@@ -69,46 +69,39 @@ export function ExplorePage() {
 
   return (
     <Layout>
-      {/* Header - 只保留标题行 */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl">
-        <div className="flex items-center px-4 h-11 justify-between max-w-md mx-auto">
-          <h1 className="text-lg font-bold">灵感</h1>
-          <div className="flex items-center gap-4">
+      {/* Header */}
+      <div className="header-main">
+        <div className="header-main-inner">
+          <h1 className="header-title">灵感</h1>
+          <div className="tabs-header">
             {mainTabs.map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(index)}
-                className={`text-[15px] pb-1 border-b-2 ${
-                  index === activeTab
-                    ? 'font-bold text-gray-900 border-primary'
-                    : 'text-gray-400 border-transparent'
+                className={`tab-header ${
+                  index === activeTab ? 'tab-header-active' : 'tab-header-inactive'
                 }`}
               >
                 {tab}
               </button>
             ))}
           </div>
-          <button
-            onClick={() => navigate('/search')}
-            className="size-8 flex items-center justify-center"
-          >
+          <button onClick={() => navigate('/search')} className="header-btn">
             <Icon name="search" size={22} className="text-gray-600" />
           </button>
         </div>
       </div>
 
       {/* 内容区域 */}
-      <main className="max-w-md mx-auto px-2 pb-32">
-        {/* 风格标签 - 随内容滚动 */}
-        <div className="flex overflow-x-auto py-2.5 gap-2 hide-scrollbar">
+      <main className="content-masonry">
+        {/* 风格标签 */}
+        <div className="style-tags">
           {styles.map((style, index) => (
             <button
               key={style}
               onClick={() => setActiveStyle(index)}
-              className={`whitespace-nowrap px-3 py-1 rounded-full text-[12px] transition-all ${
-                index === activeStyle
-                  ? 'bg-primary text-white font-medium'
-                  : 'bg-gray-100 text-gray-600'
+              className={`style-tag ${
+                index === activeStyle ? 'style-tag-active' : 'style-tag-inactive'
               }`}
             >
               {style}
@@ -130,7 +123,7 @@ export function ExplorePage() {
             <div
               key={dream.id}
               onClick={() => navigate(`/group-buy/${dream.id}`)}
-              className="bg-white border border-gray-200 rounded overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
+              className="card-masonry card-interactive"
             >
               {/* 图片区域 */}
               <div className={`relative ${aspectRatio}`}>

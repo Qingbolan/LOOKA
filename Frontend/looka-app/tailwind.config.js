@@ -8,9 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        // 主色调：温暖珊瑚色 - 象征梦想、温暖、活力
+        // 主色调：温暖珊瑚色
         primary: {
-          DEFAULT: "#FF6B6B", // coral - 主色
+          DEFAULT: "#FF6B6B",
           50: "#FFF5F5",
           100: "#FFE3E3",
           200: "#FFC9C9",
@@ -22,7 +22,7 @@ export default {
           800: "#E03131",
           900: "#C92A2A",
         },
-        // 桃色辅助色 - 温暖、柔和
+        // 桃色辅助色
         peach: {
           DEFAULT: "#FFAB91",
           50: "#FFF8F5",
@@ -35,9 +35,9 @@ export default {
         },
         // 背景色
         background: {
-          light: "#FFFAF8", // 淡暖白 - 温暖感
+          light: "#FFFAF8",
           DEFAULT: "#FFFAF8",
-          dark: "#1A1A1A", // 深色模式
+          dark: "#1A1A1A",
         },
         // 表面色
         surface: {
@@ -54,48 +54,51 @@ export default {
           "dark-secondary": "rgba(255,255,255,0.7)",
           "dark-muted": "rgba(255,255,255,0.4)",
         },
-        // 功能色
-        accent: {
-          coral: "#FF6B6B",
-          peach: "#FFAB91",
-          amber: "#F59E0B",
-          emerald: "#10B981",
-          sky: "#0EA5E9",
-        },
       },
       fontFamily: {
         display: ["Plus Jakarta Sans", "PingFang SC", "Noto Sans SC", "sans-serif"],
         body: ["Noto Sans SC", "PingFang SC", "sans-serif"],
       },
-      borderRadius: {
-        DEFAULT: "0.75rem",
-        lg: "1rem",
-        xl: "1.25rem",
-        "2xl": "1.5rem",
-        "3xl": "2rem",
+      // 使用 CSS 变量的间距
+      spacing: {
+        'header': 'var(--header-height)',
+        'header-detail': 'var(--header-height-detail)',
+        'tabbar': 'var(--tabbar-height)',
+        'safe-bottom': 'var(--safe-area-inset-bottom)',
+        'safe-top': 'var(--safe-area-inset-top)',
+        'card-gap': '6px',
       },
+      // 高度
+      height: {
+        'header': 'var(--header-height)',
+        'header-detail': 'var(--header-height-detail)',
+        'tabbar': 'var(--tabbar-height)',
+      },
+      // 最小高度
+      minHeight: {
+        'header': 'var(--header-height)',
+        'header-detail': 'var(--header-height-detail)',
+      },
+      // 定位
+      inset: {
+        'header': 'var(--header-height)',
+        'header-detail': 'var(--header-height-detail)',
+      },
+      // 圆角
+      borderRadius: {
+        'sm': '4px',
+        DEFAULT: '8px',
+        'md': '8px',
+        'lg': '12px',
+        'xl': '16px',
+        '2xl': '20px',
+        '3xl': '24px',
+      },
+      // 阴影
       boxShadow: {
         'soft': '0 8px 30px rgba(0,0,0,0.04)',
         'card': '0 4px 16px rgba(0,0,0,0.06)',
-        'button': '0 4px 14px rgba(255, 107, 107, 0.3)',
-        'button-peach': '0 4px 14px rgba(255, 171, 145, 0.3)',
-        'glow': '0 0 20px rgba(255, 107, 107, 0.4)',
-        'glow-peach': '0 0 20px rgba(255, 171, 145, 0.4)',
-      },
-      backgroundImage: {
-        'gradient-dream': 'linear-gradient(135deg, #FF6B6B 0%, #FFAB91 100%)',
-        'gradient-dream-soft': 'linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(255,171,145,0.1) 100%)',
-        'gradient-dream-dark': 'linear-gradient(135deg, rgba(255,107,107,0.2) 0%, rgba(255,171,145,0.2) 100%)',
-      },
-      backdropBlur: {
-        xs: '2px',
-      },
-      // 全局卡片间距
-      gap: {
-        'card': '6px',
-      },
-      spacing: {
-        'card-gap': '6px',
+        'button': '0 4px 14px rgba(255, 107, 107, 0.25)',
       },
       // 卡片高度变体
       aspectRatio: {
@@ -104,6 +107,7 @@ export default {
         'card-3': '3/4.5',
         'card-4': '4/4.5',
       },
+      // 动画
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'shimmer': 'shimmer 2s linear infinite',
@@ -113,6 +117,15 @@ export default {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+      },
+      // Z-Index
+      zIndex: {
+        'base': '1',
+        'dropdown': '10',
+        'sticky': '40',
+        'header': '50',
+        'modal': '100',
+        'toast': '200',
       },
     },
   },

@@ -3,15 +3,34 @@
 @tailwind utilities;
 
 @layer base {
-  /* CSS 变量 - 支持主题切换 */
+  /* ============================================
+   * CSS 变量 - 全局设计规范
+   * ============================================ */
   :root {
-    /* Safe area */
+    /* === Safe Area === */
     --safe-area-inset-top: env(safe-area-inset-top, 0px);
     --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
     --safe-area-inset-left: env(safe-area-inset-left, 0px);
     --safe-area-inset-right: env(safe-area-inset-right, 0px);
 
-    /* Light mode colors */
+    /* === 布局尺寸 === */
+    --header-height: 44px;              /* 标准 header 高度 (h-11) */
+    --header-height-detail: 56px;       /* 详情页 header 高度 (h-14) */
+    --tabbar-height: 56px;              /* 底部 TabBar 高度 */
+    --bottom-action-height: 76px;       /* 底部操作栏高度 */
+    --content-max-width: 448px;         /* 内容最大宽度 (max-w-md) */
+
+    /* === 间距规范 === */
+    --spacing-page-x: 8px;              /* 页面水平内边距 (px-2) - 统一边距 */
+    --spacing-section-x: 16px;          /* 区块内边距 (px-4) - 卡片/表单内部 */
+    --spacing-card-gap: 6px;            /* 卡片间距 */
+    --spacing-section: 16px;            /* 区块间距 */
+
+    /* === 底部安全区 === */
+    --page-bottom-padding: 128px;       /* 有 TabBar 的页面底部 padding (pb-32) */
+    --page-bottom-padding-action: 144px; /* 有底部操作栏的页面底部 padding (pb-36) */
+
+    /* === 颜色 - 亮色模式 === */
     --color-bg: #FFFAF8;
     --color-surface: #FFFFFF;
     --color-surface-elevated: #FFFFFF;
@@ -21,14 +40,35 @@
     --color-border: rgba(0, 0, 0, 0.06);
     --color-border-light: rgba(0, 0, 0, 0.03);
 
-    /* Primary gradient - warm coral */
+    /* === 主题色 === */
     --color-primary: #FF6B6B;
     --color-primary-soft: rgba(255, 107, 107, 0.1);
     --color-peach: #FFAB91;
-    --color-gradient: #FF6B6B;
+
+    /* === 圆角规范 === */
+    --radius-sm: 4px;                   /* 小圆角 - Badge, 标签 */
+    --radius-md: 8px;                   /* 中圆角 - 卡片, 输入框 */
+    --radius-lg: 12px;                  /* 大圆角 - 模态框 */
+    --radius-full: 9999px;              /* 全圆角 - 按钮, 头像 */
+
+    /* === 字体规范 === */
+    --font-size-xs: 10px;               /* 辅助文字 */
+    --font-size-sm: 12px;               /* 标签, 说明 */
+    --font-size-base: 14px;             /* 正文 */
+    --font-size-md: 15px;               /* Tab 文字 */
+    --font-size-lg: 18px;               /* 页面标题 */
+    --font-size-xl: 20px;               /* 大标题 */
+
+    /* === Z-Index 层级 === */
+    --z-base: 1;
+    --z-dropdown: 10;
+    --z-sticky: 40;
+    --z-header: 50;
+    --z-modal: 100;
+    --z-toast: 200;
   }
 
-  /* Dark mode colors */
+  /* === 深色模式 === */
   .dark {
     --color-bg: #1A1A1A;
     --color-surface: #262626;
@@ -54,7 +94,6 @@
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  /* Selection highlight */
   ::selection {
     background-color: rgba(255, 107, 107, 0.3);
     color: inherit;
@@ -62,7 +101,210 @@
 }
 
 @layer components {
-  /* Material Icons */
+  /* ============================================
+   * Header 组件规范
+   * ============================================ */
+
+  /* 主页面 Header (灵感、一起、衣柜、我的) */
+  .header-main {
+    @apply sticky top-0 z-50 bg-white/90 backdrop-blur-xl;
+  }
+
+  .header-main-inner {
+    @apply flex items-center px-4 justify-between max-w-md mx-auto;
+    height: var(--header-height);
+  }
+
+  /* 详情页 Header (有返回按钮) */
+  .header-detail {
+    @apply sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100;
+  }
+
+  .header-detail-inner {
+    @apply flex items-center px-4 justify-between max-w-md mx-auto;
+    height: var(--header-height-detail);
+  }
+
+  /* Header 标题 */
+  .header-title {
+    @apply text-lg font-bold;
+  }
+
+  .header-title-center {
+    @apply text-[17px] font-bold tracking-tight flex-1 text-center;
+  }
+
+  /* Header 按钮 */
+  .header-btn {
+    @apply size-10 flex items-center justify-center;
+  }
+
+  .header-btn-start {
+    @apply size-10 flex items-center justify-start;
+  }
+
+  .header-btn-end {
+    @apply size-10 flex items-center justify-end;
+  }
+
+  /* ============================================
+   * 内容区域规范
+   * ============================================ */
+
+  /* 基础内容区 - 统一使用 px-2 边距 */
+  .content-base {
+    @apply max-w-md mx-auto px-2;
+    padding-bottom: var(--page-bottom-padding);
+  }
+
+  /* 瀑布流页面内容 (Explore, Closet, Profile 卡片区) */
+  .content-masonry {
+    @apply max-w-md mx-auto px-2;
+    padding-bottom: var(--page-bottom-padding);
+  }
+
+  /* 普通页面内容 - 也用 px-2，内部区块用 px-2 补齐到 px-4 */
+  .content-page {
+    @apply max-w-md mx-auto px-2;
+    padding-bottom: var(--page-bottom-padding);
+  }
+
+  /* 详情页内容 (有底部操作栏) */
+  .content-detail {
+    @apply max-w-md mx-auto px-2;
+    padding-bottom: var(--page-bottom-padding-action);
+  }
+
+  /* 区块内边距 - 在 px-2 基础上补齐到 px-4 效果 */
+  .section-inset {
+    @apply px-2;
+  }
+
+  /* ============================================
+   * 底部操作栏规范
+   * ============================================ */
+  .bottom-action {
+    @apply fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50;
+  }
+
+  .bottom-action-inner {
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+
+  /* ============================================
+   * Tab 组件规范
+   * ============================================ */
+
+  /* Header 内的 Tab (关注/最近/热门) */
+  .tabs-header {
+    @apply flex items-center gap-3;
+  }
+
+  .tab-header {
+    @apply text-[13px] pb-0.5 border-b transition-colors;
+  }
+
+  .tab-header-active {
+    @apply font-medium text-gray-900 border-primary;
+  }
+
+  .tab-header-inactive {
+    @apply text-gray-400 border-transparent;
+  }
+
+  /* 内容区 Tab (Profile 页的 Tab) */
+  .tabs-content {
+    @apply sticky z-40 bg-white border-b border-gray-100;
+    top: var(--header-height-detail);
+  }
+
+  .tabs-content-inner {
+    @apply flex justify-center gap-6 max-w-md mx-auto;
+  }
+
+  .tab-content {
+    @apply py-2.5 text-[14px] relative transition-colors;
+  }
+
+  .tab-content-active {
+    @apply font-bold text-gray-900;
+  }
+
+  .tab-content-inactive {
+    @apply font-medium text-gray-400;
+  }
+
+  /* Tab 下划线指示器 */
+  .tab-indicator {
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-primary rounded-full;
+  }
+
+  /* ============================================
+   * 风格标签规范
+   * ============================================ */
+  .style-tags {
+    @apply flex overflow-x-auto py-2.5 gap-2 hide-scrollbar;
+  }
+
+  .style-tag {
+    @apply whitespace-nowrap px-3 py-1 rounded-full text-[12px] transition-all;
+  }
+
+  .style-tag-active {
+    @apply bg-primary text-white font-medium;
+  }
+
+  .style-tag-inactive {
+    @apply bg-gray-100 text-gray-600;
+  }
+
+  /* ============================================
+   * 卡片规范
+   * ============================================ */
+  .card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-interactive {
+    @apply cursor-pointer active:scale-[0.98] transition-transform;
+  }
+
+  /* 瀑布流卡片 */
+  .card-masonry {
+    @apply bg-white border border-gray-200 rounded overflow-hidden;
+  }
+
+  /* ============================================
+   * 按钮规范
+   * ============================================ */
+  .btn-primary {
+    @apply bg-primary text-white rounded font-bold;
+    box-shadow: 0 4px 14px rgba(255, 107, 107, 0.25);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-700 rounded font-medium;
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+
+  /* 圆角按钮 */
+  .btn-pill {
+    @apply rounded-full;
+  }
+
+  /* ============================================
+   * Material Icons
+   * ============================================ */
   .material-symbols-outlined {
     font-variation-settings: 'wght' 200, 'opsz' 24, 'FILL' 0;
     font-size: 24px;
@@ -72,7 +314,9 @@
     font-variation-settings: 'wght' 400, 'opsz' 24, 'FILL' 1;
   }
 
-  /* Hide scrollbar */
+  /* ============================================
+   * 工具类
+   * ============================================ */
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -81,169 +325,18 @@
     scrollbar-width: none;
   }
 
-  /* Glass effect - light mode */
+  /* Glass 效果 */
   .glass {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
 
-  /* Glass effect - dark mode */
   .dark .glass {
     background: rgba(26, 26, 26, 0.85);
   }
 
-  /* Gradient background */
-  .bg-dream {
-    background: var(--color-gradient);
-  }
-
-  /* Soft gradient background */
-  .bg-dream-soft {
-    background: linear-gradient(135deg, rgba(255, 107, 107, 0.08) 0%, rgba(255, 171, 145, 0.08) 100%);
-  }
-
-  .dark .bg-dream-soft {
-    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 171, 145, 0.15) 100%);
-  }
-
-  /* Primary button */
-  .btn-primary {
-    @apply bg-primary text-white rounded-full font-bold;
-    box-shadow: 0 4px 14px rgba(255, 107, 107, 0.3);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .btn-primary:active {
-    transform: scale(0.98);
-  }
-
-  .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-  }
-
-  /* Secondary button - light mode */
-  .btn-secondary {
-    @apply rounded-full font-bold transition-all;
-    background: rgba(255, 107, 107, 0.08);
-    color: #FF6B6B;
-    border: 1px solid rgba(255, 107, 107, 0.15);
-  }
-
-  .btn-secondary:active {
-    transform: scale(0.98);
-  }
-
-  /* Secondary button - dark mode */
-  .dark .btn-secondary {
-    background: rgba(255, 107, 107, 0.15);
-    border-color: rgba(255, 107, 107, 0.25);
-  }
-
-  /* Ghost button */
-  .btn-ghost {
-    @apply rounded-full font-bold transition-all;
-    background: transparent;
-    color: var(--color-text-primary);
-  }
-
-  .btn-ghost:hover {
-    background: var(--color-primary-soft);
-  }
-
-  .btn-ghost:active {
-    transform: scale(0.98);
-  }
-
-  /* Card - light mode */
-  .card {
-    background: var(--color-surface);
-    border-radius: 1.5rem;
-    border: 1px solid var(--color-border-light);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: box-shadow 0.2s ease, transform 0.15s ease;
-  }
-
-  .card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  /* Card - dark mode */
-  .dark .card {
-    box-shadow: none;
-  }
-
-  .dark .card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Interactive card */
-  .card-interactive {
-    cursor: pointer;
-  }
-
-  .card-interactive:active {
-    transform: scale(0.98);
-  }
-
-  /* Tab bar safe area */
-  .tab-bar-padding {
-    padding-bottom: calc(74px + var(--safe-area-inset-bottom));
-  }
-
-  /* Luka avatar gradient */
-  .luka-avatar {
-    @apply rounded-full flex items-center justify-center;
-    background: var(--color-gradient);
-  }
-
-  /* Status badges */
-  .status-wishing {
-    @apply text-primary bg-primary/10;
-  }
-
-  .status-making {
-    @apply text-amber-500 bg-amber-50;
-  }
-
-  .dark .status-making {
-    @apply bg-amber-500/15;
-  }
-
-  .status-shipping {
-    @apply text-sky-500 bg-sky-50;
-  }
-
-  .dark .status-shipping {
-    @apply bg-sky-500/15;
-  }
-
-  .status-owned {
-    @apply text-emerald-500 bg-emerald-50;
-  }
-
-  .dark .status-owned {
-    @apply bg-emerald-500/15;
-  }
-
-  /* Shimmer loading effect */
-  .shimmer {
-    background: linear-gradient(
-      90deg,
-      var(--color-surface) 0%,
-      var(--color-surface-elevated) 50%,
-      var(--color-surface) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s ease-in-out infinite;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-
-  /* Input field */
+  /* 输入框 */
   .input-field {
     @apply w-full rounded px-4 py-3 text-sm outline-none transition-all;
     background: var(--color-surface);
@@ -260,35 +353,65 @@
     color: var(--color-text-muted);
   }
 
-  .dark .input-field {
-    background: rgba(255, 255, 255, 0.05);
+  /* 评论输入框 */
+  .input-comment {
+    @apply flex-1 h-11 bg-gray-100 rounded-full px-4 flex items-center;
   }
 
-  .dark .input-field:focus {
-    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+  /* ============================================
+   * 状态标签
+   * ============================================ */
+  .status-wishing {
+    @apply text-white bg-primary;
+  }
+
+  .status-making {
+    @apply text-white bg-amber-500;
+  }
+
+  .status-shipping {
+    @apply text-white bg-sky-500;
+  }
+
+  .status-owned {
+    @apply text-white bg-emerald-500;
+  }
+
+  /* ============================================
+   * 动画
+   * ============================================ */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--color-surface) 0%,
+      var(--color-surface-elevated) 50%,
+      var(--color-surface) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 }
 
 @layer utilities {
-  /* iOS-like bounce scroll */
+  /* iOS 弹性滚动 */
   .scroll-bounce {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Text gradient */
+  /* 文字渐变 */
   .text-gradient {
-    background: var(--color-gradient);
+    background: var(--color-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Ring glow effect */
-  .ring-glow {
-    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2);
-  }
-
-  /* Transition utilities */
+  /* 主题过渡 */
   .transition-theme {
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }

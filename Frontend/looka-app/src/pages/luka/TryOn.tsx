@@ -31,21 +31,21 @@ export function TryOnPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
-        <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
+      <div className="header-detail">
+        <div className="header-detail-inner">
+          <button onClick={() => navigate(-1)} className="header-btn-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-600" />
           </button>
-          <h1 className="text-[17px] font-bold">AI 试穿</h1>
-          <button className="size-10 flex items-center justify-end">
+          <h1 className="header-title-center">AI 试穿</h1>
+          <button className="header-btn-end">
             <Icon name="share" size={22} className="text-gray-600" />
           </button>
         </div>
       </div>
 
-      <main className="max-w-md mx-auto pb-40">
+      <main className="content-detail">
         {/* 对比滑块 */}
-        <div className="px-4 pt-2">
+        <div className="pt-2">
           <div
             ref={sliderRef}
             className="relative aspect-[3/4] rounded overflow-hidden cursor-ew-resize bg-gray-100"
@@ -104,7 +104,7 @@ export function TryOnPage() {
         </div>
 
         {/* 衣服信息 */}
-        <div className="px-4 pt-4">
+        <div className="pt-4">
           <h2 className="text-xl font-bold">星空渐变长裙</h2>
           <p className="text-sm text-gray-500 mt-1">"想要一条像银河一样的裙子"</p>
 
@@ -117,7 +117,7 @@ export function TryOnPage() {
         </div>
 
         {/* Luka 的建议 */}
-        <div className="px-4 mt-4">
+        <div className="mt-4">
           <div className="bg-primary/5 rounded p-4 border border-primary/10">
             <div className="flex items-start gap-3">
               <LukaAvatar size="sm" />
@@ -132,7 +132,7 @@ export function TryOnPage() {
         </div>
 
         {/* 愿望进度 - 核心信息 */}
-        <div className="px-4 mt-4">
+        <div className="mt-4">
           <Card className="bg-primary/5 border-primary/10">
             <div className="text-center mb-4">
               <p className="text-gray-500 text-sm">这个愿望</p>
@@ -172,7 +172,7 @@ export function TryOnPage() {
         </div>
 
         {/* 它会怎样来到你身边 */}
-        <div className="px-4 mt-4">
+        <div className="mt-4">
           <Card>
             <h3 className="font-bold mb-3 flex items-center gap-2">
               <Icon name="auto_awesome" size={20} className="text-primary" />
@@ -217,9 +217,9 @@ export function TryOnPage() {
         </div>
       </main>
 
-      {/* 底部操作 - 我也想要 */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50">
-        <div style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
+      {/* 底部操作栏 */}
+      <div className="bottom-action">
+        <div className="bottom-action-inner">
           <button className="w-full h-12 bg-primary text-white text-[15px] font-bold rounded shadow-md shadow-primary/25 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
             <Icon name="favorite" size={18} filled />
             我也想要

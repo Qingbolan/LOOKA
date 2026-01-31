@@ -17,6 +17,22 @@ export function LukaChatPage() {
   const mode = searchParams.get('mode') || 'describe'
   const historyId = searchParams.get('history')
   const initialQuery = searchParams.get('q')
+  const hasImage = searchParams.get('hasImage') === 'true'
+
+  // 检查是否有从 TabBar 传来的灵感图片
+  const getInspirationImage = (): { url: string; name: string } | null => {
+    if (hasImage) {
+      const imageUrl = sessionStorage.getItem('inspiration_image')
+      const imageName = sessionStorage.getItem('inspiration_image_name')
+      if (imageUrl) {
+        // 读取后清除，避免重复使用
+        sessionStorage.removeItem('inspiration_image')
+        sessionStorage.removeItem('inspiration_image_name')
+        return { url: imageUrl, name: imageName || '灵感图片' }
+      }
+    }
+    return null
+  }
 
   // 根据是否有 history 参数决定初始消息
   const getInitialMessages = (): Message[] => {
@@ -24,16 +40,29 @@ export function LukaChatPage() {
       return historyConversations[historyId]
     }
 
+    const inspirationImage = getInspirationImage()
+
     const messages: Message[] = [
       {
         id: '1',
         from: 'luka',
-        content: modeGreetings[mode] || modeGreetings.default,
+        content: inspirationImage
+          ? '我看到你上传了一张灵感图！告诉我你喜欢这张图的哪些元素，我来帮你设计～'
+          : (modeGreetings[mode] || modeGreetings.default),
       },
     ]
 
+    // 如果有灵感图片，添加用户消息
+    if (inspirationImage) {
+      messages.push({
+        id: '2',
+        from: 'user',
+        content: '这是我的灵感图片',
+        image: inspirationImage.url,
+      })
+    }
     // 如果有初始查询，添加用户消息
-    if (initialQuery) {
+    else if (initialQuery) {
       messages.push({
         id: '2',
         from: 'user',

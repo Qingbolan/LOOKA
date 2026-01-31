@@ -123,19 +123,24 @@ export function ExplorePage() {
           columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
           gap={6}
         >
-          {dreams.map((dream) => (
+          {dreams.map((dream, index) => {
+            // 高度噪声：不同卡片不同比例
+            const aspectRatios = ['aspect-card-1', 'aspect-card-2', 'aspect-card-3', 'aspect-card-4']
+            const aspectRatio = aspectRatios[index % aspectRatios.length]
+
+            return (
             <div
               key={dream.id}
               onClick={() => navigate(`/group-buy/${dream.id}`)}
-              className="bg-white rounded-lg overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
+              className="bg-white border border-gray-200 rounded overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
             >
               {/* 图片区域 */}
-              <div className="relative aspect-[3/4]">
+              <div className={`relative ${aspectRatio}`}>
                 <ImageSwap
                   mainImage={dream.modelImage}
                   thumbImage={dream.clothImage}
                   alt={dream.name}
-                  className="w-full h-full rounded-t-lg overflow-hidden"
+                  className="w-full h-full rounded-t-sm overflow-hidden"
                   thumbSize="md"
                 />
                 {/* 状态标签 */}
@@ -153,7 +158,7 @@ export function ExplorePage() {
                     <img
                       src={dream.dreamer.avatar}
                       alt={dream.dreamer.name}
-                      className="w-4 h-4 rounded-full object-cover flex-shrink-0"
+                      className="w-4 h-4 object-cover flex-shrink-0"
                     />
                     <span className="text-[11px] text-gray-500 truncate">{dream.dreamer.name}</span>
                   </div>
@@ -164,7 +169,7 @@ export function ExplorePage() {
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </CardMasonry>
 
         {/* 底部提示 */}

@@ -223,7 +223,7 @@ export function ClothDetailPage() {
                 onClick={() => navigate(`/closet/${item.id}`)}
                 className="flex-1 cursor-pointer"
               >
-                <div className="aspect-square rounded-xl overflow-hidden bg-gray-100 mb-1">
+                <div className="aspect-square rounded overflow-hidden bg-gray-100 mb-1">
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-gray-600 truncate">{item.name}</p>
@@ -231,7 +231,7 @@ export function ClothDetailPage() {
             ))}
             <div
               onClick={() => navigate('/')}
-              className="flex-1 aspect-square rounded-xl bg-gray-50 flex flex-col items-center justify-center cursor-pointer"
+              className="flex-1 aspect-square rounded bg-gray-50 flex flex-col items-center justify-center cursor-pointer"
             >
               <Icon name="search" size={20} className="text-gray-300 mb-1" />
               <p className="text-[10px] text-gray-400">找更多</p>

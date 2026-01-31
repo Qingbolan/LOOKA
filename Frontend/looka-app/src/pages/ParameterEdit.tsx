@@ -92,7 +92,7 @@ export function ParameterEditPage() {
             />
             {/* Rendering Indicator */}
             <div className="absolute bottom-4 left-4 right-4">
-              <div className="bg-black/20 backdrop-blur-md rounded-2xl p-3 border border-white/20 flex items-center justify-between">
+              <div className="bg-black/20 backdrop-blur-md rounded p-3 border border-white/20 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   <span className="text-white text-xs font-medium">实时渲染中...</span>

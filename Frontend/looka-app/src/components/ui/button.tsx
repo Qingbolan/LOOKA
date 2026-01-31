@@ -29,7 +29,7 @@ const buttonVariants = cva(
         toggle:
           'bg-muted hover:bg-muted-hover text-muted-foreground data-[state=on]:bg-primary/10 data-[state=on]:text-primary data-[state=on]:border-primary/20 border border-transparent data-[state=on]:border',
         sidebar:
-          'w-full justify-start gap-3 px-3 py-2.5 rounded-lg text-sidebar-foreground hover:bg-sidebar-accent',
+          'w-full justify-start gap-3 px-3 py-2.5 rounded text-sidebar-foreground hover:bg-sidebar-accent',
         // 颜色选择器专用变体
         'color-swatch':
           'relative border-2 border-transparent hover:scale-110 active:scale-95 data-[state=on]:border-foreground data-[state=on]:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',

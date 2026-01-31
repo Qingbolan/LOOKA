@@ -173,7 +173,7 @@ export function ThemeToggle({ collapsed = false }: ThemeToggleProps) {
     <button
       onClick={onClick}
       className={cn(
-        "relative flex-1 flex items-center justify-center gap-2 py-2 rounded-xl overflow-hidden fluent-transition",
+        "relative flex-1 flex items-center justify-center gap-2 py-2 rounded overflow-hidden fluent-transition",
         isActive
           ? isLight
             ? "bg-white/70 border border-black/[0.08] shadow-sm text-primary"

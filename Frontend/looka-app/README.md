@@ -120,9 +120,9 @@ npm run tauri:build
 
 ### 圆角
 
-- 卡片: `24px` (`rounded-3xl`)
+- 卡片: `24px` (`rounded`)
 - 按钮: `full` (`rounded-full`)
-- 输入框: `16px` (`rounded-2xl`)
+- 输入框: `16px` (`rounded`)
 
 ## 产品模块
 

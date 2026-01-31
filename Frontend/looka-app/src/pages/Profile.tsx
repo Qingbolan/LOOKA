@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, ImageSwap } from '@/components'
+import { Layout, Icon, ImageSwap, CardMasonry } from '@/components'
 
 const profileTabs = ['我发起的', '想要的', '分享']
 
@@ -112,7 +112,7 @@ export function ProfilePage() {
         <div className="px-4 mb-4">
           <div
             onClick={() => navigate('/body-profile')}
-            className="bg-primary/5 rounded-2xl p-4 flex items-center justify-between border border-primary/10 cursor-pointer active:scale-[0.99] transition-transform"
+            className="bg-primary/5 rounded p-4 flex items-center justify-between border border-primary/10 cursor-pointer active:scale-[0.99] transition-transform"
           >
             <div className="flex items-center gap-3">
               <div className="size-10 rounded-full bg-primary flex items-center justify-center text-white">
@@ -147,57 +147,64 @@ export function ProfilePage() {
         </div>
 
         {/* Wishes Grid */}
-        <div className="p-4 grid grid-cols-2 gap-3">
-          {myWishes.map((wish) => (
-            <div
-              key={wish.id}
-              onClick={() => navigate(`/group-buy/${wish.id}`)}
-              className="bg-white rounded-lg overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
-            >
-              {/* 图片区域 */}
-              <div className="relative aspect-[3/4]">
-                <ImageSwap
-                  mainImage={wish.modelImage}
-                  thumbImage={wish.clothImage}
-                  alt={wish.name}
-                  className="w-full h-full"
-                  thumbSize="md"
-                />
-                {/* 右下角想要人数 */}
-                <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1 z-10">
-                  <Icon name="favorite" size={12} className="text-primary" filled />
-                  <span className="text-white text-[10px] font-medium">{wish.wantCount}</span>
-                </div>
-                {/* 状态标签 */}
-                <div className="absolute top-1.5 left-1.5 z-10">
-                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${statusColor[wish.status]}`}>
-                    {statusText[wish.status]}
-                  </span>
-                </div>
-              </div>
-              {/* 信息 */}
-              <div className="p-2.5">
-                <p className="text-[13px] font-bold line-clamp-1">{wish.name}</p>
-                <div className="flex items-center gap-1.5 mt-1.5">
-                  <img
-                    src={userAvatar}
-                    alt=""
-                    className="w-4 h-4 rounded-full object-cover"
-                  />
-                  <span className="text-[10px] text-gray-400">我发起的</span>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="px-2 py-4">
+          <CardMasonry columns={{ default: 2 }} gap={6}>
+            {myWishes.map((wish, index) => {
+              const aspectRatios = ['aspect-card-1', 'aspect-card-2', 'aspect-card-3', 'aspect-card-4']
+              const aspectRatio = aspectRatios[index % aspectRatios.length]
 
-          {/* 添加新愿望 */}
-          <div
-            onClick={() => navigate('/luka')}
-            className="aspect-[3/4] bg-gray-50 rounded-2xl flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200 active:scale-[0.98] transition-transform"
-          >
-            <Icon name="add" size={32} className="text-gray-300 mb-2" />
-            <p className="text-xs text-gray-400">发起新设计</p>
-          </div>
+              return (
+                <div
+                  key={wish.id}
+                  onClick={() => navigate(`/group-buy/${wish.id}`)}
+                  className="bg-white rounded overflow-hidden cursor-pointer active:scale-[0.98] transition-transform border border-gray-200"
+                >
+                  {/* 图片区域 */}
+                  <div className={`relative ${aspectRatio}`}>
+                    <ImageSwap
+                      mainImage={wish.modelImage}
+                      thumbImage={wish.clothImage}
+                      alt={wish.name}
+                      className="w-full h-full"
+                      thumbSize="md"
+                    />
+                    {/* 右下角想要人数 */}
+                    <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1 z-10">
+                      <Icon name="favorite" size={12} className="text-primary" filled />
+                      <span className="text-white text-[10px] font-medium">{wish.wantCount}</span>
+                    </div>
+                    {/* 状态标签 */}
+                    <div className="absolute top-1.5 left-1.5 z-10">
+                      <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${statusColor[wish.status]}`}>
+                        {statusText[wish.status]}
+                      </span>
+                    </div>
+                  </div>
+                  {/* 信息 */}
+                  <div className="p-2.5">
+                    <p className="text-[13px] font-bold line-clamp-1">{wish.name}</p>
+                    <div className="flex items-center gap-1.5 mt-1.5">
+                      <img
+                        src={userAvatar}
+                        alt=""
+                        className="w-4 h-4 rounded-full object-cover"
+                      />
+                      <span className="text-[10px] text-gray-400">我发起的</span>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+
+            {/* 添加新愿望 */}
+            <div
+              onClick={() => navigate('/luka')}
+              className="aspect-card-1 bg-gray-50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200 active:scale-[0.98] transition-transform"
+            >
+              <Icon name="add" size={32} className="text-gray-300 mb-2" />
+              <p className="text-xs text-gray-400">发起新设计</p>
+            </div>
+          </CardMasonry>
         </div>
       </div>
     </Layout>

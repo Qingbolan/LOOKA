@@ -90,6 +90,20 @@ export default {
       backdropBlur: {
         xs: '2px',
       },
+      // 全局卡片间距
+      gap: {
+        'card': '6px',
+      },
+      spacing: {
+        'card-gap': '6px',
+      },
+      // 卡片高度变体
+      aspectRatio: {
+        'card-1': '3/4',
+        'card-2': '4/5',
+        'card-3': '3/4.5',
+        'card-4': '4/4.5',
+      },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'shimmer': 'shimmer 2s linear infinite',

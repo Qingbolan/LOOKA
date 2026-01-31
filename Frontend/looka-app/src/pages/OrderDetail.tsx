@@ -58,7 +58,7 @@ export function OrderDetailPage() {
           <Card>
             <div className="flex gap-4">
               <div
-                className="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-2xl border border-gray-50 flex-shrink-0"
+                className="w-24 h-24 bg-center bg-no-repeat bg-cover rounded border border-gray-50 flex-shrink-0"
                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200)' }}
               />
               <div className="flex flex-col justify-between py-1">
@@ -140,7 +140,7 @@ export function OrderDetailPage() {
                       {step.images.map((img, imgIndex) => (
                         <div
                           key={imgIndex}
-                          className="w-14 h-14 rounded-xl bg-cover bg-center border border-gray-100"
+                          className="w-14 h-14 rounded bg-cover bg-center border border-gray-100"
                           style={{ backgroundImage: `url(${img})` }}
                         />
                       ))}

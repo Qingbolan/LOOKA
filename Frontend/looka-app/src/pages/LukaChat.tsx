@@ -144,13 +144,13 @@ export function LukaChatPage() {
 
               <div className="max-w-[80%]">
                 {message.image && (
-                  <div className="mb-2 rounded-2xl overflow-hidden">
+                  <div className="mb-2 rounded overflow-hidden">
                     <img src={message.image} alt="" className="w-48 h-48 object-cover" />
                   </div>
                 )}
 
                 <div
-                  className={`px-4 py-3 rounded-2xl ${
+                  className={`px-4 py-3 rounded ${
                     message.from === 'user'
                       ? 'bg-primary text-white rounded-br-sm'
                       : 'bg-white text-gray-800 rounded-bl-sm shadow-sm border border-gray-100'
@@ -186,7 +186,7 @@ export function LukaChatPage() {
                       <button
                         key={design.id}
                         onClick={() => handleDesignClick(design.id)}
-                        className="w-24 aspect-[3/4] rounded-xl overflow-hidden ring-2 ring-transparent hover:ring-primary transition-all shadow-sm"
+                        className="w-24 aspect-[3/4] rounded overflow-hidden ring-2 ring-transparent hover:ring-primary transition-all shadow-sm"
                       >
                         <img src={design.image} alt="" className="w-full h-full object-cover" />
                       </button>
@@ -200,7 +200,7 @@ export function LukaChatPage() {
           {isTyping && (
             <div className="flex items-start">
               <LukaAvatar size="sm" className="mr-2" />
-              <div className="bg-white px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm border border-gray-100">
+              <div className="bg-white px-4 py-3 rounded rounded-bl-sm shadow-sm border border-gray-100">
                 <div className="flex gap-1">
                   <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -225,7 +225,7 @@ export function LukaChatPage() {
               <Icon name="add_photo_alternate" size={20} className="text-gray-500" />
             </button>
 
-            <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2">
+            <div className="flex-1 bg-gray-100 rounded px-4 py-2">
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}

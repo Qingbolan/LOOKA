@@ -70,7 +70,7 @@ export function DesignSchemePage() {
           {designs.map((design) => (
             <div
               key={design.id}
-              className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col"
+              className="bg-white rounded overflow-hidden shadow-sm border border-gray-100 flex flex-col"
             >
               <div
                 className="relative aspect-[3/4] cursor-pointer"
@@ -111,13 +111,13 @@ export function DesignSchemePage() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => navigate('/parameter-edit')}
-                    className="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-[11px] font-bold rounded-lg hover:bg-gray-100 transition-colors active:scale-95"
+                    className="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-[11px] font-bold rounded hover:bg-gray-100 transition-colors active:scale-95"
                   >
                     编辑参数
                   </button>
                   <button
                     onClick={() => handleSave(design.id)}
-                    className="flex-1 py-1.5 bg-primary text-white text-[11px] font-bold rounded-lg shadow-sm shadow-primary/20 active:scale-95 transition-transform"
+                    className="flex-1 py-1.5 bg-primary text-white text-[11px] font-bold rounded shadow-sm shadow-primary/20 active:scale-95 transition-transform"
                   >
                     {savingId === design.id ? '已保存' : '保存衣柜'}
                   </button>

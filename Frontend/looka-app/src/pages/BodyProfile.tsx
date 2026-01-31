@@ -50,7 +50,7 @@ export function BodyProfilePage() {
           </div>
 
           {/* 身材类型 */}
-          <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10 mb-4">
+          <div className="bg-primary/5 rounded p-4 border border-primary/10 mb-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full bg-primary flex items-center justify-center">
@@ -70,7 +70,7 @@ export function BodyProfilePage() {
         <div className="px-4">
           <h3 className="text-sm font-bold text-gray-400 mb-3">身体尺寸</h3>
 
-          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div className="bg-white rounded border border-gray-100 overflow-hidden">
             <div className="flex border-b border-gray-50">
               <div className="flex-1 p-4 text-center border-r border-gray-50">
                 <p className="text-2xl font-bold">{bodyData.height}</p>
@@ -108,14 +108,14 @@ export function BodyProfilePage() {
           <h3 className="text-sm font-bold text-gray-400 mb-3">AI 建模照片</h3>
 
           <div className="flex gap-3">
-            <div className="w-24 aspect-[3/4] rounded-xl overflow-hidden bg-gray-100">
+            <div className="w-24 aspect-[3/4] rounded overflow-hidden bg-gray-100">
               <img
                 src={bodyData.photoUrl}
                 alt=""
                 className="w-full h-full object-cover"
               />
             </div>
-            <button className="w-24 aspect-[3/4] rounded-xl bg-gray-50 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center">
+            <button className="w-24 aspect-[3/4] rounded bg-gray-50 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center">
               <Icon name="add_a_photo" size={24} className="text-gray-300 mb-1" />
               <p className="text-[10px] text-gray-400">重新拍摄</p>
             </button>
@@ -126,7 +126,7 @@ export function BodyProfilePage() {
         <div className="px-4 mt-6">
           <h3 className="text-sm font-bold text-gray-400 mb-3">设置</h3>
 
-          <div className="bg-white rounded-2xl border border-gray-100 divide-y divide-gray-50">
+          <div className="bg-white rounded border border-gray-100 divide-y divide-gray-50">
             <button className="w-full flex items-center justify-between p-4">
               <div className="flex items-center gap-3">
                 <Icon name="straighten" size={20} className="text-gray-400" />

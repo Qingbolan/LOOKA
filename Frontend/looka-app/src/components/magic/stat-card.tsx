@@ -30,7 +30,7 @@ export function StatCard({ title, value, icon: Icon, trend, delay = 0, className
       <Card className={cn("group hover:shadow-xl hover:scale-[1.02] fluent-transition", className)}>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative">
           <CardTitle className="text-sm font-medium text-muted-foreground">{title}</CardTitle>
-          <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+          <div className="h-10 w-10 rounded bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
             <Icon className="h-5 w-5 text-primary" />
           </div>
         </CardHeader>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, LukaAvatar } from '@/components'
+import { Layout, Icon, LukaAvatar, CardMasonry } from '@/components'
 
 // 分类
 const categories = ['全部', '上装', '下装', '裙装', '外套', '配饰']
@@ -87,7 +87,7 @@ export function ClosetPage() {
       <div className="max-w-md mx-auto pb-32">
         {/* Luka 今日推荐 */}
         <div className="px-4 mb-4">
-          <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
+          <div className="bg-primary/5 rounded p-4 border border-primary/10">
             <div className="flex items-center gap-2 mb-3">
               <LukaAvatar size="sm" />
               <div>
@@ -102,13 +102,13 @@ export function ClosetPage() {
                   onClick={() => navigate(`/closet/${item.id}`)}
                   className="flex-1 cursor-pointer"
                 >
-                  <div className="aspect-square rounded-xl overflow-hidden bg-white mb-1">
+                  <div className="aspect-square rounded overflow-hidden bg-white mb-1">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                   </div>
                   <p className="text-xs text-gray-600 truncate">{item.name}</p>
                 </div>
               ))}
-              <div className="flex-1 aspect-square rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center bg-white/50">
+              <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center bg-white/50">
                 <div className="text-center">
                   <Icon name="add" size={20} className="text-gray-300 mx-auto" />
                   <p className="text-[10px] text-gray-400 mt-1">添加</p>
@@ -138,45 +138,52 @@ export function ClosetPage() {
         </div>
 
         {/* 衣服网格 */}
-        <div className="px-4 grid grid-cols-3 gap-3">
-          {filteredClothes.map((cloth) => (
-            <div
-              key={cloth.id}
-              onClick={() => navigate(`/closet/${cloth.id}`)}
-              className="relative aspect-[3/4] cursor-pointer group bg-gray-100 rounded-xl overflow-hidden"
-            >
-              <img
-                src={cloth.image}
-                alt={cloth.name}
-                className="w-full h-full object-cover"
-              />
+        <div className="px-2">
+          <CardMasonry columns={{ default: 3 }} gap={6}>
+            {filteredClothes.map((cloth, index) => {
+              const aspectRatios = ['aspect-card-1', 'aspect-card-2', 'aspect-card-3', 'aspect-card-4']
+              const aspectRatio = aspectRatios[index % aspectRatios.length]
 
-              {/* 状态角标 */}
-              {cloth.status !== 'owned' && statusIcons[cloth.status] && (
-                <div className={`absolute top-2 left-2 w-5 h-5 ${statusIcons[cloth.status].color} rounded-full flex items-center justify-center`}>
-                  <Icon name={statusIcons[cloth.status].icon} size={cloth.status === 'shipping' ? 10 : 12} className="text-white" filled={cloth.status === 'wanting'} />
+              return (
+                <div
+                  key={cloth.id}
+                  onClick={() => navigate(`/closet/${cloth.id}`)}
+                  className={`relative ${aspectRatio} cursor-pointer group bg-gray-100 rounded overflow-hidden`}
+                >
+                  <img
+                    src={cloth.image}
+                    alt={cloth.name}
+                    className="w-full h-full object-cover"
+                  />
+
+                  {/* 状态角标 */}
+                  {cloth.status !== 'owned' && statusIcons[cloth.status] && (
+                    <div className={`absolute top-2 left-2 w-5 h-5 ${statusIcons[cloth.status].color} rounded-full flex items-center justify-center`}>
+                      <Icon name={statusIcons[cloth.status].icon} size={cloth.status === 'shipping' ? 10 : 12} className="text-white" filled={cloth.status === 'wanting'} />
+                    </div>
+                  )}
+
+                  {/* 季节标签 */}
+                  <div className="absolute bottom-2 right-2 flex gap-0.5">
+                    {cloth.season.slice(0, 2).map((s) => (
+                      <span key={s} className="text-[8px] bg-white/80 backdrop-blur-sm px-1.5 py-0.5 rounded-md text-gray-600">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              )}
+              )
+            })}
 
-              {/* 季节标签 */}
-              <div className="absolute bottom-2 right-2 flex gap-0.5">
-                {cloth.season.slice(0, 2).map((s) => (
-                  <span key={s} className="text-[8px] bg-white/80 backdrop-blur-sm px-1.5 py-0.5 rounded-md text-gray-600">
-                    {s}
-                  </span>
-                ))}
-              </div>
+            {/* 添加新衣服 */}
+            <div
+              onClick={() => navigate('/luka')}
+              className="aspect-card-1 bg-gray-50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200"
+            >
+              <Icon name="add" size={28} className="text-gray-300 mb-1" />
+              <p className="text-[10px] text-gray-400">添加</p>
             </div>
-          ))}
-
-          {/* 添加新衣服 */}
-          <div
-            onClick={() => navigate('/luka')}
-            className="aspect-[3/4] bg-gray-50 rounded-xl flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200"
-          >
-            <Icon name="add" size={28} className="text-gray-300 mb-1" />
-            <p className="text-[10px] text-gray-400">添加</p>
-          </div>
+          </CardMasonry>
         </div>
       </div>
     </Layout>

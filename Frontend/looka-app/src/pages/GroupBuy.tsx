@@ -34,7 +34,7 @@ export function GroupBuyPage() {
       <div className="pb-36">
         {/* 主图 - 模特试穿效果 + 左下角衣服缩略图 */}
         <div className="px-4 pt-2">
-          <div className="aspect-[4/5] relative rounded-lg overflow-hidden">
+          <div className="aspect-[4/5] relative rounded overflow-hidden">
             <ImageSwap
               mainImage="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800"
               thumbImage="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200"
@@ -225,13 +225,13 @@ export function GroupBuyPage() {
             {/* 试穿按钮 */}
             <button
               onClick={() => navigate('/try-on')}
-              className="h-12 px-4 bg-gray-100 text-gray-700 font-medium rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+              className="h-12 px-4 bg-gray-100 text-gray-700 font-medium rounded flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
             >
               <Icon name="person" size={20} />
               试穿
             </button>
             {/* 我也想要按钮 */}
-            <button className="flex-1 h-12 bg-primary text-white text-[15px] font-bold rounded-xl shadow-md shadow-primary/25 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+            <button className="flex-1 h-12 bg-primary text-white text-[15px] font-bold rounded shadow-md shadow-primary/25 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
               <Icon name="favorite" size={18} filled />
               我也想要
             </button>

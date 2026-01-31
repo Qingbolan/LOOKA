@@ -44,7 +44,7 @@ export function TryOnPage() {
         <div className="px-4 pt-2">
           <div
             ref={sliderRef}
-            className="relative aspect-[3/4] rounded-2xl overflow-hidden cursor-ew-resize bg-gray-100"
+            className="relative aspect-[3/4] rounded overflow-hidden cursor-ew-resize bg-gray-100"
             onMouseMove={handleMouseMove}
             onTouchMove={handleTouchMove}
           >
@@ -89,7 +89,7 @@ export function TryOnPage() {
             </div>
 
             {/* 左下角：衣服缩略图 */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-14 rounded-lg overflow-hidden border-2 border-white shadow-lg bg-white">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-14 rounded overflow-hidden border-2 border-white shadow-lg bg-white">
               <img
                 src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200"
                 alt="衣服"
@@ -114,7 +114,7 @@ export function TryOnPage() {
 
         {/* Luka 的建议 */}
         <div className="px-4 mt-4">
-          <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
+          <div className="bg-primary/5 rounded p-4 border border-primary/10">
             <div className="flex items-start gap-3">
               <LukaAvatar size="sm" />
               <div className="flex-1">
@@ -133,14 +133,14 @@ export function TryOnPage() {
         <div className="flex gap-3" style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
           <button
             onClick={() => navigate(-1)}
-            className="h-12 px-5 bg-gray-100 text-gray-700 font-medium rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+            className="h-12 px-5 bg-gray-100 text-gray-700 font-medium rounded flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
           >
             <Icon name="arrow_back" size={20} />
             返回
           </button>
           <button
             onClick={() => navigate('/group-buy/1')}
-            className="flex-1 h-12 bg-primary text-white font-bold rounded-xl shadow-md shadow-primary/25 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+            className="flex-1 h-12 bg-primary text-white font-bold rounded shadow-md shadow-primary/25 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
           >
             <Icon name="favorite" size={18} filled />
             我想要这件

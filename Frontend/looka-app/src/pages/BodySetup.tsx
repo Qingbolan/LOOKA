@@ -71,7 +71,7 @@ export function BodySetupPage() {
           <div className="flex gap-3">
             {photoTips.map((tip, index) => (
               <div key={index} className="flex-1">
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 mb-2">
+                <div className="relative aspect-[3/4] rounded overflow-hidden bg-gray-100 mb-2">
                   <img
                     src={tip.image}
                     alt={tip.title}
@@ -90,7 +90,7 @@ export function BodySetupPage() {
 
         {/* 上传区域 */}
         {!hasPhoto ? (
-          <div className="border-2 border-dashed border-primary/30 rounded-3xl p-8 text-center bg-primary/5">
+          <div className="border-2 border-dashed border-primary/30 rounded p-8 text-center bg-primary/5">
             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <Icon name="photo_camera" size={28} className="text-primary" />
             </div>
@@ -98,7 +98,7 @@ export function BodySetupPage() {
             <p className="text-xs text-gray-400">照片仅用于试穿，我们会保护你的隐私</p>
           </div>
         ) : (
-          <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gray-100">
+          <div className="relative aspect-[3/4] rounded overflow-hidden bg-gray-100">
             <img
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800"
               alt="我的照片"
@@ -110,7 +110,7 @@ export function BodySetupPage() {
             >
               <Icon name="refresh" size={18} className="text-white" />
             </button>
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md rounded-2xl p-3">
+            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md rounded p-3">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
                   <Icon name="check" size={18} className="text-green-600" />

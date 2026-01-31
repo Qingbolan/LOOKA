@@ -140,7 +140,7 @@ export function PersonaAvatar({
     return null
   }, [persona?.icon_text, persona?.name_zh, persona?.name_en, fallbackText])
 
-  const roundedClass = rounded === "full" ? "rounded-full" : "rounded-xl"
+  const roundedClass = rounded === "full" ? "rounded-full" : "rounded"
   const shouldShowImage = avatarUrl && imageStatus !== "error"
 
   return (

@@ -43,7 +43,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
         <input
           ref={ref}
           className={`
-            w-full rounded-2xl outline-none transition-all
+            w-full rounded outline-none transition-all
             bg-white dark:bg-white/5
             border border-black/[0.06] dark:border-white/[0.1]
             text-text-primary dark:text-text-dark-primary
@@ -83,7 +83,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
       <textarea
         ref={ref}
         className={`
-          w-full rounded-2xl px-4 py-3 outline-none transition-all resize-none
+          w-full rounded px-4 py-3 outline-none transition-all resize-none
           bg-white dark:bg-white/5
           border border-black/[0.06] dark:border-white/[0.1]
           text-text-primary dark:text-text-dark-primary text-[14px]

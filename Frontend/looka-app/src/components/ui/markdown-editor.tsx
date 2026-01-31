@@ -37,7 +37,7 @@ export function MarkdownEditor({
   const [viewMode, setViewMode] = useState<ViewMode>("edit")
 
   return (
-    <div className={cn("flex flex-col border rounded-lg overflow-hidden bg-background h-full", className)}>
+    <div className={cn("flex flex-col border rounded overflow-hidden bg-background h-full", className)}>
       {/* Toolbar - Single Line */}
       <div className="shrink-0 flex items-center justify-between px-3 py-2 border-b bg-muted/30">
         <div className="flex items-center gap-3">

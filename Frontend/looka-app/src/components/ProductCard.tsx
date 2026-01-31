@@ -30,7 +30,7 @@ export function ProductCard({
   return (
     <div
       onClick={onClick}
-      className="bg-white dark:bg-surface-dark rounded-2xl overflow-hidden shadow-soft dark:shadow-none border border-black/[0.03] dark:border-white/[0.06] cursor-pointer active:scale-[0.98] transition-all"
+      className="bg-white dark:bg-surface-dark rounded overflow-hidden shadow-soft dark:shadow-none border border-black/[0.03] dark:border-white/[0.06] cursor-pointer active:scale-[0.98] transition-all"
     >
       <div className="relative aspect-[3/4] bg-gray-100 dark:bg-white/5">
         <img src={image} alt={title} className="w-full h-full object-cover" />

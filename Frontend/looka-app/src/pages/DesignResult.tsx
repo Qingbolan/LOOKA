@@ -112,7 +112,7 @@ export function DesignResultPage() {
                   setSelectedDesign(design.id)
                   setCurrentIndex(index)
                 }}
-                className={`flex-shrink-0 w-20 h-28 rounded-xl overflow-hidden border-2 transition-all active:scale-95 ${
+                className={`flex-shrink-0 w-20 h-28 rounded overflow-hidden border-2 transition-all active:scale-95 ${
                   selectedDesign === design.id ? 'border-primary shadow-lg shadow-primary/20' : 'border-transparent'
                 }`}
               >
@@ -124,7 +124,7 @@ export function DesignResultPage() {
               </button>
             ))}
             {/* Generate More Button */}
-            <button className="flex-shrink-0 w-20 h-28 rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-1 hover:border-primary/50 transition-colors">
+            <button className="flex-shrink-0 w-20 h-28 rounded border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-1 hover:border-primary/50 transition-colors">
               <Icon name="add" size={24} className="text-gray-400" />
               <span className="text-[10px] text-gray-400">更多</span>
             </button>
@@ -140,7 +140,7 @@ export function DesignResultPage() {
             </h3>
             <div className="grid grid-cols-2 gap-3">
               {designSpecs.map((spec) => (
-                <div key={spec.label} className="bg-gray-50 rounded-xl p-3">
+                <div key={spec.label} className="bg-gray-50 rounded p-3">
                   <p className="text-[10px] text-gray-400 uppercase font-bold tracking-wider mb-1">
                     {spec.label}
                   </p>
@@ -150,7 +150,7 @@ export function DesignResultPage() {
             </div>
             <button
               onClick={() => navigate('/parameter-edit')}
-              className="w-full mt-4 py-3 text-center text-sm text-primary font-medium border border-primary/20 rounded-xl hover:bg-primary/5 transition-colors active:scale-[0.98]"
+              className="w-full mt-4 py-3 text-center text-sm text-primary font-medium border border-primary/20 rounded hover:bg-primary/5 transition-colors active:scale-[0.98]"
             >
               <Icon name="edit" size={16} className="inline mr-1" />
               调整参数重新生成
@@ -162,7 +162,7 @@ export function DesignResultPage() {
         <div className="px-4 mt-4">
           <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-100">
             <div className="flex items-center gap-4">
-              <div className="size-12 bg-green-100 rounded-2xl flex items-center justify-center">
+              <div className="size-12 bg-green-100 rounded flex items-center justify-center">
                 <Icon name="verified" size={24} className="text-green-600" />
               </div>
               <div className="flex-1">

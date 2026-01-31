@@ -83,7 +83,7 @@ export function OrdersPage() {
             {/* Product Info */}
             <div className="flex gap-4">
               <div
-                className="w-24 h-24 rounded-2xl bg-cover bg-center flex-shrink-0 border border-gray-100"
+                className="w-24 h-24 rounded bg-cover bg-center flex-shrink-0 border border-gray-100"
                 style={{ backgroundImage: `url(${order.image})` }}
               />
               <div className="flex-1">

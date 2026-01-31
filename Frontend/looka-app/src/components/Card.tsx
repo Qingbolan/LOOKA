@@ -36,7 +36,7 @@ export function Card({
   return (
     <Component
       className={`
-        rounded-2xl transition-all duration-200
+        rounded transition-all duration-200
         ${variantClasses[variant]}
         ${paddingClasses[padding]}
         ${interactive || onClick ? 'cursor-pointer active:scale-[0.98] hover:shadow-card dark:hover:shadow-lg' : ''}

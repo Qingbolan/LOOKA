@@ -72,7 +72,7 @@ export function LukaPage() {
       <div className="max-w-md mx-auto px-4 pb-32">
         {/* Luka 自我介绍 */}
         <div className="py-8">
-          <div className="bg-primary/5 rounded-2xl p-5 mb-6 border border-primary/10">
+          <div className="bg-primary/5 rounded p-5 mb-6 border border-primary/10">
             <p className="text-[15px] leading-relaxed text-gray-700">
               Hi，我是 <span className="text-primary font-medium">Luka</span>，帮你把脑海里的衣服变成真的。
               <br /><br />
@@ -86,7 +86,7 @@ export function LukaPage() {
               <button
                 key={card.id}
                 onClick={() => handleCardClick(card.id)}
-                className={`flex-shrink-0 w-40 ${card.bgColor} rounded-2xl p-4 text-left transition-transform active:scale-95 border border-gray-100`}
+                className={`flex-shrink-0 w-40 ${card.bgColor} rounded p-4 text-left transition-transform active:scale-95 border border-gray-100`}
               >
                 <h3 className="font-bold text-[15px] mb-1 text-gray-800">{card.title}</h3>
                 <p className="text-[12px] text-gray-500 mb-3 line-clamp-2">{card.example}</p>
@@ -94,7 +94,7 @@ export function LukaPage() {
                   {card.images.map((img, idx) => (
                     <div
                       key={idx}
-                      className="w-8 h-8 rounded-lg bg-cover bg-center border-2 border-white shadow-sm"
+                      className="w-8 h-8 rounded bg-cover bg-center border-2 border-white shadow-sm"
                       style={{ backgroundImage: `url(${img})` }}
                     />
                   ))}
@@ -113,10 +113,10 @@ export function LukaPage() {
           <div className="space-y-2">
             <button
               onClick={() => navigate('/luka/chat?history=1')}
-              className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-left hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded text-left hover:bg-gray-100 transition-colors"
             >
               <div
-                className="w-12 h-12 rounded-xl bg-cover bg-center flex-shrink-0"
+                className="w-12 h-12 rounded bg-cover bg-center flex-shrink-0"
                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=100)' }}
               />
               <div className="flex-1 min-w-0">
@@ -127,10 +127,10 @@ export function LukaPage() {
             </button>
             <button
               onClick={() => navigate('/luka/chat?history=2')}
-              className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-left hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded text-left hover:bg-gray-100 transition-colors"
             >
               <div
-                className="w-12 h-12 rounded-xl bg-cover bg-center flex-shrink-0"
+                className="w-12 h-12 rounded bg-cover bg-center flex-shrink-0"
                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100)' }}
               />
               <div className="flex-1 min-w-0">

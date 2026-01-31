@@ -100,14 +100,14 @@ export function ProductDetailPage() {
               面料工艺
             </h3>
             <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="h-40 rounded-2xl overflow-hidden bg-gray-50">
+              <div className="h-40 rounded overflow-hidden bg-gray-50">
                 <img
                   src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400"
                   alt="Texture"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="h-40 rounded-2xl overflow-hidden bg-gray-50">
+              <div className="h-40 rounded overflow-hidden bg-gray-50">
                 <img
                   src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400"
                   alt="Detail"
@@ -139,7 +139,7 @@ export function ProductDetailPage() {
                 <button
                   key={size.label}
                   onClick={() => setSelectedSize(size.label)}
-                  className={`flex-shrink-0 px-6 py-3 rounded-xl text-center transition-colors ${
+                  className={`flex-shrink-0 px-6 py-3 rounded text-center transition-colors ${
                     selectedSize === size.label
                       ? 'border border-primary bg-primary/5'
                       : 'border border-gray-100'
@@ -158,7 +158,7 @@ export function ProductDetailPage() {
               <span className="w-1 h-4 bg-primary rounded-full" />
               预计周期
             </h3>
-            <div className="flex items-center justify-between p-4 rounded-2xl bg-gray-50 border border-gray-100">
+            <div className="flex items-center justify-between p-4 rounded bg-gray-50 border border-gray-100">
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center">
                   <Icon name="bolt" size={20} className="text-primary" />

@@ -27,7 +27,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
       >
         <div className="flex items-center space-x-3 mb-6">
           {icon && (
-            <div className="w-8 h-8 rounded-lg bg-theme-primary/10 flex items-center justify-center text-theme-primary">
+            <div className="w-8 h-8 rounded bg-theme-primary/10 flex items-center justify-center text-theme-primary">
               {icon}
             </div>
           )}

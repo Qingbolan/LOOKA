@@ -113,7 +113,7 @@ export function TogetherPage() {
       <main className="max-w-md mx-auto px-3 py-3 pb-32 space-y-4">
         {/* 动态提醒 */}
         {activities.length > 0 && (
-          <div className="bg-primary/5 rounded-lg p-3 border border-primary/10">
+          <div className="bg-primary/5 rounded p-3 border border-primary/10">
             <div className="flex items-center gap-2 mb-3">
               <Icon name="notifications_active" size={18} className="text-primary" />
               <span className="text-sm font-bold">最新动态</span>
@@ -165,7 +165,7 @@ export function TogetherPage() {
               key={wish.id}
               onClick={() => navigate(`/group-buy/${wish.id}`)}
               className={`
-                bg-white rounded-lg overflow-hidden
+                bg-white rounded overflow-hidden
                 cursor-pointer active:scale-[0.99] transition-transform
                 ${wish.isAlmostThere
                   ? 'ring-1 ring-primary/30'

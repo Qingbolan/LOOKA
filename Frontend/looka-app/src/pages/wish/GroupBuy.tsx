@@ -14,6 +14,7 @@ export function GroupBuyPage() {
   const navigate = useNavigate()
   const [isFollowing, setIsFollowing] = useState(false)
   const [likedComments, setLikedComments] = useState<Set<string>>(new Set(['1']))
+  const [commentText, setCommentText] = useState('')
 
   const toggleLike = (commentId: string) => {
     setLikedComments(prev => {
@@ -176,17 +177,47 @@ export function GroupBuyPage() {
             <div className="flex-1 h-11 bg-gray-100 rounded-full px-4 flex items-center">
               <input
                 type="text"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
                 placeholder="说点什么..."
                 className="w-full bg-transparent text-sm outline-none"
               />
             </div>
-            {/* 试穿按钮 */}
+            {/* 试穿/发送按钮 */}
             <button
-              onClick={() => navigate('/try-on')}
-              className="h-11 px-5 bg-primary text-white font-medium rounded-full flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+              onClick={() => commentText.trim() ? setCommentText('') : navigate('/try-on')}
+              className="h-11 px-5 bg-primary text-white font-medium rounded-full flex items-center justify-center gap-2 active:scale-[0.95] transition-all duration-200"
             >
-              <Icon name="checkroom" size={18} />
-              试穿
+              <span
+                className={`transition-all duration-200 ${
+                  commentText.trim() ? 'rotate-0 scale-100' : 'rotate-[-90deg] scale-0 w-0 overflow-hidden'
+                }`}
+              >
+                <Icon name="send" size={18} />
+              </span>
+              <span
+                className={`transition-all duration-200 ${
+                  commentText.trim() ? 'rotate-90 scale-0 w-0 overflow-hidden' : 'rotate-0 scale-100'
+                }`}
+              >
+                <Icon name="checkroom" size={18} />
+              </span>
+              <span className="relative overflow-hidden h-5">
+                <span
+                  className={`block transition-all duration-200 ${
+                    commentText.trim() ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+                  }`}
+                >
+                  发送
+                </span>
+                <span
+                  className={`block absolute inset-0 transition-all duration-200 ${
+                    commentText.trim() ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+                  }`}
+                >
+                  试穿
+                </span>
+              </span>
             </button>
           </div>
         </div>

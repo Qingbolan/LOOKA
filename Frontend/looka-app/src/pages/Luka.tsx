@@ -180,8 +180,11 @@ export function LukaPage() {
           </div>
 
           {/* 提示文字 */}
-          <p className="text-center text-[10px] text-gray-400 mt-3">
-            内容由 AI 生成
+          <p
+            className="text-center text-[10px] text-gray-400 mt-3 cursor-pointer active:text-gray-500"
+            onClick={() => navigate(-1)}
+          >
+            点击离开对话，再去逛逛
           </p>
         </div>
       </div>

@@ -14,31 +14,31 @@ export default {
           light: "var(--color-primary-light)",
           dark: "var(--color-primary-dark)",
           soft: "var(--color-primary-soft)",
-          // 保留色阶用于渐变
-          50: "#FFF5F5",
-          100: "#FFE3E3",
-          200: "#FFC9C9",
-          300: "#FFA8A8",
-          400: "#FF8787",
-          500: "#FF6B6B",
-          600: "#FA5252",
-          700: "#F03E3E",
-          800: "#E03131",
-          900: "#C92A2A",
+          // 高级玫瑰棕色阶
+          50: "#FAF6F5",
+          100: "#F5EDEB",
+          200: "#EBDBD7",
+          300: "#DCC3BD",
+          400: "#D9B5AF",
+          500: "#C4928A",
+          600: "#B8867E",
+          700: "#A87872",
+          800: "#8F655F",
+          900: "#755450",
         },
         secondary: {
           DEFAULT: "var(--color-secondary)",
         },
-        // 桃色辅助色
+        // 香槟辅助色
         peach: {
           DEFAULT: "var(--color-peach)",
-          50: "#FFF8F5",
-          100: "#FFEDE5",
-          200: "#FFDDD0",
-          300: "#FFC4AD",
-          400: "#FFB59E",
-          500: "#FFAB91",
-          600: "#FF8A65",
+          50: "#FDFBF9",
+          100: "#F8F4F0",
+          200: "#F0E8E0",
+          300: "#E8DCD4",
+          400: "#DED0C4",
+          500: "#D4C4B5",
+          600: "#C4B4A5",
         },
         // 语义色
         success: {
@@ -64,11 +64,11 @@ export default {
           owned: "var(--color-owned)",
           shipping: "var(--color-shipping)",
         },
-        // 背景色
+        // 背景色 - 干净简约
         background: {
           DEFAULT: "var(--color-bg)",
           secondary: "var(--color-bg-secondary)",
-          light: "#FFFAF8",
+          light: "#FDFCFB",
           dark: "#1A1A1A",
         },
         // 表面色

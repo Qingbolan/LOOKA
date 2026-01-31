@@ -25,12 +25,12 @@ function Slot(props: SlotProps) {
         fontWeight: 'bold',
         borderRadius: '12px',
         border: props.isActive
-          ? '2px solid #FF6B6B'
+          ? '2px solid #C4928A'
           : '2px solid #e5e7eb',
         backgroundColor: '#ffffff',
         color: '#111827',
         transition: 'all 0.15s ease',
-        boxShadow: props.isActive ? '0 0 0 3px rgba(255, 107, 107, 0.1)' : 'none',
+        boxShadow: props.isActive ? '0 0 0 3px rgba(196, 146, 138, 0.15)' : 'none',
       }}
     >
       {props.char ?? (props.isActive ? <Caret /> : null)}
@@ -45,7 +45,7 @@ function Caret() {
       style={{
         width: '2px',
         height: '24px',
-        backgroundColor: '#FF6B6B',
+        backgroundColor: '#C4928A',
         animation: 'caret-blink 1s ease-out infinite',
       }}
     />
@@ -149,7 +149,7 @@ export function SendCodeButton({
       style={{
         fontSize: '14px',
         fontWeight: '500',
-        color: isDisabled ? '#9ca3af' : '#FF6B6B',
+        color: isDisabled ? '#9ca3af' : '#C4928A',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
         background: 'none',
         border: 'none',

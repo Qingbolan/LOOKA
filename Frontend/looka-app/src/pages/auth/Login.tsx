@@ -144,7 +144,7 @@ export default function LoginPage() {
             <>
               {/* Logo & 标题 */}
               <div className="pt-8 pb-10">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 shadow-lg" style={{ boxShadow: '0 8px 24px rgba(255, 107, 107, 0.3)' }}>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 shadow-lg" style={{ boxShadow: '0 8px 24px rgba(196, 146, 138, 0.35)' }}>
                   <span className="text-white text-2xl font-bold">L</span>
                 </div>
                 <h1 className="text-[28px] font-bold text-gray-900 mb-2">
@@ -235,11 +235,11 @@ export default function LoginPage() {
                 className={`
                   w-full h-[52px] rounded-2xl font-bold text-[16px] transition-all duration-200
                   ${isPhoneValid && agreed
-                    ? 'bg-gradient-to-r from-primary to-[#FF8A8A] text-white shadow-lg hover:shadow-xl active:scale-[0.98]'
+                    ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-lg hover:shadow-xl active:scale-[0.98]'
                     : 'bg-gray-100 text-gray-400'
                   }
                 `}
-                style={isPhoneValid && agreed ? { boxShadow: '0 4px 16px rgba(255, 107, 107, 0.35)' } : {}}
+                style={isPhoneValid && agreed ? { boxShadow: '0 4px 16px rgba(196, 146, 138, 0.4)' } : {}}
               >
                 {loading ? '发送中...' : '获取验证码'}
               </button>
@@ -296,11 +296,11 @@ export default function LoginPage() {
                 className={`
                   w-full h-[52px] rounded-2xl font-bold text-[16px] transition-all duration-200
                   ${code.length === 6
-                    ? 'bg-gradient-to-r from-primary to-[#FF8A8A] text-white shadow-lg hover:shadow-xl active:scale-[0.98]'
+                    ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-lg hover:shadow-xl active:scale-[0.98]'
                     : 'bg-gray-100 text-gray-400'
                   }
                 `}
-                style={code.length === 6 ? { boxShadow: '0 4px 16px rgba(255, 107, 107, 0.35)' } : {}}
+                style={code.length === 6 ? { boxShadow: '0 4px 16px rgba(196, 146, 138, 0.4)' } : {}}
               >
                 {loading ? '登录中...' : '登录'}
               </button>

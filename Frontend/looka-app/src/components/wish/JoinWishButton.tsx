@@ -102,8 +102,8 @@ export function JoinWishButton({
           isAnimating ? 'scale-95' : 'active:scale-95'
         }`}
         style={{
-          background: 'linear-gradient(135deg, #FF6B6B 0%, #FFAB91 100%)',
-          boxShadow: '0 4px 20px rgba(255, 107, 107, 0.4)',
+          background: 'linear-gradient(135deg, #C4928A 0%, #D4C4B5 100%)',
+          boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)',
         }}
       >
         {/* 闪光效果 */}

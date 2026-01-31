@@ -7,13 +7,15 @@
    * CSS 变量 - 全局设计规范
    * ============================================ */
   :root {
-    /* === 颜色系统 === */
-    --color-primary: #FF6B6B;
-    --color-primary-light: #FF8A8A;
-    --color-primary-dark: #E55555;
-    --color-primary-soft: rgba(255, 107, 107, 0.1);
-    --color-secondary: #FFAB91;
-    --color-peach: #FFAB91;
+    /* === 颜色系统 - 高级时尚版 === */
+    /* 主色：优雅玫瑰棕，低饱和度更显高级 */
+    --color-primary: #C4928A;
+    --color-primary-light: #D9B5AF;
+    --color-primary-dark: #A87872;
+    --color-primary-soft: rgba(196, 146, 138, 0.12);
+    /* 辅助色：温暖香槟色 */
+    --color-secondary: #D4C4B5;
+    --color-peach: #E8DCD4;
 
     /* === 语义色 === */
     --color-success: #10B981;
@@ -27,32 +29,32 @@
 
     /* === 状态色 === */
     --color-wishing: var(--color-primary);
-    --color-making: var(--color-warning);
-    --color-owned: var(--color-success);
-    --color-shipping: var(--color-info);
+    --color-making: #D4A574;
+    --color-owned: #7BA688;
+    --color-shipping: #8BA4B4;
 
-    /* === 情感化状态色（扩展） === */
-    --color-status-draft: #9CA3AF;
-    --color-status-wishing: #FF6B6B;
-    --color-status-making: #F59E0B;
-    --color-status-shipping: #3B82F6;
-    --color-status-owned: #10B981;
+    /* === 情感化状态色（扩展）- 更柔和高级 === */
+    --color-status-draft: #A8A8A8;
+    --color-status-wishing: #C4928A;
+    --color-status-making: #D4A574;
+    --color-status-shipping: #8BA4B4;
+    --color-status-owned: #7BA688;
 
-    /* === 愿望渐变 === */
-    --gradient-wish: linear-gradient(135deg, #FF6B6B 0%, #FFAB91 100%);
-    --gradient-wish-hover: linear-gradient(135deg, #FF5252 0%, #FF9A7A 100%);
+    /* === 愿望渐变 - 更优雅 === */
+    --gradient-wish: linear-gradient(135deg, #C4928A 0%, #D4C4B5 100%);
+    --gradient-wish-hover: linear-gradient(135deg, #B8867E 0%, #C9B9AA 100%);
 
-    /* === 中性色 === */
-    --color-bg: #FFFAF8;
-    --color-bg-secondary: #FFF5F2;
+    /* === 中性色 - 干净高级 === */
+    --color-bg: #FDFCFB;
+    --color-bg-secondary: #F8F6F4;
     --color-surface: #FFFFFF;
     --color-surface-elevated: #FFFFFF;
-    --color-text-primary: #1A1A1A;
-    --color-text-secondary: #6B7280;
-    --color-text-tertiary: #9CA3AF;
-    --color-text-muted: #9CA3AF;
-    --color-border: #E5E7EB;
-    --color-border-light: rgba(0, 0, 0, 0.03);
+    --color-text-primary: #1F1F1F;
+    --color-text-secondary: #5C5C5C;
+    --color-text-tertiary: #8C8C8C;
+    --color-text-muted: #A3A3A3;
+    --color-border: #E8E8E8;
+    --color-border-light: rgba(0, 0, 0, 0.04);
     --color-divider: rgba(0, 0, 0, 0.06);
 
     /* === 间距系统 (4px 基准) === */
@@ -79,13 +81,13 @@
     --radius-3xl: 24px;
     --radius-full: 9999px;
 
-    /* === 阴影 === */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-    --shadow-button: 0 4px 14px rgba(255, 107, 107, 0.25);
-    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
+    /* === 阴影 - 更柔和精致 === */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.1);
+    --shadow-button: 0 4px 16px rgba(196, 146, 138, 0.3);
+    --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.04);
 
     /* === 布局尺寸 === */
     --header-height: 56px;
@@ -171,7 +173,7 @@
   }
 
   ::selection {
-    background-color: rgba(255, 107, 107, 0.3);
+    background-color: rgba(196, 146, 138, 0.3);
     color: inherit;
   }
 }
@@ -358,7 +360,7 @@
    * ============================================ */
   .btn-primary {
     @apply bg-primary text-white rounded font-bold;
-    box-shadow: 0 4px 14px rgba(255, 107, 107, 0.25);
+    box-shadow: 0 4px 14px rgba(196, 146, 138, 0.3);
   }
 
   .btn-primary:active {
@@ -422,7 +424,7 @@
 
   .input-field:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+    box-shadow: 0 0 0 3px rgba(196, 146, 138, 0.15);
   }
 
   .input-field::placeholder {

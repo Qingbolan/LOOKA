@@ -230,7 +230,7 @@ export default function WishCreatePage() {
             onClick={handleSubmit}
             disabled={!title.trim() || isSubmitting}
             className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-lg disabled:opacity-50"
-            style={{ boxShadow: '0 4px 20px rgba(255, 107, 107, 0.4)' }}
+            style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)' }}
           >
             {isSubmitting ? '发起中...' : '✨ 发起愿望'}
           </button>

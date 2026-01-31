@@ -208,7 +208,7 @@ export function ExplorePage() {
         <div
           onClick={() => navigate('/design/editor')}
           className="fixed bottom-24 right-4 size-14 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center shadow-lg cursor-pointer active:scale-95 transition-transform z-40"
-          style={{ boxShadow: '0 4px 20px rgba(255, 107, 107, 0.4)' }}
+          style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)' }}
         >
           <span className="text-xl">✨</span>
         </div>

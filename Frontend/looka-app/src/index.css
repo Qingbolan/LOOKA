@@ -183,9 +183,13 @@
    * Header 组件规范
    * ============================================ */
 
-  /* 主页面 Header (灵感、一起、衣柜、我的) */
+  /* 主页面 Header (灵感、一起、衣柜、我的) - 亚克力效果 */
   .header-main {
-    @apply sticky top-0 z-50 bg-white/90 backdrop-blur-xl;
+    @apply sticky top-0 z-50;
+    background: rgba(253, 252, 251, 0.78);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
 
   .header-main-inner {
@@ -193,9 +197,13 @@
     height: var(--header-height);
   }
 
-  /* 详情页 Header (有返回按钮) */
+  /* 详情页 Header (有返回按钮) - 亚克力效果 */
   .header-detail {
-    @apply sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100;
+    @apply sticky top-0 z-50;
+    background: rgba(253, 252, 251, 0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .header-detail-inner {
@@ -261,8 +269,13 @@
   /* ============================================
    * 底部操作栏规范
    * ============================================ */
+  /* 底部操作栏 - 亚克力效果 */
   .bottom-action {
-    @apply fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50;
+    @apply fixed bottom-0 left-0 right-0 p-4 max-w-md mx-auto z-50;
+    background: rgba(253, 252, 251, 0.85);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .bottom-action-inner {
@@ -290,10 +303,14 @@
     @apply text-gray-400 border-transparent;
   }
 
-  /* 内容区 Tab (Profile 页的 Tab) */
+  /* 内容区 Tab (Profile 页的 Tab) - 亚克力效果 */
   .tabs-content {
-    @apply sticky z-40 bg-white border-b border-gray-100;
+    @apply sticky z-40;
     top: var(--header-height-detail);
+    background: rgba(253, 252, 251, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
 
   .tabs-content-inner {
@@ -340,10 +357,14 @@
    * 卡片规范
    * ============================================ */
   .card {
-    background: var(--color-surface);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border-light);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.02),
+      0 4px 16px rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .card-interactive {
@@ -403,15 +424,92 @@
     scrollbar-width: none;
   }
 
-  /* Glass 效果 */
+  /* ============================================
+   * 亚克力材质效果 (Fluent Design Acrylic)
+   * ============================================ */
+
+  /* 基础玻璃效果 */
   .glass {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 
   .dark .glass {
-    background: rgba(26, 26, 26, 0.85);
+    background: rgba(32, 32, 32, 0.78);
+  }
+
+  /* 亚克力 - 轻度模糊 */
+  .acrylic-thin {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  /* 亚克力 - 标准 */
+  .acrylic {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* 亚克力 - 强模糊 */
+  .acrylic-strong {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.06),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+
+  /* 亚克力 - 带色调 (主题色) */
+  .acrylic-tint {
+    background: rgba(253, 252, 251, 0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(196, 146, 138, 0.12);
+    box-shadow:
+      0 2px 12px rgba(196, 146, 138, 0.08),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* 深色模式亚克力 */
+  .dark .acrylic-thin {
+    background: rgba(40, 40, 40, 0.65);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .dark .acrylic {
+    background: rgba(40, 40, 40, 0.78);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .acrylic-strong {
+    background: rgba(40, 40, 40, 0.88);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .dark .acrylic-tint {
+    background: rgba(45, 40, 38, 0.85);
+    border-color: rgba(196, 146, 138, 0.15);
+  }
+
+  /* 云母效果 (Mica - Windows 11 风格) */
+  .mica {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(80px) saturate(125%);
+    -webkit-backdrop-filter: blur(80px) saturate(125%);
+  }
+
+  .dark .mica {
+    background: rgba(32, 32, 32, 0.6);
   }
 
   /* 输入框 */
@@ -459,15 +557,27 @@
    * 情感化组件
    * ============================================ */
 
-  /* 愿望卡片 */
+  /* 愿望卡片 - 精致玻璃效果 */
   .wish-card {
-    @apply bg-white rounded-xl overflow-hidden border border-gray-100;
-    box-shadow: var(--shadow-card);
+    @apply rounded-xl overflow-hidden;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.02),
+      0 4px 16px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .wish-card:active {
     transform: scale(0.98);
+  }
+
+  .wish-card:hover {
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.03),
+      0 8px 24px rgba(0, 0, 0, 0.06);
   }
 
   /* 愿望进度条 */

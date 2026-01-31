@@ -5,6 +5,7 @@ import { FabricCard } from '@/components/production/FabricCard';
 import { ProductionTimeline, DeliveryEstimate } from '@/components/production/ProductionTimeline';
 import { DesignSheet, SpecificationCard } from '@/components/production/DesignSheet';
 import { ShareButton, ShareSheet } from '@/components/social/ShareSheet';
+import { ProductionPreviewSkeleton } from '@/components/feedback';
 
 export default function ProductionPreviewPage() {
   const navigate = useNavigate();
@@ -130,16 +131,7 @@ export default function ProductionPreviewPage() {
   }, [wishId]);
 
   if (loading || !production) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="size-12 rounded-full bg-amber-100 flex items-center justify-center mx-auto animate-pulse">
-            <span className="text-2xl">🧵</span>
-          </div>
-          <p className="text-gray-500 mt-3">加载生产信息...</p>
-        </div>
-      </div>
-    );
+    return <ProductionPreviewSkeleton />;
   }
 
   return (

@@ -5,6 +5,7 @@ import { RecipeCard } from '@/components/design/RecipeCard';
 import { VersionTimeline } from '@/components/design/VersionTimeline';
 import { RemixButton, RemixStats, OriginalBadge } from '@/components/social/RemixButton';
 import { ShareSheet, ShareButton } from '@/components/social/ShareSheet';
+import { RecipeDetailSkeleton } from '@/components/feedback';
 
 export default function RecipeDetailPage() {
   const navigate = useNavigate();
@@ -80,16 +81,7 @@ export default function RecipeDetailPage() {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto animate-pulse">
-            <span className="text-2xl">🧪</span>
-          </div>
-          <p className="text-gray-500 mt-3">加载配方中...</p>
-        </div>
-      </div>
-    );
+    return <RecipeDetailSkeleton />;
   }
 
   if (!design) {

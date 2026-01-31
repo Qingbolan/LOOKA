@@ -7,6 +7,7 @@ import { JoinWishButton } from '@/components/wish/JoinWishButton';
 import { AvatarStack } from '@/components/wish/WishCard';
 import { ShareSheet, ShareButton } from '@/components/social/ShareSheet';
 import { EmotionalBadge } from '@/components/common/EmotionalBadge';
+import { WishDetailSkeleton } from '@/components/feedback';
 
 export default function WishDetailPage() {
   const navigate = useNavigate();
@@ -45,16 +46,7 @@ export default function WishDetailPage() {
   };
 
   if (wishDetailLoading || !currentWishDetail) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto animate-pulse">
-            <span className="text-2xl">✨</span>
-          </div>
-          <p className="text-gray-500 mt-3">加载中...</p>
-        </div>
-      </div>
-    );
+    return <WishDetailSkeleton />;
   }
 
   const wish = currentWishDetail;

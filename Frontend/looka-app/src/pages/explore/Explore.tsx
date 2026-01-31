@@ -204,14 +204,23 @@ export function ExplorePage() {
           </>
         )}
 
-        {/* 创作入口 FAB */}
-        <div
-          onClick={() => navigate('/design/editor')}
-          className="fixed bottom-24 right-4 size-14 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center shadow-lg cursor-pointer active:scale-95 transition-transform z-40"
-          style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)' }}
+        {/* Luka 入口 FAB - AI 创作 */}
+        <button
+          onClick={() => navigate('/luka')}
+          className="fixed bottom-24 right-4 z-40 active:scale-95 transition-transform"
         >
-          <span className="text-xl">✨</span>
-        </div>
+          <div className="relative">
+            <div className="size-14 rounded-full bg-white shadow-lg flex items-center justify-center overflow-hidden border-2 border-primary/20"
+              style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.35)' }}
+            >
+              <img src="/Luka.png" alt="Luka" className="w-full h-full object-cover" />
+            </div>
+            {/* 小星星装饰 */}
+            <div className="absolute -top-1 -right-1 size-5 rounded-full bg-primary flex items-center justify-center">
+              <span className="text-[10px]">✨</span>
+            </div>
+          </div>
+        </button>
       </main>
     </Layout>
   )

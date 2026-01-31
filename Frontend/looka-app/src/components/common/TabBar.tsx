@@ -11,7 +11,7 @@ interface TabItem {
 const tabs: TabItem[] = [
   { path: '/', icon: 'explore', label: '逛逛' },
   { path: '/together', icon: 'favorite', label: '一起' },
-  { path: '/luka', icon: 'auto_awesome', label: 'Luka', isCenter: true },
+  { path: '/camera', icon: 'photo_camera', label: '拍照', isCenter: true },
   { path: '/closet', icon: 'checkroom', label: '衣柜' },
   { path: '/profile', icon: 'person', label: '我' },
 ]
@@ -19,22 +19,23 @@ const tabs: TabItem[] = [
 export function TabBar() {
   const location = useLocation()
   const navigate = useNavigate()
-  const isLukaActive = location.pathname === '/luka'
+
+  const handleCameraClick = () => {
+    // 相机功能 - 跳转到 Luka 上传灵感
+    navigate('/luka/chat?mode=inspiration')
+  }
 
   return (
     <>
-      {/* 浮动的 Luka 头像 - 独立定位 */}
+      {/* 浮动的相机按钮 - 独立定位 */}
       <button
-        onClick={() => navigate('/luka')}
+        onClick={handleCameraClick}
         className="fixed bottom-[calc(1.5rem+var(--safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[60]"
       >
-        <div className={`
-          w-14 h-14 rounded-full p-1.5
-          bg-white shadow-md
-          transition-transform active:scale-95
-          ${isLukaActive ? 'ring-2 ring-primary/30' : ''}
-        `}>
-          <img src="/Luka.png" alt="Luka" className="w-full h-full object-cover rounded-full" />
+        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-light shadow-lg flex items-center justify-center transition-transform active:scale-95"
+          style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)' }}
+        >
+          <Icon name="photo_camera" size={26} className="text-white" />
         </div>
       </button>
 
@@ -45,7 +46,7 @@ export function TabBar() {
             {tabs.map((tab) => {
               const isActive = location.pathname === tab.path
 
-              // 中心占位 - 只保留空间给浮动头像
+              // 中心占位 - 只保留空间给浮动按钮
               if (tab.isCenter) {
                 return (
                   <div key={tab.path} className="min-w-[48px]" />

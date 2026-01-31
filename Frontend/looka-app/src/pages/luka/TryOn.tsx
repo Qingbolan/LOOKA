@@ -105,8 +105,20 @@ export function TryOnPage() {
 
         {/* 衣服信息 */}
         <div className="pt-4">
-          <h2 className="text-xl font-bold">星空渐变长裙</h2>
-          <p className="text-sm text-gray-500 mt-1">"想要一条像银河一样的裙子"</p>
+          <div className="flex items-start justify-between">
+            <div>
+              <h2 className="text-xl font-bold">星空渐变长裙</h2>
+              <p className="text-sm text-gray-500 mt-1">"想要一条像银河一样的裙子"</p>
+            </div>
+            {/* 价格 */}
+            <div className="text-right">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-2xl font-bold text-primary">¥299</span>
+                <span className="text-sm text-gray-400 line-through">¥399</span>
+              </div>
+              <span className="text-xs text-primary bg-primary/10 px-1.5 py-0.5 rounded">省100元</span>
+            </div>
+          </div>
 
           {/* 版型信息 */}
           <div className="flex gap-2 mt-3 flex-wrap">

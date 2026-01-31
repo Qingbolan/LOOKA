@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Layout, Icon, ImageSwap, CardMasonry } from '@/components'
 
-const profileTabs = ['我发起的', '想要的', '分享']
+const profileTabs = ['我许的愿', '想要的', '分享']
 
 // 我许的愿望
 const myWishes = [
@@ -93,7 +93,7 @@ export function ProfilePage() {
               <div className="flex items-center gap-5 mt-3">
                 <div className="text-center">
                   <div className="font-bold text-[15px]">3</div>
-                  <div className="text-[11px] text-gray-400">发起</div>
+                  <div className="text-[11px] text-gray-400">许愿</div>
                 </div>
                 <div className="text-center">
                   <div className="font-bold text-[15px]">8</div>
@@ -129,18 +129,21 @@ export function ProfilePage() {
 
         {/* Content Tabs */}
         <div className="sticky top-14 z-40 bg-white border-b border-gray-100">
-          <div className="flex justify-around max-w-md mx-auto">
+          <div className="flex justify-center gap-6 max-w-md mx-auto">
             {profileTabs.map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(index)}
-                className={`py-3 text-[14px] px-4 ${
+                className={`py-2.5 text-[14px] relative ${
                   index === activeTab
-                    ? 'font-bold text-primary border-b-2 border-primary'
+                    ? 'font-bold text-gray-900'
                     : 'font-medium text-gray-400'
                 }`}
               >
                 {tab}
+                {index === activeTab && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full" />
+                )}
               </button>
             ))}
           </div>
@@ -189,7 +192,7 @@ export function ProfilePage() {
                         alt=""
                         className="w-4 h-4 rounded-full object-cover"
                       />
-                      <span className="text-[10px] text-gray-400">我发起的</span>
+                      <span className="text-[10px] text-gray-400">我许的愿</span>
                     </div>
                   </div>
                 </div>
@@ -201,8 +204,8 @@ export function ProfilePage() {
               onClick={() => navigate('/luka')}
               className="aspect-card-1 bg-gray-50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200 active:scale-[0.98] transition-transform"
             >
-              <Icon name="add" size={32} className="text-gray-300 mb-2" />
-              <p className="text-xs text-gray-400">发起新设计</p>
+              <Icon name="auto_awesome" size={32} className="text-gray-300 mb-2" />
+              <p className="text-xs text-gray-400">许个新愿望</p>
             </div>
           </CardMasonry>
         </div>

@@ -156,7 +156,7 @@ export function ExplorePage() {
                     <img
                       src={dream.dreamer.avatar}
                       alt={dream.dreamer.name}
-                      className="w-4 h-4 object-cover flex-shrink-0"
+                      className="w-4 h-4 object-cover flex-shrink-0 rounded-full"
                     />
                     <span className="text-[11px] text-gray-500 truncate">{dream.dreamer.name}</span>
                   </div>

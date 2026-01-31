@@ -1,11 +1,15 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, LukaAvatar } from '@/components'
+import { Layout, Icon, LukaAvatar, Card } from '@/components'
 
 export function TryOnPage() {
   const navigate = useNavigate()
   const [sliderPosition, setSliderPosition] = useState(50)
   const sliderRef = useRef<HTMLDivElement>(null)
+
+  const currentDreamers = 8
+  const targetDreamers = 10
+  const daysLeft = 3
 
   const handleSliderMove = (clientX: number) => {
     if (!sliderRef.current) return
@@ -39,7 +43,7 @@ export function TryOnPage() {
         </div>
       </div>
 
-      <main className="max-w-md mx-auto pb-32">
+      <main className="max-w-md mx-auto pb-40">
         {/* 对比滑块 */}
         <div className="px-4 pt-2">
           <div
@@ -88,7 +92,7 @@ export function TryOnPage() {
               <span className="text-white text-xs">← 左右滑动对比 →</span>
             </div>
 
-            {/* 左下角：衣服缩略图 */}
+            {/* 中间底部：衣服缩略图 */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-14 rounded overflow-hidden border-2 border-white shadow-lg bg-white">
               <img
                 src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200"
@@ -126,25 +130,103 @@ export function TryOnPage() {
             </div>
           </div>
         </div>
+
+        {/* 愿望进度 - 核心信息 */}
+        <div className="px-4 mt-4">
+          <Card className="bg-primary/5 border-primary/10">
+            <div className="text-center mb-4">
+              <p className="text-gray-500 text-sm">这个愿望</p>
+              <p className="text-2xl font-bold mt-1">
+                还差 <span className="text-primary">{targetDreamers - currentDreamers}</span> 个人
+              </p>
+              <p className="text-gray-500 text-sm">就能一起拥有它了</p>
+            </div>
+
+            {/* 进度 */}
+            <div className="relative">
+              <div className="flex justify-between mb-2">
+                {[...Array(targetDreamers)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs
+                      ${i < currentDreamers
+                        ? 'bg-primary text-white'
+                        : 'bg-gray-100 text-gray-300'
+                      }`}
+                  >
+                    {i < currentDreamers ? (
+                      <Icon name="favorite" size={12} filled />
+                    ) : (
+                      <Icon name="favorite_border" size={12} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-500">
+              <Icon name="schedule" size={16} />
+              <span>还有 {daysLeft} 天</span>
+            </div>
+          </Card>
+        </div>
+
+        {/* 它会怎样来到你身边 */}
+        <div className="px-4 mt-4">
+          <Card>
+            <h3 className="font-bold mb-3 flex items-center gap-2">
+              <Icon name="auto_awesome" size={20} className="text-primary" />
+              愿望如何实现
+            </h3>
+            <div className="space-y-4">
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold text-sm">1</span>
+                </div>
+                <div>
+                  <p className="font-medium text-sm">愿望达成，开始制作</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Luka 会通知你</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold text-sm">2</span>
+                </div>
+                <div>
+                  <p className="font-medium text-sm">专属工坊手工制作</p>
+                  <p className="text-xs text-gray-500 mt-0.5">大约需要 5-7 天</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold text-sm">3</span>
+                </div>
+                <div>
+                  <p className="font-medium text-sm">愿望成真，送到你手上</p>
+                  <p className="text-xs text-gray-500 mt-0.5">你的 Dream Dress 来了</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 pt-4 border-t border-gray-100">
+              <p className="text-xs text-gray-400 text-center">
+                如果人数不够，会全额退回，放心许愿
+              </p>
+            </div>
+          </Card>
+        </div>
       </main>
 
-      {/* 底部操作 */}
+      {/* 底部操作 - 我也想要 */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50">
-        <div className="flex gap-3" style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
-          <button
-            onClick={() => navigate(-1)}
-            className="h-12 px-5 bg-gray-100 text-gray-700 font-medium rounded flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
-          >
-            <Icon name="arrow_back" size={20} />
-            返回
-          </button>
-          <button
-            onClick={() => navigate('/group-buy/1')}
-            className="flex-1 h-12 bg-primary text-white font-bold rounded shadow-md shadow-primary/25 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
-          >
+        <div style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
+          <button className="w-full h-12 bg-primary text-white text-[15px] font-bold rounded shadow-md shadow-primary/25 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
             <Icon name="favorite" size={18} filled />
-            我想要这件
+            我也想要
           </button>
+          <p className="text-center text-xs text-gray-400 mt-2">
+            人齐了才开始，放心许愿
+          </p>
         </div>
       </div>
     </Layout>

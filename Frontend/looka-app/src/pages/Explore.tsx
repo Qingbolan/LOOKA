@@ -69,56 +69,54 @@ export function ExplorePage() {
 
   return (
     <Layout>
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
-        <div className="flex flex-col max-w-md mx-auto">
-          {/* 标题行 + 主导航 */}
-          <div className="flex items-center px-4 h-12 justify-between">
-            <h1 className="text-lg font-bold">灵感</h1>
-            <div className="flex items-center gap-4">
-              {mainTabs.map((tab, index) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(index)}
-                  className={`text-[15px] ${
-                    index === activeTab
-                      ? 'font-bold text-gray-900'
-                      : 'text-gray-400'
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={() => navigate('/search')}
-              className="size-8 flex items-center justify-center"
-            >
-              <Icon name="search" size={22} className="text-gray-600" />
-            </button>
-          </div>
-
-          {/* 风格标签 */}
-          <div className="flex overflow-x-auto px-4 pb-2.5 gap-2 hide-scrollbar">
-            {styles.map((style, index) => (
+      {/* Header - 只保留标题行 */}
+      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl">
+        <div className="flex items-center px-4 h-11 justify-between max-w-md mx-auto">
+          <h1 className="text-lg font-bold">灵感</h1>
+          <div className="flex items-center gap-4">
+            {mainTabs.map((tab, index) => (
               <button
-                key={style}
-                onClick={() => setActiveStyle(index)}
-                className={`whitespace-nowrap px-3 py-1 rounded-full text-[12px] transition-all ${
-                  index === activeStyle
-                    ? 'bg-primary text-white font-medium'
-                    : 'bg-gray-100 text-gray-600'
+                key={tab}
+                onClick={() => setActiveTab(index)}
+                className={`text-[15px] pb-1 border-b-2 ${
+                  index === activeTab
+                    ? 'font-bold text-gray-900 border-primary'
+                    : 'text-gray-400 border-transparent'
                 }`}
               >
-                {style}
+                {tab}
               </button>
             ))}
           </div>
+          <button
+            onClick={() => navigate('/search')}
+            className="size-8 flex items-center justify-center"
+          >
+            <Icon name="search" size={22} className="text-gray-600" />
+          </button>
         </div>
       </div>
 
-      {/* 设计卡片 */}
+      {/* 内容区域 */}
       <main className="max-w-md mx-auto px-2 pb-32">
+        {/* 风格标签 - 随内容滚动 */}
+        <div className="flex overflow-x-auto py-2.5 gap-2 hide-scrollbar">
+          {styles.map((style, index) => (
+            <button
+              key={style}
+              onClick={() => setActiveStyle(index)}
+              className={`whitespace-nowrap px-3 py-1 rounded-full text-[12px] transition-all ${
+                index === activeStyle
+                  ? 'bg-primary text-white font-medium'
+                  : 'bg-gray-100 text-gray-600'
+              }`}
+            >
+              {style}
+            </button>
+          ))}
+        </div>
+
+        {/* 设计卡片 */}
         <CardMasonry
           columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
           gap={6}

@@ -1,4 +1,4 @@
-import { Badge } from './Badge'
+import { Badge } from '../common'
 
 type Status = 'wishing' | 'making' | 'shipping' | 'owned'
 

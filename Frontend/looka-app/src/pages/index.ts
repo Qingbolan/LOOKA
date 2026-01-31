@@ -1,18 +1,17 @@
-export { ExplorePage } from './Explore'
-export { TogetherPage } from './Together'
-export { LukaPage } from './Luka'
-export { LukaChatPage } from './LukaChat'
-export { ClosetPage } from './Closet'
-export { ClothDetailPage } from './ClothDetail'
-export { BodySetupPage } from './BodySetup'
-export { OrdersPage } from './Orders'
-export { ProfilePage } from './Profile'
-export { ProductDetailPage } from './ProductDetail'
-export { OrderDetailPage } from './OrderDetail'
-export { TryOnPage } from './TryOn'
-export { DesignResultPage } from './DesignResult'
-export { GroupBuyPage } from './GroupBuy'
-export { DesignSchemePage } from './DesignScheme'
-export { ParameterEditPage } from './ParameterEdit'
-export { BodyProfilePage } from './BodyProfile'
-export { SearchPage } from './Search'
+// 发现模块
+export { ExplorePage, SearchPage } from './explore'
+
+// 愿望模块
+export { TogetherPage, GroupBuyPage } from './wish'
+
+// Luka AI 模块
+export { LukaPage, LukaChatPage, DesignResultPage, DesignSchemePage, TryOnPage } from './luka'
+
+// 衣柜模块
+export { ClosetPage, ClothDetailPage } from './closet'
+
+// 个人中心模块
+export { ProfilePage, BodyProfilePage, BodySetupPage } from './profile'
+
+// 订单模块
+export { OrdersPage, OrderDetailPage, ProductDetailPage, ParameterEditPage } from './order'

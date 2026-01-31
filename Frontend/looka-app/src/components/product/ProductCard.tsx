@@ -1,5 +1,4 @@
-import { Icon } from './Icon'
-import { Badge } from './Badge'
+import { Icon, Badge } from '../common'
 
 interface ProductCardProps {
   image: string

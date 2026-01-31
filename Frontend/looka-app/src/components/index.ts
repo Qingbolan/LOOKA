@@ -1,21 +1,11 @@
-// Core components
-export { Icon } from './Icon'
-export { Button } from './Button'
-export { Card } from './Card'
-export { Badge } from './Badge'
-export { Input, Textarea } from './Input'
+// 通用组件
+export { Icon, Button, Card, Badge, Input, Textarea, TabBar, Header, Layout } from './common'
 
-// Layout components
-export { TabBar } from './TabBar'
-export { Header } from './Header'
-export { Layout } from './Layout'
+// Luka 相关组件
+export { LukaAvatar } from './luka'
 
-// Specialized components
-export { ProductCard } from './ProductCard'
-export { LukaAvatar } from './LukaAvatar'
-export { StatusBadge } from './StatusBadge'
-export { ImageWithStatus } from './ImageWithStatus'
-export { ImageSwap } from './ImageSwap'
+// 产品相关组件
+export { ProductCard, ImageSwap, ImageWithStatus, StatusBadge } from './product'
 
-// Utilities
+// 工具组件
 export { CardMasonry } from './reactbits/Masonry'

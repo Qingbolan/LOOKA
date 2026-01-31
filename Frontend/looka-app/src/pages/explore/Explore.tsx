@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, CardMasonry, Badge, ImageSwap } from '@/components'
+import { Layout, Icon, CardMasonry, Badge, ImageSwap, LikeButton } from '@/components'
 import { ProductListSkeleton, EmptyState, NetworkError } from '@/components/feedback'
 import { productApi } from '@/api/products'
-import { toast } from '@/store'
+import { useRefreshWithDeps } from '@/hooks'
 import { ProductCard, ProductStatus } from '@/types'
 
 // 主导航
@@ -24,58 +24,45 @@ export function ExplorePage() {
   const [activeTab, setActiveTab] = useState(1)
   const [activeStyle, setActiveStyle] = useState(0)
   const [products, setProducts] = useState<ProductCard[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
 
-
-  // 获取商品列表
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true)
-      setError(false)
-      try {
-        const sortMap = ['newest', 'newest', 'popular'] as const
-        const response = await productApi.getProducts({
-          sortBy: sortMap[activeTab] as 'newest' | 'popular',
-          tags: activeStyle > 0 ? [styles[activeStyle]] : undefined,
-        })
-        setProducts(response.items)
-      } catch (err) {
-        console.error('Failed to fetch products:', err)
-        setError(true)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchProducts()
+  // 使用 useRefreshWithDeps 解决刷新问题
+  const fetchProducts = useCallback(async () => {
+    const sortMap = ['newest', 'newest', 'popular'] as const
+    const response = await productApi.getProducts({
+      sortBy: sortMap[activeTab] as 'newest' | 'popular',
+      tags: activeStyle > 0 ? [styles[activeStyle]] : undefined,
+    })
+    setProducts(response.items)
+    return response.items
   }, [activeTab, activeStyle])
 
-  const handleLike = async (e: React.MouseEvent, product: ProductCard) => {
-    e.stopPropagation()
-    try {
-      const result = await productApi.toggleLike(product.id)
-      setProducts(prev =>
-        prev.map(p =>
-          p.id === product.id
-            ? { ...p, isLiked: result.liked, likes: result.likes }
-            : p
-        )
-      )
-    } catch (err) {
-      toast.error('操作失败')
-    }
-  }
+  const { loading, error, refresh } = useRefreshWithDeps(fetchProducts, [activeTab, activeStyle])
 
-  const handleRetry = () => {
-    setActiveTab(activeTab) // Trigger refetch
-  }
+  // 乐观更新点赞
+  const handleLike = useCallback(async (productId: string) => {
+    const product = products.find(p => p.id === productId)
+    if (!product) throw new Error('Product not found')
+
+    const result = await productApi.toggleLike(productId)
+
+    // 更新本地状态
+    setProducts(prev =>
+      prev.map(p =>
+        p.id === productId
+          ? { ...p, isLiked: result.liked, likes: result.likes }
+          : p
+      )
+    )
+
+    return result
+  }, [products])
 
   return (
     <Layout>
       {/* Header */}
       <div className="header-main">
         <div className="header-main-inner">
-          <h1 className="header-title">灵感</h1>
+          <h1 className="header-title">逛逛</h1>
           <div className="tabs-header">
             {mainTabs.map((tab, index) => (
               <button
@@ -115,8 +102,8 @@ export function ExplorePage() {
         {/* 加载状态 */}
         {loading && <ProductListSkeleton count={6} />}
 
-        {/* 错误状态 */}
-        {error && !loading && <NetworkError onRetry={handleRetry} />}
+        {/* 错误状态 - 使用 refresh 修复重试问题 */}
+        {error && !loading && <NetworkError onRetry={refresh} />}
 
         {/* 空状态 */}
         {!loading && !error && products.length === 0 && (
@@ -177,18 +164,12 @@ export function ExplorePage() {
                             {product.designer?.name || '设计师'}
                           </span>
                         </div>
-                        <button
-                          onClick={(e) => handleLike(e, product)}
-                          className="flex items-center gap-0.5 flex-shrink-0"
-                        >
-                          <Icon
-                            name="favorite"
-                            size={12}
-                            className={product.isLiked ? 'text-primary' : 'text-gray-400'}
-                            filled={product.isLiked}
-                          />
-                          <span className="text-[11px] text-gray-400">{product.likes || 0}</span>
-                        </button>
+                        <LikeButton
+                          isLiked={product.isLiked ?? false}
+                          likes={product.likes || 0}
+                          onToggle={() => handleLike(product.id)}
+                          size="sm"
+                        />
                       </div>
                     </div>
                   </div>

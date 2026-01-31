@@ -1,67 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Layout, Icon, Badge, LukaAvatar, ImageSwap } from '@/components'
-import { GroupBuyListSkeleton, EmptyGroupBuy, NetworkError } from '@/components/feedback'
+import { WishListHorizontalSkeleton, EmptyGroupBuy, NetworkError } from '@/components/feedback'
 import { useWishStore } from '@/store'
 import { WishStatus } from '@/types'
 import { formatCountdown } from '@/utils/format'
 import { QuickJoinButton } from '@/components/wish/JoinWishButton'
-
-// 情感化 Tab 名称
-const tabs = ['等你加入', '快达成啦', '梦想成真']
-
-// 动态（保持模拟数据，后续可接入真实 API）
-const activities = [
-  {
-    id: '1',
-    type: 'join' as const,
-    wishTitle: '星空渐变连衣裙',
-    user: { name: '小红', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100' },
-    time: '3分钟前',
-  },
-  {
-    id: '2',
-    type: 'remix' as const,
-    wishTitle: '我的复古碎花裙',
-    user: { name: 'Fashion_Lily', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100' },
-    time: '10分钟前',
-  },
-  {
-    id: '3',
-    type: 'almost' as const,
-    wishTitle: '极简主义白衬衫',
-    remaining: 5,
-    time: '1小时前',
-  },
-]
+import { useRefreshWithDeps } from '@/hooks'
+import { activities, togetherTabs } from '@/mocks'
 
 export function TogetherPage() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(0)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
 
   const { groupBuys, fetchGroupBuys, hasJoinedGroupBuy } = useWishStore()
 
-  useEffect(() => {
-    const load = async () => {
-      setLoading(true)
-      setError(false)
-      try {
-        const statusMap: Record<number, WishStatus | undefined> = {
-          0: 'active',
-          1: 'active', // 过滤显示进度 > 80%
-          2: 'success',
-        }
-        await fetchGroupBuys({ status: statusMap[activeTab] })
-      } catch (err) {
-        setError(true)
-      } finally {
-        setLoading(false)
-      }
+  // 使用 useRefreshWithDeps 管理数据加载
+  const fetchData = useCallback(async () => {
+    const statusMap: Record<number, WishStatus | undefined> = {
+      0: 'active',
+      1: 'active', // 过滤显示进度 > 80%
+      2: 'success',
     }
-    load()
+    await fetchGroupBuys({ status: statusMap[activeTab] })
   }, [activeTab, fetchGroupBuys])
+
+  const { loading, error, refresh } = useRefreshWithDeps(fetchData, [activeTab])
 
   // 根据 tab 过滤显示
   const filteredWishes = groupBuys.filter(wish => {
@@ -72,10 +36,6 @@ export function TogetherPage() {
     return true
   })
 
-  const handleRetry = () => {
-    fetchGroupBuys()
-  }
-
   return (
     <Layout>
       {/* Header */}
@@ -83,7 +43,7 @@ export function TogetherPage() {
         <div className="header-main-inner">
           <h1 className="header-title">一起</h1>
           <div className="tabs-header">
-            {tabs.map((tab, index) => (
+            {togetherTabs.map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(index)}
@@ -102,7 +62,7 @@ export function TogetherPage() {
       </div>
 
       <main className="content-page py-3 space-y-4">
-        {/* 动态提醒 */}
+        {/* 动态提醒 - 使用 mocks 数据 */}
         {activities.length > 0 && activeTab === 0 && (
           <div className="bg-primary/5 rounded p-3 border border-primary/10">
             <div className="flex items-center gap-2 mb-3">
@@ -150,10 +110,10 @@ export function TogetherPage() {
         )}
 
         {/* 加载状态 */}
-        {loading && <GroupBuyListSkeleton count={4} />}
+        {loading && <WishListHorizontalSkeleton count={4} />}
 
-        {/* 错误状态 */}
-        {error && !loading && <NetworkError onRetry={handleRetry} />}
+        {/* 错误状态 - 使用 refresh 修复重试 */}
+        {error && !loading && <NetworkError onRetry={refresh} />}
 
         {/* 空状态 */}
         {!loading && !error && filteredWishes.length === 0 && <EmptyGroupBuy />}

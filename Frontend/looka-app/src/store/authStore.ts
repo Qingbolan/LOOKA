@@ -13,6 +13,7 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   addresses: Address[];
+  hasCompletedOnboarding: boolean;
 
   // 操作方法
   login: (phone: string, code: string) => Promise<boolean>;
@@ -24,6 +25,7 @@ interface AuthState {
   updateAddress: (id: string, data: Partial<Address>) => Promise<void>;
   deleteAddress: (id: string) => Promise<void>;
   setDefaultAddress: (id: string) => Promise<void>;
+  setOnboardingComplete: (completed: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -35,6 +37,7 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
       isLoading: false,
       addresses: [],
+      hasCompletedOnboarding: false,
 
       // 登录
       login: async (phone, code) => {
@@ -196,6 +199,11 @@ export const useAuthStore = create<AuthState>()(
           throw error;
         }
       },
+
+      // 设置 onboarding 完成状态
+      setOnboardingComplete: (completed) => {
+        set({ hasCompletedOnboarding: completed });
+      },
     }),
     {
       name: 'auth-storage',
@@ -203,6 +211,7 @@ export const useAuthStore = create<AuthState>()(
         user: state.user,
         token: state.token,
         isAuthenticated: state.isAuthenticated,
+        hasCompletedOnboarding: state.hasCompletedOnboarding,
       }),
     }
   )

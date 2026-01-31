@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Icon, Badge } from '../common'
 
 interface ProductCardProps {
@@ -17,7 +18,7 @@ const statusLabels = {
   owned: '已拥有',
 }
 
-export function ProductCard({
+export const ProductCard = memo(function ProductCard({
   image,
   title,
   status,
@@ -63,4 +64,4 @@ export function ProductCard({
       </div>
     </div>
   )
-}
+})

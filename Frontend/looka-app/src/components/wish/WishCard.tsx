@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { WishCard as WishCardType } from '@/types';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +8,7 @@ interface WishCardProps {
   className?: string;
 }
 
-export function WishCard({ wish, variant = 'default', className = '' }: WishCardProps) {
+export const WishCard = memo(function WishCard({ wish, variant = 'default', className = '' }: WishCardProps) {
   const navigate = useNavigate();
   const remaining = wish.targetCount - wish.currentCount;
   const isAlmostThere = wish.progress >= 80;
@@ -140,7 +141,7 @@ export function WishCard({ wish, variant = 'default', className = '' }: WishCard
       </div>
     </div>
   );
-}
+})
 
 // 进度条组件
 interface ProgressBarProps {

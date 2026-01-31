@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, memo } from 'react'
 
 interface ImageSwapProps {
   mainImage: string
@@ -20,7 +20,7 @@ const thumbPositionClasses = {
   lg: 'bottom-3 left-3',
 }
 
-export function ImageSwap({
+export const ImageSwap = memo(function ImageSwap({
   mainImage,
   thumbImage,
   alt = '',
@@ -56,4 +56,4 @@ export function ImageSwap({
       </button>
     </div>
   )
-}
+})

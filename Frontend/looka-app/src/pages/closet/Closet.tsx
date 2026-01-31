@@ -1,157 +1,32 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Layout, Icon, LukaAvatar, CardMasonry, ImageSwap } from '@/components'
-
-// 主 Tab
-const mainTabs = ['穿搭', '衣帽间', '灵感', '心愿单']
-
-// 衣服分类
-const categories = ['全部', '上装', '下装', '裙装', '外套', '配饰']
-
-// 我的穿搭
-const myOutfits = [
-  {
-    id: 'outfit-1',
-    name: '通勤优雅',
-    items: [
-      'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-      'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400',
-    ],
-    occasion: '上班',
-  },
-  {
-    id: 'outfit-2',
-    name: '周末休闲',
-    items: [
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
-      'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400',
-    ],
-    occasion: '约会',
-  },
-]
-
-// 我的衣服（衣帽间）
-const myClothes = [
-  {
-    id: '1',
-    modelImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200',
-    name: '星空渐变长裙',
-    category: '裙装',
-    status: 'making',
-  },
-  {
-    id: '2',
-    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200',
-    name: '真丝和服外套',
-    category: '外套',
-    status: 'shipping',
-  },
-  {
-    id: '3',
-    modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=200',
-    name: '极简白衬衫',
-    category: '上装',
-    status: 'owned',
-  },
-  {
-    id: '5',
-    modelImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200',
-    name: '复古格纹西装',
-    category: '外套',
-    status: 'owned',
-  },
-]
-
-// 灵感（记录想法）
-const myInspirations = [
-  {
-    id: 'i1',
-    text: '想要一条能在海边穿的飘逸长裙，最好是白色或浅蓝色',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300',
-    tags: ['度假', '飘逸', '长裙'],
-    time: '3天前',
-    status: 'new',
-  },
-  {
-    id: 'i2',
-    text: '看到一个博主穿的针织开衫很好看，想要类似的，但要更修身一点',
-    image: null,
-    tags: ['针织', '开衫', '修身'],
-    time: '1周前',
-    status: 'new',
-  },
-  {
-    id: 'i3',
-    text: '需要一件能配所有裤子的基础款白T，领口不要太大',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300',
-    tags: ['基础款', '白T', '百搭'],
-    time: '2周前',
-    status: 'realized', // 已变成愿望
-  },
-]
-
-// 收藏
-const myCollections = [
-  {
-    id: 'c1',
-    modelImage: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200',
-    name: '海边度假白裙',
-    from: '小红书',
-  },
-  {
-    id: 'c2',
-    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=200',
-    name: '街头风牛仔外套',
-    from: '街拍',
-  },
-  {
-    id: 'c3',
-    modelImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=200',
-    name: '气质渐变长裙',
-    from: '淘宝',
-  },
-  {
-    id: 'c4',
-    modelImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200',
-    name: '英伦复古西装',
-    from: 'B站',
-  },
-  {
-    id: 'c5',
-    modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=200',
-    name: '极简白衬衫',
-    from: '微信',
-  },
-]
-
-// 今日推荐搭配
-const todayOutfit = {
-  greeting: '今天有点冷，推荐这样穿',
-  items: [
-    { id: '5', image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400', name: '复古格纹西装' },
-    { id: '3', image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400', name: '极简白衬衫' },
-  ],
-}
-
-const statusConfig: Record<string, { text: string; color: string }> = {
-  making: { text: '制作中', color: 'bg-amber-500' },
-  shipping: { text: '快递中', color: 'bg-sky-500' },
-  owned: { text: '', color: '' },
-}
+import { ClosetSkeleton } from '@/components/feedback'
+import { useRefreshWithDeps } from '@/hooks'
+import {
+  mainTabs,
+  categories,
+  myOutfits,
+  myClothes,
+  myInspirations,
+  myCollections,
+  todayOutfit,
+  statusConfig,
+} from '@/mocks'
 
 export function ClosetPage() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(1) // 默认衣帽间
   const [activeCategory, setActiveCategory] = useState(0)
+
+  // 模拟 API 调用（后续可替换为真实 API）
+  const fetchClosetData = useCallback(async () => {
+    // 当接入真实 API 时，替换这里的逻辑
+    // const data = await closetApi.getClothes({ tab: activeTab })
+    return { success: true }
+  }, [activeTab])
+
+  const { loading } = useRefreshWithDeps(fetchClosetData, [activeTab])
 
   const filteredClothes = activeCategory === 0
     ? myClothes
@@ -183,8 +58,11 @@ export function ClosetPage() {
       </div>
 
       <div className="content-masonry">
+        {/* 加载状态 */}
+        {loading && <ClosetSkeleton />}
+
         {/* Tab 0: 穿搭 */}
-        {activeTab === 0 && (
+        {!loading && activeTab === 0 && (
           <>
             {/* Luka 今日推荐 */}
             <div className="mb-4">
@@ -249,7 +127,7 @@ export function ClosetPage() {
         )}
 
         {/* Tab 1: 衣帽间 */}
-        {activeTab === 1 && (
+        {!loading && activeTab === 1 && (
           <>
             {/* Luka 今日推荐 */}
             <div className="mb-4">
@@ -344,7 +222,7 @@ export function ClosetPage() {
         )}
 
         {/* Tab 2: 灵感 - 记录想法 */}
-        {activeTab === 2 && (
+        {!loading && activeTab === 2 && (
           <div className="space-y-3">
             {/* 输入新想法 */}
             <div
@@ -418,7 +296,7 @@ export function ClosetPage() {
         )}
 
         {/* Tab 3: 心愿单 */}
-        {activeTab === 3 && (
+        {!loading && activeTab === 3 && (
           <>
             {/* 提示卡片 */}
             <div className="bg-primary/5 rounded p-3 border border-primary/10 mb-4">
@@ -471,14 +349,16 @@ export function ClosetPage() {
         )}
 
         {/* 底部提示 */}
-        <div className="text-center py-8">
-          <p className="text-gray-400 text-sm">
-            {activeTab === 0 && '让 Luka 帮你搭配更多穿法'}
-            {activeTab === 1 && '告诉 Luka 你想要什么'}
-            {activeTab === 2 && '有想法就告诉 Luka'}
-            {activeTab === 3 && '看到喜欢的就加入心愿单'}
-          </p>
-        </div>
+        {!loading && (
+          <div className="text-center py-8">
+            <p className="text-gray-400 text-sm">
+              {activeTab === 0 && '让 Luka 帮你搭配更多穿法'}
+              {activeTab === 1 && '告诉 Luka 你想要什么'}
+              {activeTab === 2 && '有想法就告诉 Luka'}
+              {activeTab === 3 && '看到喜欢的就加入心愿单'}
+            </p>
+          </div>
+        )}
       </div>
     </Layout>
   )

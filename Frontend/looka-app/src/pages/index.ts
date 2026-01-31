@@ -28,3 +28,6 @@ export { default as PaymentPage } from './order/Payment'
 
 // 认证模块
 export { default as LoginPage } from './auth/Login'
+
+// Onboarding 模块
+export { OnboardingPage } from './onboarding'

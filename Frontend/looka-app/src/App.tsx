@@ -30,6 +30,7 @@ import {
   WishCreatePage,
   WishDetailPage,
   ProductionPreviewPage,
+  OnboardingPage,
 } from '@/pages'
 import { ErrorBoundary } from '@/components/feedback/ErrorBoundary'
 import { ToastProvider } from '@/components/feedback/Toast'
@@ -38,7 +39,7 @@ import { AuthGuard, OptionalAuth } from '@/components/auth/AuthGuard'
 import { useAuthStore } from '@/store'
 
 function App() {
-  const { checkAuth } = useAuthStore()
+  const { checkAuth, hasCompletedOnboarding } = useAuthStore()
 
   // 初始化时检查认证状态
   useEffect(() => {
@@ -60,11 +61,20 @@ function App() {
         <LoadingProvider>
           <BrowserRouter>
             <Routes>
+              {/* Onboarding 页面 */}
+              <Route path="/onboarding" element={<OnboardingPage />} />
+
               {/* 认证页面 */}
               <Route path="/auth/login" element={<LoginPage />} />
 
-              {/* 主要标签页 - 无需登录 */}
-              <Route path="/" element={<OptionalAuth><ExplorePage /></OptionalAuth>} />
+              {/* 主要标签页 - 无需登录，首次打开显示 Onboarding */}
+              <Route path="/" element={
+                hasCompletedOnboarding ? (
+                  <OptionalAuth><ExplorePage /></OptionalAuth>
+                ) : (
+                  <OnboardingPage />
+                )
+              } />
               <Route path="/search" element={<OptionalAuth><SearchPage /></OptionalAuth>} />
               <Route path="/together" element={<OptionalAuth><TogetherPage /></OptionalAuth>} />
               <Route path="/luka" element={<OptionalAuth><LukaPage /></OptionalAuth>} />

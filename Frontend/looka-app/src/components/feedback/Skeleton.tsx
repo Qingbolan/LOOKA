@@ -13,8 +13,6 @@ export function Skeleton({
   height,
   animation = 'shimmer',
 }: SkeletonProps) {
-  const baseClass = 'bg-gray-200 dark:bg-gray-700';
-
   const variantClasses = {
     text: 'rounded',
     rectangular: 'rounded-lg',
@@ -23,8 +21,8 @@ export function Skeleton({
 
   const animationClasses = {
     shimmer: 'shimmer',
-    pulse: 'animate-pulse',
-    none: '',
+    pulse: 'animate-pulse bg-gray-200 dark:bg-gray-700',
+    none: 'bg-gray-200 dark:bg-gray-700',
   };
 
   const style: React.CSSProperties = {
@@ -35,7 +33,6 @@ export function Skeleton({
   return (
     <div
       className={`
-        ${baseClass}
         ${variantClasses[variant]}
         ${animationClasses[animation]}
         ${className}

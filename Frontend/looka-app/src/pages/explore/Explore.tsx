@@ -1,6 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Layout, Icon, CardMasonry, Badge, ImageSwap } from '@/components'
+import { ProductListSkeleton, EmptyState, NetworkError } from '@/components/feedback'
+import { productApi } from '@/api/products'
+import { toast } from '@/store'
+import { ProductCard, ProductStatus } from '@/types'
 
 // 主导航
 const mainTabs = ['关注', '最近', '热门']
@@ -8,64 +12,63 @@ const mainTabs = ['关注', '最近', '热门']
 // 风格标签
 const styles = ['全部', '梦幻', '简约', '复古', '街头', '优雅', '甜酷']
 
-// 别人的 dream dress 设计
-const dreams = [
-  {
-    id: '1',
-    modelImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200',
-    name: '星空渐变长裙',
-    description: '像银河一样的颜色',
-    dreamer: { name: '小美', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100' },
-    wantCount: 23,
-    isWanted: false,
-    status: 'collecting',
-  },
-  {
-    id: '2',
-    modelImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200',
-    name: '真丝和服外套',
-    description: '日式复古，轻薄透气',
-    dreamer: { name: 'Luna', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100' },
-    wantCount: 156,
-    isWanted: true,
-    status: 'making',
-  },
-  {
-    id: '3',
-    modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=200',
-    name: '极简白衬衫',
-    description: '完美版型，高级面料',
-    dreamer: { name: '设计师阿白', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100' },
-    wantCount: 89,
-    isWanted: false,
-    status: 'collecting',
-  },
-  {
-    id: '4',
-    modelImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-    clothImage: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200',
-    name: 'oversized 西装',
-    description: '英伦复古格纹',
-    dreamer: { name: '职场穿搭', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100' },
-    wantCount: 67,
-    isWanted: false,
-    status: 'done',
-  },
-]
-
-const statusConfig: Record<string, { text: string; variant: 'wishing' | 'making' | 'owned' }> = {
-  collecting: { text: '等人一起', variant: 'wishing' },
+const statusConfig: Record<ProductStatus, { text: string; variant: 'wishing' | 'making' | 'owned' | 'shipping' }> = {
+  wishing: { text: '等人一起', variant: 'wishing' },
   making: { text: '制作中', variant: 'making' },
-  done: { text: '已实现', variant: 'owned' },
+  shipping: { text: '运输中', variant: 'shipping' },
+  owned: { text: '已实现', variant: 'owned' },
 }
 
 export function ExplorePage() {
   const navigate = useNavigate()
-  const [activeTab, setActiveTab] = useState(1) // 默认选中"最近"
+  const [activeTab, setActiveTab] = useState(1)
   const [activeStyle, setActiveStyle] = useState(0)
+  const [products, setProducts] = useState<ProductCard[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+
+  // 获取商品列表
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true)
+      setError(false)
+      try {
+        const sortMap = ['newest', 'newest', 'popular'] as const
+        const response = await productApi.getProducts({
+          sortBy: sortMap[activeTab] as 'newest' | 'popular',
+          tags: activeStyle > 0 ? [styles[activeStyle]] : undefined,
+        })
+        setProducts(response.items)
+      } catch (err) {
+        console.error('Failed to fetch products:', err)
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchProducts()
+  }, [activeTab, activeStyle])
+
+  const handleLike = async (e: React.MouseEvent, product: ProductCard) => {
+    e.stopPropagation()
+    try {
+      const result = await productApi.toggleLike(product.id)
+      setProducts(prev =>
+        prev.map(p =>
+          p.id === product.id
+            ? { ...p, isLiked: result.liked, likes: result.likes }
+            : p
+        )
+      )
+    } catch (err) {
+      toast.error('操作失败')
+    }
+  }
+
+  const handleRetry = () => {
+    setActiveTab(activeTab) // Trigger refetch
+  }
 
   return (
     <Layout>
@@ -109,64 +112,105 @@ export function ExplorePage() {
           ))}
         </div>
 
+        {/* 加载状态 */}
+        {loading && <ProductListSkeleton count={6} />}
+
+        {/* 错误状态 */}
+        {error && !loading && <NetworkError onRetry={handleRetry} />}
+
+        {/* 空状态 */}
+        {!loading && !error && products.length === 0 && (
+          <EmptyState
+            icon="explore"
+            title="暂无内容"
+            description="稍后再来看看吧"
+          />
+        )}
+
         {/* 设计卡片 */}
-        <CardMasonry
-          columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
-          gap={6}
-        >
-          {dreams.map((dream, index) => {
-            // 高度噪声：不同卡片不同比例
-            const aspectRatios = ['aspect-card-1', 'aspect-card-2', 'aspect-card-3', 'aspect-card-4']
-            const aspectRatio = aspectRatios[index % aspectRatios.length]
-
-            return (
-            <div
-              key={dream.id}
-              onClick={() => navigate(`/group-buy/${dream.id}`)}
-              className="card-masonry card-interactive"
+        {!loading && !error && products.length > 0 && (
+          <>
+            <CardMasonry
+              columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
+              gap={6}
             >
-              {/* 图片区域 */}
-              <div className={`relative ${aspectRatio}`}>
-                <ImageSwap
-                  mainImage={dream.modelImage}
-                  thumbImage={dream.clothImage}
-                  alt={dream.name}
-                  className="w-full h-full rounded-t-sm overflow-hidden"
-                  thumbSize="md"
-                />
-                {/* 状态标签 */}
-                <div className="absolute top-1.5 left-1.5 z-10">
-                  <Badge variant={statusConfig[dream.status].variant} size="sm">
-                    {statusConfig[dream.status].text}
-                  </Badge>
-                </div>
-              </div>
-              {/* 信息区域 */}
-              <div className="px-1.5 py-2">
-                <h3 className="text-[13px] font-semibold leading-tight line-clamp-2">{dream.name}</h3>
-                <div className="flex items-center justify-between mt-1.5">
-                  <div className="flex items-center gap-1 min-w-0">
-                    <img
-                      src={dream.dreamer.avatar}
-                      alt={dream.dreamer.name}
-                      className="w-4 h-4 object-cover flex-shrink-0 rounded-full"
-                    />
-                    <span className="text-[11px] text-gray-500 truncate">{dream.dreamer.name}</span>
-                  </div>
-                  <div className="flex items-center gap-0.5 flex-shrink-0">
-                    <Icon name="favorite" size={12} className="text-gray-400" filled={dream.isWanted} />
-                    <span className="text-[11px] text-gray-400">{dream.wantCount}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )})}
-        </CardMasonry>
+              {products.map((product, index) => {
+                const aspectRatios = ['aspect-card-1', 'aspect-card-2', 'aspect-card-3', 'aspect-card-4']
+                const aspectRatio = aspectRatios[index % aspectRatios.length]
+                const config = statusConfig[product.status]
 
-        {/* 底部提示 */}
-        <div className="text-center py-8">
-          <p className="text-gray-400 text-sm">看到喜欢的？点击"我也想要"</p>
-          <p className="text-gray-400 text-sm">或者告诉 Luka 你的想法</p>
+                return (
+                  <div
+                    key={product.id}
+                    onClick={() => navigate(`/group-buy/${product.id}`)}
+                    className="card-masonry card-interactive"
+                  >
+                    {/* 图片区域 */}
+                    <div className={`relative ${aspectRatio}`}>
+                      <ImageSwap
+                        mainImage={product.image}
+                        thumbImage={product.thumbImage || product.image}
+                        alt={product.name}
+                        className="w-full h-full rounded-t-sm overflow-hidden"
+                        thumbSize="md"
+                      />
+                      {/* 状态标签 */}
+                      <div className="absolute top-1.5 left-1.5 z-10">
+                        <Badge variant={config.variant} size="sm">
+                          {config.text}
+                        </Badge>
+                      </div>
+                    </div>
+                    {/* 信息区域 */}
+                    <div className="px-1.5 py-2">
+                      <h3 className="text-[13px] font-semibold leading-tight line-clamp-2">{product.name}</h3>
+                      <div className="flex items-center justify-between mt-1.5">
+                        <div className="flex items-center gap-1 min-w-0">
+                          {product.designer?.avatar && (
+                            <img
+                              src={product.designer.avatar}
+                              alt={product.designer.name}
+                              className="w-4 h-4 object-cover flex-shrink-0 rounded-full"
+                            />
+                          )}
+                          <span className="text-[11px] text-gray-500 truncate">
+                            {product.designer?.name || '设计师'}
+                          </span>
+                        </div>
+                        <button
+                          onClick={(e) => handleLike(e, product)}
+                          className="flex items-center gap-0.5 flex-shrink-0"
+                        >
+                          <Icon
+                            name="favorite"
+                            size={12}
+                            className={product.isLiked ? 'text-primary' : 'text-gray-400'}
+                            filled={product.isLiked}
+                          />
+                          <span className="text-[11px] text-gray-400">{product.likes || 0}</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </CardMasonry>
+
+            {/* 底部提示 */}
+            <div className="text-center py-8">
+              <p className="text-gray-400 text-sm">看到喜欢的？点击加入愿望</p>
+              <p className="text-gray-400 text-sm">或者创作你自己的设计</p>
+            </div>
+          </>
+        )}
+
+        {/* 创作入口 FAB */}
+        <div
+          onClick={() => navigate('/design/editor')}
+          className="fixed bottom-24 right-4 size-14 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center shadow-lg cursor-pointer active:scale-95 transition-transform z-40"
+          style={{ boxShadow: '0 4px 20px rgba(255, 107, 107, 0.4)' }}
+        >
+          <span className="text-xl">✨</span>
         </div>
       </main>
     </Layout>

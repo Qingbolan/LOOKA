@@ -41,7 +41,7 @@ const featureCards = [
 
 export function LukaPage() {
   const navigate = useNavigate()
-  const [isHolding, setIsHolding] = useState(false)
+  const [input, setInput] = useState('')
 
   const handleCardClick = (cardId: string) => {
     navigate(`/luka/chat?mode=${cardId}`)
@@ -51,12 +51,21 @@ export function LukaPage() {
     navigate('/luka/chat?mode=inspiration')
   }
 
+  // 安全退出 Luka - 如果没有历史记录则回到首页
+  const handleExit = () => {
+    if (window.history.length > 1) {
+      navigate(-1)
+    } else {
+      navigate('/')
+    }
+  }
+
   return (
     <Layout showTabBar={false}>
       {/* Header */}
       <div className="header-detail">
         <div className="header-detail-inner">
-          <button onClick={() => navigate(-1)} className="header-btn">
+          <button onClick={handleExit} className="header-btn">
             <Icon name="close" size={24} className="text-gray-600" />
           </button>
           <div className="flex items-center gap-2">
@@ -143,46 +152,55 @@ export function LukaPage() {
         </div>
       </div>
 
-      {/* 底部输入区 */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white to-transparent pt-6 max-w-md mx-auto">
-        <div className="px-4 pb-6">
-          <div className="flex items-center gap-3">
-            {/* 表情/更多 */}
-            <button className="size-11 flex items-center justify-center rounded-full bg-gray-100">
-              <Icon name="emoji_emotions" size={22} className="text-gray-500" />
-            </button>
-
-            {/* 语音输入按钮 */}
-            <button
-              onTouchStart={() => setIsHolding(true)}
-              onTouchEnd={() => setIsHolding(false)}
-              onMouseDown={() => setIsHolding(true)}
-              onMouseUp={() => setIsHolding(false)}
-              onMouseLeave={() => setIsHolding(false)}
-              className={`flex-1 h-11 rounded-full flex items-center justify-center transition-all ${
-                isHolding
-                  ? 'bg-primary text-white scale-105'
-                  : 'bg-gray-100 text-gray-500'
-              }`}
-            >
-              <span className="text-sm">
-                {isHolding ? '松开发送' : '按住说话'}
-              </span>
-            </button>
-
-            {/* 相机 */}
+      {/* 底部输入区 - 与 LukaChat 保持一致 */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 max-w-md mx-auto">
+        <div className="p-4 pb-3">
+          <div className="flex items-end gap-3">
+            {/* 添加图片 */}
             <button
               onClick={handleCameraClick}
-              className="size-11 flex items-center justify-center rounded-full bg-gray-100"
+              className="size-10 flex items-center justify-center rounded-full bg-gray-100 flex-shrink-0"
             >
-              <Icon name="photo_camera" size={22} className="text-gray-500" />
+              <Icon name="add_photo_alternate" size={20} className="text-gray-500" />
+            </button>
+
+            {/* 文字输入 */}
+            <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2.5">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && input.trim()) {
+                    navigate(`/luka/chat?mode=describe&q=${encodeURIComponent(input)}`)
+                  }
+                }}
+                placeholder="描述你想要的衣服..."
+                className="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 outline-none"
+              />
+            </div>
+
+            {/* 发送按钮 */}
+            <button
+              onClick={() => {
+                if (input.trim()) {
+                  navigate(`/luka/chat?mode=describe&q=${encodeURIComponent(input)}`)
+                }
+              }}
+              className={`size-10 flex items-center justify-center rounded-full flex-shrink-0 transition-all ${
+                input.trim()
+                  ? 'bg-primary text-white'
+                  : 'bg-gray-100 text-gray-400'
+              }`}
+            >
+              <Icon name="send" size={20} />
             </button>
           </div>
 
-          {/* 提示文字 */}
+          {/* 退出提示 */}
           <p
             className="text-center text-[10px] text-gray-400 mt-3 cursor-pointer active:text-gray-500"
-            onClick={() => navigate(-1)}
+            onClick={handleExit}
           >
             点击离开对话，再去逛逛
           </p>

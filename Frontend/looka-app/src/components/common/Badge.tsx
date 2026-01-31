@@ -10,30 +10,19 @@ interface BadgeProps {
 
 const variantClasses = {
   primary: 'bg-primary text-white',
-  success: 'bg-emerald-500 text-white',
-  warning: 'bg-amber-500 text-white',
-  info: 'bg-sky-500 text-white',
-  // 状态徽章 - 不同状态不同颜色
-  wishing: 'bg-primary text-white',
-  making: 'bg-amber-500 text-white',
-  shipping: 'bg-sky-500 text-white',
-  owned: 'bg-emerald-500 text-white',
+  success: 'bg-success text-white',
+  warning: 'bg-warning text-white',
+  info: 'bg-info text-white',
+  // 状态徽章 - 使用状态色
+  wishing: 'bg-status-wishing text-white',
+  making: 'bg-status-making text-white',
+  shipping: 'bg-status-shipping text-white',
+  owned: 'bg-status-owned text-white',
 }
 
 const sizeClasses = {
   sm: 'text-[10px] px-1.5 py-0.5',
   md: 'text-[11px] px-2 py-0.5',
-}
-
-const dotColors = {
-  primary: 'bg-white',
-  success: 'bg-white',
-  warning: 'bg-white',
-  info: 'bg-white',
-  wishing: 'bg-white',
-  making: 'bg-white',
-  shipping: 'bg-white',
-  owned: 'bg-white',
 }
 
 export function Badge({
@@ -51,7 +40,7 @@ export function Badge({
       ${className}
     `}>
       {dot && (
-        <span className={`w-1.5 h-1.5 rounded-full ${dotColors[variant]}`} />
+        <span className="w-1.5 h-1.5 rounded-full bg-white" />
       )}
       {children}
     </span>

@@ -150,7 +150,7 @@ export function ExplorePage() {
                     </div>
                     {/* 信息区域 */}
                     <div className="px-1.5 py-2">
-                      <h3 className="text-[13px] font-semibold leading-tight line-clamp-2">{product.name}</h3>
+                      <h3 className="text-sm font-semibold leading-tight line-clamp-2">{product.name}</h3>
                       <div className="flex items-center justify-between mt-1.5">
                         <div className="flex items-center gap-1 min-w-0">
                           {product.designer?.avatar && (
@@ -160,7 +160,7 @@ export function ExplorePage() {
                               className="w-4 h-4 object-cover flex-shrink-0 rounded-full"
                             />
                           )}
-                          <span className="text-[11px] text-gray-500 truncate">
+                          <span className="text-xs text-gray-500 truncate">
                             {product.designer?.name || '设计师'}
                           </span>
                         </div>
@@ -191,14 +191,12 @@ export function ExplorePage() {
           className="fixed bottom-24 right-4 z-40 active:scale-95 transition-transform"
         >
           <div className="relative">
-            <div className="size-14 rounded-full bg-white shadow-lg flex items-center justify-center overflow-hidden border-2 border-primary/20"
-              style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.35)' }}
-            >
+            <div className="size-14 rounded-full bg-white shadow-button flex items-center justify-center overflow-hidden border-2 border-primary/20">
               <img src="/Luka.png" alt="Luka" className="w-full h-full object-cover" />
             </div>
             {/* 小星星装饰 */}
             <div className="absolute -top-1 -right-1 size-5 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-[10px]">✨</span>
+              <span className="text-xs">+</span>
             </div>
           </div>
         </button>

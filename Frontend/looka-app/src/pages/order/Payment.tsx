@@ -196,9 +196,9 @@ export default function PaymentPage() {
                       className={`
                         w-10 h-10 rounded-full flex items-center justify-center
                         ${method.id === 'wechat'
-                          ? 'bg-[#07C160]'
+                          ? 'bg-wechat'
                           : method.id === 'alipay'
-                          ? 'bg-[#1677FF]'
+                          ? 'bg-alipay'
                           : 'bg-black'
                         }
                       `}

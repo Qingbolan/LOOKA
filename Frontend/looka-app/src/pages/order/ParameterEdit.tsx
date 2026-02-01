@@ -74,7 +74,7 @@ export function ParameterEditPage() {
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
           </button>
-          <h1 className="text-[17px] font-bold tracking-tight flex-1 text-center font-display">AI 参数精修</h1>
+          <h1 className="text-md font-bold tracking-tight flex-1 text-center font-display">AI 参数精修</h1>
           <button className="size-10 flex items-center justify-end">
             <Icon name="restart_alt" size={24} />
           </button>
@@ -97,7 +97,7 @@ export function ParameterEditPage() {
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   <span className="text-white text-xs font-medium">实时渲染中...</span>
                 </div>
-                <span className="text-white/80 text-[10px] font-bold uppercase tracking-wider">AI High Precision</span>
+                <span className="text-white/80 text-xs font-bold uppercase tracking-wider">AI High Precision</span>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export function ParameterEditPage() {
                              [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-primary/30
                              [&::-webkit-slider-thumb]:cursor-pointer"
                 />
-                <div className="absolute -bottom-6 left-0 right-0 flex justify-between text-[10px] text-gray-400 font-medium px-1">
+                <div className="absolute -bottom-6 left-0 right-0 flex justify-between text-xs text-gray-400 font-medium px-1">
                   <span>{param.min}</span>
                   <span>{param.max}</span>
                 </div>

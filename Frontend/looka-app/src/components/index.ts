@@ -4,6 +4,13 @@ export { ProductGrid, getAspectRatioClass, aspectRatioClasses } from './common'
 export { InfiniteScroll, DefaultLoader, DefaultEndMessage } from './common'
 export { LikeButton, LikeIcon } from './common'
 
+// 新增通用组件
+export { ActionSheet } from './common'
+export type { ActionSheetOption } from './common'
+export { ChatInput } from './common'
+export { ProgressBadge, ProgressBar, ProgressInfo } from './common'
+export { AddressDisplay, AddressCard } from './common'
+
 // Luka 相关组件
 export { LukaAvatar } from './luka'
 

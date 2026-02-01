@@ -3,11 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useWishStore } from '@/store';
 import { WishProgressTimeline } from '@/components/wish/WishProgressTimeline';
 import { ParticipantFeed } from '@/components/wish/ParticipantFeed';
-import { JoinWishButton } from '@/components/wish/JoinWishButton';
 import { AvatarStack } from '@/components/wish/WishCard';
 import { ShareSheet, ShareButton } from '@/components/social/ShareSheet';
 import { EmotionalBadge } from '@/components/common/EmotionalBadge';
 import { WishDetailSkeleton } from '@/components/feedback';
+import { Icon } from '@/components';
+import { Flame, PartyPopper, Star, Heart, Sparkles, ChevronRight } from 'lucide-react';
 
 export default function WishDetailPage() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function WishDetailPage() {
 
   const [showShare, setShowShare] = useState(false);
   const [activeTab, setActiveTab] = useState<'story' | 'progress' | 'feed'>('story');
+  const [showTryOn, setShowTryOn] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -69,19 +71,34 @@ export default function WishDetailPage() {
       {/* 主内容 */}
       <div className="content-detail">
         {/* 商品图片 */}
-        <div className="relative aspect-square">
+        <div className="relative aspect-[3/4]">
           <img
-            src={wish.product.image}
+            src={showTryOn ? wish.tryOnImage : wish.product.image}
             alt={wish.product.name}
             className="w-full h-full object-cover"
           />
           {/* 渐变遮罩 */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+          {/* 切换小图 - 右下角 */}
+          {wish.tryOnImage && (
+            <button
+              onClick={() => setShowTryOn(!showTryOn)}
+              className="absolute bottom-20 right-4 w-16 h-20 border-2 border-white shadow-lg overflow-hidden active:scale-95 transition-transform"
+            >
+              <img
+                src={showTryOn ? wish.product.image : wish.tryOnImage}
+                alt={showTryOn ? '商品图' : '试穿效果'}
+                className="w-full h-full object-cover"
+              />
+            </button>
+          )}
+
           {/* 底部信息 */}
-          <div className="absolute bottom-4 left-4 right-4">
+          <div className="absolute bottom-4 left-4 right-24">
             <EmotionalBadge status="wishing" size="sm" />
             <h1 className="text-2xl font-bold text-white mt-2">{wish.product.name}</h1>
-            <div className="flex items-center justify-between mt-2">
+            <div className="flex items-center gap-4 mt-2">
               <div className="flex items-center gap-2">
                 <AvatarStack avatars={wish.participantAvatars || []} size="sm" light />
                 <span className="text-white/80 text-sm">{wish.currentCount} 人已加入</span>
@@ -94,16 +111,17 @@ export default function WishDetailPage() {
         </div>
 
         {/* 进度概览 */}
-        <div className="px-4 py-4 bg-gradient-to-r from-primary/5 to-secondary/5">
+        <div className="px-4 py-4 bg-primary/5">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-gray-700 font-medium">
-              {remaining === 1 ? '🔥 只差最后一人！' : `还差 ${remaining} 人达成`}
+            <span className="text-gray-700 font-medium flex items-center gap-1">
+              {remaining === 1 && <Flame size={16} className="text-orange-500" />}
+              {remaining === 1 ? '只差最后一人！' : `还差 ${remaining} 人达成`}
             </span>
             <span className="text-primary font-bold">{wish.progress || 0}%</span>
           </div>
           <div className="h-2 bg-white rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500"
+              className="h-full bg-gradient-primary rounded-full transition-all duration-500"
               style={{ width: `${wish.progress || 0}%` }}
             />
           </div>
@@ -144,11 +162,11 @@ export default function WishDetailPage() {
               {wish.story && (
                 <div className="p-4 bg-gray-50 rounded-xl">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-lg">
-                      {wish.story.emotion === 'excited' && '🎉'}
-                      {wish.story.emotion === 'hopeful' && '🌟'}
-                      {wish.story.emotion === 'grateful' && '💕'}
-                      {wish.story.emotion === 'dreamy' && '✨'}
+                    <span className="text-primary">
+                      {wish.story.emotion === 'excited' && <PartyPopper size={18} />}
+                      {wish.story.emotion === 'hopeful' && <Star size={18} />}
+                      {wish.story.emotion === 'grateful' && <Heart size={18} />}
+                      {wish.story.emotion === 'dreamy' && <Sparkles size={18} />}
                     </span>
                     <h3 className="font-bold text-gray-900">{wish.story.title}</h3>
                   </div>
@@ -199,15 +217,13 @@ export default function WishDetailPage() {
                   className="w-full p-4 bg-emerald-50 rounded-xl flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">🎉</span>
+                    <PartyPopper size={24} className="text-emerald-600" />
                     <div>
                       <p className="font-bold text-emerald-700">愿望达成！</p>
                       <p className="text-sm text-emerald-600">查看生产进度</p>
                     </div>
                   </div>
-                  <span className="material-symbols-outlined text-emerald-600">
-                    chevron_right
-                  </span>
+                  <ChevronRight size={20} className="text-emerald-600" />
                 </button>
               )}
             </div>
@@ -234,17 +250,39 @@ export default function WishDetailPage() {
       </div>
 
       {/* 底部操作栏 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 max-w-md mx-auto z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50">
         <div className="p-4 pb-safe">
-          <JoinWishButton
-            wishId={wish.id}
-            status={wish.status}
-            hasJoined={hasJoined}
-            price={wish.groupPrice}
-            originalPrice={wish.originalPrice}
-            remaining={remaining}
-            onJoin={handleJoin}
-          />
+          {/* 价格信息 */}
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-baseline gap-2">
+              <span className="text-2xl font-bold text-primary">¥{wish.groupPrice}</span>
+              <span className="text-sm text-gray-400 line-through">¥{wish.originalPrice}</span>
+            </div>
+            <span className="text-xs text-gray-500">
+              还差 <span className="text-primary font-bold">{remaining}</span> 人达成
+            </span>
+          </div>
+          {/* 按钮组 */}
+          <div className="flex items-center gap-3">
+            {/* 试装按钮 */}
+            <button
+              onClick={() => navigate('/try-on')}
+              className="h-12 w-12 flex-shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center active:scale-95 transition-transform"
+              aria-label="试穿效果"
+            >
+              <Icon name="checkroom" size={22} />
+            </button>
+            {/* 加入按钮 */}
+            <button
+              onClick={handleJoin}
+              disabled={hasJoined || wish.status !== 'active'}
+              className={`flex-1 h-12 rounded-xl font-bold text-base relative overflow-hidden active:scale-[0.98] transition-transform disabled:opacity-60 ${
+                hasJoined ? 'bg-gray-200 text-gray-400' : 'bg-gradient-primary text-white shadow-button'
+              }`}
+            >
+              {hasJoined ? '已加入' : remaining === 1 ? '成为最后一人' : '一起许愿'}
+            </button>
+          </div>
         </div>
       </div>
 

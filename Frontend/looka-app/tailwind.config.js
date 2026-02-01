@@ -8,61 +8,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        // 使用 CSS 变量的颜色
+        // 主题色 - 优雅玫瑰棕
         primary: {
           DEFAULT: "var(--color-primary)",
           light: "var(--color-primary-light)",
           dark: "var(--color-primary-dark)",
           soft: "var(--color-primary-soft)",
-          // 高级玫瑰棕色阶
-          50: "#FAF6F5",
-          100: "#F5EDEB",
-          200: "#EBDBD7",
-          300: "#DCC3BD",
-          400: "#D9B5AF",
-          500: "#C4928A",
-          600: "#B8867E",
-          700: "#A87872",
-          800: "#8F655F",
-          900: "#755450",
         },
-        secondary: {
-          DEFAULT: "var(--color-secondary)",
-        },
-        // 香槟辅助色
-        peach: {
-          DEFAULT: "var(--color-peach)",
-          50: "#FDFBF9",
-          100: "#F8F4F0",
-          200: "#F0E8E0",
-          300: "#E8DCD4",
-          400: "#DED0C4",
-          500: "#D4C4B5",
-          600: "#C4B4A5",
+        // 状态色 (4个)
+        status: {
+          wishing: "var(--color-primary)", // 等于 primary
+          making: "#D4A574",
+          shipping: "#8BA4B4",
+          owned: "#7BA688",
         },
         // 语义色
         success: {
-          DEFAULT: "var(--color-success)",
+          DEFAULT: "#10B981",
           light: "var(--color-success-light)",
         },
         warning: {
-          DEFAULT: "var(--color-warning)",
+          DEFAULT: "#F59E0B",
           light: "var(--color-warning-light)",
         },
         error: {
-          DEFAULT: "var(--color-error)",
+          DEFAULT: "#EF4444",
           light: "var(--color-error-light)",
         },
         info: {
-          DEFAULT: "var(--color-info)",
+          DEFAULT: "#3B82F6",
           light: "var(--color-info-light)",
-        },
-        // 状态色
-        status: {
-          wishing: "var(--color-wishing)",
-          making: "var(--color-making)",
-          owned: "var(--color-owned)",
-          shipping: "var(--color-shipping)",
         },
         // 背景色 - 干净简约
         background: {
@@ -95,10 +70,22 @@ export default {
           light: "var(--color-border-light)",
         },
         divider: "var(--color-divider)",
+        // 支付品牌色
+        wechat: "#07C160",
+        alipay: "#1677FF",
       },
       fontFamily: {
         display: ["Plus Jakarta Sans", "PingFang SC", "Noto Sans SC", "sans-serif"],
         body: ["Noto Sans SC", "PingFang SC", "sans-serif"],
+      },
+      // 字体大小 (6个规范)
+      fontSize: {
+        'xs': ['10px', { lineHeight: '14px' }],   // 标签、辅助
+        'sm': ['12px', { lineHeight: '18px' }],   // 小字、提示
+        'base': ['14px', { lineHeight: '22px' }], // 正文
+        'md': ['16px', { lineHeight: '24px' }],   // 中标题
+        'lg': ['18px', { lineHeight: '26px' }],   // 大标题
+        'xl': ['20px', { lineHeight: '28px' }],   // 页面标题
       },
       // 使用 CSS 变量的间距
       spacing: {
@@ -157,6 +144,11 @@ export default {
         'soft': '0 8px 30px rgba(0,0,0,0.04)',
         'card': 'var(--shadow-card)',
         'button': 'var(--shadow-button)',
+      },
+      // 渐变背景
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
+        'gradient-wish': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
       },
       // 卡片高度变体
       aspectRatio: {

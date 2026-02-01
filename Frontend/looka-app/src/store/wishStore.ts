@@ -237,6 +237,7 @@ export const useWishStore = create<WishState>()(
               'https://i.pravatar.cc/100?img=3',
             ],
             description: '一起拥有这件温柔的针织开衫',
+            tryOnImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
             rules: ['达到10人即可成团', '成团后7-14天发货', '支持7天无理由退换'],
             milestones: [
               { count: 5, discount: 25, reached: true, reachedAt: '2024-01-20' },

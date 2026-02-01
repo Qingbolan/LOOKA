@@ -86,7 +86,7 @@ export function ClosetPage() {
                   <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center bg-white/50">
                     <div className="text-center">
                       <Icon name="add" size={20} className="text-gray-300 mx-auto" />
-                      <p className="text-[10px] text-gray-400 mt-1">添加</p>
+                      <p className="text-xs text-gray-400 mt-1">添加</p>
                     </div>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export function ClosetPage() {
                   <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center bg-white/50 cursor-pointer">
                     <div className="text-center">
                       <Icon name="add" size={20} className="text-gray-300 mx-auto" />
-                      <p className="text-[10px] text-gray-400 mt-1">添加</p>
+                      <p className="text-xs text-gray-400 mt-1">添加</p>
                     </div>
                   </div>
                 </div>
@@ -196,14 +196,14 @@ export function ClosetPage() {
                       {/* 状态标签 */}
                       {cloth.status !== 'owned' && (
                         <div className="absolute top-1.5 left-1.5 z-10">
-                          <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded text-white ${statusConfig[cloth.status].color}`}>
+                          <span className={`text-xs font-medium px-1.5 py-0.5 rounded text-white ${statusConfig[cloth.status].color}`}>
                             {statusConfig[cloth.status].text}
                           </span>
                         </div>
                       )}
                     </div>
                     <div className="p-2">
-                      <p className="text-[13px] font-medium line-clamp-1">{cloth.name}</p>
+                      <p className="text-sm font-medium line-clamp-1">{cloth.name}</p>
                     </div>
                   </div>
                 )
@@ -215,7 +215,7 @@ export function ClosetPage() {
                 className="aspect-card-1 bg-gray-50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200"
               >
                 <Icon name="auto_awesome" size={28} className="text-gray-300 mb-1" />
-                <p className="text-[10px] text-gray-400">许个新愿望</p>
+                <p className="text-xs text-gray-400">许个新愿望</p>
               </div>
             </CardMasonry>
           </>
@@ -259,7 +259,7 @@ export function ClosetPage() {
                   <div className="flex-1 min-w-0">
                     {/* 状态标签 */}
                     {item.status === 'realized' && (
-                      <span className="inline-block text-[10px] font-medium px-1.5 py-0.5 rounded bg-emerald-500 text-white mb-1">
+                      <span className="inline-block text-xs font-medium px-1.5 py-0.5 rounded bg-emerald-500 text-white mb-1">
                         已变成愿望
                       </span>
                     )}
@@ -270,7 +270,7 @@ export function ClosetPage() {
                     {/* 标签 */}
                     <div className="flex flex-wrap gap-1 mt-2">
                       {item.tags.map((tag) => (
-                        <span key={tag} className="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
+                        <span key={tag} className="text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
                           #{tag}
                         </span>
                       ))}
@@ -278,11 +278,11 @@ export function ClosetPage() {
 
                     {/* 底部 */}
                     <div className="flex items-center justify-between mt-2">
-                      <span className="text-[10px] text-gray-400">{item.time}</span>
+                      <span className="text-xs text-gray-400">{item.time}</span>
                       {item.status !== 'realized' && (
                         <button
                           onClick={(e) => { e.stopPropagation(); navigate('/luka'); }}
-                          className="text-[11px] text-primary font-medium"
+                          className="text-xs text-primary font-medium"
                         >
                           让 Luka 实现
                         </button>
@@ -326,13 +326,13 @@ export function ClosetPage() {
                       />
                       {/* 来源标签 */}
                       <div className="absolute top-1.5 right-1.5 z-10">
-                        <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-black/40 text-white backdrop-blur-sm">
+                        <span className="text-xs font-medium px-1.5 py-0.5 rounded bg-black/40 text-white backdrop-blur-sm">
                           {item.from}
                         </span>
                       </div>
                     </div>
                     <div className="p-2">
-                      <p className="text-[13px] font-medium line-clamp-1">{item.name}</p>
+                      <p className="text-sm font-medium line-clamp-1">{item.name}</p>
                       <button className="mt-1.5 text-xs text-primary font-medium">让 Luka 实现</button>
                     </div>
                   </div>
@@ -342,7 +342,7 @@ export function ClosetPage() {
               {/* 添加心愿 */}
               <div className="aspect-card-1 bg-gray-50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200">
                 <Icon name="add_photo_alternate" size={28} className="text-gray-300 mb-1" />
-                <p className="text-[10px] text-gray-400">添加心愿</p>
+                <p className="text-xs text-gray-400">添加心愿</p>
               </div>
             </CardMasonry>
           </>

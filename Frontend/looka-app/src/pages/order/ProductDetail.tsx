@@ -30,9 +30,9 @@ export function ProductDetailPage() {
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
           </button>
           <div className="flex gap-6">
-            <span className="text-[15px] font-bold text-primary border-b-2 border-primary pb-1">商品</span>
-            <span className="text-[15px] font-medium text-gray-400">详情</span>
-            <span className="text-[15px] font-medium text-gray-400">评价</span>
+            <span className="text-base font-bold text-primary border-b-2 border-primary pb-1">商品</span>
+            <span className="text-base font-medium text-gray-400">详情</span>
+            <span className="text-base font-medium text-gray-400">评价</span>
           </div>
           <button className="size-10 flex items-center justify-end">
             <Icon name="share" size={20} />
@@ -49,7 +49,7 @@ export function ProductDetailPage() {
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-6 right-6 bg-black/20 backdrop-blur-md px-3 py-1 rounded-full">
-            <span className="text-white text-[11px] font-medium">{currentImage + 1}/{images.length}</span>
+            <span className="text-white text-xs font-medium">{currentImage + 1}/{images.length}</span>
           </div>
           {/* Thumbnail dots */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
@@ -82,11 +82,11 @@ export function ProductDetailPage() {
                 filled={isFavorite}
                 className={isFavorite ? 'text-primary' : 'text-gray-400'}
               />
-              <span className="text-[10px] text-gray-400 mt-0.5">1.2k</span>
+              <span className="text-xs text-gray-400 mt-0.5">1.2k</span>
             </button>
           </div>
           <h1 className="text-xl font-bold leading-snug mb-3">Cyberpunk 高定真丝和服 - AI 联名限量款</h1>
-          <p className="text-gray-500 text-[13px] leading-relaxed">
+          <p className="text-gray-500 text-sm leading-relaxed">
             融合未来主义美学与传统剪裁，每一件均由 AI 算法优化版型，工匠手工打造。
           </p>
         </div>
@@ -95,7 +95,7 @@ export function ProductDetailPage() {
         <div className="mt-2 space-y-2">
           {/* Fabric Details */}
           <section className="bg-white p-6">
-            <h3 className="text-[15px] font-bold mb-4 flex items-center gap-2">
+            <h3 className="text-base font-bold mb-4 flex items-center gap-2">
               <span className="w-1 h-4 bg-primary rounded-full" />
               面料工艺
             </h3>
@@ -115,7 +115,7 @@ export function ProductDetailPage() {
                 />
               </div>
             </div>
-            <p className="text-[13px] text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-600 leading-relaxed">
               选用 30 姆米顶级桑蚕丝，结合数字提花技术。面料具有独特的偏光质感，在不同光线下呈现赛博朋克式的色泽变换。
             </p>
           </section>
@@ -123,13 +123,13 @@ export function ProductDetailPage() {
           {/* Size Guide */}
           <section className="bg-white p-6">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-[15px] font-bold flex items-center gap-2">
+              <h3 className="text-base font-bold flex items-center gap-2">
                 <span className="w-1 h-4 bg-primary rounded-full" />
                 尺码指南
               </h3>
               <button
                 onClick={() => navigate('/try-on')}
-                className="text-[12px] text-primary font-medium"
+                className="text-sm text-primary font-medium"
               >
                 AI 智能量体 &gt;
               </button>
@@ -145,8 +145,8 @@ export function ProductDetailPage() {
                       : 'border border-gray-100'
                   }`}
                 >
-                  <div className="text-[14px] font-bold">{size.label}</div>
-                  <div className="text-[10px] text-gray-400 mt-1">{size.spec}</div>
+                  <div className="text-base font-bold">{size.label}</div>
+                  <div className="text-xs text-gray-400 mt-1">{size.spec}</div>
                 </button>
               ))}
             </div>
@@ -154,7 +154,7 @@ export function ProductDetailPage() {
 
           {/* Delivery Time */}
           <section className="bg-white p-6">
-            <h3 className="text-[15px] font-bold mb-4 flex items-center gap-2">
+            <h3 className="text-base font-bold mb-4 flex items-center gap-2">
               <span className="w-1 h-4 bg-primary rounded-full" />
               预计周期
             </h3>
@@ -164,8 +164,8 @@ export function ProductDetailPage() {
                   <Icon name="bolt" size={20} className="text-primary" />
                 </div>
                 <div>
-                  <div className="text-[13px] font-bold">预计 72 小时内发货</div>
-                  <div className="text-[11px] text-gray-400">目前生产线空闲，极速定制</div>
+                  <div className="text-sm font-bold">预计 72 小时内发货</div>
+                  <div className="text-xs text-gray-400">目前生产线空闲，极速定制</div>
                 </div>
               </div>
               <div className="w-16 h-1.5 bg-gray-200 rounded-full overflow-hidden">
@@ -176,22 +176,22 @@ export function ProductDetailPage() {
 
           {/* Production Preview */}
           <section className="bg-white p-6">
-            <h3 className="text-[15px] font-bold mb-4 flex items-center gap-2">
+            <h3 className="text-base font-bold mb-4 flex items-center gap-2">
               <span className="w-1 h-4 bg-primary rounded-full" />
               生产预览
             </h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between py-2 border-b border-gray-50">
-                <span className="text-[13px] text-gray-500">生产方式</span>
-                <span className="text-[13px] font-medium">轻定制 · 个性化剪裁</span>
+                <span className="text-sm text-gray-500">生产方式</span>
+                <span className="text-sm font-medium">轻定制 · 个性化剪裁</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-gray-50">
-                <span className="text-[13px] text-gray-500">面料来源</span>
-                <span className="text-[13px] font-medium">杭州桑蚕丝工厂</span>
+                <span className="text-sm text-gray-500">面料来源</span>
+                <span className="text-sm font-medium">杭州桑蚕丝工厂</span>
               </div>
               <div className="flex items-center justify-between py-2">
-                <span className="text-[13px] text-gray-500">工艺认证</span>
-                <span className="text-[13px] font-medium text-primary">AI 版型优化</span>
+                <span className="text-sm text-gray-500">工艺认证</span>
+                <span className="text-sm font-medium text-primary">AI 版型优化</span>
               </div>
             </div>
           </section>
@@ -203,11 +203,11 @@ export function ProductDetailPage() {
         <div className="flex items-center gap-3 p-4" style={{ paddingBottom: 'calc(1rem + var(--safe-area-inset-bottom))' }}>
           <div className="flex flex-col items-center justify-center px-2">
             <Icon name="headset_mic" size={22} className="text-gray-900" />
-            <span className="text-[10px] text-gray-500 mt-0.5">客服</span>
+            <span className="text-xs text-gray-500 mt-0.5">客服</span>
           </div>
           <div className="flex flex-col items-center justify-center px-2">
             <Icon name="shopping_bag" size={22} className="text-gray-900" />
-            <span className="text-[10px] text-gray-500 mt-0.5">购物车</span>
+            <span className="text-xs text-gray-500 mt-0.5">购物车</span>
           </div>
           <Button
             variant="secondary"

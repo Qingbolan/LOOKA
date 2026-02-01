@@ -117,7 +117,7 @@ export default function LoginPage() {
   const isPhoneValid = phone.length === 11;
 
   return (
-    <div className="min-h-screen bg-[#FFFAF8] flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="flex items-center h-14 px-4">
         {step === 'code' ? (
@@ -144,13 +144,13 @@ export default function LoginPage() {
             <>
               {/* Logo & 标题 */}
               <div className="pt-8 pb-10">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 shadow-lg" style={{ boxShadow: '0 8px 24px rgba(196, 146, 138, 0.35)' }}>
+                <div className="w-16 h-16 rounded-xl bg-gradient-primary flex items-center justify-center mb-6 shadow-button">
                   <span className="text-white text-2xl font-bold">L</span>
                 </div>
                 <h1 className="text-[28px] font-bold text-gray-900 mb-2">
                   欢迎来到 LOOKA
                 </h1>
-                <p className="text-gray-500 text-[15px]">
+                <p className="text-gray-500 text-base">
                   输入手机号，开始你的时尚之旅
                 </p>
               </div>
@@ -169,7 +169,7 @@ export default function LoginPage() {
                 >
                   {/* 区号 */}
                   <div className="flex items-center gap-1 pr-3 border-r border-gray-200 mr-3">
-                    <span className="text-[15px] font-medium text-gray-700">+86</span>
+                    <span className="text-base font-medium text-gray-700">+86</span>
                     <Icon name="expand_more" className="text-lg text-gray-400" />
                   </div>
 
@@ -182,7 +182,7 @@ export default function LoginPage() {
                     onBlur={() => setFocused(false)}
                     disabled={loading}
                     placeholder="请输入手机号"
-                    className="flex-1 bg-transparent text-[15px] outline-none placeholder:text-gray-400 text-gray-900"
+                    className="flex-1 bg-transparent text-base outline-none placeholder:text-gray-400 text-gray-900"
                     autoComplete="tel"
                     autoFocus
                   />
@@ -217,10 +217,10 @@ export default function LoginPage() {
                   `}
                 >
                   {agreed && (
-                    <Icon name="check" className="text-[11px] text-white" />
+                    <Icon name="check" className="text-xs text-white" />
                   )}
                 </button>
-                <p className="text-[13px] text-gray-500 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed">
                   我已阅读并同意
                   <button className="text-primary font-medium">《用户服务协议》</button>
                   和
@@ -233,25 +233,24 @@ export default function LoginPage() {
                 onClick={handlePhoneSubmit}
                 disabled={!isPhoneValid || loading}
                 className={`
-                  w-full h-[52px] rounded-2xl font-bold text-[16px] transition-all duration-200
+                  w-full h-[52px] rounded-xl font-bold text-md transition-all duration-200
                   ${isPhoneValid && agreed
-                    ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-lg hover:shadow-xl active:scale-[0.98]'
+                    ? 'bg-gradient-primary text-white shadow-button hover:shadow-lg active:scale-[0.98]'
                     : 'bg-gray-100 text-gray-400'
                   }
                 `}
-                style={isPhoneValid && agreed ? { boxShadow: '0 4px 16px rgba(196, 146, 138, 0.4)' } : {}}
               >
                 {loading ? '发送中...' : '获取验证码'}
               </button>
 
               {/* 开发模式提示 */}
               {import.meta.env.DEV && (
-                <div className="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-2xl">
+                <div className="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-xl">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-sm">🧪</span>
                     <p className="text-sm text-primary font-medium">开发模式</p>
                   </div>
-                  <p className="text-[13px] text-gray-500">
+                  <p className="text-sm text-gray-500">
                     任意手机号 + 任意6位验证码即可登录
                   </p>
                 </div>
@@ -264,7 +263,7 @@ export default function LoginPage() {
                 <h1 className="text-[28px] font-bold text-gray-900 mb-2">
                   输入验证码
                 </h1>
-                <p className="text-gray-500 text-[15px]">
+                <p className="text-gray-500 text-base">
                   验证码已发送至 +86 {phone.slice(0, 3)} **** {phone.slice(7)}
                 </p>
               </div>
@@ -294,13 +293,12 @@ export default function LoginPage() {
                 onClick={handleCodeSubmit}
                 disabled={code.length !== 6 || loading}
                 className={`
-                  w-full h-[52px] rounded-2xl font-bold text-[16px] transition-all duration-200
+                  w-full h-[52px] rounded-xl font-bold text-md transition-all duration-200
                   ${code.length === 6
-                    ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-lg hover:shadow-xl active:scale-[0.98]'
+                    ? 'bg-gradient-primary text-white shadow-button hover:shadow-lg active:scale-[0.98]'
                     : 'bg-gray-100 text-gray-400'
                   }
                 `}
-                style={code.length === 6 ? { boxShadow: '0 4px 16px rgba(196, 146, 138, 0.4)' } : {}}
               >
                 {loading ? '登录中...' : '登录'}
               </button>
@@ -311,7 +309,7 @@ export default function LoginPage() {
 
       {/* Footer */}
       <footer className="py-6 text-center">
-        <p className="text-[12px] text-gray-400">
+        <p className="text-sm text-gray-400">
           登录即表示你同意 LOOKA 的服务条款
         </p>
       </footer>

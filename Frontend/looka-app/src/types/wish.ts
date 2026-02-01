@@ -65,6 +65,7 @@ export interface WishDetail extends Wish {
   description?: string;
   rules: string[];
   milestones: GroupBuyMilestone[];
+  tryOnImage?: string; // 试穿效果图
   myParticipation?: {
     joinedAt: string;
     orderId?: string;

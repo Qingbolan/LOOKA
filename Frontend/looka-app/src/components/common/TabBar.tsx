@@ -1,21 +1,13 @@
 import { useState, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Icon } from './Icon'
+import { ActionSheet, ActionSheetOption } from './ActionSheet'
 
 interface TabItem {
   path: string
   icon: string
   label: string
   isCenter?: boolean
-}
-
-interface CameraAction {
-  id: string
-  icon: string
-  title: string
-  subtitle: string
-  gradient: string
-  onClick: () => void
 }
 
 const tabs: TabItem[] = [
@@ -26,6 +18,15 @@ const tabs: TabItem[] = [
   { path: '/profile', icon: 'person', label: '我' },
 ]
 
+/**
+ * TabBar - 底部导航栏组件
+ *
+ * 设计规范：
+ * - 5 个 tab + 中间浮动相机按钮
+ * - 使用 ActionSheet 组件显示相机功能选项
+ * - 亚克力效果背景
+ * - 安全区适配
+ */
 export function TabBar() {
   const location = useLocation()
   const navigate = useNavigate()
@@ -35,13 +36,11 @@ export function TabBar() {
 
   // 处理从图库选择照片
   const handleGallerySelect = () => {
-    setIsActionSheetOpen(false)
     fileInputRef.current?.click()
   }
 
   // 处理拍照
   const handleCameraCapture = () => {
-    setIsActionSheetOpen(false)
     cameraInputRef.current?.click()
   }
 
@@ -62,7 +61,6 @@ export function TabBar() {
 
   // 发起许愿成真
   const handleCreateWish = () => {
-    setIsActionSheetOpen(false)
     navigate('/design/editor')
   }
 
@@ -70,7 +68,8 @@ export function TabBar() {
     setIsActionSheetOpen(true)
   }
 
-  const cameraActions: CameraAction[] = [
+  // 使用 ActionSheet 组件的选项配置
+  const cameraActions: ActionSheetOption[] = [
     {
       id: 'camera',
       icon: 'photo_camera',
@@ -84,7 +83,7 @@ export function TabBar() {
       icon: 'photo_library',
       title: '从图库选择',
       subtitle: '上传喜欢的图片，获取专属设计',
-      gradient: 'from-secondary to-peach',
+      gradient: 'from-primary-light to-primary-light/60',
       onClick: handleGallerySelect,
     },
     {
@@ -121,76 +120,20 @@ export function TabBar() {
       <button
         onClick={handleCameraClick}
         className="fixed bottom-[calc(1.5rem+var(--safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[60]"
+        aria-label="创作灵感"
       >
-        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-light shadow-lg flex items-center justify-center transition-transform active:scale-95"
-          style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)' }}
-        >
+        <div className="w-14 h-14 rounded-full bg-gradient-primary shadow-button flex items-center justify-center transition-transform active:scale-95">
           <Icon name="photo_camera" size={26} className="text-white" />
         </div>
       </button>
 
-      {/* ActionSheet - 相机功能选项 */}
-      {isActionSheetOpen && (
-        <>
-          {/* 背景遮罩 */}
-          <div
-            className="fixed inset-0 bg-black/40 z-[70] animate-fade-in"
-            onClick={() => setIsActionSheetOpen(false)}
-          />
-          {/* 底部面板 - 亚克力效果 */}
-          <div
-            className="fixed inset-x-0 bottom-0 z-[80] rounded-t-[28px] animate-slide-up"
-            style={{
-              background: 'rgba(253, 252, 251, 0.92)',
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-              borderTop: '1px solid rgba(255, 255, 255, 0.6)',
-              paddingBottom: 'env(safe-area-inset-bottom, 0px)',
-            }}
-          >
-            {/* 拖动指示器 */}
-            <div className="flex justify-center pt-3 pb-1">
-              <div className="w-9 h-1 bg-gray-300/60 rounded-full" />
-            </div>
-            {/* 标题 */}
-            <div className="text-center py-3">
-              <h3 className="text-[17px] font-semibold text-text-primary tracking-tight">创作灵感</h3>
-            </div>
-            {/* 选项列表 */}
-            <div className="px-4 pb-3 space-y-2">
-              {cameraActions.map((action) => (
-                <button
-                  key={action.id}
-                  onClick={action.onClick}
-                  className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/60 hover:bg-white/80 active:scale-[0.98] transition-all border border-black/[0.04]"
-                  style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}
-                >
-                  <div
-                    className={`w-11 h-11 rounded-xl bg-gradient-to-br ${action.gradient} flex items-center justify-center`}
-                    style={{ boxShadow: '0 2px 8px rgba(196, 146, 138, 0.25)' }}
-                  >
-                    <Icon name={action.icon} size={22} className="text-white" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <p className="font-semibold text-[15px] text-text-primary">{action.title}</p>
-                    <p className="text-[13px] text-text-tertiary mt-0.5">{action.subtitle}</p>
-                  </div>
-                  <Icon name="chevron_right" size={18} className="text-text-muted" />
-                </button>
-              ))}
-            </div>
-            {/* 取消按钮 */}
-            <div className="px-4 pb-5 pt-1">
-              <button
-                onClick={() => setIsActionSheetOpen(false)}
-                className="w-full py-3 rounded-xl bg-white/50 text-text-secondary font-medium hover:bg-white/70 active:scale-[0.98] transition-all border border-black/[0.04]"
-              >
-                取消
-              </button>
-            </div>
-          </div>
-        </>
-      )}
+      {/* ActionSheet - 使用统一组件 */}
+      <ActionSheet
+        open={isActionSheetOpen}
+        onClose={() => setIsActionSheetOpen(false)}
+        title="创作灵感"
+        options={cameraActions}
+      />
 
       {/* TabBar 主体 */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-black/[0.06] dark:border-white/10">
@@ -220,7 +163,7 @@ export function TabBar() {
                     size={26}
                     filled={isActive}
                   />
-                  <span className={`text-[10px] ${isActive ? 'font-bold' : 'font-medium'}`}>
+                  <span className={`text-xs ${isActive ? 'font-bold' : 'font-medium'}`}>
                     {tab.label}
                   </span>
                 </button>

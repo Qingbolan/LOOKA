@@ -1,4 +1,5 @@
 import { DesignStatus } from '@/types';
+import { Pencil, Sparkles, Scissors, Truck, Heart, LucideIcon } from 'lucide-react';
 
 interface EmotionalBadgeProps {
   status: DesignStatus;
@@ -9,35 +10,35 @@ interface EmotionalBadgeProps {
 // 状态配置：情感化文案和样式
 const statusConfig: Record<
   DesignStatus,
-  { label: string; emoji: string; bgClass: string; textClass: string }
+  { label: string; icon: LucideIcon; bgClass: string; textClass: string }
 > = {
   draft: {
     label: '草稿',
-    emoji: '✏️',
+    icon: Pencil,
     bgClass: 'bg-gray-100',
     textClass: 'text-gray-600',
   },
   wishing: {
     label: '等你一起',
-    emoji: '✨',
-    bgClass: 'bg-gradient-to-r from-primary to-secondary',
+    icon: Sparkles,
+    bgClass: 'bg-gradient-primary',
     textClass: 'text-white',
   },
   making: {
     label: '正在做~',
-    emoji: '🧵',
+    icon: Scissors,
     bgClass: 'bg-amber-500',
     textClass: 'text-white',
   },
   shipping: {
     label: '飞奔来啦',
-    emoji: '🚀',
+    icon: Truck,
     bgClass: 'bg-sky-500',
     textClass: 'text-white',
   },
   owned: {
     label: '已拥有',
-    emoji: '💝',
+    icon: Heart,
     bgClass: 'bg-emerald-500',
     textClass: 'text-white',
   },
@@ -45,9 +46,16 @@ const statusConfig: Record<
 
 // 尺寸配置
 const sizeConfig = {
-  sm: 'px-2 py-0.5 text-[10px]',
+  sm: 'px-2 py-0.5 text-xs',
   md: 'px-2.5 py-1 text-xs',
   lg: 'px-3 py-1.5 text-sm',
+};
+
+// 图标尺寸配置
+const iconSizeConfig = {
+  sm: 10,
+  md: 12,
+  lg: 14,
 };
 
 export function EmotionalBadge({
@@ -57,12 +65,13 @@ export function EmotionalBadge({
 }: EmotionalBadgeProps) {
   const config = statusConfig[status];
   const sizeClass = sizeConfig[size];
+  const IconComponent = config.icon;
 
   return (
     <span
       className={`inline-flex items-center gap-1 rounded-full font-medium ${config.bgClass} ${config.textClass} ${sizeClass} ${className}`}
     >
-      <span>{config.emoji}</span>
+      <IconComponent size={iconSizeConfig[size]} />
       <span>{config.label}</span>
     </span>
   );
@@ -84,12 +93,13 @@ export function StatusBadge({
 }: StatusBadgeProps) {
   const config = statusConfig[status];
   const sizeClass = sizeConfig[size];
+  const IconComponent = config.icon;
 
   return (
     <span
       className={`inline-flex items-center gap-1 rounded-full font-medium ${config.bgClass} ${config.textClass} ${sizeClass} ${className}`}
     >
-      {showEmoji && <span>{config.emoji}</span>}
+      {showEmoji && <IconComponent size={iconSizeConfig[size]} />}
       <span>{config.label}</span>
     </span>
   );

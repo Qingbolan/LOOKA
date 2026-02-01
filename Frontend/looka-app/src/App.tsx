@@ -19,6 +19,7 @@ import {
   ParameterEditPage,
   BodyProfilePage,
   SearchPage,
+  SearchResultPage,
   CheckoutPage,
   PaymentPage,
   AddressManagePage,
@@ -76,6 +77,7 @@ function App() {
                 )
               } />
               <Route path="/search" element={<OptionalAuth><SearchPage /></OptionalAuth>} />
+              <Route path="/search/result" element={<OptionalAuth><SearchResultPage /></OptionalAuth>} />
               <Route path="/together" element={<OptionalAuth><TogetherPage /></OptionalAuth>} />
               <Route path="/luka" element={<OptionalAuth><LukaPage /></OptionalAuth>} />
               <Route path="/luka/chat" element={<OptionalAuth><LukaChatPage /></OptionalAuth>} />

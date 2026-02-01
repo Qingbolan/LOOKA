@@ -82,7 +82,7 @@ export function BodySetupPage() {
                   </div>
                 </div>
                 <p className="text-xs font-medium text-center">{tip.title}</p>
-                <p className="text-[10px] text-gray-400 text-center">{tip.desc}</p>
+                <p className="text-xs text-gray-400 text-center">{tip.desc}</p>
               </div>
             ))}
           </div>

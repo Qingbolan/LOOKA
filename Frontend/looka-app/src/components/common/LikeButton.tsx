@@ -19,7 +19,7 @@ interface LikeButtonProps {
 }
 
 const sizeConfig = {
-  sm: { icon: 12, text: 'text-[11px]', gap: 'gap-0.5' },
+  sm: { icon: 12, text: 'text-xs', gap: 'gap-0.5' },
   md: { icon: 16, text: 'text-xs', gap: 'gap-1' },
   lg: { icon: 20, text: 'text-sm', gap: 'gap-1.5' },
 };

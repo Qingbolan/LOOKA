@@ -109,7 +109,7 @@ export function OrdersPage() {
                   {order.steps.map((step, index) => (
                     <div key={step.name} className="flex items-center gap-2 flex-1">
                       <div
-                        className={`size-6 rounded-full flex items-center justify-center text-[10px] ${
+                        className={`size-6 rounded-full flex items-center justify-center text-xs ${
                           step.completed
                             ? 'bg-primary text-white'
                             : step.current

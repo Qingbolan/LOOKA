@@ -120,8 +120,7 @@ export function OnboardingPage() {
       <div className="px-6 pb-8 safe-area-bottom">
         <button
           onClick={handleNext}
-          className="w-full py-4 rounded-full bg-primary text-white font-bold text-base shadow-lg active:scale-[0.98] transition-transform"
-          style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)' }}
+          className="w-full py-4 rounded-xl bg-primary text-white font-bold text-base shadow-button active:scale-[0.98] transition-transform"
         >
           {isLastStep ? '开始使用' : '下一步'}
         </button>

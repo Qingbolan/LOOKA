@@ -1,19 +1,21 @@
 import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, Badge, LukaAvatar, ImageSwap } from '@/components'
+import { Layout, Icon, LukaAvatar } from '@/components'
 import { WishListHorizontalSkeleton, EmptyGroupBuy, NetworkError } from '@/components/feedback'
 import { useWishStore } from '@/store'
 import { WishStatus } from '@/types'
-import { formatCountdown } from '@/utils/format'
-import { QuickJoinButton } from '@/components/wish/JoinWishButton'
+import { WishCard } from '@/components/wish/WishCard'
 import { useRefreshWithDeps } from '@/hooks'
 import { activities, togetherTabs } from '@/mocks'
+
+type ViewMode = 'list' | 'grid'
 
 export function TogetherPage() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(0)
+  const [viewMode, setViewMode] = useState<ViewMode>('list')
 
-  const { groupBuys, fetchGroupBuys, hasJoinedGroupBuy } = useWishStore()
+  const { groupBuys, fetchGroupBuys } = useWishStore()
 
   // 使用 useRefreshWithDeps 管理数据加载
   const fetchData = useCallback(async () => {
@@ -55,16 +57,30 @@ export function TogetherPage() {
               </button>
             ))}
           </div>
-          <button className="header-btn">
-            <Icon name="notifications" size={22} className="text-gray-600" />
-          </button>
+          <div className="flex items-center gap-1">
+            {/* 视图切换 */}
+            <button
+              onClick={() => setViewMode(viewMode === 'list' ? 'grid' : 'list')}
+              className="header-btn"
+              aria-label={viewMode === 'list' ? '切换网格视图' : '切换列表视图'}
+            >
+              <Icon
+                name={viewMode === 'list' ? 'grid_view' : 'view_agenda'}
+                size={20}
+                className="text-gray-600"
+              />
+            </button>
+            <button className="header-btn">
+              <Icon name="notifications" size={22} className="text-gray-600" />
+            </button>
+          </div>
         </div>
       </div>
 
       <main className="content-page py-3 space-y-4">
-        {/* 动态提醒 - 使用 mocks 数据 */}
+        {/* 动态提醒 - 使用 mocks 数据，优化背景 */}
         {activities.length > 0 && activeTab === 0 && (
-          <div className="bg-primary/5 rounded p-3 border border-primary/10">
+          <div className="bg-primary/10 rounded-xl p-4 border border-primary/15 shadow-sm">
             <div className="flex items-center gap-2 mb-3">
               <Icon name="notifications_active" size={18} className="text-primary" />
               <span className="text-sm font-bold">最新动态</span>
@@ -120,103 +136,35 @@ export function TogetherPage() {
 
         {/* 愿望卡片列表 */}
         {!loading && !error && filteredWishes.length > 0 && (
-          <div className="space-y-3">
-            {filteredWishes.map((wish) => {
-              const isAlmostThere = wish.progress >= 80
-              const isJoined = hasJoinedGroupBuy(wish.id)
-              const daysLeft = Math.ceil(wish.remainingTime / 86400)
+          <>
+            {/* 列表视图 - 增加卡片间距 */}
+            {viewMode === 'list' && (
+              <div className="space-y-4">
+                {filteredWishes.map((wish, index) => (
+                  <WishCard
+                    key={wish.id}
+                    wish={wish}
+                    variant={index === 0 && activeTab === 0 ? 'large' : 'horizontal'}
+                    onJoin={() => navigate(`/wish/${wish.id}`)}
+                  />
+                ))}
+              </div>
+            )}
 
-              return (
-                <div
-                  key={wish.id}
-                  onClick={() => navigate(`/group-buy/${wish.id}`)}
-                  className={`
-                    bg-white rounded overflow-hidden
-                    cursor-pointer active:scale-[0.99] transition-transform
-                    ${isAlmostThere ? 'ring-1 ring-primary/30' : ''}
-                  `}
-                >
-                  <div className="flex">
-                    {/* 图片 */}
-                    <ImageSwap
-                      mainImage={wish.product.image}
-                      thumbImage={wish.product.image}
-                      alt={wish.product.name}
-                      className="w-24 h-24 flex-shrink-0 rounded overflow-hidden"
-                      thumbSize="sm"
-                    />
-
-                    {/* 内容 */}
-                    <div className="flex-1 p-2.5 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="font-semibold text-[13px] line-clamp-1">
-                            {wish.product.name}
-                          </h3>
-                          {isAlmostThere && (
-                            <Badge variant="wishing" size="sm">快了</Badge>
-                          )}
-                          {wish.type === 'flash' && (
-                            <Badge variant="making" size="sm">限时</Badge>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-gray-500 mt-0.5">
-                          省 {wish.savingsPercent}% · ¥{wish.groupPrice}
-                        </p>
-                      </div>
-
-                      {/* 进度 */}
-                      <div className="mt-1.5">
-                        <div className="flex items-center justify-between text-[10px] mb-1">
-                          <span className="text-gray-500">
-                            <span className="text-primary font-bold">{wish.currentCount}</span>
-                            /{wish.targetCount} 人
-                          </span>
-                          <span className="text-gray-400">
-                            {daysLeft > 0 ? `${daysLeft}天` : formatCountdown(wish.remainingTime)}
-                          </span>
-                        </div>
-                        <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-primary rounded-full transition-all"
-                            style={{ width: `${wish.progress}%` }}
-                          />
-                        </div>
-                      </div>
-
-                      {/* 底部 */}
-                      <div className="flex items-center justify-between mt-1.5">
-                        <div className="flex items-center -space-x-1">
-                          {wish.participantAvatars.slice(0, 3).map((avatar, i) => (
-                            <img
-                              key={i}
-                              src={avatar}
-                              alt=""
-                              className="w-4 h-4 rounded-full object-cover border border-white"
-                            />
-                          ))}
-                          {wish.currentCount > 3 && (
-                            <span className="text-[10px] text-gray-500 ml-1">
-                              +{wish.currentCount - 3}
-                            </span>
-                          )}
-                        </div>
-                        <QuickJoinButton
-                          remaining={wish.targetCount - wish.currentCount}
-                          hasJoined={isJoined}
-                          onJoin={() => {
-                            // Navigate to detail for full join flow
-                            navigate(`/wish/${wish.id}`)
-                          }}
-                          size="sm"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+            {/* 网格视图 */}
+            {viewMode === 'grid' && (
+              <div className="grid grid-cols-2 gap-3">
+                {filteredWishes.map((wish) => (
+                  <WishCard
+                    key={wish.id}
+                    wish={wish}
+                    variant="default"
+                    onJoin={() => navigate(`/wish/${wish.id}`)}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         )}
 
         {/* 空状态提示 */}
@@ -229,10 +177,9 @@ export function TogetherPage() {
         {/* 创作入口 */}
         <div
           onClick={() => navigate('/design/editor')}
-          className="fixed bottom-24 right-4 size-14 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center shadow-lg cursor-pointer active:scale-95 transition-transform z-40"
-          style={{ boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)' }}
+          className="fixed bottom-24 right-4 size-14 rounded-full bg-gradient-primary text-white flex items-center justify-center shadow-button cursor-pointer active:scale-95 transition-transform z-40"
         >
-          <span className="text-xl">✨</span>
+          <span className="text-xl">+</span>
         </div>
       </main>
     </Layout>

@@ -14,9 +14,9 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const sizeClasses = {
-  sm: 'h-10 px-3 text-[13px]',
-  md: 'h-12 px-4 text-[14px]',
-  lg: 'h-14 px-5 text-[15px]',
+  sm: 'h-10 px-3 text-sm',
+  md: 'h-12 px-4 text-base',
+  lg: 'h-14 px-5 text-base',
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(({
@@ -86,7 +86,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
           w-full rounded px-4 py-3 outline-none transition-all resize-none
           bg-white dark:bg-white/5
           border border-black/[0.06] dark:border-white/[0.1]
-          text-text-primary dark:text-text-dark-primary text-[14px]
+          text-text-primary dark:text-text-dark-primary text-base
           placeholder:text-text-muted dark:placeholder:text-text-dark-muted
           focus:border-primary focus:ring-2 focus:ring-primary/10 dark:focus:ring-primary/20
           disabled:opacity-50 disabled:cursor-not-allowed

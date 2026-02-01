@@ -192,7 +192,7 @@ export function ParticipantWall({
                 </div>
               )}
             </div>
-            <span className="text-[10px] text-gray-500 mt-1 max-w-[40px] truncate">
+            <span className="text-xs text-gray-500 mt-1 max-w-[40px] truncate">
               {participant.nickname}
             </span>
           </div>
@@ -202,7 +202,7 @@ export function ParticipantWall({
             <div className="size-10 rounded-full bg-gray-100 flex items-center justify-center">
               <span className="text-gray-500 text-xs font-medium">+{remaining}</span>
             </div>
-            <span className="text-[10px] text-gray-400 mt-1">更多</span>
+            <span className="text-xs text-gray-400 mt-1">更多</span>
           </div>
         )}
       </div>

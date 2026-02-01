@@ -23,9 +23,9 @@ const variantClasses = {
 }
 
 const sizeClasses = {
-  sm: 'h-9 px-4 text-[13px] gap-1.5',
-  md: 'h-11 px-5 text-[14px] gap-2',
-  lg: 'h-13 px-7 text-[15px] gap-2.5',
+  sm: 'h-9 px-4 text-sm gap-1.5',
+  md: 'h-11 px-5 text-base gap-2',
+  lg: 'h-13 px-7 text-base gap-2.5',
 }
 
 export function Button({
@@ -49,7 +49,7 @@ export function Button({
       onClick={onClick}
       disabled={disabled || loading}
       className={`
-        rounded-full font-bold flex items-center justify-center
+        rounded-xl font-bold flex items-center justify-center
         active:scale-[0.98] transition-all duration-150
         disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
         ${variantClasses[variant]}

@@ -51,12 +51,12 @@ export function DesignResultPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
+      <div className="header-detail">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="close" size={24} className="text-gray-900" />
           </button>
-          <h1 className="text-[17px] font-bold tracking-tight flex-1 text-center">AI 设计结果</h1>
+          <h1 className="text-md font-bold tracking-tight flex-1 text-center">AI 设计结果</h1>
           <button
             onClick={() => navigate('/parameter-edit')}
             className="size-10 flex items-center justify-end"
@@ -126,7 +126,7 @@ export function DesignResultPage() {
             {/* Generate More Button */}
             <button className="flex-shrink-0 w-20 h-28 rounded border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-1 hover:border-primary/50 transition-colors">
               <Icon name="add" size={24} className="text-gray-400" />
-              <span className="text-[10px] text-gray-400">更多</span>
+              <span className="text-xs text-gray-400">更多</span>
             </button>
           </div>
         </div>
@@ -134,14 +134,14 @@ export function DesignResultPage() {
         {/* Design Specs */}
         <div className="px-4">
           <Card>
-            <h3 className="font-bold text-[15px] mb-4 flex items-center gap-2">
+            <h3 className="font-bold text-base mb-4 flex items-center gap-2">
               <Icon name="description" size={18} className="text-primary" />
               设计参数
             </h3>
             <div className="grid grid-cols-2 gap-3">
               {designSpecs.map((spec) => (
                 <div key={spec.label} className="bg-gray-50 rounded p-3">
-                  <p className="text-[10px] text-gray-400 uppercase font-bold tracking-wider mb-1">
+                  <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-1">
                     {spec.label}
                   </p>
                   <p className="text-sm font-medium">{spec.value}</p>
@@ -187,7 +187,7 @@ export function DesignResultPage() {
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-[10px] text-gray-400 uppercase font-bold tracking-wider mb-1">拼团价</p>
+                <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-1">拼团价</p>
                 <p className="text-lg font-bold text-green-600">¥980</p>
               </div>
             </div>
@@ -195,33 +195,38 @@ export function DesignResultPage() {
         </div>
       </div>
 
-      {/* Bottom Action Bar */}
+      {/* Bottom Action Bar - 优化按钮布局，避免文字竖排 */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-2xl border-t border-gray-100 max-w-md mx-auto z-50">
-        <div className="flex gap-3">
-          <Button
-            variant="secondary"
-            size="md"
-            icon="checkroom"
+        <div className="flex gap-2">
+          {/* 图标按钮：试穿 */}
+          <button
             onClick={() => navigate('/try-on')}
+            className="h-11 w-11 flex-shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center active:scale-95 transition-transform"
+            aria-label="虚拟试穿"
           >
-            试穿
-          </Button>
-          <Button
-            variant="secondary"
-            size="md"
-            icon={isSaving ? undefined : 'bookmark'}
+            <Icon name="checkroom" size={20} />
+          </button>
+          {/* 图标按钮：收藏 */}
+          <button
             onClick={handleSaveToCloset}
             disabled={isSaving}
+            className="h-11 w-11 flex-shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center active:scale-95 transition-transform disabled:opacity-50"
+            aria-label="收藏到衣柜"
           >
-            {isSaving ? '保存中...' : '收藏'}
-          </Button>
+            {isSaving ? (
+              <span className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+            ) : (
+              <Icon name="bookmark" size={20} />
+            )}
+          </button>
+          {/* 主按钮：发起愿望 */}
           <Button
             variant="primary"
             size="md"
             fullWidth
-            onClick={() => navigate('/product/1')}
+            onClick={() => navigate('/wish/create')}
           >
-            查看详情
+            发起愿望，找人一起
           </Button>
         </div>
       </div>

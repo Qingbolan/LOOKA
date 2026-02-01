@@ -82,7 +82,7 @@ export function VersionTimeline({
                           版本 {sortedVersions.length - index}
                         </span>
                         {isCurrent && (
-                          <span className="px-1.5 py-0.5 rounded bg-primary text-white text-[10px]">
+                          <span className="px-1.5 py-0.5 rounded bg-primary text-white text-xs">
                             当前
                           </span>
                         )}

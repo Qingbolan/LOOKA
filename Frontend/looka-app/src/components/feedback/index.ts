@@ -42,3 +42,10 @@ export {
   PageErrorBoundary,
   ComponentErrorBoundary,
 } from './ErrorBoundary';
+export {
+  PageSkeleton,
+  SkeletonBlock,
+  SkeletonText,
+  SkeletonAvatar,
+  SkeletonCard,
+} from './PageSkeleton';

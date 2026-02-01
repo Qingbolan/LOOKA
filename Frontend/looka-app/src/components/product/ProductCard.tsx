@@ -52,13 +52,13 @@ export const ProductCard = memo(function ProductCard({
         {people && people > 0 && (
           <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-black/30 backdrop-blur-md rounded-full px-2 py-1">
             <Icon name="group" size={12} className="text-white" />
-            <span className="text-[10px] text-white font-medium">{people}</span>
+            <span className="text-xs text-white font-medium">{people}</span>
           </div>
         )}
       </div>
 
       <div className="p-3">
-        <h3 className="text-[14px] font-bold leading-snug line-clamp-2 text-text-primary dark:text-text-dark-primary">
+        <h3 className="text-base font-bold leading-snug line-clamp-2 text-text-primary dark:text-text-dark-primary">
           {title}
         </h3>
       </div>

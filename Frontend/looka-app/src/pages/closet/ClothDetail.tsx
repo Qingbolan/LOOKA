@@ -69,11 +69,11 @@ export function ClothDetailPage() {
     <Layout showTabBar={false}>
       {/* Header */}
       <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl">
-        <div className="flex items-center p-4 h-16 justify-between max-w-md mx-auto">
+        <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} />
           </button>
-          <h1 className="text-[17px] font-bold">{clothData.name}</h1>
+          <h1 className="text-md font-bold">{clothData.name}</h1>
           <button className="size-10 flex items-center justify-end">
             <Icon name="more_horiz" size={24} />
           </button>
@@ -234,7 +234,7 @@ export function ClothDetailPage() {
               className="flex-1 aspect-square rounded bg-gray-50 flex flex-col items-center justify-center cursor-pointer"
             >
               <Icon name="search" size={20} className="text-gray-300 mb-1" />
-              <p className="text-[10px] text-gray-400">找更多</p>
+              <p className="text-xs text-gray-400">找更多</p>
             </div>
           </div>
         </div>
@@ -278,22 +278,24 @@ export function ClothDetailPage() {
         </div>
       </div>
 
-      {/* 底部操作 */}
+      {/* 底部操作 - 优化按钮文案和布局 */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto">
-        <div className="flex gap-3" style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
-          <Button
-            variant="secondary"
-            size="md"
+        <div className="flex gap-2" style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
+          {/* 图标按钮：试穿效果 */}
+          <button
             onClick={() => navigate('/try-on')}
+            className="h-11 w-11 flex-shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center active:scale-95 transition-transform"
+            aria-label="查看试穿效果"
           >
-            <Icon name="face" size={18} />
-            重新试穿
-          </Button>
+            <Icon name="checkroom" size={20} />
+          </button>
+          {/* 主按钮：Remix 设计 */}
           <Button
             variant="primary"
             size="md"
             fullWidth
-            onClick={() => navigate('/luka')}
+            icon="auto_awesome"
+            onClick={() => navigate('/luka/chat?mode=remix')}
           >
             做一件类似的
           </Button>

@@ -25,7 +25,7 @@ export function BodyProfilePage() {
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-600" />
           </button>
-          <h1 className="text-[17px] font-bold">身材档案</h1>
+          <h1 className="text-md font-bold">身材档案</h1>
           <button className="size-10 flex items-center justify-end">
             <Icon name="edit" size={22} className="text-gray-600" />
           </button>
@@ -85,19 +85,19 @@ export function BodyProfilePage() {
             <div className="grid grid-cols-4 divide-x divide-gray-50">
               <div className="p-3 text-center">
                 <p className="text-lg font-bold">{bodyData.bust}</p>
-                <p className="text-[10px] text-gray-400 mt-0.5">胸围</p>
+                <p className="text-xs text-gray-400 mt-0.5">胸围</p>
               </div>
               <div className="p-3 text-center">
                 <p className="text-lg font-bold">{bodyData.waist}</p>
-                <p className="text-[10px] text-gray-400 mt-0.5">腰围</p>
+                <p className="text-xs text-gray-400 mt-0.5">腰围</p>
               </div>
               <div className="p-3 text-center">
                 <p className="text-lg font-bold">{bodyData.hip}</p>
-                <p className="text-[10px] text-gray-400 mt-0.5">臀围</p>
+                <p className="text-xs text-gray-400 mt-0.5">臀围</p>
               </div>
               <div className="p-3 text-center">
                 <p className="text-lg font-bold">{bodyData.shoulder}</p>
-                <p className="text-[10px] text-gray-400 mt-0.5">肩宽</p>
+                <p className="text-xs text-gray-400 mt-0.5">肩宽</p>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@ export function BodyProfilePage() {
             </div>
             <button className="w-24 aspect-[3/4] rounded bg-gray-50 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center">
               <Icon name="add_a_photo" size={24} className="text-gray-300 mb-1" />
-              <p className="text-[10px] text-gray-400">重新拍摄</p>
+              <p className="text-xs text-gray-400">重新拍摄</p>
             </button>
           </div>
         </div>

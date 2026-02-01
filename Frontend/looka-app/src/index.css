@@ -4,18 +4,14 @@
 
 @layer base {
   /* ============================================
-   * CSS 变量 - 全局设计规范
+   * CSS 变量 - 全局设计规范 (精简版)
    * ============================================ */
   :root {
-    /* === 颜色系统 - 高级时尚版 === */
-    /* 主色：优雅玫瑰棕，低饱和度更显高级 */
+    /* === 主题色 === */
     --color-primary: #C4928A;
     --color-primary-light: #D9B5AF;
     --color-primary-dark: #A87872;
     --color-primary-soft: rgba(196, 146, 138, 0.12);
-    /* 辅助色：温暖香槟色 */
-    --color-secondary: #D4C4B5;
-    --color-peach: #E8DCD4;
 
     /* === 语义色 === */
     --color-success: #10B981;
@@ -27,24 +23,16 @@
     --color-info: #3B82F6;
     --color-info-light: #DBEAFE;
 
-    /* === 状态色 === */
-    --color-wishing: var(--color-primary);
-    --color-making: #D4A574;
-    --color-owned: #7BA688;
-    --color-shipping: #8BA4B4;
-
-    /* === 情感化状态色（扩展）- 更柔和高级 === */
-    --color-status-draft: #A8A8A8;
-    --color-status-wishing: #C4928A;
+    /* === 状态色 (4个) === */
+    --color-status-wishing: var(--color-primary);
     --color-status-making: #D4A574;
     --color-status-shipping: #8BA4B4;
     --color-status-owned: #7BA688;
 
-    /* === 愿望渐变 - 更优雅 === */
-    --gradient-wish: linear-gradient(135deg, #C4928A 0%, #D4C4B5 100%);
-    --gradient-wish-hover: linear-gradient(135deg, #B8867E 0%, #C9B9AA 100%);
+    /* === 渐变 === */
+    --gradient-primary: linear-gradient(135deg, #C4928A 0%, #D9B5AF 100%);
 
-    /* === 中性色 - 干净高级 === */
+    /* === 中性色 === */
     --color-bg: #FDFCFB;
     --color-bg-secondary: #F8F6F4;
     --color-surface: #FFFFFF;
@@ -66,11 +54,9 @@
     --spacing-2xl: 32px;
     --spacing-3xl: 48px;
 
-    /* === 布局间距（兼容旧版） === */
+    /* === 布局间距 (精简) === */
     --spacing-page-x: 8px;
-    --spacing-section-x: 16px;
     --spacing-card-gap: 6px;
-    --spacing-section: 16px;
 
     /* === 圆角 === */
     --radius-sm: 4px;
@@ -81,13 +67,13 @@
     --radius-3xl: 24px;
     --radius-full: 9999px;
 
-    /* === 阴影 - 更柔和精致 === */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
-    --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.1);
-    --shadow-button: 0 4px 16px rgba(196, 146, 138, 0.3);
-    --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.04);
+    /* === 阴影 === */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.14);
+    --shadow-button: 0 4px 16px rgba(196, 146, 138, 0.35);
+    --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
 
     /* === 布局尺寸 === */
     --header-height: 56px;
@@ -108,14 +94,6 @@
     /* === 底部安全区 === */
     --page-bottom-padding: 128px;
     --page-bottom-padding-action: 144px;
-
-    /* === 字体规范 === */
-    --font-size-xs: 10px;
-    --font-size-sm: 12px;
-    --font-size-base: 14px;
-    --font-size-md: 15px;
-    --font-size-lg: 18px;
-    --font-size-xl: 20px;
 
     /* === Z-Index 层级 === */
     --z-base: 1;
@@ -217,7 +195,7 @@
   }
 
   .header-title-center {
-    @apply text-[17px] font-bold tracking-tight flex-1 text-center;
+    @apply text-md font-bold tracking-tight flex-1 text-center;
   }
 
   /* Header 按钮 */
@@ -292,7 +270,7 @@
   }
 
   .tab-header {
-    @apply text-[13px] pb-0.5 border-b transition-colors;
+    @apply text-sm pb-0.5 border-b transition-colors;
   }
 
   .tab-header-active {
@@ -318,7 +296,7 @@
   }
 
   .tab-content {
-    @apply py-2.5 text-[14px] relative transition-colors;
+    @apply py-2.5 text-base relative transition-colors;
   }
 
   .tab-content-active {
@@ -342,7 +320,7 @@
   }
 
   .style-tag {
-    @apply whitespace-nowrap px-3 py-1 rounded-full text-[12px] transition-all;
+    @apply whitespace-nowrap px-3 py-1 rounded-full text-sm transition-all;
   }
 
   .style-tag-active {
@@ -399,6 +377,26 @@
   /* 圆角按钮 */
   .btn-pill {
     @apply rounded-full;
+  }
+
+  /* CTA 按钮 - 渐变 + 阴影，更突出 */
+  .btn-cta {
+    @apply text-white rounded-xl font-semibold shadow-button;
+    background: var(--gradient-primary);
+  }
+
+  .btn-cta:active {
+    transform: scale(0.98);
+  }
+
+  /* CTA 按钮 - 小尺寸 */
+  .btn-cta-sm {
+    @apply text-white rounded-full font-semibold text-xs shadow-button;
+    background: var(--gradient-primary);
+  }
+
+  .btn-cta-sm:active {
+    transform: scale(0.95);
   }
 
   /* ============================================
@@ -587,7 +585,7 @@
 
   .progress-wish-bar {
     @apply h-full rounded-full transition-all duration-500;
-    background: var(--gradient-wish);
+    background: var(--gradient-primary);
   }
 
   /* 情感化状态标签 */
@@ -600,7 +598,7 @@
   }
 
   .status-emotional-wishing {
-    background: var(--gradient-wish);
+    background: var(--gradient-primary);
     @apply text-white;
   }
 

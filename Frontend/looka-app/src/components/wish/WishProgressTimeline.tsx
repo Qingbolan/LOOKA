@@ -1,4 +1,21 @@
 import { WishMilestone, WishStatus } from '@/types';
+import { Sprout, Sparkles, Flame, PartyPopper, Target, Gift } from 'lucide-react';
+
+// 根据图标名称或 emoji 返回对应的 Lucide 图标
+const iconMap: Record<string, React.ReactNode> = {
+  '🌱': <Sprout size={20} className="text-green-500" />,
+  '✨': <Sparkles size={20} className="text-amber-500" />,
+  '🔥': <Flame size={20} className="text-orange-500" />,
+  '🎉': <PartyPopper size={20} className="text-pink-500" />,
+  'sprout': <Sprout size={20} className="text-green-500" />,
+  'sparkles': <Sparkles size={20} className="text-amber-500" />,
+  'flame': <Flame size={20} className="text-orange-500" />,
+  'party': <PartyPopper size={20} className="text-pink-500" />,
+};
+
+function getMilestoneIcon(icon: string): React.ReactNode {
+  return iconMap[icon] || <Sparkles size={20} className="text-primary" />;
+}
 
 interface WishProgressTimelineProps {
   milestones: WishMilestone[];
@@ -19,30 +36,6 @@ export function WishProgressTimeline({
 
   return (
     <div className={className}>
-      {/* 主进度条 */}
-      <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden mb-6">
-        <div
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-700 ease-out"
-          style={{ width: `${Math.min(progress, 100)}%` }}
-        />
-        {/* 里程碑标记 */}
-        {sortedMilestones.map((milestone) => (
-          <div
-            key={milestone.id}
-            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2"
-            style={{ left: `${(milestone.count / targetCount) * 100}%` }}
-          >
-            <div
-              className={`size-4 rounded-full border-2 transition-colors ${
-                milestone.reached
-                  ? 'bg-primary border-primary'
-                  : 'bg-white border-gray-300'
-              }`}
-            />
-          </div>
-        ))}
-      </div>
-
       {/* 里程碑列表 */}
       <div className="space-y-3">
         {sortedMilestones.map((milestone, index) => {
@@ -61,7 +54,7 @@ export function WishProgressTimeline({
             >
               {/* 图标 */}
               <div
-                className={`size-10 rounded-full flex items-center justify-center text-lg ${
+                className={`size-10 rounded-full flex items-center justify-center ${
                   milestone.reached
                     ? 'bg-primary/10'
                     : isNext
@@ -69,7 +62,7 @@ export function WishProgressTimeline({
                     : 'bg-gray-100'
                 }`}
               >
-                {milestone.icon}
+                {getMilestoneIcon(milestone.icon)}
               </div>
 
               {/* 信息 */}
@@ -83,12 +76,12 @@ export function WishProgressTimeline({
                     {milestone.title}
                   </span>
                   {milestone.reached && (
-                    <span className="text-[10px] text-primary bg-primary/10 px-1.5 py-0.5 rounded-full">
+                    <span className="text-xs text-primary bg-primary/10 px-1.5 py-0.5 rounded-full">
                       已达成
                     </span>
                   )}
                   {isNext && (
-                    <span className="text-[10px] text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-full animate-pulse">
+                    <span className="text-xs text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-full animate-pulse">
                       下一目标
                     </span>
                   )}
@@ -99,8 +92,8 @@ export function WishProgressTimeline({
                     : `还差 ${milestone.count - currentCount} 人`}
                 </p>
                 {milestone.reward && (
-                  <p className="text-xs text-primary mt-1">
-                    🎁 {milestone.reward}
+                  <p className="text-xs text-primary mt-1 flex items-center gap-1">
+                    <Gift size={12} /> {milestone.reward}
                   </p>
                 )}
               </div>
@@ -123,8 +116,8 @@ export function WishProgressTimeline({
 
       {/* 最终目标 */}
       <div className="mt-4 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10">
-          <span className="text-2xl">🎯</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10">
+          <Target size={20} className="text-primary" />
           <span className="text-gray-700">
             目标 <span className="font-bold text-primary">{targetCount}</span> 人
           </span>
@@ -169,7 +162,7 @@ export function CompactProgress({
       </div>
       <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all"
+          className="h-full bg-gradient-primary rounded-full transition-all"
           style={{ width: `${Math.min(progress, 100)}%` }}
         />
       </div>

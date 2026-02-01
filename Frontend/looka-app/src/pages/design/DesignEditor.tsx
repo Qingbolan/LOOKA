@@ -331,19 +331,17 @@ export default function DesignEditorPage() {
             {generatedImages.length > 0 ? (
               <button
                 onClick={handleCreateWish}
-                className="flex-[2] py-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold"
-                style={{ boxShadow: '0 4px 14px rgba(196, 146, 138, 0.35)' }}
+                className="flex-[2] py-3 rounded-xl bg-gradient-primary text-white font-bold shadow-button"
               >
-                ✨ 发起愿望
+                发起愿望
               </button>
             ) : (
               <button
                 onClick={handleGenerate}
                 disabled={!prompt.trim() || isGenerating}
-                className="flex-[2] py-3 rounded-xl bg-primary text-white font-bold disabled:opacity-50"
-                style={{ boxShadow: '0 4px 14px rgba(196, 146, 138, 0.35)' }}
+                className="flex-[2] py-3 rounded-xl bg-primary text-white font-bold shadow-button disabled:opacity-50"
               >
-                {isGenerating ? '生成中...' : '🎨 生成设计'}
+                {isGenerating ? '生成中...' : '生成设计'}
               </button>
             )}
           </div>

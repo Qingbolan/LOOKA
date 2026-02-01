@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Icon, LukaAvatar } from '@/components'
+import { Icon, LukaAvatar, ChatInput } from '@/components'
 import {
   modeGreetings,
   historyConversations,
@@ -153,8 +153,10 @@ export function LukaChatPage() {
     }, 800)
   }
 
-  const handleImageUpload = () => {
-    sendMessage('帮我做类似这种感觉的', 'https://images.unsplash.com/photo-1485968579169-a6b12a6e05ff?w=400')
+  // 处理图片上传
+  const handleImageUpload = (file: File) => {
+    const imageUrl = URL.createObjectURL(file)
+    sendMessage('帮我做类似这种感觉的', imageUrl)
   }
 
   const handleDesignClick = (designId: string) => {
@@ -164,7 +166,7 @@ export function LukaChatPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
+      <div className="header-detail">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
           <button onClick={handleBack} className="size-10 flex items-center justify-center">
             <Icon name="arrow_back_ios" size={20} className="text-gray-600" />
@@ -199,7 +201,7 @@ export function LukaChatPage() {
                 )}
 
                 <div
-                  className={`px-4 py-3 rounded ${
+                  className={`px-4 py-3 rounded-xl ${
                     message.from === 'user'
                       ? 'bg-primary text-white rounded-br-sm'
                       : 'bg-white text-gray-800 rounded-bl-sm shadow-sm border border-gray-100'
@@ -249,7 +251,7 @@ export function LukaChatPage() {
           {isTyping && (
             <div className="flex items-start">
               <LukaAvatar size="sm" className="mr-2" />
-              <div className="bg-white px-4 py-3 rounded rounded-bl-sm shadow-sm border border-gray-100">
+              <div className="bg-white px-4 py-3 rounded-xl rounded-bl-sm shadow-sm border border-gray-100">
                 <div className="flex gap-1">
                   <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -263,47 +265,16 @@ export function LukaChatPage() {
         </div>
       </div>
 
-      {/* 底部输入 */}
-      <div className="sticky bottom-0 bg-white border-t border-gray-100">
-        <div className="max-w-md mx-auto p-4">
-          <div className="flex items-end gap-3">
-            <button
-              onClick={handleImageUpload}
-              className="size-10 flex items-center justify-center rounded-full bg-gray-100 flex-shrink-0"
-            >
-              <Icon name="add_photo_alternate" size={20} className="text-gray-500" />
-            </button>
-
-            <div className="flex-1 bg-gray-100 rounded px-4 py-2">
-              <textarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault()
-                    sendMessage(input)
-                  }
-                }}
-                placeholder="描述你想要的..."
-                rows={1}
-                className="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 resize-none outline-none"
-              />
-            </div>
-
-            <button
-              onClick={() => sendMessage(input)}
-              disabled={!input.trim()}
-              className={`size-10 flex items-center justify-center rounded-full flex-shrink-0 transition-all ${
-                input.trim()
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 text-gray-400'
-              }`}
-            >
-              <Icon name="send" size={20} />
-            </button>
-          </div>
-        </div>
-      </div>
+      {/* 底部输入 - 使用统一的 ChatInput 组件 */}
+      <ChatInput
+        value={input}
+        onChange={setInput}
+        onSend={(value) => sendMessage(value)}
+        onImageUpload={handleImageUpload}
+        placeholder="描述你想要的..."
+        multiline
+        className="sticky bottom-0"
+      />
     </div>
   )
 }

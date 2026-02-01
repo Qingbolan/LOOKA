@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Header } from '../../components/common/Header';
 import { Button } from '../../components/common/Button';
-import { Icon } from '../../components/common/Icon';
-import { LoadingSpinner } from '../../components/feedback/Loading';
+import { AddressDisplay } from '../../components/common/AddressDisplay';
+import { PageSkeleton } from '../../components/feedback/PageSkeleton';
 import { EmptyAddress } from '../../components/feedback/EmptyState';
 import { useAuthStore, useCartStore, toast } from '../../store';
 import { orderApi } from '../../api/orders';
@@ -81,10 +81,12 @@ export default function CheckoutPage() {
     }
   };
 
+  // 使用统一的骨架屏替代 LoadingSpinner
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <LoadingSpinner size="lg" />
+      <div className="min-h-screen bg-gray-50">
+        <Header title="确认订单" />
+        <PageSkeleton type="checkout" />
       </div>
     );
   }
@@ -94,40 +96,24 @@ export default function CheckoutPage() {
       <Header title="确认订单" />
 
       <main className="max-w-app mx-auto px-4 pb-32">
-        {/* 收货地址 */}
+        {/* 收货地址 - 使用 AddressDisplay 组件格式化显示 */}
         <section className="mt-4">
           {addresses.length === 0 ? (
             <div className="bg-white rounded-xl p-4">
               <EmptyAddress onAction={() => navigate('/address/edit')} />
             </div>
-          ) : (
-            <button
-              onClick={() => navigate('/address')}
-              className="w-full bg-white rounded-xl p-4 text-left"
-            >
-              <div className="flex items-start gap-3">
-                <Icon name="location_on" className="text-2xl text-primary mt-0.5" />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium">{selectedAddress?.name}</span>
-                    <span className="text-text-secondary">{selectedAddress?.phone}</span>
-                    {selectedAddress?.isDefault && (
-                      <span className="px-1.5 py-0.5 bg-primary-soft text-primary text-xs rounded">
-                        默认
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-text-secondary line-clamp-2">
-                    {selectedAddress?.province}
-                    {selectedAddress?.city}
-                    {selectedAddress?.district}
-                    {selectedAddress?.street}
-                  </p>
-                </div>
-                <Icon name="chevron_right" className="text-2xl text-text-muted" />
-              </div>
-            </button>
-          )}
+          ) : selectedAddress ? (
+            <div className="bg-white rounded-xl p-4">
+              <AddressDisplay
+                address={selectedAddress}
+                mode="full"
+                showIcon
+                showDefaultBadge
+                clickable
+                onClick={() => navigate('/address')}
+              />
+            </div>
+          ) : null}
         </section>
 
         {/* 商品列表 */}

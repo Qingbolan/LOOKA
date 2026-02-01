@@ -62,7 +62,7 @@ export function Header({
         </div>
 
         {title && (
-          <h1 className={`text-[17px] font-bold tracking-tight flex-1 text-center ${textColor}`}>
+          <h1 className={`text-md font-bold tracking-tight flex-1 text-center ${textColor}`}>
             {title}
           </h1>
         )}

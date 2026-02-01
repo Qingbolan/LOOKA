@@ -57,7 +57,7 @@ export function DesignSchemePage() {
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
           </button>
-          <h1 className="text-[17px] font-bold tracking-tight flex-1 text-center">设计方案与试穿</h1>
+          <h1 className="text-md font-bold tracking-tight flex-1 text-center">设计方案与试穿</h1>
           <button className="size-10 flex items-center justify-end">
             <Icon name="share" size={22} />
           </button>
@@ -92,12 +92,12 @@ export function DesignSchemePage() {
                 {/* Tags */}
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   {design.recommended && (
-                    <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+                    <span className="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm">
                       建议试穿
                     </span>
                   )}
                   {design.tags.includes('可投产') && (
-                    <span className="bg-black/50 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                    <span className="bg-black/50 backdrop-blur-md text-white text-xs font-bold px-2 py-0.5 rounded-full">
                       可投产
                     </span>
                   )}
@@ -105,19 +105,19 @@ export function DesignSchemePage() {
               </div>
               <div className="p-3 space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-[14px] font-bold text-gray-900">{design.name}</span>
-                  <span className="text-primary text-[12px] font-bold">¥{design.price}</span>
+                  <span className="text-base font-bold text-gray-900">{design.name}</span>
+                  <span className="text-primary text-sm font-bold">¥{design.price}</span>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={() => navigate('/parameter-edit')}
-                    className="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-[11px] font-bold rounded hover:bg-gray-100 transition-colors active:scale-95"
+                    className="flex-1 py-1.5 bg-gray-50 border border-gray-100 text-xs font-bold rounded hover:bg-gray-100 transition-colors active:scale-95"
                   >
                     编辑参数
                   </button>
                   <button
                     onClick={() => handleSave(design.id)}
-                    className="flex-1 py-1.5 bg-primary text-white text-[11px] font-bold rounded shadow-sm shadow-primary/20 active:scale-95 transition-transform"
+                    className="flex-1 py-1.5 bg-primary text-white text-xs font-bold rounded shadow-sm shadow-primary/20 active:scale-95 transition-transform"
                   >
                     {savingId === design.id ? '已保存' : '保存衣柜'}
                   </button>
@@ -137,8 +137,8 @@ export function DesignSchemePage() {
               <Icon name="shopping_bag" size={20} className="text-primary" />
             </div>
             <div>
-              <h4 className="text-[14px] font-bold">统一订单管理</h4>
-              <p className="text-gray-400 text-[12px]">查看您正在生产和待发货的单品</p>
+              <h4 className="text-base font-bold">统一订单管理</h4>
+              <p className="text-gray-400 text-sm">查看您正在生产和待发货的单品</p>
             </div>
           </div>
           <Icon name="chevron_right" size={20} className="text-gray-300" />
@@ -148,7 +148,7 @@ export function DesignSchemePage() {
         <Card className="bg-luxury-black text-white overflow-hidden relative">
           <div className="relative z-10">
             <h4 className="text-lg font-bold mb-1">发布到社区</h4>
-            <p className="text-white/60 text-[13px] mb-5 leading-relaxed">
+            <p className="text-white/60 text-sm mb-5 leading-relaxed">
               分享您的虚拟试穿效果，赢取积分与定制礼券。
             </p>
             <div className="flex gap-3">

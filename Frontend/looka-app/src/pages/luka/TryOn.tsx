@@ -232,7 +232,7 @@ export function TryOnPage() {
       {/* 底部操作栏 */}
       <div className="bottom-action">
         <div className="bottom-action-inner">
-          <button className="w-full h-12 bg-primary text-white text-[15px] font-bold rounded shadow-md shadow-primary/25 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+          <button className="w-full h-12 bg-primary text-white text-base font-bold rounded shadow-md shadow-primary/25 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
             <Icon name="favorite" size={18} filled />
             我也想要
           </button>

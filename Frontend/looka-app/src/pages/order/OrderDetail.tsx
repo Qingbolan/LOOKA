@@ -45,7 +45,7 @@ export function OrderDetailPage() {
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
           </button>
-          <h1 className="text-[17px] font-bold tracking-tight flex-1 text-center font-display">订单生产详情</h1>
+          <h1 className="text-md font-bold tracking-tight flex-1 text-center font-display">订单生产详情</h1>
           <button className="size-10 flex items-center justify-end">
             <Icon name="more_horiz" size={24} />
           </button>
@@ -67,18 +67,18 @@ export function OrderDetailPage() {
                     <Badge variant="primary">正在生产</Badge>
                   </div>
                   <h2 className="text-lg font-bold leading-tight font-display tracking-tight">赛博朋克丝绸和服</h2>
-                  <p className="text-gray-400 text-[11px] font-medium mt-1">订单编号: #AI-882-9421</p>
+                  <p className="text-gray-400 text-xs font-medium mt-1">订单编号: #AI-882-9421</p>
                 </div>
                 <div className="flex gap-2 items-center mt-3">
-                  <span className="text-[14px] font-bold">¥4,280.00</span>
-                  <span className="text-[11px] text-gray-400">数量: 1</span>
+                  <span className="text-base font-bold">¥4,280.00</span>
+                  <span className="text-xs text-gray-400">数量: 1</span>
                 </div>
               </div>
             </div>
             <div className="mt-5 pt-4 border-t border-gray-50 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Icon name="history" size={18} className="text-gray-400" />
-                <span className="text-[12px] font-medium text-gray-500">预计 3 天后完成</span>
+                <span className="text-sm font-medium text-gray-500">预计 3 天后完成</span>
               </div>
               <Button variant="secondary" size="sm">
                 查看实时进度
@@ -90,7 +90,7 @@ export function OrderDetailPage() {
         {/* Production Progress */}
         <div className="px-7 py-4">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-[16px] font-bold font-display tracking-tight">生产进度</h3>
+            <h3 className="text-md font-bold font-display tracking-tight">生产进度</h3>
           </div>
           <div className="relative">
             {productionSteps.map((step, index) => (
@@ -122,14 +122,14 @@ export function OrderDetailPage() {
                 </div>
                 <div className="pt-1 pb-6">
                   <h4
-                    className={`font-bold text-[15px] font-display ${
+                    className={`font-bold text-base font-display ${
                       step.current ? 'text-primary' : step.completed ? 'text-luxury-black' : 'text-gray-400'
                     }`}
                   >
                     {step.name}
                   </h4>
                   <p
-                    className={`text-[12px] mt-1 ${
+                    className={`text-sm mt-1 ${
                       step.current ? 'text-luxury-black font-medium' : 'text-gray-400'
                     }`}
                   >
@@ -164,8 +164,8 @@ export function OrderDetailPage() {
         <div className="p-5">
           <Card className="bg-luxury-black text-white overflow-hidden relative">
             <div className="relative z-10">
-              <h4 className="text-[17px] font-bold font-display mb-1.5">晒出你的定制</h4>
-              <p className="text-white/50 text-[12px] mb-6 leading-relaxed">
+              <h4 className="text-md font-bold font-display mb-1.5">晒出你的定制</h4>
+              <p className="text-white/50 text-sm mb-6 leading-relaxed">
                 分享你的 AI 设计到社区，可获得 200 积分奖励
               </p>
               <div className="flex gap-3">

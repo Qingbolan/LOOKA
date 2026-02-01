@@ -98,13 +98,9 @@ export function JoinWishButton({
       {/* 加入按钮 */}
       <button
         onClick={handleClick}
-        className={`w-full py-4 rounded-xl font-bold text-white text-lg relative overflow-hidden transition-transform ${
+        className={`w-full py-4 rounded-xl font-bold text-white text-lg relative overflow-hidden transition-transform bg-gradient-primary shadow-button ${
           isAnimating ? 'scale-95' : 'active:scale-95'
         }`}
-        style={{
-          background: 'linear-gradient(135deg, #C4928A 0%, #D4C4B5 100%)',
-          boxShadow: '0 4px 20px rgba(196, 146, 138, 0.4)',
-        }}
       >
         {/* 闪光效果 */}
         <div

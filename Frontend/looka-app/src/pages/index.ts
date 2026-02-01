@@ -1,5 +1,5 @@
 // 发现模块
-export { ExplorePage, SearchPage } from './explore'
+export { ExplorePage, SearchPage, SearchResultPage } from './explore'
 
 // 愿望模块
 export { TogetherPage, GroupBuyPage, WishCreatePage, WishDetailPage } from './wish'

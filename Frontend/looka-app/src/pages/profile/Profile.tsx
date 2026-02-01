@@ -119,7 +119,7 @@ export function ProfilePage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold">身材档案</h4>
-                  <p className="text-xs text-gray-500">让 Luka 更懂你的身材</p>
+                  <p className="text-xs text-gray-500">让 洛卡 更懂你的身材</p>
                 </div>
               </div>
               <Icon name="chevron_right" size={20} className="text-primary" />

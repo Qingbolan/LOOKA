@@ -45,7 +45,7 @@ export function BodyProfilePage() {
             </div>
             <div>
               <h2 className="text-lg font-bold mb-1">我的身材</h2>
-              <p className="text-sm text-gray-500">Luka 会根据这些数据推荐最适合你的款式</p>
+              <p className="text-sm text-gray-500">洛卡 会根据这些数据推荐最适合你的款式</p>
             </div>
           </div>
 

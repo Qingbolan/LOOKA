@@ -53,12 +53,12 @@ export function BodySetupPage() {
       </div>
 
       <main className="max-w-md mx-auto px-6 pb-32">
-        {/* Luka 打招呼 */}
+        {/* 洛卡 打招呼 */}
         <div className="text-center py-6">
           <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4 bg-primary/10">
-            <img src="/Luka.png" alt="Luka" className="w-full h-full object-cover" />
+            <img src="/looka.png" alt="洛卡" className="w-full h-full object-cover" />
           </div>
-          <h1 className="text-2xl font-bold mb-2">让 Luka 认识你</h1>
+          <h1 className="text-2xl font-bold mb-2">让 洛卡 认识你</h1>
           <p className="text-gray-500 text-sm leading-relaxed">
             上传一张你的照片<br />
             这样就能看到衣服穿在你身上什么样啦
@@ -117,7 +117,7 @@ export function BodySetupPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium">很棒！</p>
-                  <p className="text-xs text-gray-500">Luka 已经记住你啦</p>
+                  <p className="text-xs text-gray-500">洛卡 已经记住你啦</p>
                 </div>
               </div>
             </div>

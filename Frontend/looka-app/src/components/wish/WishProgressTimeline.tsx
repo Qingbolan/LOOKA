@@ -31,7 +31,6 @@ export function WishProgressTimeline({
   targetCount,
   className = '',
 }: WishProgressTimelineProps) {
-  const progress = (currentCount / targetCount) * 100;
   const sortedMilestones = [...milestones].sort((a, b) => a.count - b.count);
 
   return (

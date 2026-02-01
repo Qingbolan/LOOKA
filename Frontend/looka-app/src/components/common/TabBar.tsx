@@ -74,7 +74,7 @@ export function TabBar() {
       id: 'camera',
       icon: 'photo_camera',
       title: '拍照找灵感',
-      subtitle: '用相机捕捉灵感，让 Luka 帮你设计',
+      subtitle: '用相机捕捉灵感，让 洛卡 帮你设计',
       gradient: 'from-primary to-primary-light',
       onClick: handleCameraCapture,
     },

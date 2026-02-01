@@ -36,7 +36,7 @@ export type {
   Activity,
 } from './together';
 
-// Luka 对话数据
+// 洛卡 对话数据
 export {
   modeGreetings,
   styleOptions,

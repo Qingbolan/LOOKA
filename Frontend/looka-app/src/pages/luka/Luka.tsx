@@ -45,7 +45,7 @@ export function LukaPage() {
     navigate(`/luka/chat?mode=${cardId}`)
   }
 
-  // 安全退出 Luka - 如果没有历史记录则回到首页
+  // 安全退出 洛卡 - 如果没有历史记录则回到首页
   const handleExit = () => {
     if (window.history.length > 1) {
       navigate(-1)
@@ -77,7 +77,7 @@ export function LukaPage() {
           </button>
           <div className="flex items-center gap-2">
             <LukaAvatar size="xs" />
-            <span className="font-bold">Luka</span>
+            <span className="font-bold">洛卡</span>
           </div>
           <button className="header-btn">
             <Icon name="more_horiz" size={24} className="text-gray-600" />
@@ -86,11 +86,11 @@ export function LukaPage() {
       </div>
 
       <div className="content-page">
-        {/* Luka 自我介绍 */}
+        {/* 洛卡 自我介绍 */}
         <div className="py-8">
           <div className="bg-primary/5 rounded p-5 mb-6 border border-primary/10">
             <p className="text-base leading-relaxed text-gray-700">
-              Hi，我是 <span className="text-primary font-medium">Luka</span>，帮你把脑海里的衣服变成真的。
+              Hi，我是 <span className="text-primary font-medium">洛卡</span>，帮你把脑海里的衣服变成真的。
               <br /><br />
               告诉我你想要什么，或者发张图给我看看，我来帮你实现～
             </p>

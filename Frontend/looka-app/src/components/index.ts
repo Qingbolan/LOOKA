@@ -11,7 +11,7 @@ export { ChatInput } from './common'
 export { ProgressBadge, ProgressBar, ProgressInfo } from './common'
 export { AddressDisplay, AddressCard } from './common'
 
-// Luka 相关组件
+// 洛卡 相关组件
 export { LukaAvatar } from './luka'
 
 // 产品相关组件

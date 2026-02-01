@@ -109,7 +109,7 @@ export function LukaChatPage() {
     setInput('')
     setIsTyping(true)
 
-    // Luka 回复逻辑 - 使用 mocks 中的关键词
+    // 洛卡 回复逻辑 - 使用 mocks 中的关键词
     setTimeout(() => {
       setIsTyping(false)
 
@@ -173,7 +173,7 @@ export function LukaChatPage() {
           </button>
           <div className="flex items-center gap-2">
             <LukaAvatar size="xs" />
-            <span className="font-medium">Luka</span>
+            <span className="font-medium">洛卡</span>
           </div>
           <button className="size-10 flex items-center justify-center">
             <Icon name="more_horiz" size={24} className="text-gray-600" />

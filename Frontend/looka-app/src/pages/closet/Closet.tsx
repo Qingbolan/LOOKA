@@ -64,13 +64,13 @@ export function ClosetPage() {
         {/* Tab 0: 穿搭 */}
         {!loading && activeTab === 0 && (
           <>
-            {/* Luka 今日推荐 */}
+            {/* 洛卡 今日推荐 */}
             <div className="mb-4">
               <div className="bg-primary/5 rounded p-3 border border-primary/10">
                 <div className="flex items-center gap-2 mb-3">
                   <LukaAvatar size="sm" />
                   <div>
-                    <p className="text-xs text-gray-500">Luka 说</p>
+                    <p className="text-xs text-gray-500">洛卡 说</p>
                     <p className="text-sm font-medium">{todayOutfit.greeting}</p>
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export function ClosetPage() {
                 className="bg-gray-50 rounded p-6 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center cursor-pointer"
               >
                 <Icon name="add" size={28} className="text-gray-300 mb-2" />
-                <p className="text-sm text-gray-400">让 Luka 帮你搭配</p>
+                <p className="text-sm text-gray-400">让 洛卡 帮你搭配</p>
               </div>
             </div>
           </>
@@ -129,13 +129,13 @@ export function ClosetPage() {
         {/* Tab 1: 衣帽间 */}
         {!loading && activeTab === 1 && (
           <>
-            {/* Luka 今日推荐 */}
+            {/* 洛卡 今日推荐 */}
             <div className="mb-4">
               <div className="bg-primary/5 rounded p-3 border border-primary/10">
                 <div className="flex items-center gap-2 mb-3">
                   <LukaAvatar size="sm" />
                   <div>
-                    <p className="text-xs text-gray-500">Luka 说</p>
+                    <p className="text-xs text-gray-500">洛卡 说</p>
                     <p className="text-sm font-medium">{todayOutfit.greeting}</p>
                   </div>
                 </div>
@@ -284,7 +284,7 @@ export function ClosetPage() {
                           onClick={(e) => { e.stopPropagation(); navigate('/luka'); }}
                           className="text-xs text-primary font-medium"
                         >
-                          让 Luka 实现
+                          让 洛卡 实现
                         </button>
                       )}
                     </div>
@@ -333,7 +333,7 @@ export function ClosetPage() {
                     </div>
                     <div className="p-2">
                       <p className="text-sm font-medium line-clamp-1">{item.name}</p>
-                      <button className="mt-1.5 text-xs text-primary font-medium">让 Luka 实现</button>
+                      <button className="mt-1.5 text-xs text-primary font-medium">让 洛卡 实现</button>
                     </div>
                   </div>
                 )
@@ -352,9 +352,9 @@ export function ClosetPage() {
         {!loading && (
           <div className="text-center py-8">
             <p className="text-gray-400 text-sm">
-              {activeTab === 0 && '让 Luka 帮你搭配更多穿法'}
-              {activeTab === 1 && '告诉 Luka 你想要什么'}
-              {activeTab === 2 && '有想法就告诉 Luka'}
+              {activeTab === 0 && '让 洛卡 帮你搭配更多穿法'}
+              {activeTab === 1 && '告诉 洛卡 你想要什么'}
+              {activeTab === 2 && '有想法就告诉 洛卡'}
               {activeTab === 3 && '看到喜欢的就加入心愿单'}
             </p>
           </div>

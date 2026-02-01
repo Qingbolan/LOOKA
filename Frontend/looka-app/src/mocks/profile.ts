@@ -67,7 +67,7 @@ export const defaultUserAvatar = 'https://images.unsplash.com/photo-153452874177
 // 默认用户信息
 export const defaultUserProfile = {
   name: 'Ava',
-  bio: '用 Luka 实现我所有的穿搭梦想 ✨',
+  bio: '用 洛卡 实现我所有的穿搭梦想 ✨',
   avatar: defaultUserAvatar,
   stats: {
     wishes: 3,

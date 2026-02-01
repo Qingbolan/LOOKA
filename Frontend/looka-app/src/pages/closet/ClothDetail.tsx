@@ -21,14 +21,14 @@ const clothData = {
   // 制作进度（温暖版）
   productionSteps: [
     { step: '找到了最好的面料', detail: '顶级桑蚕丝，触感超棒', done: true, icon: 'eco' },
-    { step: 'Luka 帮你调整了版型', detail: '根据你的身材优化了细节', done: true, icon: 'auto_awesome' },
+    { step: '洛卡 帮你调整了版型', detail: '根据你的身材优化了细节', done: true, icon: 'auto_awesome' },
     { step: '裁缝师傅正在缝制', detail: '资深师傅手工制作中', done: false, current: true, icon: 'content_cut' },
     { step: '很快就要出发啦', detail: '完成后立即寄给你', done: false, icon: 'local_shipping' },
   ],
 
   // 时间线
   timeline: [
-    { date: '1月15日', event: '告诉 Luka 我的想法', type: 'create' },
+    { date: '1月15日', event: '告诉 洛卡 我的想法', type: 'create' },
     { date: '1月18日', event: '30人一起，开始制作', type: 'start' },
     { date: '1月25日', event: '制作完成，发货', type: 'ship' },
     { date: '1月27日', event: '收到啦！', type: 'arrive' },
@@ -207,13 +207,13 @@ export function ClothDetailPage() {
           </div>
         )}
 
-        {/* Luka 搭配建议 */}
+        {/* 洛卡 搭配建议 */}
         <div className="p-4 border-b border-gray-100">
           <div className="flex items-center gap-2 mb-3">
             <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
               <Icon name="auto_awesome" size={12} className="text-white" />
             </div>
-            <h3 className="font-bold">Luka 的搭配建议</h3>
+            <h3 className="font-bold">洛卡 的搭配建议</h3>
           </div>
           <p className="text-sm text-gray-500 mb-3">这件裙子可以和这些搭配</p>
           <div className="flex gap-3">

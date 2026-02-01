@@ -20,8 +20,8 @@ const steps: OnboardingStep[] = [
   },
   {
     id: 2,
-    title: 'Luka',
-    description: '告诉 Luka 你想要什么，AI 帮你把想象变成现实',
+    title: '洛卡',
+    description: '告诉 洛卡 你想要什么，AI 帮你把想象变成现实',
     icon: 'auto_awesome',
   },
   {
@@ -71,7 +71,7 @@ export function OnboardingPage() {
 
       {/* Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-8">
-        {/* Luka Avatar */}
+        {/* 洛卡 Avatar */}
         <div className="mb-8">
           <div className="relative">
             <div className="size-24 rounded-full surface-card flex items-center justify-center overflow-hidden border-4 border-white/70">

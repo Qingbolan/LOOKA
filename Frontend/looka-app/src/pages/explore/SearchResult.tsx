@@ -279,7 +279,7 @@ export function SearchResultPage() {
               onClick={() => navigate('/luka')}
               className="text-primary text-sm font-medium mt-1"
             >
-              让 Luka 帮你设计
+              让 洛卡 帮你设计
             </button>
           </div>
         )}

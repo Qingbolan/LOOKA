@@ -1,5 +1,5 @@
 /**
- * Luka 对话 Mock 数据
+ * 洛卡 对话 Mock 数据
  * 从 LukaChat.tsx 迁移的历史对话数据
  */
 

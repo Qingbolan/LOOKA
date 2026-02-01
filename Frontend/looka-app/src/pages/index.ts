@@ -10,7 +10,7 @@ export { DesignEditorPage, RecipeDetailPage } from './design'
 // 生产模块
 export { ProductionPreviewPage } from './production'
 
-// Luka AI 模块
+// 洛卡 AI 模块
 export { LukaPage, LukaChatPage, DesignResultPage, DesignSchemePage, TryOnPage } from './luka'
 
 // 衣柜模块

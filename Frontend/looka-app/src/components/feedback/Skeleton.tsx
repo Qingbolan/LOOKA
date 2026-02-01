@@ -333,7 +333,7 @@ export function RecipeDetailSkeleton() {
 export function ClosetSkeleton() {
   return (
     <div className="space-y-4">
-      {/* Luka 推荐卡片 */}
+      {/* 洛卡 推荐卡片 */}
       <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
         <div className="flex items-center gap-2 mb-3">
           <Skeleton className="w-8 h-8" variant="circular" />

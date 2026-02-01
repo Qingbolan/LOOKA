@@ -27,8 +27,8 @@ export function LukaAvatar({
       `}
     >
       <img
-        src="/Luka.png"
-        alt="Luka"
+        src="/looka.png"
+        alt="洛卡"
         className="w-full h-full object-cover"
       />
     </div>

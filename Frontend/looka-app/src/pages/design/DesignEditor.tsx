@@ -161,7 +161,7 @@ export default function DesignEditorPage() {
                 <div className="size-16 rounded-full bg-primary/10 flex items-center justify-center animate-pulse">
                   <span className="text-3xl">✨</span>
                 </div>
-                <p className="text-gray-600 mt-4 font-medium">Luka 正在创作...</p>
+                <p className="text-gray-600 mt-4 font-medium">洛卡 正在创作...</p>
                 <p className="text-gray-400 text-sm mt-1">让灵感变成现实</p>
               </div>
             </div>

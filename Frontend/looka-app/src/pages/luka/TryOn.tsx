@@ -128,13 +128,13 @@ export function TryOnPage() {
           </div>
         </div>
 
-        {/* Luka 的建议 */}
+        {/* 洛卡 的建议 */}
         <div className="mt-4">
           <div className="bg-primary/5 rounded p-4 border border-primary/10">
             <div className="flex items-start gap-3">
               <LukaAvatar size="sm" />
               <div className="flex-1">
-                <p className="text-xs text-gray-500 mb-1">Luka 觉得</p>
+                <p className="text-xs text-gray-500 mb-1">洛卡 觉得</p>
                 <p className="text-sm text-gray-700 leading-relaxed">
                   这件裙子很适合你！宽松的版型刚好修饰腰线，颜色也很衬你的肤色~
                 </p>
@@ -197,7 +197,7 @@ export function TryOnPage() {
                 </div>
                 <div>
                   <p className="font-medium text-sm">愿望达成，开始制作</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Luka 会通知你</p>
+                  <p className="text-xs text-gray-500 mt-0.5">洛卡 会通知你</p>
                 </div>
               </div>
               <div className="flex gap-3">

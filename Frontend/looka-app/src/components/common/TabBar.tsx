@@ -136,7 +136,7 @@ export function TabBar() {
       />
 
       {/* TabBar 主体 */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 surface-panel border-t border-black/[0.06] dark:border-white/10">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-black/[0.06] dark:border-white/10">
         <div className="max-w-md mx-auto px-4 py-1 mb-0 pb-[calc(0.5rem+var(--safe-area-inset-bottom))]">
           <div className="flex justify-between items-center">
             {tabs.map((tab) => {
@@ -155,7 +155,7 @@ export function TabBar() {
                   key={tab.path}
                   onClick={() => navigate(tab.path)}
                   className={`flex items-center flex-col gap-0.5 justify-center transition-colors min-w-[48px] ${
-                    isActive ? 'text-primary' : 'text-text-muted dark:text-text-dark-muted'
+                    isActive ? 'text-gray-700' : 'text-gray-400'
                   }`}
                 >
                   <Icon
@@ -163,7 +163,7 @@ export function TabBar() {
                     size={26}
                     filled={isActive}
                   />
-                  <span className={`text-xs ${isActive ? 'font-bold' : 'font-medium'}`}>
+                  <span className={`text-xs ${isActive ? 'font-semibold' : 'font-medium'}`}>
                     {tab.label}
                   </span>
                 </button>

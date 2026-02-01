@@ -21,7 +21,7 @@ export function LukaAvatar({
     <div
       className={`
         ${sizeClasses[size]}
-        rounded-full flex-shrink-0 overflow-hidden
+        flex-shrink-0 overflow-hidden
         ${animated ? 'animate-pulse-slow' : ''}
         ${className}
       `}
@@ -29,7 +29,7 @@ export function LukaAvatar({
       <img
         src="/looka.png"
         alt="洛卡"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain"
       />
     </div>
   )

@@ -51,22 +51,19 @@ export function DesignResultPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="header-detail">
-        <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
-            <Icon name="close" size={24} className="text-gray-900" />
+      <header className="header-detail">
+        <div className="header-detail-inner">
+          <button onClick={() => navigate(-1)} className="header-btn-start">
+            <Icon name="close" size={24} />
           </button>
-          <h1 className="text-md font-bold tracking-tight flex-1 text-center">AI 设计结果</h1>
-          <button
-            onClick={() => navigate('/parameter-edit')}
-            className="size-10 flex items-center justify-end"
-          >
+          <h1 className="header-title-center">AI 设计结果</h1>
+          <button onClick={() => navigate('/parameter-edit')} className="header-btn-end">
             <Icon name="tune" size={24} />
           </button>
         </div>
-      </div>
+      </header>
 
-      <div className="pb-36">
+      <div className="pb-36 ">
         {/* Main Design Preview */}
         <div className="relative aspect-[3/4] bg-gray-100">
           <img
@@ -195,9 +192,9 @@ export function DesignResultPage() {
         </div>
       </div>
 
-      {/* Bottom Action Bar - 优化按钮布局，避免文字竖排 */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 surface-panel border-t border-gray-100 max-w-md mx-auto z-50">
-        <div className="flex gap-2">
+      {/* Bottom Action Bar */}
+      <div className="bottom-action">
+        <div className="bottom-action-inner flex gap-2">
           {/* 图标按钮：试穿 */}
           <button
             onClick={() => navigate('/try-on')}

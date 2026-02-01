@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { DesignStats } from '@/types';
+import { RefreshCw, Sparkles, FlaskConical } from 'lucide-react';
 
 interface RemixButtonProps {
   designId: string;
@@ -32,7 +33,7 @@ export function RemixButton({
         onClick={handleRemix}
         className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-medium hover:bg-purple-100 transition-colors ${className}`}
       >
-        <span className="text-sm">🔄</span>
+        <RefreshCw size={14} />
         <span>Remix</span>
         {stats && stats.remixes > 0 && <span className="opacity-70">{stats.remixes}</span>}
       </button>
@@ -45,7 +46,7 @@ export function RemixButton({
         onClick={handleRemix}
         className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:opacity-90 transition-opacity ${className}`}
       >
-        <span className="text-lg">🔄</span>
+        <RefreshCw size={18} />
         <span>以此为灵感创作</span>
       </button>
     );
@@ -56,7 +57,7 @@ export function RemixButton({
       onClick={handleRemix}
       className={`flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 text-purple-600 font-medium hover:bg-purple-100 transition-colors ${className}`}
     >
-      <span className="text-lg">🔄</span>
+      <RefreshCw size={18} />
       <span>Remix</span>
       {stats && stats.remixes > 0 && (
         <span className="text-purple-400 text-sm">({stats.remixes})</span>
@@ -127,7 +128,7 @@ export function OriginalBadge({ isOriginal = true, remixFrom, className = '' }: 
       <span
         className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-600 text-xs font-medium ${className}`}
       >
-        <span>✨</span>
+        <Sparkles size={12} />
         <span>原创</span>
       </span>
     );
@@ -138,7 +139,7 @@ export function OriginalBadge({ isOriginal = true, remixFrom, className = '' }: 
       <span
         className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-purple-50 text-purple-600 text-xs ${className}`}
       >
-        <span>🔄</span>
+        <RefreshCw size={12} />
         <span>Remix 自 @{remixFrom.creator}</span>
       </span>
     );
@@ -156,18 +157,18 @@ interface RecipePublicToggleProps {
 
 export function RecipePublicToggle({ isPublic, onToggle, className = '' }: RecipePublicToggleProps) {
   return (
-    <div className={`flex items-center justify-between p-3 bg-gray-50 rounded-xl ${className}`}>
+    <div className={`flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl ${className}`}>
       <div className="flex items-center gap-3">
         <div
           className={`size-10 rounded-full flex items-center justify-center ${
-            isPublic ? 'bg-purple-100' : 'bg-gray-200'
+            isPublic ? 'bg-purple-100 dark:bg-purple-900/30' : 'bg-gray-200 dark:bg-gray-700'
           }`}
         >
-          <span className={`text-lg ${isPublic ? '' : 'opacity-50'}`}>🧪</span>
+          <FlaskConical size={20} className={isPublic ? 'text-purple-500' : 'text-gray-400'} />
         </div>
         <div>
-          <p className="font-medium text-gray-900 text-sm">公开配方</p>
-          <p className="text-xs text-gray-500 mt-0.5">
+          <p className="font-medium text-gray-900 dark:text-gray-100 text-sm">公开配方</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
             {isPublic ? '其他人可以看到并 Remix 你的配方' : '仅自己可见'}
           </p>
         </div>
@@ -175,13 +176,11 @@ export function RecipePublicToggle({ isPublic, onToggle, className = '' }: Recip
       <button
         onClick={() => onToggle(!isPublic)}
         className={`relative w-11 h-6 rounded-full transition-colors ${
-          isPublic ? 'bg-purple-500' : 'bg-gray-300'
+          isPublic ? 'bg-purple-500' : 'bg-gray-300 dark:bg-gray-600'
         }`}
       >
         <div
-          className={`absolute top-0.5 size-5 bg-white rounded-full shadow transition-transform ${
-            isPublic ? 'translate-x-5.5 left-0.5' : 'translate-x-0 left-0.5'
-          }`}
+          className="absolute top-0.5 left-0.5 size-5 bg-white rounded-full shadow transition-transform"
           style={{ transform: isPublic ? 'translateX(20px)' : 'translateX(0)' }}
         />
       </button>

@@ -121,7 +121,7 @@ export function ChatInput({
         />
       )}
 
-      <div className="max-w-md mx-auto p-4 pb-3">
+      <div className="max-w-md mx-auto p-4" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 12px)' }}>
         <div className="flex items-end gap-3">
           {/* 添加图片按钮 */}
           {showImageUpload && (

@@ -127,7 +127,7 @@ export default function LoginPage() {
   return (
     <div className="app-shell flex flex-col">
       {/* Header */}
-      <header className="flex items-center h-14 px-4">
+      <header className="flex items-center h-14 px-4" style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}>
         {step === 'code' ? (
           <button onClick={handleBack} className="p-2 -ml-2 text-gray-600">
             <Icon name="arrow_back" className="text-2xl" />

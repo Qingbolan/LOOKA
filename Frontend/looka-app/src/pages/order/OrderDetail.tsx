@@ -40,19 +40,19 @@ export function OrderDetailPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 surface-panel border-b border-gray-50">
-        <div className="flex items-center p-4 h-16 justify-between max-w-md mx-auto" style={{ paddingTop: 'calc(var(--safe-area-inset-top) + 1rem)' }}>
-          <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
-            <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
+      <header className="header-detail">
+        <div className="header-detail-inner">
+          <button onClick={() => navigate(-1)} className="header-btn-start">
+            <Icon name="arrow_back_ios" size={20} />
           </button>
-          <h1 className="text-md font-bold tracking-tight flex-1 text-center font-display">订单生产详情</h1>
-          <button className="size-10 flex items-center justify-end">
+          <h1 className="header-title-center">订单生产详情</h1>
+          <button className="header-btn-end">
             <Icon name="more_horiz" size={24} />
           </button>
         </div>
-      </div>
+      </header>
 
-      <div className="pb-40">
+      <div className="pb-40 ">
         {/* Product Card */}
         <div className="p-5">
           <Card>
@@ -183,8 +183,8 @@ export function OrderDetailPage() {
       </div>
 
       {/* Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 p-5 surface-panel border-t border-gray-50 max-w-md mx-auto z-50">
-        <div className="flex gap-3" style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
+      <div className="bottom-action">
+        <div className="bottom-action-inner flex gap-3">
           <Button variant="secondary" fullWidth icon="headset_mic">
             帮助
           </Button>

@@ -102,7 +102,7 @@ export default function DesignEditorPage() {
   return (
     <div className="app-shell flex flex-col">
       {/* Header */}
-      <header className="header-detail">
+      <header className="header-flex">
         <div className="header-detail-inner">
           <button
             onClick={() => {
@@ -122,7 +122,7 @@ export default function DesignEditorPage() {
 
       {/* 主内容 */}
       <div className="flex-1 overflow-y-auto">
-        <div className="content-page pb-32">
+        <div className="content-page">
           {/* 版本切换 */}
           {currentDesign && currentDesign.versions.length > 1 && (
             <div className="flex items-center justify-center py-3">
@@ -319,7 +319,7 @@ export default function DesignEditorPage() {
       </div>
 
       {/* 底部操作栏 */}
-      <div className="bottom-action">
+      <div className="bottom-action-flex">
         <div className="bottom-action-inner">
           <div className="flex gap-3">
             <button

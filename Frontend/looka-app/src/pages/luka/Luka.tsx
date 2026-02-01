@@ -70,7 +70,7 @@ export function LukaPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="header-detail">
+      <header className="header-detail">
         <div className="header-detail-inner">
           <button onClick={handleExit} className="header-btn">
             <Icon name="close" size={24} className="text-gray-600 dark:text-gray-400" />
@@ -83,11 +83,11 @@ export function LukaPage() {
             <Icon name="more_horiz" size={24} className="text-gray-600 dark:text-gray-400" />
           </button>
         </div>
-      </div>
+      </header>
 
       <div className="content-page">
         {/* 洛卡 自我介绍 */}
-        <div className="py-8">
+        <div className="py-6">
           <div className="bg-gray-800/50 dark:bg-gray-800/80 rounded p-5 mb-6 border border-gray-700">
             <p className="text-base leading-relaxed text-gray-300">
               Hi，我是 <span className="text-primary font-medium">洛卡</span>，帮你把脑海里的衣服变成真的。

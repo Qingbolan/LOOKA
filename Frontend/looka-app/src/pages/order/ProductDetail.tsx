@@ -23,24 +23,24 @@ export function ProductDetailPage() {
 
   return (
     <Layout showTabBar={false}>
-      {/* Fixed Header */}
-      <div className="fixed top-0 z-50 w-full max-w-md mx-auto surface-panel border-b border-gray-100/50">
-        <div className="flex items-center p-4 h-16 justify-between" style={{ paddingTop: 'calc(var(--safe-area-inset-top) + 1rem)' }}>
-          <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
-            <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
+      {/* Header */}
+      <header className="header-detail">
+        <div className="header-detail-inner">
+          <button onClick={() => navigate(-1)} className="header-btn-start">
+            <Icon name="arrow_back_ios" size={20} />
           </button>
           <div className="flex gap-6">
-            <span className="text-base font-bold text-primary border-b-2 border-primary pb-1">商品</span>
-            <span className="text-base font-medium text-gray-400">详情</span>
-            <span className="text-base font-medium text-gray-400">评价</span>
+            <span className="text-sm font-bold text-primary border-b-2 border-primary pb-1">商品</span>
+            <span className="text-sm font-medium text-gray-400">详情</span>
+            <span className="text-sm font-medium text-gray-400">评价</span>
           </div>
-          <button className="size-10 flex items-center justify-end">
+          <button className="header-btn-end">
             <Icon name="share" size={20} />
           </button>
         </div>
-      </div>
+      </header>
 
-      <div className="pt-16 pb-40">
+      <div className="pb-40 ">
         {/* Product Image Gallery */}
         <div className="relative aspect-[3/4] overflow-hidden">
           <img
@@ -199,8 +199,8 @@ export function ProductDetailPage() {
       </div>
 
       {/* Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-gray-100 z-50">
-        <div className="flex items-center gap-3 p-4" style={{ paddingBottom: 'calc(1rem + var(--safe-area-inset-bottom))' }}>
+      <div className="bottom-action">
+        <div className="bottom-action-inner flex items-center gap-3">
           <div className="flex flex-col items-center justify-center px-2">
             <Icon name="headset_mic" size={22} className="text-gray-900" />
             <span className="text-xs text-gray-500 mt-0.5">客服</span>

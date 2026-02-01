@@ -21,6 +21,7 @@ const config: CapacitorConfig = {
   ios: {
     contentInset: 'automatic',
     preferredContentMode: 'mobile',
+    backgroundColor: '#FFFFFF',
   },
   android: {
     backgroundColor: '#FFFFFF',

@@ -132,8 +132,8 @@ export function BodySetupPage() {
       </main>
 
       {/* 底部按钮 */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto bg-white">
-        <div className="px-6 py-4 space-y-3" style={{ paddingBottom: 'calc(var(--safe-area-inset-bottom) + 1rem)' }}>
+      <div className="bottom-action">
+        <div className="bottom-action-inner space-y-3">
           {!hasPhoto ? (
             <>
               <Button

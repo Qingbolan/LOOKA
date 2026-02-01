@@ -94,7 +94,7 @@ export function ExplorePage() {
                 index === activeStyle ? 'style-tag-active' : 'style-tag-inactive'
               }`}
             >
-              {style}
+              {/* {style} */}
             </button>
           ))}
         </div>

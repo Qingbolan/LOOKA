@@ -166,20 +166,20 @@ export function LukaChatPage() {
   return (
     <div className="app-shell flex flex-col">
       {/* Header */}
-      <div className="header-detail">
-        <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
-          <button onClick={handleBack} className="size-10 flex items-center justify-center">
+      <header className="header-flex">
+        <div className="header-detail-inner">
+          <button onClick={handleBack} className="header-btn-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-600 dark:text-gray-400" />
           </button>
           <div className="flex items-center gap-2">
             <LukaAvatar size="xs" />
             <span className="font-medium dark:text-gray-100">洛卡</span>
           </div>
-          <button className="size-10 flex items-center justify-center">
+          <button className="header-btn-end">
             <Icon name="more_horiz" size={24} className="text-gray-600 dark:text-gray-400" />
           </button>
         </div>
-      </div>
+      </header>
 
       {/* 对话区域 */}
       <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#16181B]">
@@ -273,7 +273,7 @@ export function LukaChatPage() {
         onImageUpload={handleImageUpload}
         placeholder="描述你想要的..."
         multiline
-        className="sticky bottom-0"
+        className="flex-shrink-0"
       />
     </div>
   )

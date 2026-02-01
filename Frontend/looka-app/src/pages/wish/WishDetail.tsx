@@ -56,20 +56,21 @@ export default function WishDetailPage() {
   const remaining = wish.targetCount - wish.currentCount;
 
   return (
-    <div className="app-shell">
-      {/* Header */}
-      <header className="header-detail">
-        <div className="header-detail-inner">
-          <button onClick={() => navigate(-1)} className="header-btn-start">
-            <span className="material-symbols-outlined">arrow_back</span>
-          </button>
-          <h1 className="header-title-center">愿望详情</h1>
-          <ShareButton onClick={() => setShowShare(true)} variant="icon" className="!bg-transparent" />
-        </div>
-      </header>
+    <div className="app-shell app-shell--scroll">
+      <div className="app-scroll">
+        {/* Header */}
+        <header className="header-detail">
+          <div className="header-detail-inner">
+            <button onClick={() => navigate(-1)} className="header-btn-start">
+              <span className="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 className="header-title-center">愿望详情</h1>
+            <ShareButton onClick={() => setShowShare(true)} variant="icon" className="!bg-transparent" />
+          </div>
+        </header>
 
-      {/* 主内容 */}
-      <div className="content-detail">
+        {/* 主内容 */}
+        <div className="content-detail">
         {/* 商品图片 */}
         <div className="relative aspect-[3/4]">
           <img
@@ -128,7 +129,7 @@ export default function WishDetailPage() {
         </div>
 
         {/* Tab 切换 */}
-        <div className="sticky top-14 z-40 surface-panel border-b border-gray-100">
+        <div className="sticky z-40 surface-panel border-b border-gray-100" style={{ top: 'calc(44px + env(safe-area-inset-top, 0px))' }}>
           <div className="flex justify-center gap-8 px-4">
             {[
               { key: 'story', label: '故事' },
@@ -248,10 +249,11 @@ export default function WishDetailPage() {
           )}
         </div>
       </div>
+      </div>
 
       {/* 底部操作栏 */}
-      <div className="fixed bottom-0 left-0 right-0 surface-panel border-t border-gray-100 max-w-md mx-auto z-50">
-        <div className="p-4 pb-safe">
+      <div className="bottom-action">
+        <div className="bottom-action-inner">
           {/* 价格信息 */}
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-baseline gap-2">
@@ -294,12 +296,6 @@ export default function WishDetailPage() {
         description={`还差 ${remaining} 人就能达成愿望！`}
         image={wish.product.image}
       />
-
-      <style>{`
-        .pb-safe {
-          padding-bottom: max(16px, env(safe-area-inset-bottom));
-        }
-      `}</style>
     </div>
   );
 }

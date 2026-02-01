@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useWishStore } from '@/store';
 import { RecipePublicToggle } from '@/components/social/RemixButton';
+import { X, Sparkles, Info } from 'lucide-react';
 
 export default function WishCreatePage() {
   const navigate = useNavigate();
@@ -40,39 +41,42 @@ export default function WishCreatePage() {
   };
 
   return (
-    <div className="app-shell flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#16181B]">
       {/* Header */}
-      <header className="header-detail">
-        <div className="header-detail-inner">
-          <button onClick={() => navigate(-1)} className="header-btn-start">
-            <span className="material-symbols-outlined">close</span>
+      <header
+        className="flex-shrink-0 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-[#16181B]"
+        style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
+      >
+        <div className="flex items-center justify-between px-3 h-11 max-w-md mx-auto">
+          <button onClick={() => navigate(-1)} className="w-10 h-10 flex items-center justify-start">
+            <X size={24} className="text-gray-600 dark:text-gray-400" />
           </button>
-          <h1 className="header-title-center">发起愿望</h1>
+          <h1 className="text-base font-semibold text-gray-900 dark:text-gray-100">发起愿望</h1>
           <div className="w-10" />
         </div>
       </header>
 
-      {/* 主内容 */}
+      {/* 主内容 - 可滚动区域 */}
       <div className="flex-1 overflow-y-auto">
-        <div className="content-page pb-32">
+        <div className="max-w-md mx-auto px-4 pb-8">
           {/* 头部说明 */}
-          <div className="px-4 py-6 text-center">
-            <div className="size-16 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mx-auto">
-              <span className="text-3xl">✨</span>
+          <div className="py-6 text-center">
+            <div className="size-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mx-auto">
+              <Sparkles size={32} className="text-primary" />
             </div>
-            <h2 className="text-lg font-bold text-gray-900 mt-4">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mt-4">
               让更多人一起实现这个设计
             </h2>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               当达到目标人数，设计将进入生产
             </p>
           </div>
 
           {/* 表单 */}
-          <div className="px-4 space-y-5">
+          <div className="space-y-5">
             {/* 愿望标题 */}
             <div>
-              <label className="block text-sm font-medium text-gray-900 mb-2">
+              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
                 愿望标题 <span className="text-red-500">*</span>
               </label>
               <input
@@ -90,7 +94,7 @@ export default function WishCreatePage() {
 
             {/* 愿望故事 */}
             <div>
-              <label className="block text-sm font-medium text-gray-900 mb-2">
+              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
                 愿望故事
                 <span className="text-gray-400 font-normal ml-1">（选填）</span>
               </label>
@@ -108,7 +112,7 @@ export default function WishCreatePage() {
 
             {/* 目标人数 */}
             <div>
-              <label className="block text-sm font-medium text-gray-900 mb-2">
+              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
                 目标人数
               </label>
               <div className="grid grid-cols-4 gap-2">
@@ -119,7 +123,7 @@ export default function WishCreatePage() {
                     className={`py-3 rounded-xl text-center transition-colors ${
                       targetCount === count
                         ? 'bg-primary text-white'
-                        : 'bg-gray-100 text-gray-600'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'
                     }`}
                   >
                     <span className="text-lg font-bold">{count}</span>
@@ -134,7 +138,7 @@ export default function WishCreatePage() {
 
             {/* 期限 */}
             <div>
-              <label className="block text-sm font-medium text-gray-900 mb-2">
+              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
                 愿望期限
               </label>
               <div className="grid grid-cols-4 gap-2">
@@ -145,7 +149,7 @@ export default function WishCreatePage() {
                     className={`py-3 rounded-xl text-center transition-colors ${
                       duration === days
                         ? 'bg-primary text-white'
-                        : 'bg-gray-100 text-gray-600'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'
                     }`}
                   >
                     <span className="text-lg font-bold">{days}</span>
@@ -156,19 +160,19 @@ export default function WishCreatePage() {
             </div>
 
             {/* 分割线 */}
-            <div className="border-t border-gray-100 pt-5">
+            <div className="border-t border-gray-100 dark:border-gray-800 pt-5">
               {/* 公开设置 */}
               <div className="flex items-center justify-between py-3">
                 <div>
-                  <p className="font-medium text-gray-900">公开愿望</p>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="font-medium text-gray-900 dark:text-gray-100">公开愿望</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                     让更多人发现并加入你的愿望
                   </p>
                 </div>
                 <button
                   onClick={() => setIsPublic(!isPublic)}
                   className={`relative w-11 h-6 rounded-full transition-colors ${
-                    isPublic ? 'bg-primary' : 'bg-gray-300'
+                    isPublic ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-600'
                   }`}
                 >
                   <div
@@ -187,22 +191,22 @@ export default function WishCreatePage() {
             </div>
 
             {/* 预估信息 */}
-            <div className="p-4 bg-gray-50 rounded-xl">
-              <h3 className="font-medium text-gray-900 mb-3">预估信息</h3>
+            <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+              <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-3">预估信息</h3>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">预估单价</span>
-                  <span className="text-gray-900 font-medium">
+                  <span className="text-gray-500 dark:text-gray-400">预估单价</span>
+                  <span className="text-gray-900 dark:text-gray-100 font-medium">
                     ¥{targetCount <= 10 ? 399 : targetCount <= 20 ? 349 : 299}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">预计生产周期</span>
-                  <span className="text-gray-900 font-medium">7-14 天</span>
+                  <span className="text-gray-500 dark:text-gray-400">预计生产周期</span>
+                  <span className="text-gray-900 dark:text-gray-100 font-medium">7-14 天</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">截止日期</span>
-                  <span className="text-gray-900 font-medium">
+                  <span className="text-gray-500 dark:text-gray-400">截止日期</span>
+                  <span className="text-gray-900 dark:text-gray-100 font-medium">
                     {new Date(Date.now() + duration * 24 * 60 * 60 * 1000).toLocaleDateString(
                       'zh-CN',
                       { month: 'long', day: 'numeric' }
@@ -214,7 +218,7 @@ export default function WishCreatePage() {
 
             {/* 提示 */}
             <div className="flex items-start gap-2 text-xs text-gray-400">
-              <span className="material-symbols-outlined text-sm mt-0.5">info</span>
+              <Info size={14} className="mt-0.5 flex-shrink-0" />
               <span>
                 愿望发起后，如果在期限内未达到目标人数，已支付的金额将全额退还
               </span>
@@ -224,12 +228,15 @@ export default function WishCreatePage() {
       </div>
 
       {/* 底部操作栏 */}
-      <div className="bottom-action">
-        <div className="bottom-action-inner">
+      <div
+        className="flex-shrink-0 border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-[#16181B] p-4"
+        style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 16px)' }}
+      >
+        <div className="max-w-md mx-auto">
           <button
             onClick={handleSubmit}
             disabled={!title.trim() || isSubmitting}
-            className="w-full py-4 rounded-xl bg-gradient-primary text-white font-bold text-lg shadow-button disabled:opacity-50"
+            className="w-full py-4 rounded-2xl bg-gradient-to-r from-primary/90 to-primary text-white font-bold text-lg disabled:opacity-50 active:scale-[0.98] transition-transform"
           >
             {isSubmitting ? '发起中...' : '发起愿望'}
           </button>

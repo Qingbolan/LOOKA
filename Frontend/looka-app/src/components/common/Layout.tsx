@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { TabBar } from './TabBar'
 import { useSettingsStore } from '@/store'
 
@@ -15,10 +15,17 @@ export function Layout({
 }: LayoutProps) {
   const { isDarkMode } = useSettingsStore()
 
+  useEffect(() => {
+    document.body.classList.add('scroll-lock')
+    return () => document.body.classList.remove('scroll-lock')
+  }, [])
+
   return (
-    <div className={`app-shell transition-colors ${isDarkMode ? 'dark' : ''} ${className}`}>
-      <div className={`max-w-md mx-auto ${showTabBar ? 'pb-24' : ''}`}>
-        {children}
+    <div className={`app-shell app-shell--scroll transition-colors ${isDarkMode ? 'dark' : ''} ${className}`}>
+      <div className="app-scroll">
+        <div className={`max-w-md mx-auto ${showTabBar ? 'pb-24' : ''}`}>
+          {children}
+        </div>
       </div>
       {showTabBar && <TabBar />}
     </div>

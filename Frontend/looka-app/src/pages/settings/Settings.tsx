@@ -65,7 +65,7 @@ export function SettingsPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="header-detail">
+      <header className="header-detail">
         <div className="header-detail-inner">
           <button onClick={() => navigate(-1)} className="header-btn-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-600 dark:text-gray-300" />
@@ -73,9 +73,9 @@ export function SettingsPage() {
           <h1 className="header-title-center">设置</h1>
           <div className="w-10" />
         </div>
-      </div>
+      </header>
 
-      <div className="content-detail">
+      <div className="content-detail ">
         <div className="max-w-md mx-auto py-2">
           {settingSections.map((section, sectionIndex) => (
             <div

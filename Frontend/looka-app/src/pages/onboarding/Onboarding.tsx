@@ -60,7 +60,7 @@ export function OnboardingPage() {
   return (
     <div className="app-shell flex flex-col">
       {/* Skip button */}
-      <div className="flex justify-end p-4">
+      <div className="flex justify-end p-4" style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 16px)' }}>
         <button
           onClick={handleSkip}
           className="text-sm text-gray-400 font-medium px-3 py-1.5"

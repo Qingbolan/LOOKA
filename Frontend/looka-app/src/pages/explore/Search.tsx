@@ -73,7 +73,7 @@ export function SearchPage() {
   return (
     <Layout showTabBar={false}>
       {/* 搜索栏 - 使用统一的 header 样式 */}
-      <div className="header-detail">
+      <header className="header-detail">
         <div className="flex items-center gap-2 px-3 py-2 max-w-md mx-auto">
           <button
             onClick={() => navigate(-1)}
@@ -113,9 +113,9 @@ export function SearchPage() {
             搜索
           </button>
         </div>
-      </div>
+      </header>
 
-      <main className="content-page">
+      <main className="content-page ">
         {/* 最近搜索 - 使用真实的搜索历史 */}
         {hasHistory && (
           <section className="py-4">

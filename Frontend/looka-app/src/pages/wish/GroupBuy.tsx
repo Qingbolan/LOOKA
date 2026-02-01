@@ -31,19 +31,19 @@ export function GroupBuyPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="header-detail">
+      <header className="header-detail">
         <div className="header-detail-inner">
           <button onClick={() => navigate(-1)} className="header-btn-start">
-            <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
+            <Icon name="arrow_back_ios" size={20} />
           </button>
           <h1 className="header-title-center">愿望详情</h1>
           <button className="header-btn-end">
             <Icon name="share" size={24} />
           </button>
         </div>
-      </div>
+      </header>
 
-      <div className="content-detail">
+      <div className="content-detail ">
         {/* 主图 */}
         <div className="pt-2">
           <div className="aspect-[4/5] relative rounded overflow-hidden">

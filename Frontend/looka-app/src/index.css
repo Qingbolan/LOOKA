@@ -179,18 +179,48 @@
     font-family: 'Plus Jakarta Sans', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-bg);
+    height: 100%;
   }
 
   body {
     background-color: var(--color-bg);
     color: var(--color-text-primary);
     min-height: 100dvh;
-    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  .dark body {
+  #root {
+    height: 100%;
+  }
+
+  body.scroll-lock {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* iOS 安全区域背景填充 - 防止过度滚动时显示空白 */
+  html::before,
+  html::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
     background-color: var(--color-bg);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  html::before {
+    height: calc(env(safe-area-inset-top, 0px) + 120px);
+    top: calc(-1 * (env(safe-area-inset-top, 0px) + 120px));
+  }
+
+  html::after {
+    height: calc(env(safe-area-inset-bottom, 0px) + 120px);
+    bottom: calc(-1 * (env(safe-area-inset-bottom, 0px) + 120px));
   }
 
   ::selection {
@@ -207,6 +237,7 @@
   /* 主页面 Header (灵感、一起、衣柜、我的) */
   .header-main {
     @apply sticky top-0 z-50;
+    padding-top: env(safe-area-inset-top, 0px);
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border-light);
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -217,9 +248,19 @@
     height: var(--header-height);
   }
 
-  /* 详情页 Header (有返回按钮) */
+  /* 详情页 Header (有返回按钮) - 用于滚动容器内 */
   .header-detail {
     @apply sticky top-0 z-50;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border-light);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Flex 布局的 Header - 用于 app-shell flex flex-col */
+  .header-flex {
+    @apply flex-shrink-0 z-50;
+    padding-top: env(safe-area-inset-top, 0px);
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border-light);
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -228,6 +269,11 @@
   .header-detail-inner {
     @apply flex items-center px-3 justify-between max-w-md mx-auto;
     height: var(--header-height-detail);
+  }
+
+  /* 详情页内容需要顶部间距来避开 fixed header */
+  .pt-header-detail {
+    padding-top: calc(var(--header-height-detail) + env(safe-area-inset-top, 0px));
   }
 
   .fluent-acrylic {
@@ -298,17 +344,37 @@
   /* ============================================
    * 底部操作栏规范
    * ============================================ */
-  /* 底部操作栏 - 亚克力效果 */
+  /* 底部操作栏 - 用于滚动容器页面 */
   .bottom-action {
-    @apply fixed bottom-0 left-0 right-0 p-4 max-w-md mx-auto z-50;
-    background: var(--surface-panel);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-top: 1px solid var(--material-stroke);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    z-index: 50;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .bottom-action > div {
+    max-width: 448px;
+    margin: 0 auto;
+  }
+
+  /* 底部操作栏 - Flex 布局版 (用于 app-shell flex flex-col) */
+  .bottom-action-flex {
+    @apply flex-shrink-0 p-4 w-full z-50;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .bottom-action-flex > div {
+    max-width: 448px;
+    margin: 0 auto;
   }
 
   .bottom-action-inner {
-    padding-bottom: var(--safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   /* ============================================
@@ -486,6 +552,20 @@
     background: var(--color-bg);
     color: var(--color-text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .app-shell--scroll {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .app-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .app-shell .bg-white {

@@ -110,7 +110,7 @@ export function BodySetupPage() {
             >
               <Icon name="refresh" size={18} className="text-white" />
             </button>
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md rounded p-3">
+            <div className="absolute bottom-4 left-4 right-4 surface-glass rounded p-3">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
                   <Icon name="check" size={18} className="text-green-600" />

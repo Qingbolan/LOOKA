@@ -61,14 +61,14 @@ export function ShareSheet({
       />
 
       {/* 面板 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl z-50 max-w-md mx-auto animate-slide-up">
+      <div className="fixed bottom-0 left-0 right-0 share-sheet max-w-md mx-auto animate-slide-up">
         {/* 拖动指示器 */}
         <div className="flex justify-center pt-3 pb-2">
-          <div className="w-10 h-1 bg-gray-200 rounded-full" />
+          <div className="w-10 h-1 bg-black/10 rounded-full" />
         </div>
 
         {/* 预览卡片 */}
-        <div className="mx-4 p-3 bg-gray-50 rounded-xl flex gap-3">
+        <div className="mx-4 p-3 surface-muted rounded-xl flex gap-3">
           {image && (
             <div className="size-16 rounded-lg overflow-hidden flex-shrink-0">
               <img src={image} alt="" className="w-full h-full object-cover" />
@@ -109,7 +109,7 @@ export function ShareSheet({
         <div className="p-4 pt-0 pb-safe">
           <button
             onClick={onClose}
-            className="w-full py-3 bg-gray-100 rounded-xl text-gray-600 font-medium"
+            className="w-full py-3 surface-inset rounded-xl text-gray-600 font-medium"
           >
             取消
           </button>

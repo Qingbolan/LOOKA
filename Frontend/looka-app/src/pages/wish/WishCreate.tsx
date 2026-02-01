@@ -40,7 +40,7 @@ export default function WishCreatePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="app-shell flex flex-col">
       {/* Header */}
       <header className="header-detail">
         <div className="header-detail-inner">

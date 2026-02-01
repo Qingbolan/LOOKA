@@ -17,8 +17,8 @@ const paddingClasses = {
 }
 
 const variantClasses = {
-  default: 'bg-white dark:bg-surface-dark border border-black/[0.03] dark:border-white/[0.06] shadow-soft dark:shadow-none',
-  elevated: 'bg-white dark:bg-surface-dark-elevated border border-black/[0.03] dark:border-white/[0.08] shadow-card dark:shadow-none',
+  default: 'surface-card shadow-soft',
+  elevated: 'surface-card shadow-card',
   outlined: 'bg-transparent border border-black/[0.08] dark:border-white/[0.12]',
   dream: 'bg-gradient-dream-soft dark:bg-gradient-dream-dark border border-primary/10 dark:border-primary/20',
 }

@@ -84,7 +84,7 @@ export default function CheckoutPage() {
   // 使用统一的骨架屏替代 LoadingSpinner
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="app-shell">
         <Header title="确认订单" />
         <PageSkeleton type="checkout" />
       </div>
@@ -92,7 +92,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="app-shell">
       <Header title="确认订单" />
 
       <main className="max-w-app mx-auto px-4 pb-32">
@@ -209,7 +209,7 @@ export default function CheckoutPage() {
       </main>
 
       {/* 底部操作栏 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100">
+      <div className="fixed bottom-0 left-0 right-0 surface-panel border-t border-gray-100">
         <div className="max-w-app mx-auto px-4 py-3 flex items-center justify-between">
           <div>
             <span className="text-sm text-text-secondary">合计：</span>
@@ -226,7 +226,7 @@ export default function CheckoutPage() {
             {submitting ? '提交中...' : '提交订单'}
           </Button>
         </div>
-        <div className="h-safe-bottom bg-white" />
+        <div className="h-safe-bottom surface-panel" />
       </div>
     </div>
   );

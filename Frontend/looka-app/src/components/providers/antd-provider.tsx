@@ -7,8 +7,18 @@ export function AntdProvider({ children }: { children: React.ReactNode }) {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#6366f1",
-          borderRadius: 6,
+          colorPrimary: "var(--color-primary)",
+          colorInfo: "var(--color-info)",
+          colorSuccess: "var(--color-success)",
+          colorWarning: "var(--color-warning)",
+          colorError: "var(--color-error)",
+          colorBgLayout: "var(--color-bg)",
+          colorBgContainer: "var(--color-surface)",
+          colorBgElevated: "var(--color-surface-elevated)",
+          colorText: "var(--color-text-primary)",
+          colorTextSecondary: "var(--color-text-secondary)",
+          colorBorder: "var(--color-border)",
+          borderRadius: 8,
         },
       }}
     >

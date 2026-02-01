@@ -164,7 +164,7 @@ export function LukaChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="app-shell flex flex-col">
       {/* Header */}
       <div className="header-detail">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">

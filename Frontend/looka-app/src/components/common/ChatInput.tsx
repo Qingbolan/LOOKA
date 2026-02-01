@@ -114,7 +114,7 @@ export function ChatInput({
   }
 
   return (
-    <div className={`bg-white border-t border-gray-100 ${className}`}>
+    <div className={`surface-panel border-t border-gray-100 ${className}`}>
       {/* 隐藏的文件输入 */}
       {showImageUpload && (
         <input
@@ -133,7 +133,7 @@ export function ChatInput({
             <button
               onClick={handleImageClick}
               disabled={disabled}
-              className="size-10 flex items-center justify-center rounded-full bg-gray-100 flex-shrink-0 transition-colors hover:bg-gray-200 active:scale-95 disabled:opacity-50"
+              className="size-10 flex items-center justify-center rounded-full surface-inset flex-shrink-0 transition-colors hover:bg-black/5 active:scale-95 disabled:opacity-50"
               aria-label="上传图片"
             >
               <Icon name="add_photo_alternate" size={20} className="text-gray-500" />
@@ -141,7 +141,7 @@ export function ChatInput({
           )}
 
           {/* 文字输入 */}
-          <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2.5">
+          <div className="flex-1 surface-inset rounded-2xl px-4 py-2.5">
             {multiline ? (
               <textarea
                 value={value}
@@ -175,7 +175,7 @@ export function ChatInput({
               transition-all active:scale-95
               ${hasValue && !disabled
                 ? 'bg-primary text-white shadow-button'
-                : 'bg-gray-100 text-gray-400'
+                : 'surface-inset text-gray-400'
               }
             `}
             aria-label="发送"

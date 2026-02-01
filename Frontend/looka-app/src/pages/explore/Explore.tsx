@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Icon, CardMasonry, Badge, ImageSwap, LikeButton } from '@/components'
+import { Layout, Icon, CardMasonry, ImageSwap, LikeButton } from '@/components'
 import { ProductListSkeleton, EmptyState, NetworkError } from '@/components/feedback'
 import { productApi } from '@/api/products'
 import { useRefreshWithDeps } from '@/hooks'
@@ -117,7 +117,7 @@ export function ExplorePage() {
         {/* 设计卡片 */}
         {!loading && !error && products.length > 0 && (
           <>
-            <CardMasonry
+              <CardMasonry
               columns={{ default: 2, sm: 2, md: 2, lg: 2 }}
               gap={6}
             >
@@ -130,7 +130,7 @@ export function ExplorePage() {
                   <div
                     key={product.id}
                     onClick={() => navigate(`/group-buy/${product.id}`)}
-                    className="card-masonry card-interactive"
+                    className="card-masonry card-masonry-minimal card-interactive"
                   >
                     {/* 图片区域 */}
                     <div className={`relative ${aspectRatio}`}>
@@ -141,34 +141,32 @@ export function ExplorePage() {
                         className="w-full h-full rounded-t-sm overflow-hidden"
                         thumbSize="md"
                       />
-                      {/* 状态标签 */}
-                      <div className="absolute top-1.5 left-1.5 z-10">
-                        <Badge variant={config.variant} size="sm">
-                          {config.text}
-                        </Badge>
-                      </div>
                     </div>
                     {/* 信息区域 */}
-                    <div className="px-1.5 py-2">
-                      <h3 className="text-sm font-semibold leading-tight line-clamp-2">{product.name}</h3>
-                      <div className="flex items-center justify-between mt-1.5">
-                        <div className="flex items-center gap-1 min-w-0">
-                          {product.designer?.avatar && (
-                            <img
-                              src={product.designer.avatar}
-                              alt={product.designer.name}
-                              className="w-4 h-4 object-cover flex-shrink-0 rounded-full"
-                            />
-                          )}
-                          <span className="text-xs text-gray-500 truncate">
-                            {product.designer?.name || '设计师'}
-                          </span>
+                    <div className="px-2 py-2.5">
+                      <h3 className="text-sm font-medium leading-tight line-clamp-2">{product.name}</h3>
+                      <div className="flex items-center justify-between mt-2">
+                        <div className="flex items-center gap-3 min-w-0">
+                          <span className="card-meta">{config.text}</span>
+                          <div className="flex items-center gap-2 min-w-0">
+                            {product.designer?.avatar && (
+                              <img
+                                src={product.designer.avatar}
+                                alt={product.designer.name}
+                                className="w-5 h-5 object-cover flex-shrink-0 rounded-full"
+                              />
+                            )}
+                            <span className="card-meta truncate">
+                              {product.designer?.name || '设计师'}
+                            </span>
+                          </div>
                         </div>
                         <LikeButton
                           isLiked={product.isLiked ?? false}
                           likes={product.likes || 0}
                           onToggle={() => handleLike(product.id)}
                           size="sm"
+                          className="card-meta"
                         />
                       </div>
                     </div>
@@ -185,21 +183,6 @@ export function ExplorePage() {
           </>
         )}
 
-        {/* Luka 入口 FAB - AI 创作 */}
-        <button
-          onClick={() => navigate('/luka')}
-          className="fixed bottom-24 right-4 z-40 active:scale-95 transition-transform"
-        >
-          <div className="relative">
-            <div className="size-14 rounded-full bg-white shadow-button flex items-center justify-center overflow-hidden border-2 border-primary/20">
-              <img src="/Luka.png" alt="Luka" className="w-full h-full object-cover" />
-            </div>
-            {/* 小星星装饰 */}
-            <div className="absolute -top-1 -right-1 size-5 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-xs">+</span>
-            </div>
-          </div>
-        </button>
       </main>
     </Layout>
   )

@@ -68,7 +68,7 @@ export function ClothDetailPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl">
+      <div className="sticky top-0 z-50 surface-panel">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} />
@@ -83,7 +83,7 @@ export function ClothDetailPage() {
       <div className="max-w-md mx-auto pb-32">
         {/* 主图区域 - 三图切换 */}
         <div className="relative">
-          <div className="aspect-[3/4] bg-gray-100">
+          <div className="aspect-[3/4] surface-inset">
             <img
               src={images[activeImage]}
               alt={imageLabels[activeImage]}
@@ -92,7 +92,7 @@ export function ClothDetailPage() {
           </div>
 
           {/* 图片切换器 */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex bg-black/40 backdrop-blur-md rounded-full p-1">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex bg-black/40 backdrop-blur-md rounded-full p-1 border border-white/20">
             {(['design', 'tryOn', 'real'] as const).map((type) => (
               <button
                 key={type}
@@ -153,7 +153,7 @@ export function ClothDetailPage() {
             <div className="space-y-4">
               {clothData.productionSteps.map((step, index) => (
                 <div key={index} className="flex gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     step.done
                       ? 'bg-green-100'
                       : step.current
@@ -279,7 +279,7 @@ export function ClothDetailPage() {
       </div>
 
       {/* 底部操作 - 优化按钮文案和布局 */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto">
+      <div className="fixed bottom-0 left-0 right-0 p-4 surface-panel border-t border-gray-100 max-w-md mx-auto">
         <div className="flex gap-2" style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
           {/* 图标按钮：试穿效果 */}
           <button

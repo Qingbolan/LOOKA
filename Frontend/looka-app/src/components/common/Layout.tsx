@@ -15,11 +15,7 @@ export function Layout({
   className = '',
 }: LayoutProps) {
   return (
-    <div className={`
-      min-h-screen transition-colors
-      ${dark ? 'bg-background-dark text-white' : 'bg-background dark:bg-background-dark dark:text-white'}
-      ${className}
-    `}>
+    <div className={`app-shell transition-colors ${dark ? 'dark' : ''} ${className}`}>
       <div className={`max-w-md mx-auto ${showTabBar ? 'pb-24' : ''}`}>
         {children}
       </div>

@@ -8,10 +8,15 @@
    * ============================================ */
   :root {
     /* === 主题色 === */
-    --color-primary: #C4928A;
-    --color-primary-light: #D9B5AF;
-    --color-primary-dark: #A87872;
-    --color-primary-soft: rgba(196, 146, 138, 0.12);
+--color-primary: #C94F5D;            /* 胭脂（收敛版） */
+--color-primary-light: #F6E7EA;      /* 月白/绢色方向 */
+--color-primary-dark: #8E3644;       /* 绛红深 */
+--color-primary-soft: rgba(201, 79, 93, 0.10);
+
+--color-anchor-dark: #1F2429;        /* 墨色偏蓝黑：让界面有骨架 */
+
+
+
 
     /* === 语义色 === */
     --color-success: #10B981;
@@ -25,25 +30,40 @@
 
     /* === 状态色 (4个) === */
     --color-status-wishing: var(--color-primary);
-    --color-status-making: #D4A574;
-    --color-status-shipping: #8BA4B4;
-    --color-status-owned: #7BA688;
+    --color-status-making: #C9A27B;
+    --color-status-shipping: #7B93A4;
+    --color-status-owned: #6F8F7D;
 
     /* === 渐变 === */
-    --gradient-primary: linear-gradient(135deg, #C4928A 0%, #D9B5AF 100%);
+    --gradient-primary: linear-gradient(135deg, #3A4A5E 0%, #9C7C6A 100%);
 
     /* === 中性色 === */
-    --color-bg: #FDFCFB;
-    --color-bg-secondary: #F8F6F4;
+    --color-bg: #F8F6F3;
+    --color-bg-secondary: #F1ECE7;
     --color-surface: #FFFFFF;
     --color-surface-elevated: #FFFFFF;
-    --color-text-primary: #1F1F1F;
-    --color-text-secondary: #5C5C5C;
-    --color-text-tertiary: #8C8C8C;
-    --color-text-muted: #A3A3A3;
-    --color-border: #E8E8E8;
-    --color-border-light: rgba(0, 0, 0, 0.04);
-    --color-divider: rgba(0, 0, 0, 0.06);
+    --color-text-primary: #1B1E23;
+    --color-text-secondary: #545B63;
+    --color-text-tertiary: #7C838B;
+    --color-text-muted: #9AA2AA;
+    --color-border: #E2DDD6;
+    --color-border-light: rgba(27, 30, 35, 0.06);
+    --color-divider: rgba(27, 30, 35, 0.08);
+    --surface-card: rgba(255, 255, 255, 0.92);
+    --surface-panel: rgba(248, 246, 243, 0.86);
+    --surface-soft: rgba(248, 246, 243, 0.72);
+    --surface-muted: rgba(241, 236, 231, 0.82);
+    --surface-inset: rgba(255, 255, 255, 0.66);
+    --surface-glass: rgba(248, 246, 243, 0.72);
+    --material-stroke: rgba(27, 30, 35, 0.08);
+    --material-stroke-strong: rgba(27, 30, 35, 0.12);
+    --material-glow: rgba(58, 74, 94, 0.12);
+    --material-fabric: radial-gradient(80% 80% at 20% 0%, rgba(58, 74, 94, 0.14), transparent 60%),
+      radial-gradient(60% 60% at 80% 10%, rgba(156, 124, 106, 0.16), transparent 60%),
+      linear-gradient(180deg, rgba(248, 246, 243, 0.98) 0%, rgba(241, 236, 231, 0.96) 100%);
+    --fluent-acrylic-bg: rgba(248, 246, 243, 0.8);
+    --fluent-acrylic-bg-strong: rgba(248, 246, 243, 0.9);
+    --fluent-acrylic-border: rgba(27, 30, 35, 0.08);
 
     /* === 间距系统 (4px 基准) === */
     --spacing-xs: 4px;
@@ -72,12 +92,12 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
     --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.14);
-    --shadow-button: 0 4px 16px rgba(196, 146, 138, 0.35);
+    --shadow-button: 0 8px 24px rgba(58, 74, 94, 0.28);
     --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
 
     /* === 布局尺寸 === */
-    --header-height: 56px;
-    --header-height-detail: 56px;
+    --header-height: 44px;
+    --header-height-detail: 44px;
     --tabbar-height: 56px;
     --bottom-action-height: 76px;
     --max-width: 448px;
@@ -111,17 +131,32 @@
 
   /* === 深色模式 === */
   .dark {
-    --color-bg: #1A1A1A;
-    --color-bg-secondary: #262626;
-    --color-surface: #262626;
-    --color-surface-elevated: #2D2D2D;
-    --color-text-primary: #FFFFFF;
-    --color-text-secondary: rgba(255, 255, 255, 0.7);
-    --color-text-tertiary: rgba(255, 255, 255, 0.4);
-    --color-text-muted: rgba(255, 255, 255, 0.4);
-    --color-border: rgba(255, 255, 255, 0.1);
-    --color-border-light: rgba(255, 255, 255, 0.05);
-    --color-divider: rgba(255, 255, 255, 0.1);
+    --color-bg: #16181B;
+    --color-bg-secondary: #1E2126;
+    --color-surface: #1E2126;
+    --color-surface-elevated: #252A31;
+    --color-text-primary: #F5F6F7;
+    --color-text-secondary: rgba(245, 246, 247, 0.72);
+    --color-text-tertiary: rgba(245, 246, 247, 0.46);
+    --color-text-muted: rgba(245, 246, 247, 0.46);
+    --color-border: rgba(245, 246, 247, 0.12);
+    --color-border-light: rgba(245, 246, 247, 0.06);
+    --color-divider: rgba(245, 246, 247, 0.12);
+    --surface-card: rgba(30, 33, 38, 0.92);
+    --surface-panel: rgba(22, 24, 27, 0.82);
+    --surface-soft: rgba(22, 24, 27, 0.72);
+    --surface-muted: rgba(30, 33, 38, 0.82);
+    --surface-inset: rgba(245, 246, 247, 0.07);
+    --surface-glass: rgba(22, 24, 27, 0.72);
+    --material-stroke: rgba(245, 246, 247, 0.1);
+    --material-stroke-strong: rgba(245, 246, 247, 0.16);
+    --material-glow: rgba(94, 108, 125, 0.2);
+    --material-fabric: radial-gradient(80% 80% at 20% 0%, rgba(58, 74, 94, 0.12), transparent 60%),
+      radial-gradient(60% 60% at 80% 10%, rgba(156, 124, 106, 0.12), transparent 60%),
+      linear-gradient(180deg, rgba(22, 24, 27, 0.96) 0%, rgba(16, 18, 21, 0.98) 100%);
+    --fluent-acrylic-bg: rgba(22, 24, 27, 0.74);
+    --fluent-acrylic-bg-strong: rgba(30, 33, 38, 0.88);
+    --fluent-acrylic-border: rgba(245, 246, 247, 0.1);
 
     /* 深色模式语义色调整 */
     --color-success-light: rgba(16, 185, 129, 0.2);
@@ -151,7 +186,7 @@
   }
 
   ::selection {
-    background-color: rgba(196, 146, 138, 0.3);
+    background-color: rgba(58, 74, 94, 0.25);
     color: inherit;
   }
 }
@@ -164,38 +199,44 @@
   /* 主页面 Header (灵感、一起、衣柜、我的) - 亚克力效果 */
   .header-main {
     @apply sticky top-0 z-50;
-    background: rgba(253, 252, 251, 0.78);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--material-stroke);
   }
 
   .header-main-inner {
-    @apply flex items-center px-4 justify-between max-w-md mx-auto;
+    @apply flex items-center px-3 justify-between max-w-md mx-auto;
     height: var(--header-height);
   }
 
   /* 详情页 Header (有返回按钮) - 亚克力效果 */
   .header-detail {
     @apply sticky top-0 z-50;
-    background: rgba(253, 252, 251, 0.82);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--material-stroke);
   }
 
   .header-detail-inner {
-    @apply flex items-center px-4 justify-between max-w-md mx-auto;
+    @apply flex items-center px-3 justify-between max-w-md mx-auto;
     height: var(--header-height-detail);
+  }
+
+  .fluent-acrylic {
+    background: var(--fluent-acrylic-bg);
+    border-bottom: 1px solid var(--fluent-acrylic-border);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
   }
 
   /* Header 标题 */
   .header-title {
-    @apply text-lg font-bold;
+    @apply text-base font-semibold tracking-tight;
+    color: var(--color-text-primary);
+    min-width: 52px;
   }
 
   .header-title-center {
-    @apply text-md font-bold tracking-tight flex-1 text-center;
+    @apply text-base font-semibold tracking-tight flex-1 text-center;
+    color: var(--color-text-primary);
   }
 
   /* Header 按钮 */
@@ -250,10 +291,10 @@
   /* 底部操作栏 - 亚克力效果 */
   .bottom-action {
     @apply fixed bottom-0 left-0 right-0 p-4 max-w-md mx-auto z-50;
-    background: rgba(253, 252, 251, 0.85);
+    background: var(--surface-panel);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid var(--material-stroke);
   }
 
   .bottom-action-inner {
@@ -270,25 +311,24 @@
   }
 
   .tab-header {
-    @apply text-sm pb-0.5 border-b transition-colors;
+    @apply text-xs pb-0.5 border-b transition-colors;
   }
 
   .tab-header-active {
-    @apply font-medium text-gray-900 border-primary;
+    @apply font-semibold text-gray-900 border-b-2 border-primary;
   }
 
   .tab-header-inactive {
-    @apply text-gray-400 border-transparent;
+    @apply text-gray-400;
   }
 
   /* 内容区 Tab (Profile 页的 Tab) - 亚克力效果 */
   .tabs-content {
     @apply sticky z-40;
     top: var(--header-height-detail);
-    background: rgba(253, 252, 251, 0.85);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    background: transparent;
+    border-bottom: none;
+    font-size: 8px;
   }
 
   .tabs-content-inner {
@@ -316,33 +356,35 @@
    * 风格标签规范
    * ============================================ */
   .style-tags {
-    @apply flex overflow-x-auto py-2.5 gap-2 hide-scrollbar;
+    @apply flex overflow-x-auto py-1 gap-1 hide-scrollbar;
   }
 
   .style-tag {
-    @apply whitespace-nowrap px-3 py-1 rounded-full text-sm transition-all;
+    @apply whitespace-nowrap px-1 py-0.5 rounded-full text-xs transition-all;
+    background: transparent;
+    border: none;
   }
 
   .style-tag-active {
-    @apply bg-primary text-white font-medium;
+    @apply text-text-primary font-semibold;
   }
 
   .style-tag-inactive {
-    @apply bg-gray-100 text-gray-600;
+    @apply text-text-tertiary;
   }
 
   /* ============================================
    * 卡片规范
    * ============================================ */
   .card {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--surface-card);
     border-radius: var(--radius-md);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--material-stroke);
     box-shadow:
       0 1px 3px rgba(0, 0, 0, 0.02),
       0 4px 16px rgba(0, 0, 0, 0.03);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
   }
 
   .card-interactive {
@@ -351,7 +393,21 @@
 
   /* 瀑布流卡片 */
   .card-masonry {
-    @apply bg-white border border-gray-200 rounded overflow-hidden;
+    @apply rounded overflow-hidden;
+    background: var(--surface-card);
+    border: 1px solid var(--material-stroke);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-masonry-minimal {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .card-meta {
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    font-weight: 500;
   }
 
   /* ============================================
@@ -412,6 +468,97 @@
   }
 
   /* ============================================
+   * App Shell & Materials
+   * ============================================ */
+  .app-shell {
+    position: relative;
+    min-height: 100dvh;
+    background: var(--material-fabric);
+    color: var(--color-text-primary);
+  }
+
+  .app-shell::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.6), transparent 50%),
+      radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.35), transparent 45%),
+      linear-gradient(120deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 50%);
+    opacity: 0.35;
+    mix-blend-mode: soft-light;
+    z-index: 0;
+  }
+
+  .app-shell > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .app-shell .bg-white {
+    background-color: var(--surface-card) !important;
+  }
+
+  .app-shell .bg-gray-50 {
+    background-color: var(--surface-muted) !important;
+  }
+
+  .app-shell .bg-gray-100 {
+    background-color: var(--surface-inset) !important;
+  }
+
+  .surface-card {
+    background: var(--surface-card) !important;
+    border: 1px solid var(--material-stroke) !important;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+  }
+
+  .surface-panel {
+    background: var(--surface-panel) !important;
+    border: 1px solid var(--material-stroke) !important;
+    backdrop-filter: blur(18px) saturate(170%);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+  }
+
+  .surface-soft {
+    background: var(--surface-soft) !important;
+    border: 1px solid var(--material-stroke) !important;
+  }
+
+  .surface-muted {
+    background: var(--surface-muted) !important;
+    border: 1px solid var(--material-stroke) !important;
+  }
+
+  .surface-inset {
+    background: var(--surface-inset) !important;
+    border: 1px solid var(--material-stroke) !important;
+  }
+
+  .surface-outline {
+    border: 1px dashed var(--material-stroke-strong);
+    background: var(--surface-inset);
+  }
+
+  .surface-glass {
+    background: var(--surface-glass) !important;
+    border: 1px solid var(--material-stroke) !important;
+    backdrop-filter: blur(20px) saturate(170%);
+    -webkit-backdrop-filter: blur(20px) saturate(170%);
+  }
+
+  .surface-hero {
+    background: var(--material-fabric) !important;
+    border: 1px solid var(--material-stroke) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ============================================
    * 工具类
    * ============================================ */
   .hide-scrollbar::-webkit-scrollbar {
@@ -428,7 +575,7 @@
 
   /* 基础玻璃效果 */
   .glass {
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--surface-glass);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
@@ -447,10 +594,10 @@
 
   /* 亚克力 - 标准 */
   .acrylic {
-    background: rgba(255, 255, 255, 0.78);
+    background: var(--surface-panel);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--material-stroke);
     box-shadow:
       0 2px 8px rgba(0, 0, 0, 0.04),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -458,10 +605,10 @@
 
   /* 亚克力 - 强模糊 */
   .acrylic-strong {
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--surface-card);
     backdrop-filter: blur(40px) saturate(200%);
     -webkit-backdrop-filter: blur(40px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid var(--material-stroke);
     box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.06),
       inset 0 0 0 1px rgba(255, 255, 255, 0.15);
@@ -469,10 +616,10 @@
 
   /* 亚克力 - 带色调 (主题色) */
   .acrylic-tint {
-    background: rgba(253, 252, 251, 0.82);
+    background: var(--surface-panel);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(196, 146, 138, 0.12);
+    border: 1px solid rgba(196, 146, 138, 0.16);
     box-shadow:
       0 2px 12px rgba(196, 146, 138, 0.08),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -513,8 +660,8 @@
   /* 输入框 */
   .input-field {
     @apply w-full rounded px-4 py-3 text-sm outline-none transition-all;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: var(--surface-inset);
+    border: 1px solid var(--material-stroke);
     color: var(--color-text-primary);
   }
 
@@ -558,13 +705,13 @@
   /* 愿望卡片 - 精致玻璃效果 */
   .wish-card {
     @apply rounded-xl overflow-hidden;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: var(--surface-card);
+    border: 1px solid var(--material-stroke);
     box-shadow:
       0 1px 2px rgba(0, 0, 0, 0.02),
       0 4px 16px rgba(0, 0, 0, 0.04);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -616,7 +763,9 @@
 
   /* 配方卡片 */
   .recipe-card {
-    @apply bg-white rounded-xl border border-gray-100 p-4;
+    @apply rounded-xl p-4;
+    background: var(--surface-card);
+    border: 1px solid var(--material-stroke);
     box-shadow: var(--shadow-card);
   }
 
@@ -632,7 +781,8 @@
 
   /* 分享面板 */
   .share-sheet {
-    @apply fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl z-50;
+    @apply fixed bottom-0 left-0 right-0 rounded-t-2xl z-50;
+    background: var(--surface-card);
     animation: slide-up 0.3s ease-out;
   }
 

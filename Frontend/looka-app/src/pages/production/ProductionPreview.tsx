@@ -135,7 +135,7 @@ export default function ProductionPreviewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="app-shell">
       {/* Header */}
       <header className="header-detail">
         <div className="header-detail-inner">
@@ -148,7 +148,7 @@ export default function ProductionPreviewPage() {
       </header>
 
       {/* Tab 切换 */}
-      <div className="sticky top-14 z-40 bg-white border-b border-gray-100">
+      <div className="sticky top-14 z-40 surface-panel border-b border-gray-100">
         <div className="flex justify-center gap-8 px-4">
           {[
             { key: 'design', label: '设计图', icon: '📐' },
@@ -182,7 +182,7 @@ export default function ProductionPreviewPage() {
 
             {/* 工艺详情 */}
             {production.craftDetails && (
-              <div className="bg-white rounded-xl border border-gray-100 p-4">
+              <div className="surface-card rounded-xl p-4">
                 <h3 className="font-bold text-gray-900 mb-3">工艺亮点</h3>
                 <div className="space-y-3">
                   {production.craftDetails.map((craft, index) => (
@@ -212,7 +212,7 @@ export default function ProductionPreviewPage() {
             />
 
             {/* 面料来源 */}
-            <div className="bg-white rounded-xl border border-gray-100 p-4">
+            <div className="surface-card rounded-xl p-4">
               <h3 className="font-bold text-gray-900 mb-3">面料来源</h3>
               <div className="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg">
                 <span className="text-2xl">🌍</span>
@@ -229,7 +229,7 @@ export default function ProductionPreviewPage() {
 
             {/* 质量等级 */}
             {production.qualityGrade && (
-              <div className="bg-white rounded-xl border border-gray-100 p-4">
+              <div className="surface-card rounded-xl p-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-bold text-gray-900">质量等级</h3>
@@ -258,21 +258,21 @@ export default function ProductionPreviewPage() {
             />
 
             {/* 生产时间线 */}
-            <div className="bg-white rounded-xl border border-gray-100 p-4">
+            <div className="surface-card rounded-xl p-4">
               <ProductionTimeline stages={production.stages} />
             </div>
 
             {/* 生产信息 */}
-            <div className="bg-white rounded-xl border border-gray-100 p-4">
+            <div className="surface-card rounded-xl p-4">
               <h3 className="font-bold text-gray-900 mb-3">生产信息</h3>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="p-3 surface-muted rounded-lg">
                   <p className="text-xs text-gray-500">起订量</p>
                   <p className="text-lg font-bold text-gray-900 mt-1">
                     {production.moq} 件
                   </p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="p-3 surface-muted rounded-lg">
                   <p className="text-xs text-gray-500">当前订单</p>
                   <p className="text-lg font-bold text-gray-900 mt-1">
                     {production.currentCount} 件
@@ -282,7 +282,7 @@ export default function ProductionPreviewPage() {
             </div>
 
             {/* 联系客服 */}
-            <div className="p-4 bg-sky-50 rounded-xl">
+            <div className="p-4 surface-soft rounded-xl">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="size-10 rounded-full bg-sky-100 flex items-center justify-center">

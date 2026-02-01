@@ -58,7 +58,7 @@ export function OnboardingPage() {
   const isLastStep = currentStep === steps.length - 1
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-white flex flex-col">
+    <div className="app-shell flex flex-col">
       {/* Skip button */}
       <div className="flex justify-end p-4">
         <button
@@ -74,7 +74,7 @@ export function OnboardingPage() {
         {/* Luka Avatar */}
         <div className="mb-8">
           <div className="relative">
-            <div className="size-24 rounded-full bg-white shadow-lg flex items-center justify-center overflow-hidden border-4 border-white">
+            <div className="size-24 rounded-full surface-card flex items-center justify-center overflow-hidden border-4 border-white/70">
               <LukaAvatar size="lg" />
             </div>
             {/* Sparkle decoration */}
@@ -85,7 +85,7 @@ export function OnboardingPage() {
         </div>
 
         {/* Icon */}
-        <div className="size-20 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+        <div className="size-20 rounded-full surface-soft flex items-center justify-center mb-6">
           <Icon name={step.icon} size={40} className="text-primary" />
         </div>
 
@@ -110,7 +110,7 @@ export function OnboardingPage() {
                 ? 'w-6 bg-primary'
                 : index < currentStep
                 ? 'w-1.5 bg-primary/50'
-                : 'w-1.5 bg-gray-200'
+                : 'w-1.5 bg-black/10'
             }`}
           />
         ))}

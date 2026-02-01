@@ -24,7 +24,7 @@ export function ProductDetailPage() {
   return (
     <Layout showTabBar={false}>
       {/* Fixed Header */}
-      <div className="fixed top-0 z-50 w-full max-w-md mx-auto bg-white/70 backdrop-blur-2xl border-b border-gray-100/50">
+      <div className="fixed top-0 z-50 w-full max-w-md mx-auto surface-panel border-b border-gray-100/50">
         <div className="flex items-center p-4 h-16 justify-between" style={{ paddingTop: 'calc(var(--safe-area-inset-top) + 1rem)' }}>
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />

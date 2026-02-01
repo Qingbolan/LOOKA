@@ -42,8 +42,8 @@ export function Header({
         ${transparent
           ? 'bg-transparent border-transparent'
           : dark
-            ? 'bg-background-dark/90 backdrop-blur-xl border-b border-white/10'
-            : 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/10'
+            ? 'surface-panel border-b border-white/10'
+            : 'surface-panel border-b border-black/[0.06] dark:border-white/10'
         }
         ${className}
       `}

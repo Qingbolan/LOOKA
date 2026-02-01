@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { OTPInput, SlotProps } from 'input-otp';
 
 interface CodeInputProps {
@@ -61,10 +61,18 @@ export function CodeInput({
   autoFocus = false,
   onComplete,
 }: CodeInputProps) {
-  // 当 value 完成时触发 onComplete
+  // 记录已触发过 onComplete 的值，防止重复触发
+  const lastCompletedRef = useRef<string | null>(null);
+
+  // 当 value 完成时触发 onComplete（仅触发一次）
   useEffect(() => {
-    if (value.length === length && onComplete) {
+    if (value.length === length && onComplete && lastCompletedRef.current !== value) {
+      lastCompletedRef.current = value;
       onComplete(value);
+    }
+    // 当 value 变短时，重置记录以允许重新触发
+    if (value.length < length) {
+      lastCompletedRef.current = null;
     }
   }, [value, length, onComplete]);
 

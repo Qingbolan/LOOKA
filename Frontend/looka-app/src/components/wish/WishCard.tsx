@@ -40,7 +40,7 @@ export const WishCard = memo(function WishCard({
     return (
       <div
         onClick={handleClick}
-        className={`bg-white rounded-xl overflow-hidden shadow-md cursor-pointer active:scale-[0.98] transition-all hover:shadow-lg ${className}`}
+        className={`surface-card rounded-xl overflow-hidden shadow-md cursor-pointer active:scale-[0.98] transition-all hover:shadow-lg ${className}`}
       >
         {/* 图片区域 - 大尺寸 */}
         <div className="relative aspect-[4/3]">
@@ -91,25 +91,17 @@ export const WishCard = memo(function WishCard({
         </div>
 
         {/* 进度区域 */}
-        <div className="p-4 pt-5">
-          <div className="flex items-center justify-between mb-2.5">
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-600">
-              <span className="text-primary font-bold">{wish.currentCount}</span>
+              <span className="text-primary font-bold text-base">{wish.currentCount}</span>
               <span className="text-gray-400">/{wish.targetCount}人参与</span>
             </span>
-            <span className="text-sm font-medium text-primary">
+            <span className="text-sm font-bold text-primary">
               {wish.progress}%
             </span>
           </div>
           <ProgressBar progress={wish.progress} />
-
-          {/* 加入按钮 - 优化：渐变 + 阴影 */}
-          <button
-            onClick={handleJoin}
-            className="w-full mt-5 py-3.5 bg-gradient-primary text-white rounded-xl font-semibold text-sm shadow-button active:scale-[0.98] transition-all"
-          >
-            {remaining === 1 ? '就差你了，立即加入' : `+加入，还差${remaining}人`}
-          </button>
         </div>
       </div>
     );
@@ -120,7 +112,7 @@ export const WishCard = memo(function WishCard({
     return (
       <div
         onClick={handleClick}
-        className={`bg-white rounded-xl overflow-hidden shadow-md cursor-pointer active:scale-[0.99] transition-all hover:shadow-lg ${className}`}
+        className={`surface-card rounded-xl overflow-hidden shadow-md cursor-pointer active:scale-[0.99] transition-all hover:shadow-lg ${className}`}
       >
         <div className="flex">
           {/* 图片 - 正方形，更大尺寸 */}
@@ -189,7 +181,7 @@ export const WishCard = memo(function WishCard({
     return (
       <div
         onClick={handleClick}
-        className={`flex gap-3 p-3 bg-white rounded-lg border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform ${className}`}
+        className={`flex gap-3 p-3 surface-card rounded-lg cursor-pointer active:scale-[0.98] transition-transform ${className}`}
       >
         <div className="size-16 rounded-lg overflow-hidden flex-shrink-0">
           <img
@@ -217,7 +209,7 @@ export const WishCard = memo(function WishCard({
     return (
       <div
         onClick={handleClick}
-        className={`bg-white rounded-xl overflow-hidden border border-gray-100 shadow-card cursor-pointer active:scale-[0.98] transition-transform ${className}`}
+        className={`surface-card rounded-xl overflow-hidden shadow-card cursor-pointer active:scale-[0.98] transition-transform ${className}`}
       >
         {/* 图片区域 */}
         <div className="relative aspect-[4/3]">
@@ -267,7 +259,7 @@ export const WishCard = memo(function WishCard({
   return (
     <div
       onClick={handleClick}
-      className={`bg-white rounded-xl overflow-hidden shadow-md cursor-pointer active:scale-[0.98] transition-all hover:shadow-lg ${className}`}
+      className={`surface-card rounded-xl overflow-hidden shadow-md cursor-pointer active:scale-[0.98] transition-all hover:shadow-lg ${className}`}
     >
       {/* 图片 */}
       <div className="relative aspect-[3/4]">
@@ -350,7 +342,7 @@ function ProgressBar({ progress, showLabel, className = '' }: ProgressBarProps) 
 
   return (
     <div className={className}>
-      <div className="h-2 bg-gray-200/60 rounded-full overflow-hidden">
+      <div className="h-2 surface-inset rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full transition-all duration-500 ${
             isAlmostThere

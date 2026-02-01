@@ -18,7 +18,7 @@ export function FabricCard({
 
   return (
     <div
-      className={`bg-white rounded-xl border border-gray-100 overflow-hidden ${className}`}
+      className={`surface-card rounded-xl overflow-hidden ${className}`}
     >
       {/* 头部 */}
       <div
@@ -26,7 +26,7 @@ export function FabricCard({
         onClick={onToggle}
       >
         {/* 面料预览图 */}
-        <div className="size-14 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+        <div className="size-14 rounded-lg overflow-hidden flex-shrink-0 surface-inset">
           {fabric.images.length > 0 ? (
             <img
               src={fabric.images[0]}
@@ -45,7 +45,7 @@ export function FabricCard({
           <h3 className="font-bold text-gray-900">{fabric.name}</h3>
           <p className="text-sm text-gray-500 mt-0.5">{fabric.texture}</p>
           <div className="flex items-center gap-2 mt-1">
-            <span className="text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">
+            <span className="text-xs text-gray-400 surface-muted px-2 py-0.5 rounded-full">
               {fabric.origin}
             </span>
           </div>
@@ -69,7 +69,7 @@ export function FabricCard({
           {/* 面料图片轮播 */}
           {fabric.images.length > 1 && (
             <div className="mt-3">
-              <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-gray-100">
+              <div className="relative aspect-[16/9] rounded-lg overflow-hidden surface-inset">
                 <img
                   src={fabric.images[currentImage]}
                   alt={`${fabric.name} ${currentImage + 1}`}
@@ -82,7 +82,7 @@ export function FabricCard({
                     key={index}
                     onClick={() => setCurrentImage(index)}
                     className={`size-1.5 rounded-full transition-colors ${
-                      index === currentImage ? 'bg-primary' : 'bg-gray-200'
+                      index === currentImage ? 'bg-primary' : 'bg-black/10'
                     }`}
                   />
                 ))}
@@ -125,7 +125,7 @@ export function FabricCard({
 
           {/* 洗涤说明 */}
           {fabric.careInstructions && fabric.careInstructions.length > 0 && (
-            <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+            <div className="mt-4 p-3 surface-muted rounded-lg">
               <h4 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-1">
                 <span className="material-symbols-outlined text-base">local_laundry_service</span>
                 洗涤建议
@@ -156,7 +156,7 @@ export function FabricTag({ fabric, onClick }: FabricTagProps) {
   return (
     <button
       onClick={onClick}
-      className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 rounded-full hover:bg-amber-100 transition-colors"
+      className="inline-flex items-center gap-2 px-3 py-1.5 surface-soft rounded-full hover:bg-amber-100 transition-colors"
     >
       <div className="size-5 rounded overflow-hidden bg-amber-100">
         {fabric.images.length > 0 ? (

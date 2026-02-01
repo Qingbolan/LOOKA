@@ -56,7 +56,7 @@ export default function AddressManagePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="app-shell">
       <Header title="地址管理" />
 
       <main className="max-w-app mx-auto px-4 pb-24">
@@ -78,7 +78,7 @@ export default function AddressManagePage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, x: -100 }}
-                  className="bg-white rounded-xl overflow-hidden"
+                  className="surface-card rounded-xl overflow-hidden"
                 >
                   <div className="p-4">
                     {/* 地址信息 */}
@@ -165,7 +165,7 @@ export default function AddressManagePage() {
       </main>
 
       {/* 添加地址按钮 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100">
+      <div className="fixed bottom-0 left-0 right-0 surface-panel border-t border-gray-100">
         <div className="max-w-app mx-auto px-4 py-3">
           <Button
             variant="primary"
@@ -176,7 +176,7 @@ export default function AddressManagePage() {
             新增收货地址
           </Button>
         </div>
-        <div className="h-safe-bottom bg-white" />
+        <div className="h-safe-bottom surface-panel" />
       </div>
     </div>
   );

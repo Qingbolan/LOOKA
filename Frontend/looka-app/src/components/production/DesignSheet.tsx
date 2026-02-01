@@ -13,7 +13,7 @@ export function DesignSheet({ views, specifications, className = '' }: DesignShe
   return (
     <div className={className}>
       {/* 图纸展示 */}
-      <div className="relative aspect-square bg-gray-50 rounded-xl overflow-hidden">
+      <div className="relative aspect-square surface-inset rounded-xl overflow-hidden">
         {views.length > 0 ? (
           <img
             src={views[activeView].image}
@@ -28,7 +28,7 @@ export function DesignSheet({ views, specifications, className = '' }: DesignShe
 
         {/* 视图标签 */}
         {views[activeView]?.label && (
-          <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur rounded-full">
+          <div className="absolute top-3 left-3 px-3 py-1 surface-glass rounded-full">
             <span className="text-sm font-medium text-gray-700">
               {views[activeView].label}
             </span>
@@ -36,7 +36,7 @@ export function DesignSheet({ views, specifications, className = '' }: DesignShe
         )}
 
         {/* 缩放按钮 */}
-        <button className="absolute bottom-3 right-3 size-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm">
+        <button className="absolute bottom-3 right-3 size-10 surface-glass rounded-full flex items-center justify-center shadow-sm">
           <span className="material-symbols-outlined text-gray-600">zoom_in</span>
         </button>
       </div>
@@ -66,7 +66,7 @@ export function DesignSheet({ views, specifications, className = '' }: DesignShe
 
       {/* 规格信息 */}
       {specifications && specifications.length > 0 && (
-        <div className="mt-4 p-4 bg-gray-50 rounded-xl">
+        <div className="mt-4 p-4 surface-muted rounded-xl">
           <h4 className="text-sm font-medium text-gray-700 mb-3">制作规格</h4>
           <div className="grid grid-cols-2 gap-3">
             {specifications.map((spec, index) => (
@@ -110,7 +110,7 @@ export function DesignSheetGrid({
         <div
           key={index}
           onClick={() => onViewClick?.(index)}
-          className={`aspect-square bg-gray-50 rounded-lg overflow-hidden relative ${
+          className={`aspect-square surface-inset rounded-lg overflow-hidden relative ${
             onViewClick ? 'cursor-pointer active:scale-[0.98] transition-transform' : ''
           }`}
         >
@@ -141,7 +141,7 @@ export function SpecificationCard({
   className = '',
 }: SpecificationCardProps) {
   return (
-    <div className={`bg-white rounded-xl border border-gray-100 p-4 ${className}`}>
+    <div className={`surface-card rounded-xl p-4 ${className}`}>
       <h3 className="font-bold text-gray-900 mb-3">{title}</h3>
       <div className="space-y-2.5">
         {specifications.map((spec, index) => (

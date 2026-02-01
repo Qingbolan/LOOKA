@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Icon } from '../../components/common/Icon';
@@ -22,6 +22,9 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [focused, setFocused] = useState(false);
+
+  // 防止重复登录的 ref
+  const isLoggingInRef = useRef(false);
 
   // 如果已登录，跳转到目标页面
   useEffect(() => {
@@ -80,6 +83,9 @@ export default function LoginPage() {
 
   // 验证验证码并登录
   const handleCodeSubmit = async () => {
+    // 防止重复提交
+    if (isLoggingInRef.current || loading) return;
+
     const result = validateCode(code);
     if (!result.valid) {
       setCodeError(result.message || '');
@@ -88,6 +94,7 @@ export default function LoginPage() {
 
     setCodeError('');
     setLoading(true);
+    isLoggingInRef.current = true;
 
     try {
       const success = await login(phone, code);
@@ -97,6 +104,7 @@ export default function LoginPage() {
       }
     } finally {
       setLoading(false);
+      isLoggingInRef.current = false;
     }
   };
 
@@ -117,7 +125,7 @@ export default function LoginPage() {
   const isPhoneValid = phone.length === 11;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="app-shell flex flex-col">
       {/* Header */}
       <header className="flex items-center h-14 px-4">
         {step === 'code' ? (
@@ -161,8 +169,8 @@ export default function LoginPage() {
                   className={`
                     flex items-center h-14 px-4 rounded-2xl transition-all duration-200 border
                     ${focused
-                      ? 'border-primary/40 bg-white shadow-sm'
-                      : 'border-gray-200 bg-white'
+                      ? 'border-primary/40 surface-card shadow-sm'
+                      : 'surface-card'
                     }
                     ${phoneError ? 'border-red-400' : ''}
                   `}
@@ -192,7 +200,7 @@ export default function LoginPage() {
                     <button
                       type="button"
                       onClick={() => setPhone('')}
-                      className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+                      className="p-1 rounded-full hover:bg-black/5 transition-colors"
                     >
                       <Icon name="cancel" className="text-xl text-gray-400" />
                     </button>

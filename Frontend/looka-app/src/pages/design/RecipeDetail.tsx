@@ -86,7 +86,7 @@ export default function RecipeDetailPage() {
 
   if (!design) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="app-shell flex items-center justify-center">
         <div className="text-center">
           <span className="text-4xl">😔</span>
           <p className="text-gray-500 mt-3">配方不存在</p>
@@ -96,7 +96,7 @@ export default function RecipeDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="app-shell">
       {/* Header */}
       <header className="header-detail">
         <div className="header-detail-inner">

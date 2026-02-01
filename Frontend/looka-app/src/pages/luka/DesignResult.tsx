@@ -82,7 +82,7 @@ export function DesignResultPage() {
             </Badge>
           </div>
           {/* Regenerate Button */}
-          <button className="absolute top-4 right-4 size-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+          <button className="absolute top-4 right-4 size-10 surface-glass rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
             <Icon name="refresh" size={20} className="text-gray-700" />
           </button>
           {/* Navigation */}
@@ -196,7 +196,7 @@ export function DesignResultPage() {
       </div>
 
       {/* Bottom Action Bar - 优化按钮布局，避免文字竖排 */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-2xl border-t border-gray-100 max-w-md mx-auto z-50">
+      <div className="fixed bottom-0 left-0 right-0 p-4 surface-panel border-t border-gray-100 max-w-md mx-auto z-50">
         <div className="flex gap-2">
           {/* 图标按钮：试穿 */}
           <button

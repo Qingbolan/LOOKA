@@ -77,13 +77,13 @@ export function TogetherPage() {
         </div>
       </div>
 
-      <main className="content-page py-3 space-y-4">
-        {/* 动态提醒 - 使用 mocks 数据，优化背景 */}
+      <main className="content-page py-3 pb-6 space-y-4">
+        {/* 动态提醒 */}
         {activities.length > 0 && activeTab === 0 && (
-          <div className="bg-primary/10 rounded-xl p-4 border border-primary/15 shadow-sm">
+          <div className="surface-card rounded-xl p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-3">
               <Icon name="notifications_active" size={18} className="text-primary" />
-              <span className="text-sm font-bold">最新动态</span>
+              <span className="text-sm font-bold text-gray-900">最新动态</span>
             </div>
             <div className="space-y-3">
               {activities.slice(0, 2).map((activity) => (
@@ -91,12 +91,12 @@ export function TogetherPage() {
                   {activity.type === 'almost' ? (
                     <>
                       <LukaAvatar size="sm" />
-                      <div className="flex-1">
-                        <p className="text-sm">
-                          <span className="font-bold">{activity.wishTitle}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm truncate">
+                          <span className="font-medium text-gray-900">{activity.wishTitle}</span>
                           <span className="text-gray-500"> 还差 </span>
                           <span className="text-primary font-bold">{activity.remaining}</span>
-                          <span className="text-gray-500"> 人就能成真啦！</span>
+                          <span className="text-gray-500"> 人</span>
                         </p>
                       </div>
                     </>
@@ -105,20 +105,20 @@ export function TogetherPage() {
                       <img
                         src={activity.user?.avatar}
                         alt=""
-                        className="w-8 h-8 rounded-full object-cover"
+                        className="w-8 h-8 rounded-full object-cover flex-shrink-0"
                       />
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-sm">
-                          <span className="font-bold">{activity.user?.name}</span>
-                          <span className="text-gray-500">
+                          <span className="font-medium text-gray-900">{activity.user?.name}</span>
+                          <span className="text-primary">
                             {activity.type === 'join' ? ' 也想要 ' : ' remix 了你的 '}
                           </span>
-                          <span className="font-bold">{activity.wishTitle}</span>
+                          <span className="font-medium text-gray-900">{activity.wishTitle}</span>
                         </p>
                       </div>
                     </>
                   )}
-                  <span className="text-xs text-gray-400">{activity.time}</span>
+                  <span className="text-xs text-gray-400 flex-shrink-0">{activity.time}</span>
                 </div>
               ))}
             </div>
@@ -174,13 +174,6 @@ export function TogetherPage() {
           </div>
         )}
 
-        {/* 创作入口 */}
-        <div
-          onClick={() => navigate('/design/editor')}
-          className="fixed bottom-24 right-4 size-14 rounded-full bg-gradient-primary text-white flex items-center justify-center shadow-button cursor-pointer active:scale-95 transition-transform z-40"
-        >
-          <span className="text-xl">+</span>
-        </div>
       </main>
     </Layout>
   )

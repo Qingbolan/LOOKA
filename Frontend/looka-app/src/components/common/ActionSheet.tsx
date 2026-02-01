@@ -97,7 +97,7 @@ export function ActionSheet({
       >
         {/* 拖动指示器 */}
         <div className="flex justify-center pt-3 pb-1">
-          <div className="w-9 h-1 bg-gray-300/60 rounded-full" />
+          <div className="w-9 h-1 bg-black/10 rounded-full" />
         </div>
 
         {/* 标题 */}
@@ -123,8 +123,8 @@ export function ActionSheet({
                 }}
                 className={`
                   w-full flex items-center gap-3.5 p-3.5 rounded-xl
-                  bg-white/60 hover:bg-white/80 active:scale-[0.98]
-                  transition-all border border-black/[0.04] shadow-sm
+                  surface-glass hover:bg-white/80 active:scale-[0.98]
+                  transition-all shadow-sm
                   ${option.danger ? 'text-error' : ''}
                 `}
               >
@@ -136,7 +136,7 @@ export function ActionSheet({
                         ? `bg-gradient-to-br ${option.gradient}`
                         : option.danger
                           ? 'bg-error/10'
-                          : 'bg-gray-100'
+                          : 'surface-inset'
                       }
                     `}
                   >
@@ -168,7 +168,7 @@ export function ActionSheet({
           <div className="px-4 pb-5 pt-1">
             <button
               onClick={onClose}
-              className="w-full py-3 rounded-xl bg-white/50 text-text-secondary font-medium hover:bg-white/70 active:scale-[0.98] transition-all border border-black/[0.04]"
+              className="w-full py-3 rounded-xl surface-glass text-text-secondary font-medium hover:bg-white/70 active:scale-[0.98] transition-all"
             >
               {cancelText}
             </button>

@@ -52,7 +52,7 @@ export function DesignSchemePage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
+      <div className="sticky top-0 z-50 surface-panel border-b border-gray-100">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />

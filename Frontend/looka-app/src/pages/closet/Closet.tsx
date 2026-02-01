@@ -83,7 +83,7 @@ export function ClosetPage() {
                       <p className="text-xs text-gray-600 truncate">{item.name}</p>
                     </div>
                   ))}
-                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center bg-white/50">
+                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center surface-inset">
                     <div className="text-center">
                       <Icon name="add" size={20} className="text-gray-300 mx-auto" />
                       <p className="text-xs text-gray-400 mt-1">添加</p>
@@ -148,7 +148,7 @@ export function ClosetPage() {
                       <p className="text-xs text-gray-600 truncate">{item.name}</p>
                     </div>
                   ))}
-                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center bg-white/50 cursor-pointer">
+                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center surface-inset cursor-pointer">
                     <div className="text-center">
                       <Icon name="add" size={20} className="text-gray-300 mx-auto" />
                       <p className="text-xs text-gray-400 mt-1">添加</p>

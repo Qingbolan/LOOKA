@@ -100,7 +100,7 @@ export default function PaymentPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="app-shell flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </div>
     );
@@ -109,7 +109,7 @@ export default function PaymentPage() {
   if (!order) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="app-shell">
       <Header title="订单支付" />
 
       <AnimatePresence>
@@ -117,7 +117,7 @@ export default function PaymentPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center px-8"
+            className="fixed inset-0 surface-panel z-50 flex flex-col items-center justify-center px-8"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -235,7 +235,7 @@ export default function PaymentPage() {
 
       {/* 底部操作栏 */}
       {!showSuccess && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100">
+        <div className="fixed bottom-0 left-0 right-0 surface-panel border-t border-gray-100">
           <div className="max-w-app mx-auto px-4 py-3">
             <Button
               variant="primary"
@@ -254,7 +254,7 @@ export default function PaymentPage() {
               )}
             </Button>
           </div>
-          <div className="h-safe-bottom bg-white" />
+          <div className="h-safe-bottom surface-panel" />
         </div>
       )}
     </div>

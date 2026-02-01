@@ -67,10 +67,10 @@ export const TRANSITION = {
 
 // 颜色（仅用于 JS 中需要的场景，优先使用 CSS 变量）
 export const COLORS = {
-  primary: '#C4928A',
-  primaryLight: '#D9B5AF',
-  primaryDark: '#A87872',
-  secondary: '#D4C4B5',
+  primary: '#3A4A5E',
+  primaryLight: '#5E6C7D',
+  primaryDark: '#2B3645',
+  secondary: '#D6C9BC',
   success: '#10B981',
   warning: '#F59E0B',
   error: '#EF4444',
@@ -79,11 +79,11 @@ export const COLORS = {
 
 // 状态颜色
 export const STATUS_COLORS = {
-  wishing: '#C4928A',
-  making: '#D4A574',
-  shipping: '#8BA4B4',
-  owned: '#7BA688',
-  draft: '#A8A8A8',
+  wishing: '#3A4A5E',
+  making: '#C9A27B',
+  shipping: '#7B93A4',
+  owned: '#6F8F7D',
+  draft: '#9AA2AA',
 } as const;
 
 // 卡片宽高比

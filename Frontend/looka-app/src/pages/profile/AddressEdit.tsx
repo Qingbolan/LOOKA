@@ -130,7 +130,7 @@ export default function AddressEditPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="app-shell flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </div>
     );
@@ -144,7 +144,7 @@ export default function AddressEditPage() {
     : [];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="app-shell">
       <Header title={isEdit ? '编辑地址' : '新增地址'} />
 
       <main className="max-w-app mx-auto px-4 pb-24">
@@ -304,7 +304,7 @@ export default function AddressEditPage() {
       </main>
 
       {/* 保存按钮 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100">
+      <div className="fixed bottom-0 left-0 right-0 surface-panel border-t border-gray-100">
         <div className="max-w-app mx-auto px-4 py-3">
           <Button
             variant="primary"
@@ -315,7 +315,7 @@ export default function AddressEditPage() {
             {saving ? '保存中...' : '保存'}
           </Button>
         </div>
-        <div className="h-safe-bottom bg-white" />
+        <div className="h-safe-bottom surface-panel" />
       </div>
     </div>
   );

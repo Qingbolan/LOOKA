@@ -12,7 +12,10 @@ export function FluentProviderWrapper({ children }: FluentProviderWrapperProps) 
   const { resolvedTheme } = useTheme()
 
   return (
-    <FluentProvider theme={resolvedTheme === "dark" ? darkTheme : lightTheme}>
+    <FluentProvider
+      theme={resolvedTheme === "dark" ? darkTheme : lightTheme}
+      className="fluent-acrylic"
+    >
       {children}
     </FluentProvider>
   )

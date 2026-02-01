@@ -56,7 +56,7 @@ export default function WishDetailPage() {
   const remaining = wish.targetCount - wish.currentCount;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="app-shell">
       {/* Header */}
       <header className="header-detail">
         <div className="header-detail-inner">
@@ -111,7 +111,7 @@ export default function WishDetailPage() {
         </div>
 
         {/* 进度概览 */}
-        <div className="px-4 py-4 bg-primary/5">
+        <div className="px-4 py-4 surface-soft">
           <div className="flex items-center justify-between mb-2">
             <span className="text-gray-700 font-medium flex items-center gap-1">
               {remaining === 1 && <Flame size={16} className="text-orange-500" />}
@@ -128,7 +128,7 @@ export default function WishDetailPage() {
         </div>
 
         {/* Tab 切换 */}
-        <div className="sticky top-14 z-40 bg-white border-b border-gray-100">
+        <div className="sticky top-14 z-40 surface-panel border-b border-gray-100">
           <div className="flex justify-center gap-8 px-4">
             {[
               { key: 'story', label: '故事' },
@@ -160,7 +160,7 @@ export default function WishDetailPage() {
             <div className="space-y-6">
               {/* 愿望故事 */}
               {wish.story && (
-                <div className="p-4 bg-gray-50 rounded-xl">
+                <div className="p-4 surface-muted rounded-xl">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-primary">
                       {wish.story.emotion === 'excited' && <PartyPopper size={18} />}
@@ -177,7 +177,7 @@ export default function WishDetailPage() {
               )}
 
               {/* 价格信息 */}
-              <div className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-xl">
+              <div className="flex items-center justify-between p-4 surface-card rounded-xl">
                 <div>
                   <p className="text-xs text-gray-500">愿望达成价</p>
                   <p className="text-2xl font-bold text-primary mt-1">
@@ -250,7 +250,7 @@ export default function WishDetailPage() {
       </div>
 
       {/* 底部操作栏 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-gray-100 max-w-md mx-auto z-50">
+      <div className="fixed bottom-0 left-0 right-0 surface-panel border-t border-gray-100 max-w-md mx-auto z-50">
         <div className="p-4 pb-safe">
           {/* 价格信息 */}
           <div className="flex items-center justify-between mb-3">

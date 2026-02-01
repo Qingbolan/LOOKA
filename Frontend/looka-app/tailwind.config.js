@@ -43,16 +43,16 @@ export default {
         background: {
           DEFAULT: "var(--color-bg)",
           secondary: "var(--color-bg-secondary)",
-          light: "#FDFCFB",
-          dark: "#1A1A1A",
+          light: "#F8F6F3",
+          dark: "#16181B",
         },
         // 表面色
         surface: {
           DEFAULT: "var(--color-surface)",
           elevated: "var(--color-surface-elevated)",
           light: "#FFFFFF",
-          dark: "#262626",
-          "dark-elevated": "#2D2D2D",
+          dark: "#1E2126",
+          "dark-elevated": "#252A31",
         },
         // 文字色
         text: {
@@ -60,9 +60,9 @@ export default {
           secondary: "var(--color-text-secondary)",
           tertiary: "var(--color-text-tertiary)",
           muted: "var(--color-text-muted)",
-          "dark-primary": "#FFFFFF",
-          "dark-secondary": "rgba(255,255,255,0.7)",
-          "dark-muted": "rgba(255,255,255,0.4)",
+          "dark-primary": "#F5F6F7",
+          "dark-secondary": "rgba(245,246,247,0.72)",
+          "dark-muted": "rgba(245,246,247,0.46)",
         },
         // 边框色
         border: {

@@ -40,7 +40,7 @@ export function OrderDetailPage() {
   return (
     <Layout showTabBar={false}>
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-50">
+      <div className="sticky top-0 z-50 surface-panel border-b border-gray-50">
         <div className="flex items-center p-4 h-16 justify-between max-w-md mx-auto" style={{ paddingTop: 'calc(var(--safe-area-inset-top) + 1rem)' }}>
           <button onClick={() => navigate(-1)} className="size-10 flex items-center justify-start">
             <Icon name="arrow_back_ios" size={20} className="text-gray-900" />
@@ -183,7 +183,7 @@ export function OrderDetailPage() {
       </div>
 
       {/* Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 p-5 bg-white/90 backdrop-blur-2xl border-t border-gray-50 max-w-md mx-auto z-50">
+      <div className="fixed bottom-0 left-0 right-0 p-5 surface-panel border-t border-gray-50 max-w-md mx-auto z-50">
         <div className="flex gap-3" style={{ paddingBottom: 'var(--safe-area-inset-bottom)' }}>
           <Button variant="secondary" fullWidth icon="headset_mic">
             帮助

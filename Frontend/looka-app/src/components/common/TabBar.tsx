@@ -119,11 +119,11 @@ export function TabBar() {
       {/* 浮动的相机按钮 - 独立定位 */}
       <button
         onClick={handleCameraClick}
-        className="fixed bottom-[calc(1.5rem+var(--safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[60]"
+        className="fixed bottom-[calc(0.5rem+var(--safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[60]"
         aria-label="创作灵感"
       >
-        <div className="w-14 h-14 rounded-full bg-gradient-primary shadow-button flex items-center justify-center transition-transform active:scale-95">
-          <Icon name="photo_camera" size={26} className="text-white" />
+        <div className="w-14 h-14 rounded-full bg-primary shadow-button flex items-center justify-center transition-transform active:scale-95">
+          <Icon name="photo_camera" size={30} className="text-white" />
         </div>
       </button>
 
@@ -136,8 +136,8 @@ export function TabBar() {
       />
 
       {/* TabBar 主体 */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-black/[0.06] dark:border-white/10">
-        <div className="max-w-md mx-auto px-4 py-1 mb-5 pb-[calc(0.5rem+var(--safe-area-inset-bottom))]">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 surface-panel border-t border-black/[0.06] dark:border-white/10">
+        <div className="max-w-md mx-auto px-4 py-1 mb-0 pb-[calc(0.5rem+var(--safe-area-inset-bottom))]">
           <div className="flex justify-between items-center">
             {tabs.map((tab) => {
               const isActive = location.pathname === tab.path

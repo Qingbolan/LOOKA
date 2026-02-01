@@ -100,7 +100,7 @@ export default function DesignEditorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="app-shell flex flex-col">
       {/* Header */}
       <header className="header-detail">
         <div className="header-detail-inner">
@@ -141,7 +141,7 @@ export default function DesignEditorPage() {
                 {generatedImages.map((img, index) => (
                   <div
                     key={index}
-                    className="aspect-[3/4] rounded-lg overflow-hidden bg-gray-100"
+                    className="aspect-[3/4] rounded-lg overflow-hidden surface-inset"
                   >
                     <img
                       src={img}
@@ -178,7 +178,7 @@ export default function DesignEditorPage() {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="例如：一件适合秋天约会穿的法式碎花连衣裙，要有点复古的感觉..."
-                className="w-full h-28 p-4 rounded-xl bg-gray-50 border border-gray-100 text-sm resize-none focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
+                className="w-full h-28 p-4 rounded-xl surface-inset text-sm resize-none focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
               />
             </div>
 
@@ -200,7 +200,7 @@ export default function DesignEditorPage() {
                     className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
                       parameters.style === style
                         ? 'bg-primary text-white'
-                        : 'bg-gray-100 text-gray-600'
+                        : 'surface-inset text-gray-600'
                     }`}
                   >
                     {style}
@@ -227,7 +227,7 @@ export default function DesignEditorPage() {
                     className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
                       parameters.fabric === fabric
                         ? 'bg-amber-500 text-white'
-                        : 'bg-gray-100 text-gray-600'
+                        : 'surface-inset text-gray-600'
                     }`}
                   >
                     {fabric}
@@ -254,7 +254,7 @@ export default function DesignEditorPage() {
                     className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
                       parameters.scenario === scenario
                         ? 'bg-sky-500 text-white'
-                        : 'bg-gray-100 text-gray-600'
+                        : 'surface-inset text-gray-600'
                     }`}
                   >
                     {scenario}
@@ -282,7 +282,7 @@ export default function DesignEditorPage() {
                         budget: { ...p.budget, min: Number(e.target.value) },
                       }))
                     }
-                    className="w-full pl-7 pr-3 py-2 rounded-lg bg-gray-50 border border-gray-100 text-sm"
+                    className="w-full pl-7 pr-3 py-2 rounded-lg surface-inset text-sm"
                   />
                 </div>
                 <span className="text-gray-400">—</span>
@@ -299,7 +299,7 @@ export default function DesignEditorPage() {
                         budget: { ...p.budget, max: Number(e.target.value) },
                       }))
                     }
-                    className="w-full pl-7 pr-3 py-2 rounded-lg bg-gray-50 border border-gray-100 text-sm"
+                    className="w-full pl-7 pr-3 py-2 rounded-lg surface-inset text-sm"
                   />
                 </div>
               </div>
@@ -324,7 +324,7 @@ export default function DesignEditorPage() {
           <div className="flex gap-3">
             <button
               onClick={handleSaveDraft}
-              className="flex-1 py-3 rounded-xl bg-gray-100 text-gray-700 font-medium"
+              className="flex-1 py-3 rounded-xl surface-muted text-gray-700 font-medium"
             >
               存草稿
             </button>

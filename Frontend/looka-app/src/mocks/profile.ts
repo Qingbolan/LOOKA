@@ -61,6 +61,62 @@ export const myWishes: MyWish[] = [
   },
 ];
 
+// 想要的（收藏的别人的愿望）
+export const wantedWishes: MyWish[] = [
+  {
+    id: 'w1',
+    modelImage: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200',
+    name: '法式复古连衣裙',
+    status: 'collecting',
+    wantCount: 156,
+  },
+  {
+    id: 'w2',
+    modelImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=200',
+    name: '慵懒风针织开衫',
+    status: 'making',
+    wantCount: 89,
+  },
+  {
+    id: 'w3',
+    modelImage: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200',
+    name: '简约廓形西装',
+    status: 'collecting',
+    wantCount: 234,
+  },
+  {
+    id: 'w4',
+    modelImage: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=200',
+    name: '印花丝绸衬衫',
+    status: 'done',
+    wantCount: 67,
+  },
+];
+
+// 分享的（自己分享出去的内容）
+export const sharedWishes: MyWish[] = [
+  {
+    id: 's1',
+    modelImage: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200',
+    name: '度假风印花长裙',
+    status: 'done',
+    wantCount: 312,
+  },
+  {
+    id: 's2',
+    modelImage: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400',
+    clothImage: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200',
+    name: '极简主义白T',
+    status: 'done',
+    wantCount: 198,
+  },
+];
+
 // 默认头像
 export const defaultUserAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200';
 

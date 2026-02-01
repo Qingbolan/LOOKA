@@ -77,7 +77,7 @@ export function ExplorePage() {
             ))}
           </div>
           <button onClick={() => navigate('/search')} className="header-btn">
-            <Icon name="search" size={22} className="text-gray-600" />
+            <Icon name="search" size={22} className="text-gray-600 dark:text-gray-400" />
           </button>
         </div>
       </div>
@@ -177,8 +177,8 @@ export function ExplorePage() {
 
             {/* 底部提示 */}
             <div className="text-center py-8">
-              <p className="text-gray-400 text-sm">看到喜欢的？点击加入愿望</p>
-              <p className="text-gray-400 text-sm">或者创作你自己的设计</p>
+              <p className="text-gray-400 dark:text-gray-500 text-sm">看到喜欢的？点击加入愿望</p>
+              <p className="text-gray-400 dark:text-gray-500 text-sm">或者创作你自己的设计</p>
             </div>
           </>
         )}

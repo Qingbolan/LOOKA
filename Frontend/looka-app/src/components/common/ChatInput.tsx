@@ -21,8 +21,7 @@ interface ChatInputProps {
   showImageUpload?: boolean
   /** 是否显示退出提示 */
   showExitHint?: boolean
-  /** 退出提示文本 */
-  exitHintText?: string
+
   /** 退出回调 */
   onExit?: () => void
   /** 是否使用多行输入 */
@@ -50,7 +49,6 @@ interface ChatInputProps {
  *   onImageUpload={handleImageUpload}
  *   placeholder="描述你想要的衣服..."
  *   showExitHint
- *   exitHintText="点击离开对话，再去逛逛"
  *   onExit={() => navigate('/')}
  * />
  * ```
@@ -63,9 +61,6 @@ export function ChatInput({
   placeholder = '描述你想要的...',
   disabled = false,
   showImageUpload = true,
-  showExitHint = false,
-  exitHintText = '点击离开对话',
-  onExit,
   multiline = false,
   className = '',
 }: ChatInputProps) {
@@ -114,7 +109,7 @@ export function ChatInput({
   }
 
   return (
-    <div className={`surface-panel border-t border-gray-100 ${className}`}>
+    <div className={`bg-white dark:bg-[#16181B] border-t border-gray-100 dark:border-gray-800 ${className}`}>
       {/* 隐藏的文件输入 */}
       {showImageUpload && (
         <input
@@ -133,15 +128,15 @@ export function ChatInput({
             <button
               onClick={handleImageClick}
               disabled={disabled}
-              className="size-10 flex items-center justify-center rounded-full surface-inset flex-shrink-0 transition-colors hover:bg-black/5 active:scale-95 disabled:opacity-50"
+              className="size-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 flex-shrink-0 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 active:scale-95 disabled:opacity-50"
               aria-label="上传图片"
             >
-              <Icon name="add_photo_alternate" size={20} className="text-gray-500" />
+              <Icon name="add_photo_alternate" size={20} className="text-gray-500 dark:text-gray-400" />
             </button>
           )}
 
           {/* 文字输入 */}
-          <div className="flex-1 surface-inset rounded-2xl px-4 py-2.5">
+          <div className="flex-1 bg-gray-100 dark:bg-gray-800 rounded-2xl px-4 py-2.5">
             {multiline ? (
               <textarea
                 value={value}
@@ -150,7 +145,7 @@ export function ChatInput({
                 placeholder={placeholder}
                 disabled={disabled}
                 rows={1}
-                className="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 resize-none outline-none disabled:opacity-50"
+                className="w-full bg-transparent text-sm text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 resize-none outline-none disabled:opacity-50"
                 style={{ minHeight: '20px', maxHeight: '100px' }}
               />
             ) : (
@@ -161,7 +156,7 @@ export function ChatInput({
                 onKeyDown={handleKeyDown}
                 placeholder={placeholder}
                 disabled={disabled}
-                className="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 outline-none disabled:opacity-50"
+                className="w-full bg-transparent text-sm text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 outline-none disabled:opacity-50"
               />
             )}
           </div>
@@ -175,7 +170,7 @@ export function ChatInput({
               transition-all active:scale-95
               ${hasValue && !disabled
                 ? 'bg-primary text-white shadow-button'
-                : 'surface-inset text-gray-400'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500'
               }
             `}
             aria-label="发送"
@@ -183,16 +178,6 @@ export function ChatInput({
             <Icon name="send" size={20} />
           </button>
         </div>
-
-        {/* 退出提示 */}
-        {showExitHint && onExit && (
-          <p
-            className="text-center text-xs text-gray-400 mt-3 cursor-pointer active:text-gray-500 transition-colors"
-            onClick={onExit}
-          >
-            {exitHintText}
-          </p>
-        )}
       </div>
     </div>
   )

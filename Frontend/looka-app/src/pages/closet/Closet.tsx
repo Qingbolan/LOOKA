@@ -52,7 +52,7 @@ export function ClosetPage() {
             ))}
           </div>
           <button className="header-btn">
-            <Icon name="search" size={22} className="text-gray-600" />
+            <Icon name="search" size={22} className="text-gray-600 dark:text-gray-400" />
           </button>
         </div>
       </div>
@@ -66,27 +66,27 @@ export function ClosetPage() {
           <>
             {/* 洛卡 今日推荐 */}
             <div className="mb-4">
-              <div className="bg-primary/5 rounded p-3 border border-primary/10">
+              <div className="bg-primary/5 dark:bg-primary/10 rounded p-3 border border-primary/10 dark:border-primary/20">
                 <div className="flex items-center gap-2 mb-3">
                   <LukaAvatar size="sm" />
                   <div>
-                    <p className="text-xs text-gray-500">洛卡 说</p>
-                    <p className="text-sm font-medium">{todayOutfit.greeting}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">洛卡 说</p>
+                    <p className="text-sm font-medium dark:text-gray-100">{todayOutfit.greeting}</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   {todayOutfit.items.map((item) => (
                     <div key={item.id} className="flex-1">
-                      <div className="aspect-square rounded overflow-hidden bg-white mb-1">
+                      <div className="aspect-square rounded overflow-hidden bg-white dark:bg-gray-800 mb-1">
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
-                      <p className="text-xs text-gray-600 truncate">{item.name}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-300 truncate">{item.name}</p>
                     </div>
                   ))}
-                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center surface-inset">
+                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-center surface-inset">
                     <div className="text-center">
-                      <Icon name="add" size={20} className="text-gray-300 mx-auto" />
-                      <p className="text-xs text-gray-400 mt-1">添加</p>
+                      <Icon name="add" size={20} className="text-gray-300 dark:text-gray-600 mx-auto" />
+                      <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">添加</p>
                     </div>
                   </div>
                 </div>
@@ -96,19 +96,19 @@ export function ClosetPage() {
             {/* 我的穿搭 */}
             <div className="space-y-3">
               {myOutfits.map((outfit) => (
-                <div key={outfit.id} className="bg-white rounded p-3 border border-gray-100">
+                <div key={outfit.id} className="bg-white dark:bg-gray-800 rounded p-3 border border-gray-100 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-medium text-sm">{outfit.name}</h3>
-                    <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">{outfit.occasion}</span>
+                    <h3 className="font-medium text-sm dark:text-gray-100">{outfit.name}</h3>
+                    <span className="text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">{outfit.occasion}</span>
                   </div>
                   <div className="flex gap-2">
                     {outfit.items.map((img, i) => (
-                      <div key={i} className="w-16 h-20 rounded overflow-hidden bg-gray-100">
+                      <div key={i} className="w-16 h-20 rounded overflow-hidden bg-gray-100 dark:bg-gray-700">
                         <img src={img} alt="" className="w-full h-full object-cover" />
                       </div>
                     ))}
-                    <div className="w-16 h-20 rounded border-2 border-dashed border-gray-200 flex items-center justify-center">
-                      <Icon name="add" size={18} className="text-gray-300" />
+                    <div className="w-16 h-20 rounded border-2 border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-center">
+                      <Icon name="add" size={18} className="text-gray-300 dark:text-gray-600" />
                     </div>
                   </div>
                 </div>
@@ -117,10 +117,10 @@ export function ClosetPage() {
               {/* 新建穿搭 */}
               <div
                 onClick={() => navigate('/luka')}
-                className="bg-gray-50 rounded p-6 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center cursor-pointer"
+                className="bg-gray-50 dark:bg-gray-800/50 rounded p-6 border-2 border-dashed border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center cursor-pointer"
               >
-                <Icon name="add" size={28} className="text-gray-300 mb-2" />
-                <p className="text-sm text-gray-400">让 洛卡 帮你搭配</p>
+                <Icon name="add" size={28} className="text-gray-300 dark:text-gray-600 mb-2" />
+                <p className="text-sm text-gray-400 dark:text-gray-500">让 洛卡 帮你搭配</p>
               </div>
             </div>
           </>
@@ -131,27 +131,27 @@ export function ClosetPage() {
           <>
             {/* 洛卡 今日推荐 */}
             <div className="mb-4">
-              <div className="bg-primary/5 rounded p-3 border border-primary/10">
+              <div className="bg-primary/5 dark:bg-primary/10 rounded p-3 border border-primary/10 dark:border-primary/20">
                 <div className="flex items-center gap-2 mb-3">
                   <LukaAvatar size="sm" />
                   <div>
-                    <p className="text-xs text-gray-500">洛卡 说</p>
-                    <p className="text-sm font-medium">{todayOutfit.greeting}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">洛卡 说</p>
+                    <p className="text-sm font-medium dark:text-gray-100">{todayOutfit.greeting}</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   {todayOutfit.items.map((item) => (
                     <div key={item.id} onClick={() => navigate(`/closet/${item.id}`)} className="flex-1 cursor-pointer">
-                      <div className="aspect-square rounded overflow-hidden bg-white mb-1">
+                      <div className="aspect-square rounded overflow-hidden bg-white dark:bg-gray-800 mb-1">
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
-                      <p className="text-xs text-gray-600 truncate">{item.name}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-300 truncate">{item.name}</p>
                     </div>
                   ))}
-                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 flex items-center justify-center surface-inset cursor-pointer">
+                  <div className="flex-1 aspect-square rounded border-2 border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-center surface-inset cursor-pointer">
                     <div className="text-center">
-                      <Icon name="add" size={20} className="text-gray-300 mx-auto" />
-                      <p className="text-xs text-gray-400 mt-1">添加</p>
+                      <Icon name="add" size={20} className="text-gray-300 dark:text-gray-600 mx-auto" />
+                      <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">添加</p>
                     </div>
                   </div>
                 </div>
@@ -212,10 +212,10 @@ export function ClosetPage() {
               {/* 添加新衣服 */}
               <div
                 onClick={() => navigate('/luka')}
-                className="aspect-card-1 bg-gray-50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200"
+                className="aspect-card-1 bg-gray-50 dark:bg-gray-800/50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200 dark:border-gray-700"
               >
-                <Icon name="auto_awesome" size={28} className="text-gray-300 mb-1" />
-                <p className="text-xs text-gray-400">许个新愿望</p>
+                <Icon name="auto_awesome" size={28} className="text-gray-300 dark:text-gray-600 mb-1" />
+                <p className="text-xs text-gray-400 dark:text-gray-500">许个新愿望</p>
               </div>
             </CardMasonry>
           </>
@@ -227,16 +227,16 @@ export function ClosetPage() {
             {/* 输入新想法 */}
             <div
               onClick={() => navigate('/luka')}
-              className="bg-white rounded p-3 border border-gray-200 cursor-pointer active:scale-[0.99] transition-transform"
+              className="bg-white dark:bg-gray-800 rounded p-3 border border-gray-200 dark:border-gray-700 cursor-pointer active:scale-[0.99] transition-transform"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-                  <Icon name="edit_note" size={20} className="text-gray-400" />
+                <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                  <Icon name="edit_note" size={20} className="text-gray-400 dark:text-gray-500" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm text-gray-400">记录一个想法...</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-500">记录一个想法...</p>
                 </div>
-                <Icon name="add_photo_alternate" size={20} className="text-gray-300" />
+                <Icon name="add_photo_alternate" size={20} className="text-gray-300 dark:text-gray-600" />
               </div>
             </div>
 
@@ -244,8 +244,8 @@ export function ClosetPage() {
             {myInspirations.map((item) => (
               <div
                 key={item.id}
-                className={`bg-white rounded p-3 border cursor-pointer active:scale-[0.99] transition-transform ${
-                  item.status === 'realized' ? 'border-emerald-200 bg-emerald-50/30' : 'border-gray-100'
+                className={`bg-white dark:bg-gray-800 rounded p-3 border cursor-pointer active:scale-[0.99] transition-transform ${
+                  item.status === 'realized' ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/30 dark:bg-emerald-900/20' : 'border-gray-100 dark:border-gray-700'
                 }`}
               >
                 <div className="flex gap-3">
@@ -265,12 +265,12 @@ export function ClosetPage() {
                     )}
 
                     {/* 内容 */}
-                    <p className="text-sm text-gray-700 line-clamp-2">{item.text}</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">{item.text}</p>
 
                     {/* 标签 */}
                     <div className="flex flex-wrap gap-1 mt-2">
                       {item.tags.map((tag) => (
-                        <span key={tag} className="text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
+                        <span key={tag} className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
                           #{tag}
                         </span>
                       ))}
@@ -278,7 +278,7 @@ export function ClosetPage() {
 
                     {/* 底部 */}
                     <div className="flex items-center justify-between mt-2">
-                      <span className="text-xs text-gray-400">{item.time}</span>
+                      <span className="text-xs text-gray-400 dark:text-gray-500">{item.time}</span>
                       {item.status !== 'realized' && (
                         <button
                           onClick={(e) => { e.stopPropagation(); navigate('/luka'); }}
@@ -299,10 +299,10 @@ export function ClosetPage() {
         {!loading && activeTab === 3 && (
           <>
             {/* 提示卡片 */}
-            <div className="bg-primary/5 rounded p-3 border border-primary/10 mb-4">
+            <div className="bg-primary/5 dark:bg-primary/10 rounded p-3 border border-primary/10 dark:border-primary/20 mb-4">
               <div className="flex items-center gap-2">
                 <LukaAvatar size="sm" />
-                <p className="text-sm text-gray-600">看到喜欢的衣服？加入心愿单，我帮你实现~</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">看到喜欢的衣服？加入心愿单，我帮你实现~</p>
               </div>
             </div>
 
@@ -340,9 +340,9 @@ export function ClosetPage() {
               })}
 
               {/* 添加心愿 */}
-              <div className="aspect-card-1 bg-gray-50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200">
-                <Icon name="add_photo_alternate" size={28} className="text-gray-300 mb-1" />
-                <p className="text-xs text-gray-400">添加心愿</p>
+              <div className="aspect-card-1 bg-gray-50 dark:bg-gray-800/50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200 dark:border-gray-700">
+                <Icon name="add_photo_alternate" size={28} className="text-gray-300 dark:text-gray-600 mb-1" />
+                <p className="text-xs text-gray-400 dark:text-gray-500">添加心愿</p>
               </div>
             </CardMasonry>
           </>
@@ -351,7 +351,7 @@ export function ClosetPage() {
         {/* 底部提示 */}
         {!loading && (
           <div className="text-center py-8">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 dark:text-gray-500 text-sm">
               {activeTab === 0 && '让 洛卡 帮你搭配更多穿法'}
               {activeTab === 1 && '告诉 洛卡 你想要什么'}
               {activeTab === 2 && '有想法就告诉 洛卡'}

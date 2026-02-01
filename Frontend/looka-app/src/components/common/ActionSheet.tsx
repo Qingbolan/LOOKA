@@ -97,7 +97,7 @@ export function ActionSheet({
       >
         {/* 拖动指示器 */}
         <div className="flex justify-center pt-3 pb-1">
-          <div className="w-9 h-1 bg-black/10 rounded-full" />
+          <div className="w-9 h-1 bg-black/10 dark:bg-white/20 rounded-full" />
         </div>
 
         {/* 标题 */}
@@ -143,7 +143,7 @@ export function ActionSheet({
                     <Icon
                       name={option.icon}
                       size={22}
-                      className={option.gradient ? 'text-white' : option.danger ? 'text-error' : 'text-gray-600'}
+                      className={option.gradient ? 'text-white' : option.danger ? 'text-error' : 'text-gray-600 dark:text-gray-400'}
                     />
                   </div>
                 )}

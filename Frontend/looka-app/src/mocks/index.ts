@@ -56,6 +56,8 @@ export {
   statusText,
   statusColor,
   myWishes,
+  wantedWishes,
+  sharedWishes,
   defaultUserAvatar,
   defaultUserProfile,
 } from './profile';

@@ -32,8 +32,8 @@ export function Header({
     }
   }
 
-  const textColor = dark ? 'text-white' : 'text-text-primary'
-  const iconColor = dark ? 'text-white/70' : 'text-text-secondary'
+  const textColor = dark ? 'text-white' : 'text-text-primary dark:text-gray-100'
+  const iconColor = dark ? 'text-white/70' : 'text-gray-600 dark:text-gray-400'
 
   return (
     <header
@@ -42,8 +42,8 @@ export function Header({
         ${transparent
           ? 'bg-transparent border-transparent'
           : dark
-            ? 'surface-panel border-b border-white/10'
-            : 'surface-panel border-b border-black/[0.06] dark:border-white/10'
+            ? 'bg-gray-900 border-b border-white/10'
+            : 'bg-white dark:bg-gray-900 border-b border-black/[0.06] dark:border-white/10'
         }
         ${className}
       `}

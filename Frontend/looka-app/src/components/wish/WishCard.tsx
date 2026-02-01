@@ -93,9 +93,9 @@ export const WishCard = memo(function WishCard({
         {/* 进度区域 */}
         <div className="p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               <span className="text-primary font-bold text-base">{wish.currentCount}</span>
-              <span className="text-gray-400">/{wish.targetCount}人参与</span>
+              <span className="text-gray-400 dark:text-gray-500">/{wish.targetCount}人参与</span>
             </span>
             <span className="text-sm font-bold text-primary">
               {wish.progress}%
@@ -135,13 +135,13 @@ export const WishCard = memo(function WishCard({
             {/* 顶部：标题+标签 */}
             <div>
               <div className="flex items-start gap-2">
-                <h3 className="flex-1 font-semibold text-sm text-gray-900 line-clamp-2">
+                <h3 className="flex-1 font-semibold text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
                   {wish.product.name}
                 </h3>
               </div>
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-primary font-bold text-sm">¥{wish.groupPrice}</span>
-                <span className="text-gray-400 text-xs line-through">¥{wish.originalPrice}</span>
+                <span className="text-gray-400 dark:text-gray-500 text-xs line-through">¥{wish.originalPrice}</span>
                 <span className="text-xs px-1.5 py-0.5 bg-primary/10 text-primary rounded font-medium">
                   省{wish.savingsPercent}%
                 </span>
@@ -151,10 +151,10 @@ export const WishCard = memo(function WishCard({
             {/* 中间：进度 */}
             <div className="my-2">
               <div className="flex items-center justify-between text-xs mb-1">
-                <span className="text-gray-500">
+                <span className="text-gray-500 dark:text-gray-400">
                   <span className="text-primary font-bold">{wish.currentCount}</span>/{wish.targetCount}人
                 </span>
-                <span className="text-gray-400">
+                <span className="text-gray-400 dark:text-gray-500">
                   {daysLeft > 0 ? `剩${daysLeft}天` : '即将结束'}
                 </span>
               </div>
@@ -191,7 +191,7 @@ export const WishCard = memo(function WishCard({
           />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="font-medium text-gray-900 text-sm line-clamp-1">
+          <h3 className="font-medium text-gray-900 dark:text-gray-100 text-sm line-clamp-1">
             {wish.product.name}
           </h3>
           <p className="text-primary text-xs mt-1">
@@ -247,7 +247,7 @@ export const WishCard = memo(function WishCard({
         {/* 进度区域 */}
         <div className="p-3">
           <ProgressBar progress={wish.progress} showLabel />
-          <p className="text-sm text-gray-600 mt-2 text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">
             {getEmotionalMessage(remaining, wish.progress, isUrgent)}
           </p>
         </div>
@@ -298,17 +298,17 @@ export const WishCard = memo(function WishCard({
       </div>
       {/* 信息 */}
       <div className="p-3">
-        <h3 className="font-semibold text-gray-900 text-sm line-clamp-2 leading-tight">
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm line-clamp-2 leading-tight">
           {wish.product.name}
         </h3>
 
         {/* 进度 */}
         <div className="mt-2.5">
           <div className="flex items-center justify-between text-xs mb-1">
-            <span className="text-gray-500">
+            <span className="text-gray-500 dark:text-gray-400">
               <span className="text-primary font-bold">{wish.currentCount}</span>/{wish.targetCount}人
             </span>
-            <span className="text-gray-400">
+            <span className="text-gray-400 dark:text-gray-500">
               还差{remaining}人
             </span>
           </div>
@@ -354,7 +354,7 @@ function ProgressBar({ progress, showLabel, className = '' }: ProgressBarProps) 
       </div>
       {showLabel && (
         <div className="flex items-center justify-between mt-1">
-          <span className="text-xs text-gray-400">{progress}%</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500">{progress}%</span>
           {isAlmostThere && (
             <span className="text-xs text-primary font-medium">🎉 快达成了！</span>
           )}
@@ -407,7 +407,7 @@ export function AvatarStack({
           className={`${sizeClass[size]} rounded-full flex items-center justify-center text-xs font-medium border-2 ${
             light
               ? 'bg-white/20 text-white border-white/30'
-              : 'bg-gray-100 text-gray-500 border-white'
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 border-white dark:border-gray-800'
           }`}
         >
           +{remaining}

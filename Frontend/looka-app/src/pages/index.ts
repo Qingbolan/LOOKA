@@ -17,9 +17,42 @@ export { LukaPage, LukaChatPage, DesignResultPage, DesignSchemePage, TryOnPage }
 export { ClosetPage, ClothDetailPage } from './closet'
 
 // 个人中心模块
-export { ProfilePage, BodyProfilePage, BodySetupPage } from './profile'
+export {
+  ProfilePage,
+  BodyProfilePage,
+  BodySetupPage,
+  EditProfilePage,
+  DraftsPage,
+  HistoryPage,
+  EditFieldPage,
+  CreatorCenterPage,
+  WalletPage,
+  CartPage,
+  DownloadsPage,
+  AddFriendsPage,
+  ScanPage,
+  FollowingPage,
+  MyWishesPage,
+} from './profile'
 export { default as AddressManagePage } from './profile/AddressManage'
 export { default as AddressEditPage } from './profile/AddressEdit'
+
+// 设置模块
+export {
+  SettingsPage,
+  AccountSecurityPage,
+  GeneralSettingsPage,
+  NotificationSettingsPage,
+  PrivacySettingsPage,
+  AboutPage,
+  HelpCenterPage,
+  StorageSettingsPage,
+  LanguageSettingsPage,
+  ContentPreferencesPage,
+  MinorModePage,
+  BetaFeaturesPage,
+  CommunityGuidelinesPage,
+} from './settings'
 
 // 订单模块
 export { OrdersPage, OrderDetailPage, ProductDetailPage, ParameterEditPage } from './order'

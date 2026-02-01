@@ -87,6 +87,7 @@ export function CardMasonry({
   const columnCount = useResponsiveColumns(columns);
   const [containerRef, { width: containerWidth }] = useMeasure<HTMLDivElement>();
   const childArray = Children.toArray(children).filter(isValidElement) as ReactElement[];
+  const childSignature = childArray.map((child, index) => child.key ?? index).join('|');
 
   // 存储每个卡片的测量高度
   const [itemHeights, setItemHeights] = useState<number[]>([]);
@@ -127,7 +128,7 @@ export function CardMasonry({
     return () => {
       observersRef.current.forEach(obs => obs.disconnect());
     };
-  }, [childArray.length, containerWidth]);
+  }, [childArray.length, containerWidth, childSignature]);
 
   // 根据实际高度计算每个卡片的位置
   const { positions, containerHeight } = useMemo(() => {
@@ -183,27 +184,42 @@ export function CardMasonry({
       positions,
       containerHeight: Math.max(...colHeights),
     };
-  }, [containerWidth, columnCount, gap, childArray.length, itemHeights]);
+  }, [containerWidth, columnCount, gap, childArray.length, itemHeights, childSignature]);
 
   const colWidth = containerWidth ? (containerWidth - (columnCount - 1) * gap) / columnCount : 0;
   const isReady = positions.length > 0 && itemHeights.some(h => h > 0);
 
-  // 初始使用简单的网格布局（按行分配），测量完成后切换到瀑布流
-  const estimatedItemHeight = 150;
-  const getInitialPosition = (index: number) => {
-    const col = index % columnCount;
-    const row = Math.floor(index / columnCount);
-    return {
-      x: col * (colWidth + gap),
-      y: row * (estimatedItemHeight + gap),
-    };
-  };
-
   // 估算初始容器高度
+  const estimatedItemHeight = 150;
   const rowCount = Math.ceil(childArray.length / columnCount);
   const estimatedHeight = rowCount * (estimatedItemHeight + gap);
   const finalHeight = isReady && containerHeight > 0 ? containerHeight : estimatedHeight;
 
+  // 在测量完成前使用 CSS columns 布局，避免重叠
+  if (!isReady) {
+    return (
+      <div
+        ref={containerRef}
+        className={className}
+        style={{
+          columnCount,
+          columnGap: gap,
+        }}
+      >
+        {childArray.map((child, index) => (
+          <div
+            key={(child as ReactElement).key || index}
+            ref={(el) => { itemRefs.current[index] = el; }}
+            style={{ marginBottom: gap, breakInside: 'avoid' }}
+          >
+            {child}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // 测量完成后使用绝对定位的瀑布流布局
   return (
     <div
       ref={containerRef}
@@ -212,15 +228,11 @@ export function CardMasonry({
     >
       {childArray.map((child, index) => {
         const pos = positions[index];
-        const initialPos = getInitialPosition(index);
-        const finalPos = isReady && pos ? pos : initialPos;
+        const finalPos = pos || { x: 0, y: 0 };
 
         // 按行计算动画延迟，同一行的卡片同时出现
         const row = Math.floor(index / columnCount);
         const animationDelay = animate ? row * 100 : 0;
-
-        // 不需要动画时，等位置计算好再显示
-        const shouldShow = animate || isReady;
 
         return (
           <div
@@ -230,7 +242,6 @@ export function CardMasonry({
             style={{
               width: colWidth || '100%',
               transform: `translate(${finalPos.x}px, ${finalPos.y}px)`,
-              opacity: shouldShow ? 1 : 0,
               ...(animate && {
                 animationDelay: `${animationDelay}ms`,
                 animationFillMode: 'backwards',

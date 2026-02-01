@@ -73,14 +73,14 @@ export function LukaPage() {
       <div className="header-detail">
         <div className="header-detail-inner">
           <button onClick={handleExit} className="header-btn">
-            <Icon name="close" size={24} className="text-gray-600" />
+            <Icon name="close" size={24} className="text-gray-600 dark:text-gray-400" />
           </button>
           <div className="flex items-center gap-2">
             <LukaAvatar size="xs" />
-            <span className="font-bold">洛卡</span>
+            <span className="font-bold dark:text-gray-100">洛卡</span>
           </div>
           <button className="header-btn">
-            <Icon name="more_horiz" size={24} className="text-gray-600" />
+            <Icon name="more_horiz" size={24} className="text-gray-600 dark:text-gray-400" />
           </button>
         </div>
       </div>
@@ -88,8 +88,8 @@ export function LukaPage() {
       <div className="content-page">
         {/* 洛卡 自我介绍 */}
         <div className="py-8">
-          <div className="bg-primary/5 rounded p-5 mb-6 border border-primary/10">
-            <p className="text-base leading-relaxed text-gray-700">
+          <div className="bg-gray-800/50 dark:bg-gray-800/80 rounded p-5 mb-6 border border-gray-700">
+            <p className="text-base leading-relaxed text-gray-300">
               Hi，我是 <span className="text-primary font-medium">洛卡</span>，帮你把脑海里的衣服变成真的。
               <br /><br />
               告诉我你想要什么，或者发张图给我看看，我来帮你实现～
@@ -102,7 +102,7 @@ export function LukaPage() {
               <button
                 key={card.id}
                 onClick={() => handleCardClick(card.id)}
-                className={`flex-shrink-0 w-40 ${card.bgColor} rounded-xl p-4 text-left transition-transform active:scale-95 border border-gray-100`}
+                className={`flex-shrink-0 w-40 ${card.bgColor} rounded-xl p-4 text-left transition-transform active:scale-95 border border-gray-100 dark:border-gray-700`}
               >
                 <h3 className="font-bold text-base mb-1 text-gray-800">{card.title}</h3>
                 <p className="text-sm text-gray-500 mb-3 line-clamp-2">{card.example}</p>
@@ -110,7 +110,7 @@ export function LukaPage() {
                   {card.images.map((img, idx) => (
                     <div
                       key={idx}
-                      className="w-8 h-8 rounded bg-cover bg-center border-2 border-white shadow-sm"
+                      className="w-8 h-8 rounded bg-cover bg-center border-2 border-white dark:border-gray-200 shadow-sm"
                       style={{ backgroundImage: `url(${img})` }}
                     />
                   ))}
@@ -123,37 +123,37 @@ export function LukaPage() {
         {/* 历史对话预览 */}
         <div className="mt-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm text-gray-400">最近</h3>
-            <button className="text-xs text-gray-400">查看全部</button>
+            <h3 className="text-sm text-gray-400 dark:text-gray-500">最近</h3>
+            <button className="text-xs text-gray-400 dark:text-gray-500">查看全部</button>
           </div>
           <div className="space-y-2">
             <button
               onClick={() => navigate('/luka/chat?history=1')}
-              className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-left hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl text-left hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               <div
                 className="w-12 h-12 rounded bg-cover bg-center flex-shrink-0"
                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=100)' }}
               />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium truncate text-gray-800">星空渐变长裙</p>
-                <p className="text-xs text-gray-400 truncate">已生成 3 个方案</p>
+                <p className="text-sm font-medium truncate text-gray-800 dark:text-gray-200">星空渐变长裙</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 truncate">已生成 3 个方案</p>
               </div>
-              <Icon name="chevron_right" size={20} className="text-gray-300" />
+              <Icon name="chevron_right" size={20} className="text-gray-300 dark:text-gray-600" />
             </button>
             <button
               onClick={() => navigate('/luka/chat?history=2')}
-              className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-left hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl text-left hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               <div
                 className="w-12 h-12 rounded bg-cover bg-center flex-shrink-0"
                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100)' }}
               />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium truncate text-gray-800">复古和服外套</p>
-                <p className="text-xs text-gray-400 truncate">制作中</p>
+                <p className="text-sm font-medium truncate text-gray-800 dark:text-gray-200">复古和服外套</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 truncate">制作中</p>
               </div>
-              <Icon name="chevron_right" size={20} className="text-gray-300" />
+              <Icon name="chevron_right" size={20} className="text-gray-300 dark:text-gray-600" />
             </button>
           </div>
         </div>
@@ -165,7 +165,6 @@ export function LukaPage() {
         onImageUpload={handleImageUpload}
         placeholder="描述你想要的衣服..."
         showExitHint
-        exitHintText="点击离开对话，再去逛逛"
         onExit={handleExit}
         className="fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto"
       />

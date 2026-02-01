@@ -32,20 +32,53 @@ import {
   WishDetailPage,
   ProductionPreviewPage,
   OnboardingPage,
+  // 设置相关页面
+  SettingsPage,
+  AccountSecurityPage,
+  GeneralSettingsPage,
+  NotificationSettingsPage,
+  PrivacySettingsPage,
+  AboutPage,
+  HelpCenterPage,
+  StorageSettingsPage,
+  LanguageSettingsPage,
+  ContentPreferencesPage,
+  MinorModePage,
+  BetaFeaturesPage,
+  CommunityGuidelinesPage,
+  // 个人中心相关页面
+  EditProfilePage,
+  DraftsPage,
+  HistoryPage,
+  EditFieldPage,
+  CreatorCenterPage,
+  WalletPage,
+  CartPage,
+  DownloadsPage,
+  AddFriendsPage,
+  ScanPage,
+  FollowingPage,
+  MyWishesPage,
 } from '@/pages'
 import { ErrorBoundary } from '@/components/feedback/ErrorBoundary'
 import { ToastProvider } from '@/components/feedback/Toast'
 import { LoadingProvider } from '@/components/feedback/Loading'
 import { AuthGuard, OptionalAuth } from '@/components/auth/AuthGuard'
-import { useAuthStore } from '@/store'
+import { useAuthStore, useSettingsStore } from '@/store'
 
 function App() {
   const { checkAuth, hasCompletedOnboarding } = useAuthStore()
+  const { initTheme } = useSettingsStore()
 
   // 初始化时检查认证状态
   useEffect(() => {
     checkAuth()
   }, [checkAuth])
+
+  // 初始化主题和字体设置
+  useEffect(() => {
+    initTheme()
+  }, [initTheme])
 
   // 监听登出事件（由 API 拦截器触发）
   useEffect(() => {
@@ -120,6 +153,35 @@ function App() {
               <Route path="/design-result" element={<OptionalAuth><DesignResultPage /></OptionalAuth>} />
               <Route path="/design-scheme" element={<OptionalAuth><DesignSchemePage /></OptionalAuth>} />
               <Route path="/parameter-edit" element={<OptionalAuth><ParameterEditPage /></OptionalAuth>} />
+
+              {/* 设置页面 */}
+              <Route path="/settings" element={<AuthGuard><SettingsPage /></AuthGuard>} />
+              <Route path="/settings/account" element={<AuthGuard><AccountSecurityPage /></AuthGuard>} />
+              <Route path="/settings/general" element={<AuthGuard><GeneralSettingsPage /></AuthGuard>} />
+              <Route path="/settings/notifications" element={<AuthGuard><NotificationSettingsPage /></AuthGuard>} />
+              <Route path="/settings/privacy" element={<AuthGuard><PrivacySettingsPage /></AuthGuard>} />
+              <Route path="/settings/storage" element={<AuthGuard><StorageSettingsPage /></AuthGuard>} />
+              <Route path="/settings/language" element={<AuthGuard><LanguageSettingsPage /></AuthGuard>} />
+              <Route path="/settings/content" element={<AuthGuard><ContentPreferencesPage /></AuthGuard>} />
+              <Route path="/settings/minor-mode" element={<AuthGuard><MinorModePage /></AuthGuard>} />
+              <Route path="/settings/beta" element={<AuthGuard><BetaFeaturesPage /></AuthGuard>} />
+              <Route path="/settings/about" element={<OptionalAuth><AboutPage /></OptionalAuth>} />
+              <Route path="/help" element={<OptionalAuth><HelpCenterPage /></OptionalAuth>} />
+              <Route path="/community-guidelines" element={<OptionalAuth><CommunityGuidelinesPage /></OptionalAuth>} />
+
+              {/* 个人中心相关页面 */}
+              <Route path="/profile/edit" element={<AuthGuard><EditProfilePage /></AuthGuard>} />
+              <Route path="/profile/edit/:field" element={<AuthGuard><EditFieldPage /></AuthGuard>} />
+              <Route path="/drafts" element={<AuthGuard><DraftsPage /></AuthGuard>} />
+              <Route path="/history" element={<AuthGuard><HistoryPage /></AuthGuard>} />
+              <Route path="/creator" element={<AuthGuard><CreatorCenterPage /></AuthGuard>} />
+              <Route path="/wallet" element={<AuthGuard><WalletPage /></AuthGuard>} />
+              <Route path="/cart" element={<AuthGuard><CartPage /></AuthGuard>} />
+              <Route path="/downloads" element={<AuthGuard><DownloadsPage /></AuthGuard>} />
+              <Route path="/friends/add" element={<AuthGuard><AddFriendsPage /></AuthGuard>} />
+              <Route path="/scan" element={<AuthGuard><ScanPage /></AuthGuard>} />
+              <Route path="/following" element={<AuthGuard><FollowingPage /></AuthGuard>} />
+              <Route path="/my-wishes" element={<AuthGuard><MyWishesPage /></AuthGuard>} />
             </Routes>
           </BrowserRouter>
         </LoadingProvider>

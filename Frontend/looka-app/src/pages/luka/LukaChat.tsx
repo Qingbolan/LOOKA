@@ -169,20 +169,20 @@ export function LukaChatPage() {
       <div className="header-detail">
         <div className="flex items-center p-4 h-14 justify-between max-w-md mx-auto">
           <button onClick={handleBack} className="size-10 flex items-center justify-center">
-            <Icon name="arrow_back_ios" size={20} className="text-gray-600" />
+            <Icon name="arrow_back_ios" size={20} className="text-gray-600 dark:text-gray-400" />
           </button>
           <div className="flex items-center gap-2">
             <LukaAvatar size="xs" />
-            <span className="font-medium">洛卡</span>
+            <span className="font-medium dark:text-gray-100">洛卡</span>
           </div>
           <button className="size-10 flex items-center justify-center">
-            <Icon name="more_horiz" size={24} className="text-gray-600" />
+            <Icon name="more_horiz" size={24} className="text-gray-600 dark:text-gray-400" />
           </button>
         </div>
       </div>
 
       {/* 对话区域 */}
-      <div className="flex-1 overflow-y-auto bg-gray-50">
+      <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#16181B]">
         <div className="max-w-md mx-auto px-4 py-4 space-y-4">
           {messages.map((message) => (
             <div
@@ -204,13 +204,13 @@ export function LukaChatPage() {
                   className={`px-4 py-3 rounded-xl ${
                     message.from === 'user'
                       ? 'bg-primary text-white rounded-br-sm'
-                      : 'bg-white text-gray-800 rounded-bl-sm shadow-sm border border-gray-100'
+                      : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-sm shadow-sm border border-gray-100 dark:border-gray-700'
                   }`}
                 >
                   {message.isGenerating ? (
                     <div className="flex items-center gap-2">
                       <span className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
-                      <span className="text-sm text-gray-600">生成中...</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">生成中...</span>
                     </div>
                   ) : (
                     <p className="text-sm leading-relaxed">{message.content}</p>
@@ -223,7 +223,7 @@ export function LukaChatPage() {
                       <button
                         key={option}
                         onClick={() => sendMessage(option)}
-                        className="px-4 py-2 bg-white border border-gray-200 text-gray-700 text-sm rounded-full hover:bg-gray-50 hover:border-primary/30 transition-colors"
+                        className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-primary/30 transition-colors"
                       >
                         {option}
                       </button>
@@ -251,11 +251,11 @@ export function LukaChatPage() {
           {isTyping && (
             <div className="flex items-start">
               <LukaAvatar size="sm" className="mr-2" />
-              <div className="bg-white px-4 py-3 rounded-xl rounded-bl-sm shadow-sm border border-gray-100">
+              <div className="bg-white dark:bg-gray-800 px-4 py-3 rounded-xl rounded-bl-sm shadow-sm border border-gray-100 dark:border-gray-700">
                 <div className="flex gap-1">
-                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <span className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <span className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <span className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                 </div>
               </div>
             </div>

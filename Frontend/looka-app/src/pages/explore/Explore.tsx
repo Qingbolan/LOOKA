@@ -143,23 +143,25 @@ export function ExplorePage() {
                       />
                     </div>
                     {/* 信息区域 */}
-                    <div className="px-2 py-2.5">
-                      <h3 className="text-sm font-medium leading-tight line-clamp-2">{product.name}</h3>
+                    <div className="px-2.5 py-2.5">
+                      <div className="flex items-center gap-1.5">
+                        <h3 className="text-sm font-medium leading-tight line-clamp-1">{product.name}</h3>
+                        <span className="flex-shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded bg-primary/10 text-primary dark:bg-primary/20">
+                          {config.text}
+                        </span>
+                      </div>
                       <div className="flex items-center justify-between mt-2">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <span className="card-meta">{config.text}</span>
-                          <div className="flex items-center gap-2 min-w-0">
-                            {product.designer?.avatar && (
-                              <img
-                                src={product.designer.avatar}
-                                alt={product.designer.name}
-                                className="w-5 h-5 object-cover flex-shrink-0 rounded-full"
-                              />
-                            )}
-                            <span className="card-meta truncate">
-                              {product.designer?.name || '设计师'}
-                            </span>
-                          </div>
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          {product.designer?.avatar && (
+                            <img
+                              src={product.designer.avatar}
+                              alt={product.designer.name}
+                              className="w-4 h-4 object-cover flex-shrink-0 rounded-full"
+                            />
+                          )}
+                          <span className="card-meta truncate">
+                            {product.designer?.name || '设计师'}
+                          </span>
                         </div>
                         <LikeButton
                           isLiked={product.isLiked ?? false}

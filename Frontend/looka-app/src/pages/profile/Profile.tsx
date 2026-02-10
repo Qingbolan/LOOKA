@@ -158,30 +158,35 @@ export function ProfilePage() {
             </div>
           </div>
 
-        {/* Content Tabs */}
-        <div className="border-b border-gray-100 dark:border-gray-800 mb-4">
-            <div className="flex">
+        {/* Content Tabs + Grid 外层容器 */}
+        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl overflow-hidden pb-4">
+          {/* Tabs */}
+          <div className="px-4 py-3 flex items-center justify-between">
+            <div className="flex gap-6">
               {profileTabs.map((tab, index) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(index)}
-                  className={`flex-1 py-3 text-sm font-medium relative transition-colors ${
+                  className={`relative pb-2 text-base transition-colors ${
                     index === activeTab
-                      ? 'text-gray-900 dark:text-gray-100'
-                      : 'text-gray-400 dark:text-gray-500'
+                      ? 'font-bold text-gray-900 dark:text-gray-100'
+                      : 'font-medium text-gray-400 dark:text-gray-500'
                   }`}
                 >
                   {tab}
                   {index === activeTab && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-primary rounded-full" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-[3px] bg-primary rounded-full" />
                   )}
                 </button>
               ))}
             </div>
+            <button onClick={() => navigate('/search')} className="text-gray-400 dark:text-gray-500">
+              <Icon name="search" size={22} />
+            </button>
           </div>
 
-        {/* Wishes Grid */}
-        <div className="pb-8">
+          {/* Wishes Grid */}
+          <div className="pb-4">
             {(() => {
               // 根据 activeTab 选择数据
               const tabData = [myWishes, wantedWishes, sharedWishes]
@@ -208,7 +213,7 @@ export function ProfilePage() {
                       <div
                         key={wish.id}
                         onClick={() => navigate(`/group-buy/${wish.id}`)}
-                        className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden cursor-pointer active:scale-[0.98] transition-transform shadow-sm"
+                        className="bg-white dark:bg-gray-800 rounded overflow-hidden cursor-pointer active:scale-[0.98] transition-transform shadow-sm"
                       >
                         {/* 图片区域 */}
                         <div className={`relative ${aspectRatio}`}>
@@ -219,21 +224,19 @@ export function ProfilePage() {
                             className="w-full h-full"
                             thumbSize="md"
                           />
-                          {/* 右下角想要人数 */}
-                          <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1 z-10">
-                            <Icon name="favorite" size={12} className="text-white" filled />
-                            <span className="text-white text-xs font-medium">{wish.wantCount}</span>
-                          </div>
-                          {/* 状态标签 */}
-                          <div className="absolute top-2 left-2 z-10">
-                            <span className={`text-xs font-medium px-2 py-1 rounded-full ${statusColor[wish.status]}`}>
+                        </div>
+                        {/* 信息 */}
+                        <div className="px-2.5 py-2.5">
+                          <div className="flex items-center gap-1.5">
+                            <h3 className="text-sm font-medium leading-tight line-clamp-1 text-gray-900 dark:text-gray-100">{wish.name}</h3>
+                            <span className={`flex-shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded ${statusColor[wish.status]}`}>
                               {statusText[wish.status]}
                             </span>
                           </div>
-                        </div>
-                        {/* 信息 */}
-                        <div className="p-3">
-                          <p className="text-sm font-semibold line-clamp-2 text-gray-900 dark:text-gray-100">{wish.name}</p>
+                          <div className="flex items-center gap-0.5 mt-1.5 text-gray-400 dark:text-gray-500">
+                            <Icon name="favorite" size={12} filled />
+                            <span className="text-[11px]">{wish.wantCount}</span>
+                          </div>
                         </div>
                       </div>
                     )
@@ -243,7 +246,7 @@ export function ProfilePage() {
                   {activeTab === 0 && (
                     <div
                       onClick={() => navigate('/luka')}
-                      className="aspect-card-1 bg-gray-50 dark:bg-gray-800/50 rounded-xl flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200 dark:border-gray-700 active:scale-[0.98] transition-transform"
+                      className="aspect-card-1 bg-gray-50 dark:bg-gray-800/50 rounded flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-200 dark:border-gray-700 active:scale-[0.98] transition-transform"
                     >
                       <Icon name="add" size={32} className="text-gray-300 dark:text-gray-600 mb-2" />
                       <p className="text-xs text-gray-400 dark:text-gray-500">许个新愿望</p>
@@ -253,6 +256,7 @@ export function ProfilePage() {
               )
             })()}
           </div>
+        </div>
       </div>
     </Layout>
   )

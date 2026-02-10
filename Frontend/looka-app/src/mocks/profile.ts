@@ -28,9 +28,9 @@ export const statusText: Record<WishStatus, string> = {
 
 // 状态颜色映射
 export const statusColor: Record<WishStatus, string> = {
-  collecting: 'bg-primary text-white',
-  making: 'bg-amber-500 text-white',
-  done: 'bg-emerald-500 text-white',
+  collecting: 'bg-primary/10 text-primary dark:bg-primary/20',
+  making: 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400',
+  done: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400',
 };
 
 // 我许的愿望

@@ -114,7 +114,7 @@ export default function WishDetailPage() {
         {/* 进度概览 */}
         <div className="px-4 py-4 surface-soft">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-gray-700 font-medium flex items-center gap-1">
+            <span className="text-gray-700 dark:text-gray-300 font-medium flex items-center gap-1">
               {remaining === 1 && <Flame size={16} className="text-orange-500" />}
               {remaining === 1 ? '只差最后一人！' : `还差 ${remaining} 人达成`}
             </span>
@@ -141,8 +141,8 @@ export default function WishDetailPage() {
                 onClick={() => setActiveTab(tab.key as typeof activeTab)}
                 className={`py-3 text-sm relative ${
                   activeTab === tab.key
-                    ? 'font-bold text-gray-900'
-                    : 'text-gray-400'
+                    ? 'font-bold text-gray-900 dark:text-gray-100'
+                    : 'text-gray-400 dark:text-gray-500'
                 }`}
               >
                 {tab.label}
@@ -169,9 +169,9 @@ export default function WishDetailPage() {
                       {wish.story.emotion === 'grateful' && <Heart size={18} />}
                       {wish.story.emotion === 'dreamy' && <Sparkles size={18} />}
                     </span>
-                    <h3 className="font-bold text-gray-900">{wish.story.title}</h3>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100">{wish.story.title}</h3>
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                     {wish.story.content}
                   </p>
                 </div>
@@ -200,10 +200,10 @@ export default function WishDetailPage() {
 
               {/* 规则说明 */}
               <div>
-                <h3 className="font-bold text-gray-900 mb-3">愿望规则</h3>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3">愿望规则</h3>
                 <ul className="space-y-2">
                   {wish.rules.map((rule, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
+                    <li key={index} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
                       <span className="text-primary">✓</span>
                       <span>{rule}</span>
                     </li>

@@ -64,11 +64,11 @@ export function GroupBuyPage() {
 
         {/* 设计信息 + 发起者 */}
         <div className="pt-3">
-          <h2 className="text-xl font-bold">星空渐变连衣裙</h2>
-          <p className="text-sm text-gray-500 mt-1">"想要一条像银河一样的裙子"</p>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">星空渐变连衣裙</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">"想要一条像银河一样的裙子"</p>
 
           {/* 发起者信息 */}
-          <div className="flex items-center justify-between mt-3 py-3 border-t border-gray-100">
+          <div className="flex items-center justify-between mt-3 py-3 border-t border-gray-100 dark:border-gray-700">
             <div className="flex items-center gap-3">
               <img
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"
@@ -76,15 +76,15 @@ export function GroupBuyPage() {
                 className="w-10 h-10 rounded-full object-cover"
               />
               <div>
-                <p className="text-sm font-medium">小美</p>
-                <p className="text-xs text-gray-400">许下了这个愿望</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">小美</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500">许下了这个愿望</p>
               </div>
             </div>
             <button
               onClick={() => setIsFollowing(!isFollowing)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 isFollowing
-                  ? 'bg-gray-100 text-gray-500'
+                  ? 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300'
                   : 'bg-primary text-white'
               }`}
             >
@@ -96,25 +96,25 @@ export function GroupBuyPage() {
         {/* 设计详情 */}
         <div className="mt-2">
           <Card>
-            <h3 className="font-bold mb-3 flex items-center gap-2">
+            <h3 className="font-bold mb-3 flex items-center gap-2 text-gray-900 dark:text-gray-100">
               <Icon name="auto_awesome" size={20} className="text-primary" />
               愿望详情
             </h3>
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="flex justify-between py-2 border-b border-gray-50">
-                <span className="text-gray-400">风格</span>
+            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+                <span className="text-gray-400 dark:text-gray-500">风格</span>
                 <span>梦幻 · 日常可穿</span>
               </div>
-              <div className="flex justify-between py-2 border-b border-gray-50">
-                <span className="text-gray-400">面料</span>
+              <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+                <span className="text-gray-400 dark:text-gray-500">面料</span>
                 <span>轻薄雪纺</span>
               </div>
-              <div className="flex justify-between py-2 border-b border-gray-50">
-                <span className="text-gray-400">长度</span>
+              <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+                <span className="text-gray-400 dark:text-gray-500">长度</span>
                 <span>及膝</span>
               </div>
               <div className="flex justify-between py-2">
-                <span className="text-gray-400">配色</span>
+                <span className="text-gray-400 dark:text-gray-500">配色</span>
                 <div className="flex gap-1">
                   <div className="w-4 h-4 rounded-full bg-indigo-900" />
                   <div className="w-4 h-4 rounded-full bg-purple-600" />
@@ -128,7 +128,7 @@ export function GroupBuyPage() {
         {/* 评论区 */}
         <div className="mt-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-bold flex items-center gap-2">
+            <h3 className="font-bold flex items-center gap-2 text-gray-900 dark:text-gray-100">
               <Icon name="chat_bubble" size={20} className="text-primary" />
               讨论 ({comments.length})
             </h3>
@@ -144,10 +144,10 @@ export function GroupBuyPage() {
                 />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className="text-sm font-medium">{comment.name}</p>
-                    <span className="text-xs text-gray-400">{comment.time}</span>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{comment.name}</p>
+                    <span className="text-xs text-gray-400 dark:text-gray-500">{comment.time}</span>
                   </div>
-                  <p className="text-sm text-gray-700 mt-1">{comment.content}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">{comment.content}</p>
                   <button
                     onClick={() => toggleLike(comment.id)}
                     className="flex items-center gap-1 mt-2"

@@ -12,7 +12,7 @@ const featureCards = [
       'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=100',
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=100',
     ],
-    bgColor: 'bg-primary/10',
+    bgColor: 'bg-primary/10 dark:bg-primary/15',
   },
   {
     id: 'inspiration',
@@ -23,7 +23,7 @@ const featureCards = [
       'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=100',
       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=100',
     ],
-    bgColor: 'bg-amber-50',
+    bgColor: 'bg-amber-50 dark:bg-amber-900/20',
   },
   {
     id: 'remix',
@@ -34,7 +34,7 @@ const featureCards = [
       'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=100',
       'https://images.unsplash.com/photo-1445205170230-053b83016050?w=100',
     ],
-    bgColor: 'bg-emerald-50',
+    bgColor: 'bg-emerald-50 dark:bg-emerald-900/20',
   },
 ]
 
@@ -104,13 +104,13 @@ export function LukaPage() {
                 onClick={() => handleCardClick(card.id)}
                 className={`flex-shrink-0 w-40 ${card.bgColor} rounded-xl p-4 text-left transition-transform active:scale-95 border border-gray-100 dark:border-gray-700`}
               >
-                <h3 className="font-bold text-base mb-1 text-gray-800">{card.title}</h3>
-                <p className="text-sm text-gray-500 mb-3 line-clamp-2">{card.example}</p>
+                <h3 className="font-bold text-base mb-1 text-gray-800 dark:text-gray-100">{card.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-2">{card.example}</p>
                 <div className="flex -space-x-2">
                   {card.images.map((img, idx) => (
                     <div
                       key={idx}
-                      className="w-8 h-8 rounded bg-cover bg-center border-2 border-white dark:border-gray-200 shadow-sm"
+                      className="w-8 h-8 rounded bg-cover bg-center border-2 border-white dark:border-gray-700 shadow-sm"
                       style={{ backgroundImage: `url(${img})` }}
                     />
                   ))}

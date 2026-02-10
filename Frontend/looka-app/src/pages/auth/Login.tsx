@@ -152,8 +152,8 @@ export default function LoginPage() {
             <>
               {/* Logo & 标题 */}
               <div className="pt-8 pb-10">
-                <div className="w-16 h-16 rounded-xl bg-gradient-primary flex items-center justify-center mb-6 shadow-button">
-                  <span className="text-white text-2xl font-bold">L</span>
+                <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center mb-6 shadow-button overflow-hidden">
+                  <img src="/looka.png" alt="LOOKA" className="w-12 h-12 object-contain" />
                 </div>
                 <h1 className="text-[28px] font-bold text-gray-900 mb-2">
                   欢迎来到 LOOKA

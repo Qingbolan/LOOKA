@@ -10,10 +10,17 @@ const toastIcons: Record<string, string> = {
 };
 
 const toastColors: Record<string, string> = {
-  success: 'bg-success text-white',
-  error: 'bg-error text-white',
-  warning: 'bg-warning text-white',
-  info: 'bg-info text-white',
+  success: 'bg-white text-gray-800 border border-gray-100',
+  error: 'bg-white text-gray-800 border border-gray-100',
+  warning: 'bg-white text-gray-800 border border-gray-100',
+  info: 'bg-white text-gray-800 border border-gray-100',
+};
+
+const toastIconColors: Record<string, string> = {
+  success: 'text-primary',
+  error: 'text-error',
+  warning: 'text-warning',
+  info: 'text-primary',
 };
 
 export function Toast() {
@@ -37,14 +44,14 @@ export function Toast() {
               `}
               onClick={() => removeToast(toast.id)}
             >
-              <Icon name={toastIcons[toast.type]} className="text-xl" />
+              <Icon name={toastIcons[toast.type]} className={`text-xl ${toastIconColors[toast.type]}`} />
               <span className="flex-1 text-sm font-medium">{toast.message}</span>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   removeToast(toast.id);
                 }}
-                className="p-1 rounded-full hover:bg-white/20 transition-colors"
+                className="p-1 rounded-full hover:bg-gray-100 transition-colors text-gray-400"
               >
                 <Icon name="close" className="text-lg" />
               </button>

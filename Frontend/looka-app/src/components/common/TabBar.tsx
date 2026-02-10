@@ -74,8 +74,7 @@ export function TabBar() {
       id: 'camera',
       icon: 'photo_camera',
       title: '拍照找灵感',
-      subtitle: '用相机捕捉灵感，让 洛卡 帮你设计',
-      gradient: 'from-primary to-primary-light',
+      subtitle: '用相机捕捉灵感，让洛卡帮你设计',
       onClick: handleCameraCapture,
     },
     {
@@ -83,7 +82,6 @@ export function TabBar() {
       icon: 'photo_library',
       title: '从图库选择',
       subtitle: '上传喜欢的图片，获取专属设计',
-      gradient: 'from-primary-light to-primary-light/60',
       onClick: handleGallerySelect,
     },
     {
@@ -91,7 +89,6 @@ export function TabBar() {
       icon: 'auto_awesome',
       title: '许愿成真',
       subtitle: '从零开始创作，发起专属愿望',
-      gradient: 'from-primary-dark to-primary',
       onClick: handleCreateWish,
     },
   ]

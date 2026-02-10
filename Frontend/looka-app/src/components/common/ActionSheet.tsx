@@ -102,8 +102,8 @@ export function ActionSheet({
 
         {/* 标题 */}
         {title && (
-          <div className="text-center py-3">
-            <h3 className="text-md font-semibold text-text-primary tracking-tight">
+          <div className="text-center py-3 pb-2">
+            <h3 className="text-base font-bold text-text-primary tracking-tight">
               {title}
             </h3>
           </div>
@@ -113,7 +113,7 @@ export function ActionSheet({
         {children ? (
           <div className="px-4 pb-3">{children}</div>
         ) : (
-          <div className="px-4 pb-3 space-y-2">
+          <div className="px-4 pb-3 space-y-2.5">
             {options.map((option) => (
               <button
                 key={option.id}
@@ -122,8 +122,10 @@ export function ActionSheet({
                   onClose()
                 }}
                 className={`
-                  w-full flex items-center gap-3.5 p-3.5 rounded-xl
-                  surface-glass hover:bg-white/80 active:scale-[0.98]
+                  w-full flex items-center gap-4 p-4 rounded-2xl
+                  bg-white/70 dark:bg-white/10 backdrop-blur-sm
+                  border border-white/80 dark:border-white/10
+                  hover:bg-white/90 active:scale-[0.98]
                   transition-all shadow-sm
                   ${option.danger ? 'text-error' : ''}
                 `}
@@ -131,28 +133,28 @@ export function ActionSheet({
                 {option.icon && (
                   <div
                     className={`
-                      w-11 h-11 rounded-xl flex items-center justify-center
+                      w-12 h-12 rounded-2xl flex items-center justify-center
                       ${option.gradient
                         ? `bg-gradient-to-br ${option.gradient}`
                         : option.danger
                           ? 'bg-error/10'
-                          : 'surface-inset'
+                          : 'bg-primary-soft'
                       }
                     `}
                   >
                     <Icon
                       name={option.icon}
-                      size={22}
-                      className={option.gradient ? 'text-white' : option.danger ? 'text-error' : 'text-gray-600 dark:text-gray-400'}
+                      size={24}
+                      className={option.gradient ? 'text-white' : option.danger ? 'text-error' : 'text-primary'}
                     />
                   </div>
                 )}
                 <div className="flex-1 text-left">
-                  <p className={`font-semibold text-base ${option.danger ? 'text-error' : 'text-text-primary'}`}>
+                  <p className={`font-bold text-[15px] ${option.danger ? 'text-error' : 'text-text-primary'}`}>
                     {option.title}
                   </p>
                   {option.subtitle && (
-                    <p className="text-sm text-text-tertiary mt-0.5">
+                    <p className="text-[13px] text-text-tertiary mt-0.5">
                       {option.subtitle}
                     </p>
                   )}
